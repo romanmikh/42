@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ftlib.h"
 #include <stdlib.h>
 
 /*
@@ -19,17 +19,15 @@
 ** Returns NULL if memory allocation fails or if 's' is an empty string.
 */
 
-char	*ft_strdup(const char *s)
+char *ft_strdup(const char *s)
 {
-	char	*new;
-	size_t	n;
+    size_t n = ft_strlen(s);
 
-	n = ft_strlen(s);
-	if (n == 0)
-		return (NULL);
-	new = malloc((n + 1) * sizeof(char));
-	if (!new)
-		return (NULL);
-	ft_strcpy(new, s);
-	return (new);
+    if (n == 0)
+        return NULL;
+    char *new = malloc((n + 1) * sizeof(char));
+    if (!new)
+        return NULL;
+    ft_strlcpy(new, s, n + 1);
+    return new;
 }

@@ -100,25 +100,3 @@ char **ft_split(char const *s, char c)
 	arr [k] = NULL;
 	return (arr);
 }
-
-
-int main() {
-    char const *s = "Moon cow fishing on a jelly fossil.  ";
-    char c = ' ';
-
-    char **result = ft_split(s, c);
-
-    if (result != NULL) {
-        int i = 0;
-        while (result[i] != NULL) {
-            printf("Word %d: %s\n", i + 1, result[i]);
-            free(result[i]);
-            i++;
-        }
-        free(result);  // Don't forget to free the array itself
-    } else {
-        printf("Memory allocation failed or no splitting needed.\n");
-    }
-
-    return 0;
-}
