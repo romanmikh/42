@@ -1,3 +1,1 @@
-This is the first project after being accepted into the main 42 schol.
-
-ftlib is a library of core C functions (recreated with the "ft_" prefix) that will be used and expanded on during the core curriculum. Only essential libraries (such as stddef, stdlib & limits.h) are allowed, all other lower level functions must be written from first principles and appended to ftlib.
+42 is a private institution of higher education in computer science founded by Xavier Niel, Nicolas Sadirac (former executive director at Epitech),[1] Kwame Yamgnane, and Florian Bucher (former executives at Epitech).[2] The school opened in Paris in 2013. The school does not have any professors and is open 24/7. Students are trained through peer-to-peer pedagogy, and project-based learning. (https://en.wikipedia.org/wiki/42_(school)).
