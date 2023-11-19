@@ -1,5 +1,5 @@
-#ifndef FTLIB_H
-#define FTLIB_H
+#ifndef LIBFT_H
+#define LIBFT_H
 
 #include <stddef.h>
 
@@ -38,4 +38,4 @@ void ft_putstr_fd(char *s, int fd);
 void ft_putendl_fd(char *s, int fd);
 void ft_putnbr_fd(int n, int fd);
 
-#endif /* FTLIB_H */
+#endif /* LIBFT_H */

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftlib.h"
+#include "libft.h"
 
 /*
 ** Locates the first occurrence of the substring 'little' within the first 

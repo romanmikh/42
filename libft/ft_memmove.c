@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "ftlib.h"
+#include "libft.h"
 
 /*
 ** Copies 'n' bytes from memory area 'src' to memory area 'dest'.

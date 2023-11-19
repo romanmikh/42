@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
-#include "ftlib.h"
+#include "libft.h"
 
 int main() {
     unsigned char x[8] = "ab. 9(^";

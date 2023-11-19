@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftlib.h"
+#include "libft.h"
 
 /*
 ** Compares the first 'n' characters of two strings, 's1' and 's2'.
