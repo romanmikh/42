@@ -20,7 +20,7 @@
 ** Returns 0 if all 'n' bytes are identical.
 */
 
-int	memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	const unsigned char		*st1;
 	const unsigned char		*st2;

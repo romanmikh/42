@@ -19,7 +19,7 @@
 ** otherwise, returns NULL.
 */
 
-void	*memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const char		*st;
 	unsigned char	ct;

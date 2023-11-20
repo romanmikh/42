@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
 /*
 * returns pointer char to last c in s, or NULL
 */

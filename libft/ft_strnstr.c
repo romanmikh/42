@@ -18,7 +18,7 @@
 ** Returns a pointer to the beginning of the found substring; otherwise, NULL.
 */
 
-char	*strnstr(const char *big, const char *little, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t n)
 {
 	size_t	little_len;
 

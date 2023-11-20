@@ -1,35 +1,32 @@
-# Compiler and flags
+NAME = libft.a
+SRCS = $(wildcard *.c)
+OBJS = $(SRCS:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-# Source files and object files
-SRC = $(wildcard *.c)
-OBJ = $(SRC:.c=.o)
+TEST_SRCS = test.c
+TEST_OBJS = $(TEST_SRCS:.c=.o)
+TEST_NAME = test
 
-# Target executable
-TARGET = my_program
+all: $(NAME) $(TEST_NAME)
 
-# Phony targets (targets that are not files)
-.PHONY: all clean fclean re
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
-# Default target
-all: $(TARGET)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Rule to build the executable
-$(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+$(TEST_NAME): $(TEST_OBJS) $(NAME)
+	$(CC) $(CFLAGS) -o $(TEST_NAME) $(TEST_OBJS) -L. -lft
 
-# Rule to build object files
-%.o: %.c libft.h
-	$(CC) $(CFLAGS) -c -o $@ $<
+test: $(TEST_NAME)
 
-# Clean generated files
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS) $(TEST_OBJS)
 
-# Clean all generated files and the executable
 fclean: clean
-	rm -f $(TARGET)
+	rm -f $(NAME) $(TEST_NAME)
 
-# Rebuild the project
 re: fclean all
+
+.PHONY: all clean fclean re test

@@ -29,7 +29,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	}
 	if (size == 0 || len_dst == 0)
 	{
-		return (len_dst + strlen(src));
+		return (len_dst + ft_strlen(src));
 	}
 	while (--size > 0 && *s != '\0')
 	{

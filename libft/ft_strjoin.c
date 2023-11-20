@@ -11,9 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 /*
 Parameters 
@@ -43,20 +41,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		*pt++ = *s2++;
 	*pt = '\0';
 	return (result);
-}
-
-int main() {
-    const char *prefix = "Hello, ";
-    const char *suffix = "World!";
-
-    char *result = ft_strjoin(prefix, suffix);
-
-    if (result != NULL) {
-        printf("Concatenated String: %s\n", result);
-        free(result); // Don't forget to free the allocated memory
-    } else {
-        printf("Memory allocation failed.\n");
-    }
-
-    return 0;
 }
