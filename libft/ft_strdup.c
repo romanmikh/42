@@ -19,15 +19,17 @@
 ** Returns NULL if memory allocation fails or if 's' is an empty string.
 */
 
-char *ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
-    size_t n = ft_strlen(s);
+	size_t	n;
+	char	*new;
 
-    if (n == 0)
-        return NULL;
-    char *new = malloc((n + 1) * sizeof(char));
-    if (!new)
-        return NULL;
-    ft_strlcpy(new, s, n + 1);
-    return new;
+	new = malloc((n + 1) * sizeof(char));
+	n = ft_strlen(s);
+	if (n == 0)
+		return (NULL);
+	if (!new)
+		return (NULL);
+	ft_strlcpy(new, s, n + 1);
+	return (new);
 }

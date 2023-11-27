@@ -13,7 +13,8 @@
 #include <stddef.h>
 
 /*
-Sets the first n bytes of the memory area pointed to by s to the specified value c. It returns a pointer to the memory area s.
+Sets the first n bytes of the memory area pointed to by s to the specified 
+value c. It returns a pointer to the memory area s.
 */
 
 void	*ft_memset(void *s, int c, size_t n)
