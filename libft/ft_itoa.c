@@ -13,7 +13,6 @@
 #include "libft.h"
 #include <stdlib.h>
 #include <limits.h>
-#include <stdio.h>
 
 /*
 Parameters 
@@ -29,47 +28,54 @@ representing the integer received as an argument.
 Negative numbers must be handled.
 */
 
-char *ft_itoa(int n)
+int	get_number_length(int n)
 {
-	if (n == INT_MIN)
-		return (ft_strdup("-2147483648"));
-
-	if (n == 0)
-		return (ft_strdup("0"));
-
 	int len = 0;
 	int temp = n;
-	while (temp != 0)
+
+	if (n == 0)
+		len = 1;
+	else
 	{
-		temp /= 10;
-		len++;
+		while (temp != 0 && ++len)
+			temp /= 10;
 	}
 
-	int isNegative = 0;
-	if (n < 0)
-	{
-		isNegative = 1;
-		n = -n;
-		len++;
-	}
+	return len;
+}
 
+char	*convert_to_string(int n, int len, int is_negative)
+{
 	char *pt = (char *)malloc(sizeof(char) * (len + 1));
+	int		digit;
+
 	if (!pt)
-		return NULL;
-	for (int i = 0; i < len; i++)
+		return (NULL);
+	pt[len--] = '\0';
+	while (len >= 0)
 	{
-		pt[i] = n % 10 + '0';
+		digit = n % 10;
+		if (is_negative)
+			digit = -digit;
+		pt[len--] = digit + '0';
 		n /= 10;
 	}
-	if (isNegative)
-		pt[len - 1] = '-';
-	for (int i = 0; i < len / 2; i++)
-	{
-		char temp = pt[i];
-		pt[i] = pt[len - i - 1];
-		pt[len - i - 1] = temp;
-	}
-	pt[len] = '\0';
+	if (is_negative)
+		pt[0] = '-';
+	return (pt);
+}
 
-	return pt;
+char	*ft_itoa(int n)
+{
+	int		len;
+	int		is_negative;
+
+	if (n == INT_MIN)
+		return (ft_strdup("-2147483648"));
+	len = get_number_length(n);
+	if (n < 0)
+		is_negative = 1;
+	else
+		is_negative = 0;
+	return (convert_to_string(n, len, is_negative));
 }

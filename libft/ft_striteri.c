@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/27 21:16:31 by rmikhayl          #+#    #+#             */
+/*   Updated: 2023/11/27 21:16:32 by rmikhayl         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 Parameters 
 s: The string on which to iterate.
@@ -15,13 +27,16 @@ address to ’f’ to be modified if necessary.
 
 #include <stdlib.h>
 
-void ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	if (!s || !f)
-		return;
+	unsigned int	i;
 
-	for (unsigned int i = 0; s[i] != '\0'; i++)
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i] != '\0')
 	{
 		f(i, &s[i]);
+		i++;
 	}
 }

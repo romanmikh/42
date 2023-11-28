@@ -1,30 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/27 21:18:42 by rmikhayl          #+#    #+#             */
+/*   Updated: 2023/11/27 21:18:44 by rmikhayl         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <unistd.h>
 
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-    if (n == 0)
-    {
-        ft_putchar_fd('0', fd);
-        return;
-    }
-    if (n == -2147483648)
-    {
-        ft_putstr_fd("-2147483648", fd);
-        return;
-    }
-    if (n < 0)
-    {
-        ft_putchar_fd('-', fd);
-        n = -n;
-    }
-    char buffer[12];
-    int i = 0;
-    while (n > 0)
-    {
-        buffer[i++] = n % 10 + '0';
-        n /= 10;
-    }
-    while (--i >= 0)
-        ft_putchar_fd(buffer[i], fd);
+	if (n == 0)
+		ft_putchar_fd('0', fd);
+	else if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else
+	{
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n = -n;
+		}
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
 }
