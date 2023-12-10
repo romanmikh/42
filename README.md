@@ -1,4 +1,4 @@
-42 already has big supporters in tech like *Snapchat* CEO Evan Spiegel, Twitter and Square CEO Jack Dorsey, and Slack CEO Stewart Butterfield. Spiegel called it a school from the future, and Dorsey gave a glowing endorsement, saying "We are always looking for great engineers from any background and any education like 42."
+42 already has big supporters in tech like **Snapchat** CEO Evan Spiegel, Twitter and Square CEO Jack Dorsey, and Slack CEO Stewart Butterfield. Spiegel called it a school from the future, and Dorsey gave a glowing endorsement, saying "We are always looking for great engineers from any background and any education like 42."
 
 Paul Graham founder of Y combinator stated on Twitter "My God is 42 impressive. This is not another programming bootcamp. It's another MIT."
 
