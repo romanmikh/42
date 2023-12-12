@@ -33,29 +33,22 @@ from successive applications of ’f’.
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*result;
-	size_t	len;
-	size_t	i;
-
-	i = 0;
-	len = 0;
-	result = (char *)malloc((len + 1) * sizeof(char));
 	if (!s || !f)
 		return (NULL);
+
+	size_t	len = 0;
 	while (s[len] != '\0')
 		len++;
+
+	char	*result = (char *)malloc((len + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
-	while (i < len)
+
+	for (size_t i = 0; i < len; i++)
 	{
-		result[i] = f((unsigned int)i, s[i]);
-		i++;
+		result[i] = f(i, s[i]);
 	}
 	result[len] = '\0';
-	return (result);
-}
 
-char	add_index(unsigned int index, char c)
-{
-	return (c + index);
+	return (result);
 }
