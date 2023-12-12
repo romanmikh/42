@@ -10,46 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	inv_if_neg(int n, int num)
+int	ft_atoi(char *str)
 {
-	if (n % 2 == 1)
-		return (-num);
-	else
-		return (num);
-}
-
-int	make_int(char *str, int i)
-{
+	int	sign;
 	int	num;
+	int	i;
 
+	sign = 1;
 	num = 0;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+		{
+			sign = -1;
+		}
+		i++;
+	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + (str[i] - '0');
 		i++;
 	}
-	return (num);
-}
-
-int	ft_atoi(char *str)
-{
-	int	i;
-	int	negs;
-	int	num;
-
-	num = 0;
-	i = 0;
-	negs = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\f' || str[i] == '\r'
-		|| str[i] == '\v')
-		i++;
-	while (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			negs++;
-		i++;
-	}
-	num = inv_if_neg(negs, make_int(str, i));
-	return (num);
+	return (sign * num);
 }

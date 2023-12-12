@@ -18,17 +18,24 @@
 ** Returns 0 if 'size' is 0.
 */
 
+#include <stddef.h>
+
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	char		*d;
 	const char	*s;
+	size_t		n;
 
 	d = dst;
 	s = src;
-	if (size <= 0)
-		return (0);
-	while (--size > 0 && *s != '\0')
-		*d++ = *s++;
-	*d = '\0';
+	n = size;
+	if (n > 0)
+	{
+		while (--n > 0 && *s != '\0')
+			*d++ = *s++;
+		*d = '\0';
+	}
+	while (*s != '\0')
+		s++;
 	return (s - src);
 }

@@ -10,28 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+// char	*ft_strcpy(char *dest, char *src)
+// {
+// 	int	index;
+
+// 	index = 0;
+// 	while (src[index] != '\0')
+// 	{
+// 		dest[index] = src[index];
+// 		index++;
+// 	}
+// 	return (dest);
+// }
+char	*ft_strcpy(char *dest, const char *src)
 {
 	int	index;
 
 	index = 0;
-	while (src[index] != '\0')
+	while (src[index] != '\0' && index < 14)  // Ensure we don't go beyond the destination buffer
 	{
 		dest[index] = src[index];
 		index++;
 	}
+	dest[index] = '\0';  // Add null terminator to the destination string
 	return (dest);
 }
-/*
-int	main()
-{
-	char s1[] = "Flaviano";
-	char s2[] = "Octavio";
-
-	
-
-	printf("s1: %s s2: %s\n", s1, s2);
-	ft_strcpy(s1, s2);
-	printf("s1: %s. s2: %s", s1, s2);
-	return (0);
-}*/
