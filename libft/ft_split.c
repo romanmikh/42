@@ -30,6 +30,11 @@ of strings obtained by splitting ’s’ using the
 character ’c’ as a delimiter. The array must end
 with a NULL pointer.
 */
+
+#include "libft.h"
+#include <stddef.h>
+#include <stdlib.h>
+
 static int	count_words(const char *s, char c)
 {
 	int count = 0;
