@@ -30,73 +30,73 @@ of strings obtained by splitting ’s’ using the
 character ’c’ as a delimiter. The array must end
 with a NULL pointer.
 */
-
-int	count_occurs(char *s, char c) {
-	int	i = 0;
-	int	n = 0;
-	while (s[i]) {
-		if (s[i] == c)
-			n++;
-	}
-	return (0);
-}
-
-int count_words(char const *s, char c) {
-    int i = 0;
-    int n = 0;
-    while (s[i] && s[i] == c) {
-        i++;
-    }
-    while (s[i]) {
-        if (s[i] != c) {
-            n++;
-            while (s[i] && s[i] != c) {
-                i++;
-            }
-        } else {
-            i++;
-        }
-    }
-    return n;
-}
-
-char **ft_split(char const *s, char c)
+static int	count_words(const char *s, char c)
 {
-	int	i = 0;
-	int	j = 0;
-	int	k = 0;
-	int	l = 0;
-	char *word;
-	char **arr;
+	int count = 0;
+	int in_word = 0;
 
-	arr = malloc(sizeof(char *) * (count_words(s, c) + 1));
-	if (arr == NULL)
-        return (NULL);
-	if (ft_strlen(s) <= 0)
+	while (*s)
+	{
+		if (*s != c)
+		{
+			if (!in_word)
+			{
+				in_word = 1;
+				count++;
+			}
+		}
+		else
+			in_word = 0;
+		s++;
+	}
+	return (count);
+}
+
+static char	*strndup(const char *s, size_t n)
+{
+	char *dup = malloc(n + 1);
+	if (!dup)
+		return (NULL);
+	ft_memcpy(dup, s, n);
+	dup[n] = '\0';
+	return (dup);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	int		word_count = count_words(s, c);
+	char	**result = malloc(sizeof(char *) * (word_count + 1));
+
+	if (!result)
 		return (NULL);
 
-	while (s[i]) {
-		while (s[i] != c && s[i]){
-			j++;
-			i++;
+	int		i = 0;
+	int		in_word = 0;
+	const char *start = s;
+
+	while (*s)
+	{
+		if (*s != c)
+		{
+			if (!in_word)
+			{
+				in_word = 1;
+				start = s;
+			}
 		}
-		i = l;
-		word = malloc(sizeof(char) * (j + 1));
-		if (word == NULL) {
-			return (NULL);
+		else
+		{
+			if (in_word)
+				result[i++] = strndup(start, s - start);
+			in_word = 0;
 		}
-		j = 0;
-		while (s[i] != c && s[i]){
-			word[j++] = s[i++];
-			l++;
-		}
-		if (s[i] == c || s[i]) {
-			word[j] = '\0';
-			j = 0;
-			arr[k++] = word;
-			l++;
-		}
+		s++;
 	}
-	arr [k] = NULL;
-	return (arr);
+
+	if (in_word)
+		result[i++] = strndup(start, s - start);
+
+	result[i] = NULL;
+
+	return (result);
 }

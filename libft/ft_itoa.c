@@ -28,54 +28,46 @@ representing the integer received as an argument.
 Negative numbers must be handled.
 */
 
-int	get_number_length(int n)
+static int	count_digits(int n)
 {
-	int len = 0;
-	int temp = n;
+	int	count;
 
-	if (n == 0)
-		len = 1;
+	count = 0;
+	if (n <= 0)
+		count = 1;
 	else
+		count = 0;
+	while (n != 0)
 	{
-		while (temp != 0 && ++len)
-			temp /= 10;
-	}
-
-	return len;
-}
-
-char	*convert_to_string(int n, int len, int is_negative)
-{
-	char *pt = (char *)malloc(sizeof(char) * (len + 1));
-	int		digit;
-
-	if (!pt)
-		return (NULL);
-	pt[len--] = '\0';
-	while (len >= 0)
-	{
-		digit = n % 10;
-		if (is_negative)
-			digit = -digit;
-		pt[len--] = digit + '0';
+		count++;
 		n /= 10;
 	}
-	if (is_negative)
-		pt[0] = '-';
-	return (pt);
+	return (count);
 }
 
 char	*ft_itoa(int n)
 {
 	int		len;
-	int		is_negative;
+	char	*str;
 
 	if (n == INT_MIN)
 		return (ft_strdup("-2147483648"));
-	len = get_number_length(n);
+	if (n == 0)
+		return (ft_strdup("0"));
+	len = count_digits(n);
+	str = (char *)malloc(len + 1);
+	if (!str)
+		return (NULL);
+	str[len--] = '\0';
 	if (n < 0)
-		is_negative = 1;
-	else
-		is_negative = 0;
-	return (convert_to_string(n, len, is_negative));
+	{
+		str[0] = '-';
+		n = -n;
+	}
+	while (n)
+	{
+		str[len--] = n % 10 + '0';
+		n /= 10;
+	}
+	return (str);
 }

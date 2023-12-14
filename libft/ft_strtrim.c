@@ -29,22 +29,34 @@ Allocates (with malloc(3)) and returns a copy of
 from the beginning and the end of the string.
 */
 
+#include "libft.h"
+#include <stddef.h>
+#include <stdlib.h>
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	s1_len;
-	int	set_len;
-	int	start;
-	int	end;
+	int s1_len;
+	int set_len;
+	int start;
+	int end;
 
 	s1_len = ft_strlen(s1);
 	set_len = ft_strlen(set);
+
 	if (s1_len == 0 || set_len == 0)
 		return (NULL);
+
 	start = 0;
 	end = s1_len;
+
 	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	while (end > 0 && ft_strchr(set, s1[end - 1]))
+
+	while (end > start && ft_strchr(set, s1[end - 1]))
 		end--;
+
+	if (start >= end)
+		return (ft_strdup(""));
+
 	return (ft_substr(s1, start, (end - start)));
 }
