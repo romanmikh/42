@@ -13,7 +13,6 @@
 #include "libft.h"
 #include <stddef.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 /*
 Parameters 
@@ -27,13 +26,9 @@ NULL if the allocation fails.
 Description 
 Allocates (with malloc(3)) and returns an array
 of strings obtained by splitting ’s’ using the
-character ’c’ as a delimiter. The array must end
+uu#includelimiter. The array must end
 with a NULL pointer.
 */
-
-#include "libft.h"
-#include <stddef.h>
-#include <stdlib.h>
 
 static int	count_words(const char *s, char c)
 {
@@ -67,41 +62,31 @@ static char	*strndup(const char *s, size_t n)
 	return (dup);
 }
 
-char	**ft_split(const char *s, char c)
-{
-	int		word_count = count_words(s, c);
-	char	**result = malloc(sizeof(char *) * (word_count + 1));
+static void split_into_words(char **result, const char *s, char c) {
+	int i = 0, in_word = 0;
+	const char *start;
 
-	if (!result)
-		return (NULL);
-
-	int		i = 0;
-	int		in_word = 0;
-	const char *start = s;
-
-	while (*s)
-	{
-		if (*s != c)
-		{
-			if (!in_word)
-			{
-				in_word = 1;
-				start = s;
-			}
-		}
-		else
-		{
-			if (in_word)
-				result[i++] = strndup(start, s - start);
+	while (*s) {
+		if (*s != c && !in_word) {
+			start = s;
+			in_word = 1;
+		} else if (*s == c && in_word) {
+			result[i++] = strndup(start, s - start);
 			in_word = 0;
 		}
 		s++;
 	}
-
-	if (in_word)
-		result[i++] = strndup(start, s - start);
-
+	if (in_word) result[i++] = strndup(start, s - start);
 	result[i] = NULL;
+}
 
-	return (result);
+char	**ft_split(const char *s, char c)
+{
+	int word_count = count_words(s, c);
+	
+	char **result = malloc(sizeof(char *) * (word_count + 1));
+	if (!result) return NULL;
+
+	split_into_words(result, s, c);
+	return result;
 }
