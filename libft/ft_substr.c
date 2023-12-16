@@ -31,30 +31,19 @@ The substring begins at index ’start’ and is of
 maximum size ’len’.
 */
 
-
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (!s)
-		return (NULL);
+	char	*new_str;
+	size_t	i;
+	size_t	j;
 
-	size_t	s_len = ft_strlen(s);
-	size_t	substr_len = (len < s_len - start) ? len : s_len - start;
-
-	if (start >= s_len)
-		return (ft_strdup(""));
-
-	char	*substr = (char *)malloc((substr_len + 1) * sizeof(char));
-
-	if (!substr)
-		return (NULL);
-
-	size_t	i = 0;
-	while (i < substr_len)
-	{
-		substr[i] = s[start + i];
-		i++;
-	}
-	substr[i] = '\0';
-
-	return (substr);
+	new_str = (char *)malloc(len + 1);
+	if (!s || !new_str)
+		return (0);
+	i = start;
+	j = 0;
+	while (i < ft_strlen(s) && j < len)
+		new_str[j++] = s[i++];
+	new_str[j] = '\0';
+	return (new_str);
 }

@@ -32,9 +32,11 @@ with a NULL pointer.
 
 static int	count_words(const char *s, char c)
 {
-	int count = 0;
-	int in_word = 0;
+	int	count;
+	int	in_word;
 
+	count = 0;
+	in_word = 0;
 	while (*s)
 	{
 		if (*s != c)
@@ -54,7 +56,9 @@ static int	count_words(const char *s, char c)
 
 static char	*strndup(const char *s, size_t n)
 {
-	char *dup = malloc(n + 1);
+	char	*dup;
+
+	dup = malloc(n + 1);
 	if (!dup)
 		return (NULL);
 	ft_memcpy(dup, s, n);
@@ -62,31 +66,42 @@ static char	*strndup(const char *s, size_t n)
 	return (dup);
 }
 
-static void split_into_words(char **result, const char *s, char c) {
-	int i = 0, in_word = 0;
-	const char *start;
+static void	split_into_words(char **result, const char *s, char c)
+{
+	int			i;
+	int			in_word;
+	const char	*start;
 
-	while (*s) {
-		if (*s != c && !in_word) {
+	i = 0;
+	in_word = 0;
+	while (*s)
+	{
+		if (*s != c && !in_word)
+		{
 			start = s;
 			in_word = 1;
-		} else if (*s == c && in_word) {
+		}
+		else if (*s == c && in_word)
+		{
 			result[i++] = strndup(start, s - start);
 			in_word = 0;
 		}
 		s++;
 	}
-	if (in_word) result[i++] = strndup(start, s - start);
+	if (in_word)
+		result[i++] = strndup(start, s - start);
 	result[i] = NULL;
 }
 
 char	**ft_split(const char *s, char c)
 {
-	int word_count = count_words(s, c);
-	
-	char **result = malloc(sizeof(char *) * (word_count + 1));
-	if (!result) return NULL;
+	char	**result;
+	int		word_count;
 
+	word_count = count_words(s, c);
+	result = malloc(sizeof(char *) * (word_count + 1));
+	if (!result)
+		return (NULL);
 	split_into_words(result, s, c);
-	return result;
+	return (result);
 }
