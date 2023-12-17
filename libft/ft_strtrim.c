@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmikhayl <rmikhayl@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 22:23:09 by rmikhayl          #+#    #+#             */
-/*   Updated: 2023/11/15 22:23:11 by rmikhayl         ###   ########.fr       */
+/*   Created: 2023/12/17 17:25:26 by rmikhayl          #+#    #+#             */
+/*   Updated: 2023/12/17 17:25:26 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	end;
 
+	if (!s1 || !set)
+		return (NULL);
 	start = 0;
 	while (s1[start] && ft_char_in_set(s1[start], set))
 		start++;

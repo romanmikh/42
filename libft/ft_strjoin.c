@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmikhayl <rmikhayl@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 21:51:09 by rmikhayl          #+#    #+#             */
-/*   Updated: 2023/11/15 21:51:10 by rmikhayl         ###   ########.fr       */
+/*   Created: 2023/12/17 17:25:28 by rmikhayl          #+#    #+#             */
+/*   Updated: 2023/12/17 17:25:28 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*pt;
 	char	*result;
 
+	if (!s1 || !s2)
+		return (NULL);
 	len = ft_strlen(s1) + ft_strlen (s2) + 1;
 	if (len == 0)
 		return (NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmikhayl <rmikhayl@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 20:34:10 by rmikhayl          #+#    #+#             */
-/*   Updated: 2023/11/17 20:34:11 by rmikhayl         ###   ########.fr       */
+/*   Created: 2023/12/17 17:25:26 by rmikhayl          #+#    #+#             */
+/*   Updated: 2023/12/17 17:25:26 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ char	**ft_split(const char *s, char c)
 	char	**result;
 	int		word_count;
 
+	if (!s)
+		return (NULL);
 	word_count = count_words(s, c);
 	result = malloc(sizeof(char *) * (word_count + 1));
 	if (!result)

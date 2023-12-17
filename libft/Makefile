@@ -18,16 +18,21 @@ SRCS =		ft_atoi.c ft_isprint.c ft_putchar_fd.c ft_striteri.c ft_strnstr.c \
 
 NAME = 		libft.a
 OBJS = 		$(SRCS:.c=.o)
-CC = 		gcc
+CC = 		cc
 CFLAGS = 	-Wall -Wextra -Werror -I.
 RM =		rm -f
 
-
 all: $(NAME) 
 
-$(NAME): $(OBJS); 	ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+					ar rcs $(NAME) $(OBJS)
 
-%.o: %.c;			$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c
+					$(CC) $(CFLAGS) -c $< -o $@
+
+# so:
+# 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
+# 	gcc -nostartfiles -shared -o libft.so $(OBJS)
 
 clean:
 					$(RM) $(OBJS)
