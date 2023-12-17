@@ -18,16 +18,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	const char	*last_occurrence;
+	unsigned char	uc;
+	const char		*last_occurrence;
 
 	last_occurrence = NULL;
+	uc = (unsigned char)c;
 	while (*s != '\0')
 	{
-		if (*s == c)
+		if (*s == uc)
 			last_occurrence = s;
 		s++;
 	}
-	if (*s == c)
+	if (*s == uc)
 		return ((char *)s);
 	return ((char *)last_occurrence);
 }
