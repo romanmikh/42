@@ -27,7 +27,7 @@
 <a name="Overview"></a>
 ## 🧭 Overview
 
-	🌟 Recreating fundamental C functions for future project use 🌟
+	🌟 Recreating fundamental C functions for future project use. All passed Norminette & Moulinette 🌟
 
 ### Functions from `<ctype.h>` library
 
@@ -79,44 +79,3 @@
 * [`ft_strmapi`](src/ft_strmapi.c)			- create new string from modifying string with specified function.
 
 _Note: Functions indicated with an asterisk (*) are additional, not obligatory for the project._
-
-<a name="How-to-Use"></a>
-## 🚀 How to Use
-
-### Requirements
-
-The library is written in C language and thus needs the **`gcc` compiler** and some standard **C libraries** to run.
-
-### Instructions
-
-**1: Compiling the library**
-
-To compile the library, run:
-
-```shell
-$ cd path/to/libft && make
-```
-
-**2: Using it in your code**
-
-To use the library functions in your code, simply include its header:
-
-```C
-#include "libft.h"
-```
-
-and, when compiling your code, add the required flags:
-
-```shell
--lft -L path/to/libft.a -I path/to/libft.h
-```
-
-<a name="Testing"></a>
-## 💯 Testing
-
-### Third party testers used:
-
-* [0x050f/libft-war-machine](https://github.com/0x050f/libft-war-machine)
-* [Tripouille/libftTester](https://github.com/Tripouille/libftTester)
-* [alelievr/libft-unit-test](https://github.com/alelievr/libft-unit-test)
- 
