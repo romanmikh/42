@@ -103,7 +103,6 @@ For comprehensive details, see the [**project's detailed guide**](https://github
 
 ### Non-standard functions
 
-* [`ft_swap`](libft/srcs/mem/ft_swap.c) *			- swap value of two integers.
 * [`ft_putchar`](libft/srcs/put/ft_putchar.c) *	- output a character to stdout.
 * [`ft_putchar_fd`](libft/srcs/put/ft_putchar_fd.c)		- output a character to given file.
 * [`ft_putstr`](libft/srcs/put/ft_putstr.c) *		- output string to stdout.
@@ -119,29 +118,9 @@ For comprehensive details, see the [**project's detailed guide**](https://github
 * [`ft_split`](libft/srcs/str/ft_split.c)				- split string, with specified character as delimiter, into an array of strings.
 * [`ft_split_free`](libft/srcs/str/ft_split_free.c) *				- free splitted string.
 * [`ft_strmapi`](libft/srcs/str/ft_strmapi.c)			- create new string from modifying string with specified function.
-* [`ft_ftoa_rnd`](libft/srcs/str/ft_ftoa_rnd.c)			- convert float to ASCII string.
 
-### Linked list functions
+_Note: Functions indicated with an asterisk (*) are additional, not obligatory for the project._
 
-* [`ft_lstnew`](libft/srcs/lst/ft_lstnew.c)				- create new list.
-* [`ft_lstsize`](libft/srcs/lst/ft_lstsize.c)			- count elements of a list.
-* [`ft_lstlast`](libft/srcs/lst/ft_lstlast.c)			- find last element of list.
-* [`ft_lstadd_back`](libft/srcs/lst/ft_lstadd_back.c)	- add new element at end of list.
-* [`ft_lstadd_front`](libft/srcs/lst/ft_lstadd_front.c)	- add new element at beginning of list.
-* [`ft_lstdelone`](libft/srcs/lst/ft_lstdelone.c)		- delete element from list.
-* [`ft_lstclear`](libft/srcs/lst/ft_lstclear.c)			- delete sequence of elements of list from a starting point.
-* [`ft_lstiter`](libft/srcs/lst/ft_lstiter.c)			- apply function to content of all list's elements.
-* [`ft_lstmap`](libft/srcs/lst/ft_lstmap.c)				- apply function to content of all list's elements into new list.
-
-_Note: functions marked with * are bonus functions (not mandatory by the project's subject)._
-
-## 📑 Index
-
-`@root`
-
-* [**📁 libft:**](libft/) updated source code, refactored for use in other projects; includes [`get_next_line`](https://github.com/romanmikh/42cursus-01-get_next_line) and [`printf`](https://github.com/romanmikh/42cursus-01-ft_printf) functions.
-* **📁 submX folder(s):** source code submitted to the cursus (including failed and succeeded submissions).
-* [**📁 testing:**](testing/) my own testing program.
 
 ## 🛠️ Usage
 
@@ -187,7 +166,7 @@ DIR		= ../
 **2. Then run:**
 
 ```shell
-make t
+make
 ```
 
 ### Third party testers used:
