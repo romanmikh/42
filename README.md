@@ -15,7 +15,7 @@
 
 
 <h3 align="center">
-	<a href="#about">About 42</a>
+	<a href="#about">What is 42?</a>
 	<span> · </span>
 	<a href="#%EF%B8%8F-skills-developed-at-42cursus">Skills developed at 42cursus</a>
 	<span> · </span>
@@ -23,15 +23,12 @@
 </h3>
 
 <a name="about"></a>
-## 🗣️ About 42
 
 42 already has big supporters in tech like **Snapchat CEO** Evan Spiegel, **Twitter and Square CEO** Jack Dorsey, and **Slack CEO** Stewart Butterfield. Spiegel called it a school from the future, and Dorsey gave a glowing endorsement, saying "We are always looking for great engineers from any background and any education like 42."
 
 Paul Graham founder of Y combinator stated on Twitter **"My God is 42 impressive. This is not another programming bootcamp. It's another MIT."**
 
-42 is a private institution of higher education in computer science founded by Xavier Niel, Nicolas Sadirac (former executive director at Epitech), Kwame Yamgnane, and Florian Bucher (former executives at Epitech). The school opened in Paris in 2013.
-
-The school does not have any professors and is open 24/7. Students are trained through peer-to-peer pedagogy, and project-based learning. (https://en.wikipedia.org/wiki/42_(school)).
+42 is a private institution of higher education in computer science first opened in Paris in 2013. The school does not have any professors and is open 24/7. Students are trained through peer-to-peer pedagogy, and project-based learning. (https://en.wikipedia.org/wiki/42_(school)).
 
 
 ![alt text](https://42london.com/wp-content/uploads/2022/09/42-London_Locations_2022.png)
@@ -87,4 +84,4 @@ The **inner circle** is the basic curriculum, with all projects being mandatory 
 
 The **outer treks** is a collection of diverse project trails in subjects ranging from operational systems to web development which allows cadets to specialize on whatever subject they prefer.
 
-![42's galaxy](galaxy.png)
+![42's galaxy](images/holy_graph_dec23.png)
