@@ -8,7 +8,7 @@
 
 <p align="center">
 	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/romanmikh/42?color=yellow" />
-	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/romanmikh/42?color=yellow" />
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/romanmikh/42?color=yellow&kill_cache=1" />
 	<img alt="Code language count" src="https://img.shields.io/github/languages/count/romanmikh/42?color=yellow" />
 	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/romanmikh/42?color=yellow" />
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/romanmikh/42?color=yellow" />
