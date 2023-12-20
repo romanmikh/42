@@ -19,7 +19,7 @@
 	<span> · </span>
 	<a href="#%EF%B8%8F-how-to-use">How to Use</a>
 	<span> · </span>
-	<a href="#%EF%B8%8F-testing">Testing</a>
+	<a href="#Testing">Testing</a>
 </h3>
 
 ---
@@ -121,6 +121,7 @@ and, when compiling your code, add the required flags:
 -lft -L path/to/libft.a -I path/to/libft.h
 ```
 
+<a name="Testing"></a>
 ## 💯 Testing
 
 ### Third party testers used:
