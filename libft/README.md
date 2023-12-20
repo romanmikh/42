@@ -26,7 +26,6 @@
 ## 🧭 Overview
 
 	🌟 Recreating fundamental C functions for future project use 🌟
-	(all functions passed the norminette & the moulinette)
 
 ### Functions from `<ctype.h>` library
 
@@ -51,7 +50,6 @@
 * [`ft_memcmp`](libft/src/ft_memcmp.c)		- compare byte strings.
 * [`ft_memmove`](libft/src/ft_memmove.c)	- move a byte string.
 * [`ft_memcpy`](libft/src/ft_memcpy.c)		- copy memory area.
-* [`ft_memccpy`](libft/src/ft_memccpy.c)	- copy until character found in string.
 
 ### Functions from `<string.h>` library
 
@@ -59,27 +57,17 @@
 * [`ft_strchr`](libft/src/ft_strchr.c)				- find character in string (first occurrence).
 * [`ft_strrchr`](libft/src/ft_strrchr.c)			- find character in string (last occurrence).
 * [`ft_strnstr`](libft/src/ft_strnstr.c)			- bounded substring search in string.
-* [`ft_strcmp`](libft/src/ft_strcmp.c) *		- string comparison.
 * [`ft_strncmp`](libft/src/ft_strncmp.c) *		- bounded string comparison.
 * [`ft_strnrcmp`](libft/src/ft_strnrcmp.c)		- reverse bounded string comparison.
-* [`ft_strcpy`](libft/src/ft_strcpy.c) *		- copy string.
-* [`ft_strncpy`](libft/src/ft_strncpy.c) *	- bounded string copy.
 * [`ft_strdup`](libft/src/ft_strdup.c)				- duplicate string with allocation.
-* [`ft_strndup`](libft/src/ft_strndup.c) *	- bounded string duplication with allocation.
-* [`ft_strcat`](libft/src/ft_strcat.c) *		- string concatenation.
-* [`ft_strncat`](libft/src/ft_strndup.c) *	- save a copy of a string (with malloc, size-bounded).
-* [`ft_strcat`](libft/src/ft_strcat.c) *		- concatenate strings (s2 into s1).
-* [`ft_strncat`](libft/src/ft_strncat.c) *	- concatenate strings (s2 into s1, size-bounded).
 * [`ft_strlcpy`](libft/src/ft_strlcpy.c)			- size-bounded string copying.
 * [`ft_strlcat`](libft/src/ft_strlcat.c)			- size-bounded string concatenation.
 
 ### Non-standard functions
 
-* [`ft_putchar`](libft/src/ft_putchar.c) *	- output a character to stdout.
 * [`ft_putchar_fd`](libft/src/ft_putchar_fd.c)		- output a character to given file.
 * [`ft_putstr_fd`](libft/src/ft_putstr_fd.c)		- output string to given file.
 * [`ft_putendl_fd`](libft/src/ft_putendl_fd.c)		- output string to given file with newline.
-* [`ft_putnbr`](libft/src/ft_putnbr.c) *		- output integer to stdout.
 * [`ft_putnbr_fd`](libft/src/ft_putnbr_fd.c)		- output integer to given file.
 * [`ft_itoa`](libft/src/ft_itoa.c)					- convert integer to ASCII string.
 * [`ft_substr`](libft/src/ft_substr.c)				- extract substring from string.
