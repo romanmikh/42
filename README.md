@@ -13,6 +13,18 @@
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/romanmikh/42?color=yellow" />
 </p>
 
+
+<h3 align="center">
+	<a href="#about">About 42</a>
+	<span> · </span>
+	<a href="#%EF%B8%8F-skills-developed-at-42cursus">Skills developed at 42cursus</a>
+	<span> · </span>
+	<a href="#-42s-galaxy-curriculum">42's galaxy (curriculum)</a>
+</h3>
+
+<a name="about"></a>
+## 🗣️ About 42
+
 42 already has big supporters in tech like **Snapchat CEO** Evan Spiegel, **Twitter and Square CEO** Jack Dorsey, and **Slack CEO** Stewart Butterfield. Spiegel called it a school from the future, and Dorsey gave a glowing endorsement, saying "We are always looking for great engineers from any background and any education like 42."
 
 Paul Graham founder of Y combinator stated on Twitter **"My God is 42 impressive. This is not another programming bootcamp. It's another MIT."**
@@ -28,24 +40,6 @@ The school does not have any professors and is open 24/7. Students are trained t
 
 
 
-
-
-
-<h3 align="center">
-	<a href="#%EF%B8%8F-about-42">About 42</a>
-	<span> · </span>
-	<a href="#%EF%B8%8F-skills-developed-at-42cursus">Skills developed at 42cursus</a>
-	<span> · </span>
-	<a href="#-42s-galaxy-curriculum">42's galaxy (curriculum)</a>
-</h3>
-
-## 🗣️ About 42
-
-	42 is a global education initiative that offers a new way of learning technology:
-	no teachers, no classrooms, students learning from their fellow students (peer to peer
-	learning), with a methodology that develops both computing and life skills. The 42 cursus is
-	free for whoever is approved in its selection process* - the so-called "Piscine" - becoming
-	thus "cadets" (42's students).
 
 \* For further information about 42's **selection process** (the "Piscine"), please visit the [C Piscine repo](https://github.com/appinha/42sp-piscine).
 
