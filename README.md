@@ -40,7 +40,6 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 ## 📚 Topics Covered
 
 |CURSUS	|SPECIALISATION							|
-|:-:	|:--								|
 |00		|xpxp|
 |00		|xpxp|
 |00		|xpxp|
