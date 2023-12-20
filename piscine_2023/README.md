@@ -13,14 +13,6 @@
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/romanmikh/42?color=yellow" />
 </p>
 
-<h3 align="center">
-	<a href="#Overview">Overview</a>
-	<span> · </span>
-	<a href="#How-to-Use">How to Use</a>
-	<span> · </span>
-	<a href="#Testing">Testing</a>
-</h3>
-
 ![alt text](https://42london.com/wp-content/uploads/2022/09/42-London_Locations_2022.png)
 
 	🌟 All functions passed le Norminette & the Moulinette 🌟
