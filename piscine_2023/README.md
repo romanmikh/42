@@ -3,7 +3,8 @@
 </h1>
 
 <p align="center">
-	<b>4 week intensive C course (at the UK's first 42 school & piscine)</b><br>
+	<b>4 week intensive C course</b><br>
+    <b><i>At the UK's first 42 school & piscine</i></b><br>
 </p>
 
 <p align="center">
