@@ -4,8 +4,6 @@ ftlib is a library of core C functions (recreated with the "ft_" prefix) that wi
 
 
 
-<h1 align="center">
-	42cursus' Essential C Library
 </h1>
 
 <p align="center">
@@ -14,11 +12,11 @@ ftlib is a library of core C functions (recreated with the "ft_" prefix) that wi
 </p>
 
 <p align="center">
-	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/romanmikh/42?color=blueviolet" />
-	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/romanmikh/42?color=blueviolet" />
-	<img alt="Code language count" src="https://img.shields.io/github/languages/count/romanmikh/42?color=blue" />
-	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/romanmikh/42?color=blue" />
-	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/romanmikh/42?color=brightgreen" />
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/romanmikh/42?color=yellow" />
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/romanmikh/42?color=yellow" />
+	<img alt="Code language count" src="https://img.shields.io/github/languages/count/romanmikh/42?color=yellow" />
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/romanmikh/42?color=yellow" />
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/romanmikh/42?color=yellow" />
 </p>
 
 <h3 align="center">
@@ -92,94 +90,7 @@ For comprehensive details, see the [**project's detailed guide**](https://github
 * [`ft_strdup`](libft/srcs/str/ft_strdup.c)				- duplicate string with allocation.
 * [`ft_strndup`](libft/srcs/str/ft_strndup.c) *	- bounded string duplication with allocation.
 * [`ft_strcat`](libft/srcs/str/ft_strcat.c) *		- string concatenation.
-* [`ft_strncat`](libft/srcs
-<h1 align="center">
-	42cursus' libft
-</h1>
-
-<p align="center">
-	<b><i>Development repo for 42cursus' libft project</i></b><br>
-	For further information about 42cursus and its projects, please refer to <a href="https://github.com/romanmikh/42cursus"><b>42cursus repo</b></a>.
-</p>
-https://github.com/romanmikh/42/tree/main/libft
-<p align="center">
-	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/romanmikh/42?color=yellow />
-	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/romanmikh/42?color=yellow" />
-	<img alt="Code language count" src="https://img.shields.io/github/languages/count/romanmikh/42?color=yellow" />
-	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/romanmikh/42?color=yellow" />
-	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/romanmikh/42?color=yellow" />
-</p>
-
-<h3 align="center">
-	<a href="#%EF%B8%8F-about">About</a>
-	<span> · </span>
-	<a href="#-index">Index</a>
-	<span> · </span>
-	<a href="#%EF%B8%8F-usage">Usage</a>
-	<span> · </span>
-	<a href="#-testing">Testing</a>
-</h3>
-
----
-
-## 🗣️ About
-
-> _The aim of this project is to code a C library regrouping usual functions that you'll be allowed to use in all your other projects._
-
-For detailed information, refer to the [**subject of this project**](https://github.com/romanmikh/42cursus/tree/master/_PDFs).
-
-	🚀 TLDR: this project consists of coding basic C functions (see below), which are then compiled
-	into a library for use in other projects of the cursus.
-
-### Functions from `<ctype.h>` library
-
-* [`ft_isascii`](libft/srcs/is/ft_isascii.c)			- test for ASCII character.
-* [`ft_isalnum`](libft/srcs/is/ft_isalnum.c)			- alphanumeric character test.
-* [`ft_isalpha`](libft/srcs/is/ft_isalpha.c)			- alphabetic character test.
-* [`ft_islower`](libft/srcs/is/ft_islower.c) *	- lower-case character test.
-* [`ft_isupper`](libft/srcs/is/ft_isupper.c) *	- upper-case character test.
-* [`ft_isdigit`](libft/srcs/is/ft_isdigit.c)			- decimal-digit character test.
-* [`ft_isxdigit`](libft/srcs/is/ft_isxdigit.c) *	- hexadecimal-digit character test.
-* [`ft_isprint`](libft/srcs/is/ft_isprint.c)			- printing character test (space character inclusive).
-* [`ft_isgraph`](libft/srcs/is/ft_isgraph.c) *	- printing character test (space character exclusive).
-* [`ft_isspace`](libft/srcs/is/ft_isspace.c) *	- white-space character test.
-* [`ft_isblank`](libft/srcs/is/ft_isblank.c) *	- space or tab character test.
-* [`ft_ispunct`](libft/srcs/is/ft_ispunct.c) *	- punctuation character test.
-* [`ft_iscntrl`](libft/srcs/is/ft_iscntrl.c) *	- control character test.
-* [`ft_tolower`](libft/srcs/to/ft_tolower.c)			- upper case to lower case letter conversion.
-* [`ft_toupper`](libft/srcs/to/ft_toupper.c)			- lower case to upper case letter conversion.
-
-### Functions from `<stdlib.h>` library
-
-* [`ft_atoi`](libft/srcs/to/ft_atoi.c)		- convert ASCII string to integer.
-* [`ft_atof`](libft/srcs/to/ft_atof.c) *		- convert ASCII string to integer.
-* [`ft_calloc`](libft/srcs/mem/ft_calloc.c)	- memory allocation.
-
-### Functions from `<strings.h>` library
-
-* [`ft_bzero`](libft/srcs/mem/ft_bzero.c)		- write zeroes to a byte string.
-* [`ft_memset`](libft/srcs/mem/ft_memset.c)		- write a byte to a byte string.
-* [`ft_memchr`](libft/srcs/mem/ft_memchr.c)		- locate byte in byte string.
-* [`ft_memcmp`](libft/srcs/mem/ft_memcmp.c)		- compare byte string.
-* [`ft_memmove`](libft/srcs/mem/ft_memmove.c)	- copy byte string.
-* [`ft_memcpy`](libft/srcs/mem/ft_memcpy.c)		- copy memory area.
-* [`ft_memccpy`](libft/srcs/mem/ft_memccpy.c)	- copy string until character found.
-
-### Functions from `<string.h>` library
-
-* [`ft_strlen`](libft/srcs/str/ft_strlen.c)				- find length of string.
-* [`ft_strlen_2`](libft/srcs/str/ft_strlen_2.c) *				- find length of 2D array (i.e. splitted string).
-* [`ft_strchr`](libft/srcs/str/ft_strchr.c)				- locate character in string (first occurrence).
-* [`ft_strrchr`](libft/srcs/str/ft_strrchr.c)			- locate character in string (last occurence).
-* [`ft_strstr`](libft/srcs/str/ft_strstr.c) *		- locate a substring in a string.
-* [`ft_strnstr`](libft/srcs/str/ft_strnstr.c)			- locate a substring in a string (size-bounded).
-* [`ft_strcmp`](libft/srcs/str/ft_strcmp.c) *		- compare strings.
-* [`ft_strncmp`](libft/srcs/str/ft_strncmp.c) *			- compare strings (size-bounded).
-* [`ft_strnrcmp`](libft/srcs/str/ft_strnrcmp.c)			- reversely compare strings (size-bounded).
-* [`ft_strcpy`](libft/srcs/str/ft_strcpy.c) *		- copy strings.
-* [`ft_strncpy`](libft/srcs/str/ft_strncpy.c) *	- copy strings (size-bounded).
-* [`ft_strdup`](libft/srcs/str/ft_strdup.c)				- save a copy of a string (with malloc).
-* [`ft_strndup`](libft/srcs/str/ft_strndup.c) *	- save a copy of a string (with malloc, size-bounded).
+* [`ft_strncat`](libft/srcs/str/ft_strndup.c) *	- save a copy of a string (with malloc, size-bounded).
 * [`ft_strcat`](libft/srcs/str/ft_strcat.c) *		- concatenate strings (s2 into s1).
 * [`ft_strncat`](libft/srcs/str/ft_strncat.c) *	- concatenate strings (s2 into s1, size-bounded).
 * [`ft_strlcpy`](libft/srcs/str/ft_strlcpy.c)			- size-bounded string copying.
