@@ -2,13 +2,97 @@ This is the first project after being accepted into the main 42 schol.
 
 ftlib is a library of core C functions (recreated with the "ft_" prefix) that will be used and expanded on during the core curriculum. Only essential libraries (such as stddef, stdlib & limits.h) are allowed, all other lower level functions must be written from first principles and appended to ftlib.
 
-Third party testers used:
-- https://github.com/0x050f/libft-war-machine
-- https://github.com/Tripouille/libftTester
-- https://github.com/alelievr/libft-unit-test
 
 
+<h1 align="center">
+	42cursus' Essential C Library
+</h1>
 
+<p align="center">
+	<b><i>Repository for the development of 42cursus' Essential C Library project</i></b><br>
+	Visit <a href="https://github.com/appinha/42cursus"><b>42cursus repository</b></a> for more information about 42cursus and its projects.
+</p>
+
+<p align="center">
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/appinha/42cursus-00-Libft?color=blueviolet" />
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/appinha/42cursus-00-Libft?color=blueviolet" />
+	<img alt="Code language count" src="https://img.shields.io/github/languages/count/appinha/42cursus-00-Libft?color=blue" />
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/appinha/42cursus-00-Libft?color=blue" />
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/appinha/42cursus-00-Libft?color=brightgreen" />
+</p>
+
+<h3 align="center">
+	<a href="#%EF%B8%8F-about">Overview</a>
+	<span> · </span>
+	<a href="#-contents">Contents</a>
+	<span> · </span>
+	<a href="#%EF%B8%8F-how-to-use">How to Use</a>
+	<span> · </span>
+	<a href="#-evaluation">Evaluation</a>
+</h3>
+
+---
+
+## 📘 Overview
+
+> _This project's goal is to develop a C library compiling standard functions that can be utilized in all subsequent projects._
+
+For comprehensive details, see the [**project's detailed guide**](https://github.com/appinha/42cursus/tree/master/_PDFs).
+
+	🌟 Summary: The project involves creating fundamental C functions (listed below) and compiling them
+	into a library for future project use.
+
+### Functions from `<ctype.h>` library
+
+* [`ft_isascii`](libft/srcs/is/ft_isascii.c)			- ASCII character verification.
+* [`ft_isalnum`](libft/srcs/is/ft_isalnum.c)			- alphanumeric character check.
+* [`ft_isalpha`](libft/srcs/is/ft_isalpha.c)			- alphabetic character check.
+* [`ft_islower`](libft/srcs/is/ft_islower.c) *	- lower-case character check.
+* [`ft_isupper`](libft/srcs/is/ft_isupper.c) *	- upper-case character check.
+* [`ft_isdigit`](libft/srcs/is/ft_isdigit.c)			- decimal-digit character check.
+* [`ft_isxdigit`](libft/srcs/is/ft_isxdigit.c) *	- hexadecimal-digit character check.
+* [`ft_isprint`](libft/srcs/is/ft_isprint.c)			- printable character check (includes space).
+* [`ft_isgraph`](libft/srcs/is/ft_isgraph.c) *	- printable character check (excludes space).
+* [`ft_isspace`](libft/srcs/is/ft_isspace.c) *	- white-space character check.
+* [`ft_isblank`](libft/srcs/is/ft_isblank.c) *	- space or tab character check.
+* [`ft_ispunct`](libft/srcs/is/ft_ispunct.c) *	- punctuation character check.
+* [`ft_iscntrl`](libft/srcs/is/ft_iscntrl.c) *	- control character check.
+* [`ft_tolower`](libft/srcs/to/ft_tolower.c)			- convert upper case to lower case.
+* [`ft_toupper`](libft/srcs/to/ft_toupper.c)			- convert lower case to upper case.
+
+### Functions from `<stdlib.h>` library
+
+* [`ft_atoi`](libft/srcs/to/ft_atoi.c)		- ASCII to integer conversion.
+* [`ft_atof`](libft/srcs/to/ft_atof.c) *		- ASCII to float conversion.
+* [`ft_calloc`](libft/srcs/mem/ft_calloc.c)	- allocate memory.
+
+### Functions from `<strings.h>` library
+
+* [`ft_bzero`](libft/srcs/mem/ft_bzero.c)		- zero a byte string.
+* [`ft_memset`](libft/srcs/mem/ft_memset.c)		- fill a byte string with a byte.
+* [`ft_memchr`](libft/srcs/mem/ft_memchr.c)		- locate a byte in a byte string.
+* [`ft_memcmp`](libft/srcs/mem/ft_memcmp.c)		- compare byte strings.
+* [`ft_memmove`](libft/srcs/mem/ft_memmove.c)	- move a byte string.
+* [`ft_memcpy`](libft/srcs/mem/ft_memcpy.c)		- copy memory area.
+* [`ft_memccpy`](libft/srcs/mem/ft_memccpy.c)	- copy until character found in string.
+
+### Functions from `<string.h>` library
+
+* [`ft_strlen`](libft/srcs/str/ft_strlen.c)				- calculate string length.
+* [`ft_strlen_2`](libft/srcs/str/ft_strlen_2.c) *		- calculate length of 2D array (e.g., split string).
+* [`ft_strchr`](libft/srcs/str/ft_strchr.c)				- find character in string (first occurrence).
+* [`ft_strrchr`](libft/srcs/str/ft_strrchr.c)			- find character in string (last occurrence).
+* [`ft_strstr`](libft/srcs/str/ft_strstr.c) *		- find substring in a string.
+* [`ft_strnstr`](libft/srcs/str/ft_strnstr.c)			- bounded substring search in string.
+* [`ft_strcmp`](libft/srcs/str/ft_strcmp.c) *		- string comparison.
+* [`ft_strncmp`](libft/srcs/str/ft_strncmp.c) *		- bounded string comparison.
+* [`ft_strnrcmp`](libft/srcs/str/ft_strnrcmp.c)		- reverse bounded string comparison.
+* [`ft_strcpy`](libft/srcs/str/ft_strcpy.c) *		- copy string.
+* [`ft_strncpy`](libft/srcs/str/ft_strncpy.c) *	- bounded string copy.
+* [`ft_strdup`](libft/srcs/str/ft_strdup.c)				- duplicate string with allocation.
+* [`ft_strndup`](libft/srcs/str/ft_strndup.c) *	- bounded string duplication with allocation.
+* [`ft_strcat`](libft/srcs/str/ft_strcat.c) *		- string concatenation.
+* [`ft_strncat`](libft/srcs
 <h1 align="center">
 	42cursus' libft
 </h1>
@@ -195,7 +279,7 @@ DIR		= ../
 make t
 ```
 
-### Third party testers
+### Third party testers used:
 
 * [0x050f/libft-war-machine](https://github.com/0x050f/libft-war-machine)
 * [Tripouille/libftTester](https://github.com/Tripouille/libftTester)
