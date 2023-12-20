@@ -45,10 +45,9 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 |C/C++ language | test|
 
 
-|CIRCLE	|PROJECT							|TECHNOLOGY				|EXPERIENCE		|STATUS						|ATTAINED LEVEL	|
-|:-:	|:--								|:--					|--:			|:-:						|:--			|
-|00		|[Libft](https://github.com/appinha/42cursus-00-Libft)|C						|462 XP			|![Project Score - Libft](https://badge42.herokuapp.com/api/project/apuchill/Libft)	|level 1 - 3%	|
-
+|CIRCLE	|PROJECT							|
+|:-:	|:--								|
+|00		|[Libft](https://github.com/appinha/42cursus-00-Libft)|
 
 	* C/C++ language, Makefile      * test
 	* Shell scripting               * test
