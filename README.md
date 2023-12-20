@@ -53,21 +53,11 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 
 ### Soft-skills
 
-	# Self-learning and proactivity
-		At 42, self-learning is at the core of its peer to peer learning methodology. There
-		are no teachers whatsoever; the learning process is based on googling, enquiring
-		your classmates, and empirical knowledge, each student learning at their own pace.
+- Independent Learning: 42 places a strong emphasis on independent learning. Students develop their knowledge through research, peer interactions, and practical experience, fostering self-sufficiency.
 
-	# Teamwork
-		Some projects must or should be developed in groups, which promotes collaborative
-		work among cadets. The major challenge here is to equalize the different knowledge
-		levels while finding a common work methodology that allows all team members to
-		contribute to the project.
+- Collaboration: Collaborative work is a fundamental aspect of the program. Certain projects require students to work together, promoting effective teamwork and leveraging diverse skill sets.
 
-	# Time management and resiliency
-		The school is open 24/7. Thus, the cadets are free to work whenever they want, which
-		demands excellent time management skills and resiliency for not "drowning" amid the
-		massive load of work demanded by the program.
+- Effective Time Management: With 24/7 access to the school, students must excel in time management. This flexibility demands strong time management skills, enabling students to balance their workloads effectively.
 
 <a name="curriculum"></a>
 ## 🌌 42's curriculum
