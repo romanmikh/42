@@ -47,7 +47,7 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 
 |CIRCLE	|PROJECT							|
 |:-:	|:--								|
-|00		|[Libft](https://github.com/appinha/42cursus-00-Libft)|
+|00		|xpxp|
 
 	* C/C++ language, Makefile      * test
 	* Shell scripting               * test
