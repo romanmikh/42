@@ -24,7 +24,7 @@
 
 ---
 
-## 📘 Overview
+## 🧭 Overview
 
 	🌟 This project involves recreating fundamental C functions and compiling them into a library for future project use 🌟
 
@@ -91,7 +91,7 @@
 _Note: Functions indicated with an asterisk (*) are additional, not obligatory for the project._
 
 
-## 🛠️ How to Use
+## 🚀 How to Use
 
 ### Requirements
 
@@ -121,9 +121,9 @@ and, when compiling your code, add the required flags:
 -lft -L path/to/libft.a -I path/to/libft.h
 ```
 
-## 📋 Testing
+## 💯 Testing
 
-**1. First, configure the path to the libft folder in the Makefile (inside `/testing/`):**
+**1: Initial configuration of the libft Path in the Makefile (`/testing/`):**
 
 ```Makefile
 #############################
@@ -132,7 +132,7 @@ and, when compiling your code, add the required flags:
 DIR		= ../
 ```
 
-**2. Then run:**
+**2:**
 
 ```shell
 make
