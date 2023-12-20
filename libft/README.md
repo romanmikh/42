@@ -1,3 +1,5 @@
+<h1 align="center">
+	libft
 </h1>
 
 <p align="center">
