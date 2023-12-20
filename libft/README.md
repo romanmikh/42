@@ -29,8 +29,6 @@
 
 ## 📘 Overview
 
-> _This project's goal is to develop a C library compiling standard functions that can be utilized in all subsequent projects._
-
 	🌟 Summary: The project involves creating fundamental C functions (listed below) and compiling them
 	into a library for future project use.
 
