@@ -45,6 +45,14 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 |Shell scripting		|Security|
 |Git		|Cryptography & Maths|
 |Networks		|Graphics & Gaming|
+|Networks		|Graphics & Gaming|
+|Networks		|Graphics & Gaming|
+|Networks		|Graphics & Gaming|
+|Networks		|Graphics & Gaming|
+|Networks		|Graphics & Gaming|
+|Networks		|Graphics & Gaming|
+|Networks		|Graphics & Gaming|
+|Networks		|Graphics & Gaming|
 
 
 	* C/C++ language, Makefile      * test
