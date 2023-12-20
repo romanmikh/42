@@ -27,55 +27,14 @@
 <a name="Overview"></a>
 ## 🧭 Overview
 
-	🌟 Recreating fundamental C functions for future project use. All passed Norminette & Moulinette 🌟
+The Piscine at 42 School is an intensive programming trial and a crucial phase for admission into their programming courses. It is designed to test candidates' involvement capacity and to introduce them to the school's unique teaching methods. 
 
-### Functions from `<ctype.h>` library
+**Duration and Purpose**: The Piscine lasts four weeks, serving as the final stage before full admission to the 42 programming program. It's designed for both complete beginners and those with some programming experience. 
 
-* [`ft_isascii`](src/ft_isascii.c)			- ASCII character verification.
-* [`ft_isalnum`](src/ft_isalnum.c)			- alphanumeric character check.
-* [`ft_isalpha`](src/ft_isalpha.c)			- alphabetic character check.
-* [`ft_isdigit`](src/ft_isdigit.c)			- decimal-digit character check.
-* [`ft_isprint`](src/ft_isprint.c)			- printable character check (includes space).
-* [`ft_tolower`](src/ft_tolower.c)			- convert upper case to lower case.
-* [`ft_toupper`](src/ft_toupper.c)			- convert lower case to upper case.
+**Peer-to-Peer Learning**: Involving module-based exercises and peer evaluations to promote diverse learning perspectives.
 
-### Functions from `<stdlib.h>` library
+**Curriculum and Training in C**: Regardless of prior coding knowledge, the Piscine starts with intensive training in the C programming language. This approach is part of the school's peer-to-peer learning, group work, peer-evaluation, and project pedagogy
 
-* [`ft_atoi`](src/ft_atoi.c)		- ASCII to integer conversion.
-* [`ft_calloc`](src/ft_calloc.c)	- allocate memory.
+**Machine Exams**: Weekly machine exams challenge candidates with increasingly difficult problems under time constraints, with no external help allowed. This is an opportunity for candidates to observe their progress and confront complex challenges
 
-### Functions from `<strings.h>` library
-
-* [`ft_bzero`](src/ft_bzero.c)		- zero a byte string.
-* [`ft_memset`](src/ft_memset.c)		- fill a byte string with a byte.
-* [`ft_memchr`](src/ft_memchr.c)		- locate a byte in a byte string.
-* [`ft_memcmp`](src/ft_memcmp.c)		- compare byte strings.
-* [`ft_memmove`](src/ft_memmove.c)	- move a byte string.
-* [`ft_memcpy`](src/ft_memcpy.c)		- copy memory area.
-
-### Functions from `<string.h>` library
-
-* [`ft_strlen`](src/ft_strlen.c)				- calculate string length.
-* [`ft_strchr`](src/ft_strchr.c)				- find character in string (first occurrence).
-* [`ft_strrchr`](src/ft_strrchr.c)			- find character in string (last occurrence).
-* [`ft_strnstr`](src/ft_strnstr.c)			- bounded substring search in string.
-* [`ft_strncmp`](src/ft_strncmp.c) *		- bounded string comparison.
-* [`ft_strnrcmp`](src/ft_strnrcmp.c)		- reverse bounded string comparison.
-* [`ft_strdup`](src/ft_strdup.c)				- duplicate string with allocation.
-* [`ft_strlcpy`](src/ft_strlcpy.c)			- size-bounded string copying.
-* [`ft_strlcat`](src/ft_strlcat.c)			- size-bounded string concatenation.
-
-### Non-standard functions
-
-* [`ft_putchar_fd`](src/ft_putchar_fd.c)		- output a character to given file.
-* [`ft_putstr_fd`](src/ft_putstr_fd.c)		- output string to given file.
-* [`ft_putendl_fd`](src/ft_putendl_fd.c)		- output string to given file with newline.
-* [`ft_putnbr_fd`](src/ft_putnbr_fd.c)		- output integer to given file.
-* [`ft_itoa`](src/ft_itoa.c)					- convert integer to ASCII string.
-* [`ft_substr`](src/ft_substr.c)				- extract substring from string.
-* [`ft_strtrim`](src/ft_strtrim.c)			- trim beginning and end of string with the specified characters.
-* [`ft_strjoin`](src/ft_strjoin.c)			- concatenate two strings into a new string (with malloc).
-* [`ft_split`](src/ft_split.c)				- split string, with specified character as delimiter, into an array of strings.
-* [`ft_strmapi`](src/ft_strmapi.c)			- create new string from modifying string with specified function.
-
-_Note: Functions indicated with an asterisk (*) are additional, not obligatory for the project._
+**Social and Collaborative Aspects**: The Piscine is not solely focused on work; it also includes events for candidates to socialize and bond. Candidates are often grouped into teams, leading to the formation of friendships and a supportive community
