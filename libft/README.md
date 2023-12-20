@@ -197,7 +197,6 @@ make t
 
 ### Third party testers
 
-* [jtoty/Libftest](https://github.com/jtoty/Libftest)
+* [0x050f/libft-war-machine](https://github.com/0x050f/libft-war-machine)
+* [Tripouille/libftTester](https://github.com/Tripouille/libftTester)
 * [alelievr/libft-unit-test](https://github.com/alelievr/libft-unit-test)
-* [Night-squad/libft-war-machine-v2019](https://github.com/Night-squad/libft-war-machine-v2019)
-* [t0mm4rx/libftdestructor](https://github.com/t0mm4rx/libftdestructor)
