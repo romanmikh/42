@@ -19,7 +19,7 @@
 	<span> · </span>
 	<a href="#skills">Skills Developed</a>
 	<span> · </span>
-	<a href="#curriculum">Curriculum</a>
+	<a href="#curriculum">Syllabus</a>
 </h3>
 
 <a name="about"></a>
@@ -37,9 +37,7 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 
 
 <a name="skills"></a>
-## 🛠️ Skills developed at 42cursus
-
-### Hard-skills
+## 📚 Topics Covered
 
 	* C/C++ language, Makefile
 	* Shell scripting
@@ -60,7 +58,7 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 - Effective Time Management: With 24/7 access to the school, students must excel in time management. This flexibility demands strong time management skills, enabling students to balance their workloads effectively.
 
 <a name="curriculum"></a>
-## 🌌 42's curriculum
+## 🌟 42's syllabus
 
 **42cursus**  consists of two parts: the "inner circle" and the "outer branches", as in the **Holy Graph** (see image below).
 
