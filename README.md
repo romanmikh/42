@@ -43,27 +43,11 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 |:-:	|:--|
 |C/C++ language		|Algo & AI & Data|
 |Shell scripting		|Security|
-|Git		|Cryptography & Maths|
-|Networks		|Graphics & Gaming|
-|Networks		|Graphics & Gaming|
-|Networks		|Graphics & Gaming|
-|Networks		|Graphics & Gaming|
-|Networks		|Graphics & Gaming|
-|Networks		|Graphics & Gaming|
-|Networks		|Graphics & Gaming|
-|Networks		|Graphics & Gaming|
-|Networks		|Graphics & Gaming|
-
-
-	* C/C++ language, Makefile      * test
-	* Shell scripting               * test
-	* Git                           * test
-	* Networks
-	* Docker
-	* SQL
-	* Web (HTML, CSS, Wordpress)
-	* Computer graphics
-	* Assembly language
+|Assembly language		|Cryptography & Maths|
+|Computer graphics		|Graphics & Gaming|
+|Web (HTML, CSS, Wordpress)		|System & Kernel|
+|Networks		|Web & Mobile
+|Docker		|DevOps|
 
 <a name="curriculum"></a>
 ## 🌟 42's syllabus
