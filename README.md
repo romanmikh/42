@@ -17,18 +17,18 @@
 <h3 align="center">
 	<a href="#about">What is 42?</a>
 	<span> · </span>
-	<a href="#%EF%B8%8F-skills-developed-at-42cursus">Skills developed at 42cursus</a>
+	<a href="#skills">Skills Developed</a>
 	<span> · </span>
-	<a href="#-42s-galaxy-curriculum">42's galaxy (curriculum)</a>
+	<a href="#curriculum">Curriculum/a>
 </h3>
 
 <a name="about"></a>
 
-42 already has big supporters in tech like **Snapchat CEO** Evan Spiegel, **Twitter and Square CEO** Jack Dorsey, and **Slack CEO** Stewart Butterfield. Spiegel called it a school from the future, and Dorsey gave a glowing endorsement, saying "We are always looking for great engineers from any background and any education like 42."
+"42 already has big supporters in tech like **Snapchat CEO** Evan Spiegel, **Twitter and Square CEO** Jack Dorsey, and **Slack CEO** Stewart Butterfield. Spiegel called it a school from the future, and Dorsey gave a glowing endorsement, saying <i>"We are always looking for great engineers from any background and any education like 42."</i>
 
-Paul Graham founder of Y combinator stated on Twitter **"My God is 42 impressive. This is not another programming bootcamp. It's another MIT."**
+Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impressive. This is not another programming bootcamp. It's another MIT."**</i>
 
-42 is a private institution of higher education in computer science first opened in Paris in 2013. The school does not have any professors and is open 24/7. Students are trained through peer-to-peer pedagogy, and project-based learning. (https://en.wikipedia.org/wiki/42_(school)).
+42 is a private institution of higher education in computer science first opened in Paris in 2013. The school does not have any professors and is open 24/7. Students are trained through peer-to-peer pedagogy, and project-based learning."(https://en.wikipedia.org/wiki/42_(school)).
 
 
 ![alt text](https://42london.com/wp-content/uploads/2022/09/42-London_Locations_2022.png)
@@ -36,12 +36,7 @@ Paul Graham founder of Y combinator stated on Twitter **"My God is 42 impressive
 
 
 
-
-
-\* For further information about 42's **selection process** (the "Piscine"), please visit the [C Piscine repo](https://github.com/appinha/42sp-piscine).
-
-[![Photo of a 42saopaulo's lab](42saopaulo.jpg)](https://www.42sp.org.br/)
-
+<a name="skills"></a>
 ## 🛠️ Skills developed at 42cursus
 
 ### Hard-skills
@@ -55,8 +50,6 @@ Paul Graham founder of Y combinator stated on Twitter **"My God is 42 impressive
 	* Web (HTML, CSS, Wordpress)
 	* Computer graphics
 	* Assembly language
-
--- among others (find below the complete [curriculum](#-42s-galaxy-curriculum)).
 
 ### Soft-skills
 
@@ -76,7 +69,8 @@ Paul Graham founder of Y combinator stated on Twitter **"My God is 42 impressive
 		demands excellent time management skills and resiliency for not "drowning" amid the
 		massive load of work demanded by the program.
 
-## 🌌 42's galaxy (curriculum)
+<a name="curriculum"></a>
+## 🌌 42's curriculum
 
 **42cursus** comprises two groups of projects: the first one being known as _"inner circle"_ and the second one, _"outer treks"_ - due to the **Holy Graph** layout (see image below).
 
