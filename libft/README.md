@@ -26,7 +26,7 @@
 <a name="Overview"></a>
 ## 🧭 Overview
 
-	🌟 Recreating fundamental C functions and compiling them into a library for future project use 🌟
+	🌟 Recreating fundamental C functions for future project use 🌟
 
 ### Functions from `<ctype.h>` library
 
