@@ -1,14 +1,8 @@
-This is the first project after being accepted into the main 42 schol.
-
-ftlib is a library of core C functions (recreated with the "ft_" prefix) that will be used and expanded on during the core curriculum. Only essential libraries (such as stddef, stdlib & limits.h) are allowed, all other lower level functions must be written from first principles and appended to ftlib.
-
-
-
 </h1>
 
 <p align="center">
 	<b><i>Repository for the development of 42cursus' Essential C Library project</i></b><br>
-	Visit <a href="https://github.com/romanmikh/42cursus"><b>42cursus repository</b></a> for more information about 42cursus and its projects.
+	Visit <a href="https://github.com/romanmikh/42><b>42 repository</b></a> for more information about 42cursus and its projects.
 </p>
 
 <p align="center">
