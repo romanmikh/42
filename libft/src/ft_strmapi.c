@@ -10,26 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-Parameters 
-s: The string on which to iterate.
+#include "libft.h"
 
-f: The function to apply to each character.
-
-Return value 
-The string created from the successive applications
-of ’f’.
-Returns NULL if the allocation fails.
-
-Description 
-Applies the function ’f’ to each character of the
-string ’s’, and passing its index as first argument
-to create a new string (with malloc(3)) resulting
-from successive applications of ’f’.
-*/
-
-#include <stddef.h>
-#include <stdlib.h>
+/* *************************** ft_strmapi *********************************** */
+/*   Applies a given function 'f' to each character of the string 's' along   */
+/*   with its index. Returns a new string with the modified characters.       */
+/*   If 's' or 'f' is NULL or memory allocation fails, returns NULL.          */
+/*                                                                            */
+/*   Difference from ft_striteri:                                             */
+/*   - This function creates a new string with the modified characters and    */
+/*     returns it, while ft_striteri modifies the original string in-place.   */
+/*                                                                            */
+/*   In layman's terms: It's like reading a text and making changes to each   */
+/*   letter while remembering where each letter was originally located.       */
+/* ************************************************************************** */
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

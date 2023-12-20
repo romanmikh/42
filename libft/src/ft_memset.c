@@ -10,12 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-/*
-Sets the first n bytes of the memory area pointed to by s to the specified 
-value c. It returns a pointer to the memory area s.
-*/
+/* *************************** ft_memset ************************************ */
+/*   Fills the first 'n' bytes of memory at 's' with the byte value 'c'.      */
+/*   The original memory at 's' remains unchanged.                            */
+/*                                                                            */
+/*   Parameters:                                                              */
+/*   - 's': A pointer to the memory to fill.                                  */
+/*   - 'c': The byte value used for filling.                                  */
+/*   - 'n': The number of bytes to fill at 's'.                               */
+/*                                                                            */
+/*   In layman's terms: It's like painting a specific area in memory with a   */
+/*   particular color, ensuring that the rest of the memory is untouched.     */
+/* ************************************************************************** */
 
 void	*ft_memset(void *s, int c, size_t n)
 {

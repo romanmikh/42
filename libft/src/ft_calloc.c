@@ -11,24 +11,14 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-#include <stddef.h>
-#include <stdint.h>
 
-/*
-** Allocates a block of memory for an array of 'count' elements, each of 'size'
-** and initializes the memory to zero. Returns a pointer to the allocated memory
-** Returns NULL if the allocation fails or if there is potential overflow.
-*/
-
-/*
-    🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
-    ✨ Allocates a block of memory for an array of 'count' elements, each of 'size' ✨
-    ✨ and initializes the memory to zero. Returns a pointer to the allocated memory ✨
-    ✨ Returns NULL if the allocation fails or if there is potential overflow. ✨
-    🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
-*/
-
+/* *************************** ft_calloc ************************************ */
+/*   Allocates zero-initialized memory for 'count' elements of 'size'.        */
+/*   Returns a pointer to memory or NULL on failure/overflow.                 */
+/*                                                                            */
+/*   In layman's terms: It's like reserving a series of boxes (memory) and    */
+/*   ensuring they're all empty before you begin to use them.                 */
+/* ************************************************************************** */
 
 void	*ft_calloc(size_t count, size_t size)
 {

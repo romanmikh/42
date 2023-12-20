@@ -11,7 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
+
+/* *************************** ft_putendl_fd ******************************** */
+/*   Writes the string 's' followed by a newline to the specified             */
+/*   file descriptor 'fd'. A file descriptor is a numeric identifier for      */
+/*   an I/O resource. The original string 's' remains unchanged.              */
+/* ************************************************************************** */
 
 void	ft_putendl_fd(char *s, int fd)
 {

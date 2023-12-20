@@ -10,15 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-/*
-** Safely copies up to 'size - 1' characters from 'src' to 'dst'.
-** Ensures null-termination of 'dst'. Returns the length of 'src'.
-** Returns 0 if 'size' is 0.
-*/
-
-#include <stddef.h>
+/* *************************** ft_strlcpy *********************************** */
+/*   Copies text from 'src' to 'dst' ensuring it fits within 'size'           */
+/*   characters. Returns the length of the copied text. If something's        */
+/*   missing or 'size' is too small, it won't work as intended.               */
+/*                                                                            */
+/*   In layman's terms: It's like copying a passage from one page to another, */
+/*   making sure it fits without cutting off any words. If there's not enough */
+/*   space or some content is missing, it won't be a perfect copy.            */
+/* ************************************************************************** */
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {

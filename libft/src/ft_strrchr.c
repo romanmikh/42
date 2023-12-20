@@ -10,11 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-/*
-* returns pointer char to last c in s, or NULL
-*/
+/* *************************** ft_strrchr *********************************** */
+/*   Searches for the last occurrence of 'c' in the string 's.'               */
+/*   Returns a pointer to the found character or NULL if not found.           */
+/*                                                                            */
+/*   In layman's terms: It's like finding the very last occurrence of a       */
+/*   specific character in a sentence. If it's there, you get a pointer to it */
+/*   otherwise, you get nothing.                                              */
+/* ************************************************************************** */
 
 char	*ft_strrchr(const char *s, int c)
 {

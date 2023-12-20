@@ -12,11 +12,15 @@
 
 #include "libft.h"
 
-/*
-** Locates the first occurrence of the substring 'little' within the first 
-** 'n' characters of the string 'big'.
-** Returns a pointer to the beginning of the found substring; otherwise, NULL.
-*/
+/* *************************** ft_strnstr *********************************** */
+/*   Searches for the first occurrence of 'little' within 'big,' up to 'n'    */
+/*   characters. Returns a pointer to the found substring or NULL if not      */
+/*   found.                                                                   */
+/*                                                                            */
+/*   In layman's terms: It's like looking for a specific word or phrase in a  */
+/*   longer text, but you can only search within the first 'n' characters. If */
+/*   it's there, you get a pointer to it; otherwise, you get nothing.         */
+/* ************************************************************************** */
 
 char	*ft_strnstr(const char *big, const char *little, size_t n)
 {

@@ -10,8 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
+
+/* *************************** ft_strlcat *********************************** */
+/*   Combines two text strings, 'dst' and 'src', ensuring the result fits     */
+/*   within 'size' characters. Returns the length of the combined text. If    */
+/*   something's missing or 'size' is too small, undefined behavoiur.         */
+/*                                                                            */
+/*   In layman's terms: It's like adding more words to an existing sentence,  */
+/*   making sure it doesn't get too long. If there's not enough space or      */
+/*   something is missing, it doesn't work right and doesn't give you the     */
+/*   correct result.                                                          */
+/* ************************************************************************** */
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {

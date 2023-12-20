@@ -10,7 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
+
+/* *************************** ft_memcpy ************************************ */
+/*   Copies 'n' bytes from 'src' to 'dest' and returns 'dest' (new mem block) */
+/*                                                                            */
+/*   In layman's terms: It duplicates a block of data from one place to       */
+/*   another and gives you the destination block.                             */
+/* ************************************************************************** */
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

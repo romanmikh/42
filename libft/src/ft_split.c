@@ -11,24 +11,23 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdlib.h>
 
-/*
-Parameters 
-s: The string to be split.
-c: The delimiter character.
-
-Return value 
-The array of new strings resulting from the split.
-NULL if the allocation fails.
-
-Description 
-Allocates (with malloc(3)) and returns an array
-of strings obtained by splitting ’s’ using the
-uu#includelimiter. The array must end
-with a NULL pointer.
-*/
+/* *************************** ft_split ************************************* */
+/*   Splits the input string 's' into an array of substrings using the        */
+/*   delimiter character 'c'. Returns the array, with a NULL-terminated       */
+/*   element marking the end.                                                 */
+/*                                                                            */
+/*   Edge Cases:                                                              */
+/*   - If 's' is NULL, returns NULL.                                          */
+/*   - If 'c' is '\0', returns an array with 's' as the only element.         */
+/*   - If 's' does not contain 'c', returns an array with 's' as the only     */
+/*     element.                                                               */
+/*                                                                            */
+/*   Behavior:                                                                */
+/*   - The function splits 's' into substrings wherever 'c' is encountered.   */
+/*   - Consecutive 'c' characters result in empty strings in the array.       */
+/*   - Leading and trailing 'c' characters are ignored.                       */
+/* ************************************************************************** */
 
 static int	count_words(const char *s, char c)
 {

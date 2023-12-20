@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-/*
-** Duplicates the input string 's' by allocating a new memory block and copying
-** the content of 's' into it. Returns a pointer to the newly allocated string.
-** Returns NULL if memory allocation fails or if 's' is an empty string.
-*/
+/* *************************** ft_strdup ************************************ */
+/*   Duplicates the string 's' and returns a new identical string.            */
+/*   If 's' is NULL or memory allocation fails, returns NULL.                 */
+/*                                                                            */
+/*   In layman's terms: It's like making a photocopy of a piece of text, so   */
+/*   you have an exact copy of it to use or store separately.                 */
+/* ************************************************************************** */
 
 char	*ft_strdup(const char *s)
 {

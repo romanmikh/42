@@ -11,25 +11,18 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdlib.h>
 
-/*
-Parameters 
-s: The string from which to create the substring.
-start: The start index of the substring in the string ’s’.
-len: The maximum length of the substring.
-
-Return value 
-The substring.
-NULL if the allocation fails.
-
-Description
-Allocates (with malloc(3)) and returns a substring
-from the string ’s’.
-The substring begins at index ’start’ and is of
-maximum size ’len’.
-*/
+/* *************************** ft_substr ************************************ */
+/*   Extracts a substring from 's' starting at the specified 'start'          */
+/*   position and up to 'len' characters. Returns a new string with the       */
+/*   extracted content or NULL if memory allocation fails or 'start' is       */
+/*   out of bounds.                                                           */
+/*                                                                            */
+/*   In layman's terms: It's like cutting a portion of a sentence from a      */
+/*   specific point and up to a certain length to create a new shorter        */
+/*   sentence. If something goes wrong or 'start' is too far away, you get    */
+/*   nothing.                                                                 */
+/* ************************************************************************** */
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

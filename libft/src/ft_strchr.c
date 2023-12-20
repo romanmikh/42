@@ -10,11 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-/*
-* returns pointer char to 1st c in s, or NULL
-*/
+/* *************************** ft_strchr ************************************ */
+/*   Searches for the first occurrence of the character 'c' in the string     */
+/*   's'. Returns a pointer to the first match if found; otherwise, returns   */
+/*   NULL.                                                                    */
+/*                                                                            */
+/*   In layman's terms: It's like finding a specific letter or symbol in a    */
+/*   written text. If the letter is there, it tells you where to look; if not,*/
+/*   it says there's nothing to find.                                         */
+/* ************************************************************************** */
 
 char	*ft_strchr(const char *s, int c)
 {

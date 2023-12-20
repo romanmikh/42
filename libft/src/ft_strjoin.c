@@ -11,16 +11,14 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-/*
-Parameters 
-s1: The prefix string.
-s2: The suffix string.
-
-Returns concatenation of s1 & s2
-        NULL if memory allocation fails
-*/
+/* *************************** ft_strjoin *********************************** */
+/*   Combines two text strings, 's1' and 's2', into a single longer text.     */
+/*                                                                            */
+/*   In layman's terms: It's like putting two pieces of text together to make */
+/*   a longer one, creating a new text. If something's missing or there isn't */
+/*   enough space, it won't work and returns nothing.                         */
+/* ************************************************************************** */
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

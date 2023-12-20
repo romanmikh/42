@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-/*
-** Compares the first 'n' bytes of the memory blocks pointed to by 's1' and 's2'.
-** Returns an integer less than, equal to, or greater than zero
-** if the first differing byte in 's1' is found to be less than, equal to, 
-** or greater than the corresponding byte in 's2'. 
-** Returns 0 if all 'n' bytes are identical.
-*/
+/* *************************** ft_memcmp ************************************ */
+/*   Compares the first 'n' bytes of two memory blocks 's1' and 's2'.         */
+/*   Returns a value indicating their relative order, 0 if identical.         */
+/*                                                                            */
+/*   In layman's terms: It checks which set of data and if they're different, */
+/*   returns a comparison result.                                             */
+/* ************************************************************************** */
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

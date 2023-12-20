@@ -11,22 +11,14 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-#include <limits.h>
 
-/*
-Parameters 
-n: the integer to convert.
-
-Return value 
-The string representing the integer.
-NULL if the allocation fails.
-
-Description 
-Allocates (with malloc(3)) and returns a string
-representing the integer received as an argument.
-Negative numbers must be handled.
-*/
+/* *************************** ft_itoa ************************************** */
+/*   Allocates and returns a string representing the integer 'n'.             */
+/*   Handles negative numbers. Returns NULL on allocation failure.            */
+/*                                                                            */
+/*   In layman's terms: It converts an integer into a string of characters,   */
+/*   taking care of whether the number is positive or negative.               */
+/* ************************************************************************** */
 
 static int	count_digits(int n)
 {

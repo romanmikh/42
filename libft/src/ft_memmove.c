@@ -10,22 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
-/*
-** Copies 'n' bytes from memory area 'src' to memory area 'dest'.
-** The memory areas may overlap, and the copy is done in a safe manner.
-**
-** Parameters:
-** - dest: A pointer to the destination memory area.
-** - src:  A pointer to the source memory area.
-** - n:    The number of bytes to copy.
-**
-** Return:
-** A pointer to the destination memory area ('dest').
-** If 'dest' and 'src' overlap and 'dest' is before 'src', this copies correctly
-*/
+/* *************************** ft_memmove *********************************** */
+/*   Moves 'n' bytes from 'src' to 'dest' without overlap and returns 'dest'. */
+/*   The original 'src' memory remains unchanged.                             */
+/*                                                                            */
+/*   In layman's terms: It safely shifts a block of data from one place to    */
+/*   another without causing any issues or conflicts and gives you the        */
+/*   destination.                                                             */
+/* ************************************************************************** */
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

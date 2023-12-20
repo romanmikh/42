@@ -11,7 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
+
+/* *************************** ft_putstr_fd ********************************* */
+/*   Writes the string 's' to the specified file descriptor 'fd'.             */
+/*   A file descriptor is a numeric identifier for an I/O resource.           */
+/* ************************************************************************** */
 
 void	ft_putstr_fd(char *s, int fd)
 {

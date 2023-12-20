@@ -10,6 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/* *************************** ft_atoi ************************************** */
+/*   Converts the string 'str' to an integer, taking into account the sign.   */
+/*                                                                            */
+/*   In layman's terms: It's like translating a number written in text into a */
+/*   numerical value.                                                         */
+/* ************************************************************************** */
+
 int	ft_atoi(char *str)
 {
 	int	sign;

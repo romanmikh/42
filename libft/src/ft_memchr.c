@@ -10,14 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-/*
-** Searches for the first occurrence of the byte with the value 'c'
-** in the first 'n' bytes of the memory block pointed to by 's'.
-** Returns a pointer to the first matching byte if found; 
-** otherwise, returns NULL.
-*/
+/* *************************** ft_memchr ************************************ */
+/*   Searches for the first occurrence of a specific byte in a memory block.  */
+/*   Returns a pointer to the found byte if present; otherwise, returns NULL. */
+/*                                                                            */
+/*   Parameters:                                                              */
+/*   - 's': A pointer to the memory block to search in.                       */
+/*   - 'c': The byte value to search for.                                     */
+/*   - 'n': The number of bytes to search within the memory block 's'.        */
+/*                                                                            */
+/*   In layman's terms: It's like looking for a particular symbol or letter   */
+/*   in a collection of characters. If it's found, you get a clue; otherwise, */
+/*   you get nothing.                                                         */
+/* ************************************************************************** */
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

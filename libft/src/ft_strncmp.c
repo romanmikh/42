@@ -12,13 +12,14 @@
 
 #include "libft.h"
 
-/*
-** Compares the first 'n' characters of two strings, 's1' and 's2'.
-** Returns an integer less than, equal to, or greater than zero
-** if 's1' is found to be less than, equal to, or greater than 's2'.
-** Stops the comparison when 'n' characters are compared
-** or a null character is encountered in either string.
-*/
+/* *************************** ft_strncmp *********************************** */
+/*   Compares the first 'n' characters of two text strings, 's1' and 's2,'    */
+/*   returning an integer value indicating their relationship.                */
+/*                                                                            */
+/*   In layman's terms: It's like comparing the beginnings of two sentences   */
+/*   to see if they are the same or which comes first in the dictionary. If   */
+/*   something's different or 'n' is exhausted, it returns a result           */
+/* ************************************************************************** */
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

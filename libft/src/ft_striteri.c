@@ -10,22 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-Parameters 
-s: The string on which to iterate.
-f: The function to apply to each character.
+#include "libft.h"
 
-Return value 
-None
-
-Description 
-Applies the function ’f’ on each character of
-the string passed as argument, passing its index
-as first argument. Each character is passed by
-address to ’f’ to be modified if necessary.
-*/
-
-#include <stdlib.h>
+/* *************************** ft_striteri ********************************** */
+/*   Applies a given function 'f' to each character of the string 's'         */
+/*   along with its index. If 's' or 'f' is NULL, does nothing.               */
+/*                                                                            */
+/*   Difference from ft_strmapi:                                            */
+/*   - This function modifies the original string 's' in-place, while        */
+/*     ft_strmapi creates a new string with the modified characters and      */
+/*     returns it, leaving the original 's' unchanged.                        */
+/*                                                                            */
+/*   In layman's terms: It's like reading a written text and performing a    */
+/*   specific action on each letter while keeping track of its position.      */
+/* ************************************************************************** */
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {

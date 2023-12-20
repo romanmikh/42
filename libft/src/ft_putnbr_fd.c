@@ -11,7 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
+
+/* *************************** ft_putnbr_fd ********************************* */
+/*   Writes the integer 'n' to the specified file descriptor 'fd'.            */
+/*   A file descriptor is a numeric identifier for an I/O resource.           */
+/* ************************************************************************** */
 
 void	ft_putnbr_fd(int n, int fd)
 {

@@ -11,23 +11,16 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdlib.h>
 
-/*
-Parameters 
-s1: The string to be trimmed.
-set: The reference set of characters to trim.
-
-Return value 
-The trimmed string.
-NULL if the allocation fails.
-
-Description 
-Allocates (with malloc(3)) and returns a copy of
-’s1’ with the characters specified in ’set’ removed
-from the beginning and the end of the string.
-*/
+/* *************************** ft_strtrim *********************************** */
+/*   Trims leading and trailing characters from 's1' that match any character */
+/*   in 'set.' Returns a new string with trimmed content or NULL if memory    */
+/*   allocation fails.                                                        */
+/*                                                                            */
+/*   In layman's terms: It's like removing certain characters from the        */
+/*   beginning and end of a sentence, creating a new sentence without them.   */
+/*   If something goes wrong during this process, you get nothing.            */
+/* ************************************************************************** */
 
 static int	ft_char_in_set(char c, char const *set)
 {
