@@ -15,15 +15,15 @@
 </p>
 
 <h3 align="center">
-	<a href="#%EF%B8%8F-overview">Overview</a>
+	<a href="#Overview">Overview</a>
 	<span> · </span>
-	<a href="#%EF%B8%8F-how-to-use">How to Use</a>
+	<a href="#How-to-Use">How to Use</a>
 	<span> · </span>
 	<a href="#Testing">Testing</a>
 </h3>
 
 ---
-
+<a name="Overview"></a>
 ## 🧭 Overview
 
 	🌟 This project involves recreating fundamental C functions and compiling them into a library for future project use 🌟
@@ -90,7 +90,7 @@
 
 _Note: Functions indicated with an asterisk (*) are additional, not obligatory for the project._
 
-
+<a name="How-to-Use"></a>
 ## 🚀 How to Use
 
 ### Requirements
