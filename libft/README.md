@@ -4,7 +4,6 @@
 
 <p align="center">
 	<b><i>Essential C Library project</i></b><br>
-	Visit <a href="https://github.com/romanmikh/42><b>42 repository</b></a> for more information about 42cursus and its projects.
 </p>
 
 <p align="center">
@@ -27,9 +26,7 @@
 
 ## 📘 Overview
 
-	🌟 Summary 🌟 
-	This project involves recreating fundamental C functions and 
-	compiling them into a library for future project use.
+	🌟 This project involves recreating fundamental C functions and compiling them into a library for future project use 🌟
 
 ### Functions from `<ctype.h>` library
 
