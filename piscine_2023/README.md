@@ -31,4 +31,6 @@ The Piscine at 42 School is an intensive programming trial and a crucial phase f
 
 - **Machine Exams**: Weekly machine exams challenge candidates with increasingly difficult problems under time constraints, with no external help allowed. This is an opportunity for candidates to observe their progress and confront complex challenges
 
-- **Social and Collaborative Aspects**: The Piscine is not solely focused on work; it also includes events for candidates to socialize and bond. Candidates are often grouped into teams, leading to the formation of friendships and a supportive community
+- **Social and Collaborative Aspects**: The Piscine is not solely focused on work; it also includes events for candidates to socialize and bond. Candidates are often grouped into teams, leading to the formation of friendships and a supportive community.
+
+It is an amazing experience and if you're lucky enough to be part of it, stick it through! It is definitely worth it!
