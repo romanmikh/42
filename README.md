@@ -19,7 +19,7 @@
 	<span> · </span>
 	<a href="#skills">Skills Developed</a>
 	<span> · </span>
-	<a href="#curriculum">Curriculum/a>
+	<a href="#curriculum">Curriculum</a>
 </h3>
 
 <a name="about"></a>
@@ -28,7 +28,7 @@
 
 Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impressive. This is not another programming bootcamp. It's another MIT."**</i>
 
-42 is a private institution of higher education in computer science first opened in Paris in 2013. The school does not have any professors and is open 24/7. Students are trained through peer-to-peer pedagogy, and project-based learning."(https://en.wikipedia.org/wiki/42_(school)).
+42 is a private institution of higher education in computer science first opened in Paris in 2013. The school does not have any professors and is open 24/7. Students are trained through peer-to-peer pedagogy, and project-based learning." (https://en.wikipedia.org/wiki/42_(school))
 
 
 ![alt text](https://42london.com/wp-content/uploads/2022/09/42-London_Locations_2022.png)
@@ -72,10 +72,10 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 <a name="curriculum"></a>
 ## 🌌 42's curriculum
 
-**42cursus** comprises two groups of projects: the first one being known as _"inner circle"_ and the second one, _"outer treks"_ - due to the **Holy Graph** layout (see image below).
+**42cursus**  consists of two parts: the "inner circle" and the "outer branches", as in the **Holy Graph** (see image below).
 
-The **inner circle** is the basic curriculum, with all projects being mandatory to attain level 7 - which is the minimum level required for activities such as internships and interchange.
+The **inner circle** includes essential projects, each requiring 30 to 100 hours of work. Completing all inner circle projects is considered equivalent to an undergraduate degree in computer science.
 
-The **outer treks** is a collection of diverse project trails in subjects ranging from operational systems to web development which allows cadets to specialize on whatever subject they prefer.
+The **outer branches**  offer specialized tracks in subjects like operational systems, web development, AI, and algorithms. Completing projects in these treks is equivalent to mastering these areas, similar to graduate-level courses.
 
 ![42's galaxy](images/holy_graph_dec23.png)
