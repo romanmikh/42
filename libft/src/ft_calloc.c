@@ -21,6 +21,15 @@
 ** Returns NULL if the allocation fails or if there is potential overflow.
 */
 
+/*
+    🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
+    ✨ Allocates a block of memory for an array of 'count' elements, each of 'size' ✨
+    ✨ and initializes the memory to zero. Returns a pointer to the allocated memory ✨
+    ✨ Returns NULL if the allocation fails or if there is potential overflow. ✨
+    🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
+*/
+
+
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
