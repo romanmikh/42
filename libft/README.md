@@ -9,7 +9,6 @@ Third party testers used:
 
 
 
-
 <h1 align="center">
 	42cursus' libft
 </h1>
@@ -196,7 +195,7 @@ DIR		= ../
 make t
 ```
 
-### Third-party testers
+### Third party testers
 
 * [jtoty/Libftest](https://github.com/jtoty/Libftest)
 * [alelievr/libft-unit-test](https://github.com/alelievr/libft-unit-test)
