@@ -49,14 +49,6 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 	* Computer graphics
 	* Assembly language
 
-### Soft-skills
-
-- Independent Learning: 42 places a strong emphasis on independent learning. Students develop their knowledge through research, peer interactions, and practical experience, fostering self-sufficiency.
-
-- Collaboration: Collaborative work is a fundamental aspect of the program. Certain projects require students to work together, promoting effective teamwork and leveraging diverse skill sets.
-
-- Effective Time Management: With 24/7 access to the school, students must excel in time management. This flexibility demands strong time management skills, enabling students to balance their workloads effectively.
-
 <a name="curriculum"></a>
 ## 🌟 42's syllabus
 
@@ -67,3 +59,12 @@ The **inner circle** includes essential projects, each requiring 30 to 100 hours
 The **outer branches**  offer specialized tracks in subjects like operational systems, web development, AI, and algorithms. Completing projects in these treks is equivalent to mastering these areas, similar to graduate-level courses.
 
 ![42's galaxy](images/holy_graph_dec23.png)
+
+
+### Soft-skills
+
+- **Independent Learning**: 42 places a strong emphasis on independent learning. Students develop their knowledge through research, peer interactions, and practical experience, fostering self-sufficiency.
+
+- **Collaboration**: Collaborative work is a fundamental aspect of the program. Certain projects require students to work together, promoting effective teamwork and leveraging diverse skill sets.
+
+- **Effective Time Management**: With 24/7 access to the school, students must excel in time management. This flexibility demands strong time management skills, enabling students to balance their workloads effectively.
