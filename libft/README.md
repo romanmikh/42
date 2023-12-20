@@ -39,7 +39,7 @@
 
 ### Functions from `<stdlib.h>` library
 
-* [`ft_atoi`](src/to/ft_atoi.c)		- ASCII to integer conversion.
+* [`ft_atoi`](src/ft_atoi.c)		- ASCII to integer conversion.
 * [`ft_calloc`](libft/src/ft_calloc.c)	- allocate memory.
 
 ### Functions from `<strings.h>` library
