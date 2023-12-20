@@ -26,6 +26,7 @@
 ## 🧭 Overview
 
 	🌟 Recreating fundamental C functions for future project use 🌟
+	(all functions passed the norminette & the moulinette)
 
 ### Functions from `<ctype.h>` library
 
