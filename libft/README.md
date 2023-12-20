@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-	<b><i>Repository for the development of 42cursus' Essential C Library project</i></b><br>
+	<b><i>Essential C Library project</i></b><br>
 	Visit <a href="https://github.com/romanmikh/42><b>42 repository</b></a> for more information about 42cursus and its projects.
 </p>
 
@@ -21,15 +21,15 @@
 	<a href="#%EF%B8%8F-how-to-use">How to Use</a>
 	<span> · </span>
 	<a href="#%EF%B8%8F-Testing">Testing</a>
-	<span> · </span>
 </h3>
 
 ---
 
 ## 📘 Overview
 
-	🌟 Summary: The project involves creating fundamental C functions (listed below) and compiling them
-	into a library for future project use.
+	🌟 Summary 🌟 
+	This project involves recreating fundamental C functions and 
+	compiling them into a library for future project use.
 
 ### Functions from `<ctype.h>` library
 
