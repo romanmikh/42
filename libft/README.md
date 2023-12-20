@@ -15,11 +15,11 @@
 </p>
 
 <h3 align="center">
-	<a href="#%EF%B8%8F-about">Overview</a>
+	<a href="#%EF%B8%8F-overview">Overview</a>
 	<span> · </span>
 	<a href="#%EF%B8%8F-how-to-use">How to Use</a>
 	<span> · </span>
-	<a href="#%EF%B8%8F-Testing">Testing</a>
+	<a href="#%EF%B8%8F-testing">Testing</a>
 </h3>
 
 ---
