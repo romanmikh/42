@@ -14,11 +14,11 @@ ftlib is a library of core C functions (recreated with the "ft_" prefix) that wi
 </p>
 
 <p align="center">
-	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/romanmikh/42/tree/main/libft?color=blueviolet" />
-	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/romanmikh/42/tree/main/libft?color=blueviolet" />
-	<img alt="Code language count" src="https://img.shields.io/github/languages/count/romanmikh/42/tree/main/libft?color=blue" />
-	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/romanmikh/42/tree/main/libft?color=blue" />
-	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/romanmikh/42/tree/main/libft?color=brightgreen" />
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/romanmikh/42?color=blueviolet" />
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/romanmikh/42?color=blueviolet" />
+	<img alt="Code language count" src="https://img.shields.io/github/languages/count/romanmikh/42?color=blue" />
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/romanmikh/42?color=blue" />
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/romanmikh/42?color=brightgreen" />
 </p>
 
 <h3 align="center">
@@ -103,11 +103,11 @@ For comprehensive details, see the [**project's detailed guide**](https://github
 </p>
 https://github.com/romanmikh/42/tree/main/libft
 <p align="center">
-	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/romanmikh/42/tree/main/libft?color=blueviolet" />
-	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/romanmikh/42/tree/main/libft?color=blueviolet" />
-	<img alt="Code language count" src="https://img.shields.io/github/languages/count/romanmikh/42/tree/main/libft?color=blue" />
-	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/romanmikh/42/tree/main/libft?color=blue" />
-	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/romanmikh/42/tree/main/libft?color=brightgreen" />
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/romanmikh/42?color=blueviolet" />
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/romanmikh/42?color=blueviolet" />
+	<img alt="Code language count" src="https://img.shields.io/github/languages/count/romanmikh/42?color=blue" />
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/romanmikh/42?color=blue" />
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/romanmikh/42?color=brightgreen" />
 </p>
 
 <h3 align="center">
