@@ -1,9 +1,9 @@
 <h1 align="center">
-	libft
+	42
 </h1>
 
 <p align="center">
-	<b>Essential C Library project</b><br>
+	<b>Projects completed at the UK's first 42 programming school</b><br>
 </p>
 
 <p align="center">
