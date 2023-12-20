@@ -45,7 +45,7 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 |C/C++ language | test|
 
 
-|CURSUS	|specialisation							|
+|CURSUS	|SPECIALISATION							|
 |:-:	|:--								|
 |00		|xpxp|
 
