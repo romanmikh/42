@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-	<b><i>Essential C Library project</i></b><br>
+	<b>Essential C Library project</b><br>
 </p>
 
 <p align="center">
@@ -26,7 +26,7 @@
 <a name="Overview"></a>
 ## 🧭 Overview
 
-	🌟 This project involves recreating fundamental C functions and compiling them into a library for future project use 🌟
+	🌟 Recreating fundamental C functions and compiling them into a library for future project use 🌟
 
 ### Functions from `<ctype.h>` library
 
