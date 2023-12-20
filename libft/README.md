@@ -18,8 +18,6 @@
 <h3 align="center">
 	<a href="#%EF%B8%8F-about">Overview</a>
 	<span> · </span>
-	<a href="#-contents">Contents</a>
-	<span> · </span>
 	<a href="#%EF%B8%8F-how-to-use">How to Use</a>
 	<span> · </span>
 	<a href="#-evaluation">Evaluation</a>
@@ -95,7 +93,7 @@
 _Note: Functions indicated with an asterisk (*) are additional, not obligatory for the project._
 
 
-## 🛠️ Usage
+## 🛠️ How to Use
 
 ### Requirements
 
