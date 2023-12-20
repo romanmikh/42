@@ -39,7 +39,10 @@ Paul Graham founder of Y combinator stated on Twitter <i>**"My God is 42 impress
 <a name="skills"></a>
 ## 📚 Topics Covered
 
-### Cursus                        Specialisation
+### Cursus                       Specialisation
+
+|CURSUS	|SPECIALISATION |
+|C/C++ language | test|
 
 	* C/C++ language, Makefile      * test
 	* Shell scripting               * test
