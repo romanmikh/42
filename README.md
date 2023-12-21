@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-	<b>Projects completed at the UK's first 42 programming school</b><br>
+	<b>Projects completed at UK's first 42 programming school</b><br>
 </p>
 
 <p align="center">
