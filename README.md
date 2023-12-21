@@ -1,5 +1,5 @@
 <h1 align="center">
-	42
+	42 CURSUS
 </h1>
 
 <p align="center">
