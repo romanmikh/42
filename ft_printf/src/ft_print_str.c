@@ -9,7 +9,7 @@ int print_str(char *str)
 		return (6);
 	}
     while (*str) {
-        ft_putchar(*str++);
+        ft_putchar_fd(*str++, 1);
         len++;
     }
     return len;

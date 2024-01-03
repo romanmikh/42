@@ -44,7 +44,7 @@ int	ft_print_unsigned_dec(unsigned int n)
 	else
 	{
 		num = ft_uitoa(n);
-		count += ft_printstr(num);
+		count += ft_print_str(num);
 		free(num);
 	}
 	return (count);

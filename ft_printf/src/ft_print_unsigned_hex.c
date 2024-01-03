@@ -34,11 +34,11 @@ void	ft_put_hex(unsigned int n, const char upper_lower)
 	}
 }
 
-int	ft_print_hex(unsigned int n, const char upper_lower)
+int	ft_print_unsigned_hex(unsigned int n, const char upper_lower)
 {
 	if (n == 0)
     {
-        ft_putchar_fd("0", 1);
+        ft_putchar_fd('0', 1);
 		return (1);
     }
 	else
