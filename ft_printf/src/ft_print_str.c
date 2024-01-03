@@ -1,6 +1,6 @@
 # include "ft_printf.h"
 
-int print_string(char *str)
+int print_str(char *str)
 {
     int len = 0;
     if (str == NULL)

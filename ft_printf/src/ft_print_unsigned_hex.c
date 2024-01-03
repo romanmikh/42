@@ -26,9 +26,9 @@ void	ft_put_hex(unsigned int n, const char upper_lower)
 			ft_putchar_fd((n + '0'), 1);
 		else
 		{
-			if (upper_lower == 'lower')
+			if (upper_lower == 'x')
 				ft_putchar_fd((n - 10 + 'a'), 1);
-			if (upper_lower == 'upper')
+			if (upper_lower == 'X')
 				ft_putchar_fd((n - 10 + 'A'), 1);
 		}
 	}

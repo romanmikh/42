@@ -9,7 +9,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =		ft_atoi.c ft_isprint.c 
+SRCS =	 	$(wildcard *.c)
+
 
 NAME = 		libftprintf.a
 OBJS = 		$(SRCS:.c=.o)
