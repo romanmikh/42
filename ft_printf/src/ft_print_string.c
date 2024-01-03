@@ -2,7 +2,7 @@
 
 int print_string(char *str)
 {
-    int count = 0;
+    int len = 0;
     if (str == NULL)
 	{
 		ft_putstr("(null)");
@@ -10,7 +10,7 @@ int print_string(char *str)
 	}
     while (*str) {
         ft_putchar(*str++);
-        count++;
+        len++;
     }
-    return count;
+    return len;
 }
