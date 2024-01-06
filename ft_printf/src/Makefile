@@ -18,12 +18,13 @@ CFLAGS = -Wall -Wextra -Werror -I.
 RM = rm -f
 EXEC = main_exec
 
-all: $(LIBFT) $(NAME) $(EXEC)
+all: $(LIBFT) $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS)
+	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJS)
 
 $(EXEC): main.o $(NAME)
