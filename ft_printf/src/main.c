@@ -1,15 +1,76 @@
 #include "ft_printf.h"
+# include <stdio.h>
 
 int	main()
 {
-	ft_printf("c %c\n", 'c');
-    ft_printf("cc %s\n", "cc");
-    ft_printf("p %c\n", &"a");
-    ft_printf("1.2 %d\n", 1.2);
-    ft_printf("1234 %i\n", 1234);
-    ft_printf("u %u\n", 1100);
-    ft_printf("x %x\n", 64);
-    ft_printf("X %X\n", 44);
-    ft_printf("% %%\n", 'a');
+    // Hexadecimal Lowercase (x)
+    ft_printf("%x\n", 0);
+    printf("%x\n", 0);
+
+    ft_printf("%x\n", 255);
+    printf("%x\n", 255);
+
+    ft_printf("%x\n", -1);
+    printf("%x\n", -1);
+
+    // Hexadecimal Uppercase (X)
+    ft_printf("%X\n", 0);
+    printf("%X\n", 0);
+
+    ft_printf("%X\n", 255);
+    printf("%X\n", 255);
+
+    ft_printf("%X\n", -1);
+    printf("%X\n", -1);
+
+    // Pointer (p)
+    int a = 10;
+    ft_printf("%p\n", &a);
+    printf("%p\n", &a);
+
+    ft_printf("%p\n", NULL);
+    printf("%p\n", NULL);
+
+    // String (s)
+    ft_printf("%s\n", "Hello, world!");
+    printf("%s\n", "Hello, world!");
+
+    ft_printf("%s\n", "");
+    printf("%s\n", "");
+    
+    // Character (c)
+    ft_printf("%c\n", 'A');
+    printf("%c\n", 'A');
+
+    ft_printf("%c\n", 65);
+    printf("%c\n", 65);
+
+    ft_printf("%c\n", '\0');
+    printf("%c\n", '\0');
+
+    // Decimal Integer (d)
+    ft_printf("%d\n", 123);
+    printf("%d\n", 123);
+
+    ft_printf("%d\n", -123);
+    printf("%d\n", -123);
+
+    ft_printf("%d\n", 0);
+    printf("%d\n", 0);
+
+    // Unsigned Decimal Integer (u)
+    ft_printf("%u\n", 123);
+    printf("%u\n", 123);
+
+    ft_printf("%u\n", -123);
+    printf("%u\n", -123);
+
+    ft_printf("%u\n", 0);
+    printf("%u\n", 0);
+
+    // Percent Sign (%)
+    ft_printf("%%\n");
+    printf("%%\n");
+
 	return (0);
 }

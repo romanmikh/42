@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -I.
 RM = rm -f
 EXEC = main_exec
 
-all: $(LIBFT) $(NAME)
+all: $(LIBFT) $(NAME) $(EXEC)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
