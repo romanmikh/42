@@ -5,7 +5,7 @@ int print_str(char *str)
     int len = 0;
     if (str == NULL)
 	{
-		ft_putstr("(null)");
+		ft_putstr_fd("(null)", 1);
 		return (6);
 	}
     while (*str) {

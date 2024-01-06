@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	ft_formats(va_list args, const char format)
+int	ft_formatssssss(va_list args, const char format)
 {
 	int	len;
 
@@ -35,7 +35,7 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			len += ft_formats(args, str[i + 1]);
+			len += ft_formatssssss(args, str[i + 1]);
 			i++;
 		}
 		else

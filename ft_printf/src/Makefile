@@ -30,7 +30,7 @@ clean:
 					$(RM) $(OBJS)
 
 fclean: clean
-					$(RM) all
+					$(RM) $(NAME)
 
 re: fclean all
 
