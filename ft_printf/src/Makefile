@@ -8,29 +8,37 @@
 #    Updated: 2023/12/17 11:17:43 by rmikhayl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+SRCS = $(wildcard *.c)
+NAME = libftprintf.a
+OBJS = $(SRCS:.c=.o)
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I.
+RM = rm -f
+EXEC = main_exec
 
-SRCS =	 	$(wildcard *.c)
+all: $(LIBFT) $(NAME) $(EXEC)
 
-
-NAME = 		libftprintf.a
-OBJS = 		$(SRCS:.c=.o)
-CC = 		cc
-CFLAGS = 	-Wall -Wextra -Werror -I.
-RM =		rm -f
-
-all: $(NAME) 
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS)
-					ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+
+$(EXEC): main.o $(NAME)
+	$(CC) $(CFLAGS) main.o -L. -lftprintf -L$(LIBFT_DIR) -lft -o $(EXEC)
 
 %.o: %.c
-					$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-					$(RM) $(OBJS)
+	$(RM) $(OBJS) $(EXEC)
+	make -C $(LIBFT_DIR) clean
 
 fclean: clean
-					$(RM) $(NAME)
+	$(RM) $(NAME)
+	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
