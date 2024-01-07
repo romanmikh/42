@@ -1,7 +1,19 @@
-# include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_percent.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rocky <rmikhayl@student.42london.com>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/07 15:47:43 by rocky             #+#    #+#             */
+/*   Updated: 2024/01/07 15:47:43 by rocky            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_print_percent(void)
+#include "ft_printf.h"
+
+int	ft_print_percent(void)
 {
-    ft_putchar_fd('%', 1);
-    return (1);
+	ft_putchar_fd('%', 1);
+	return (1);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_unsigned_dec.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rocky <rmikhayl@student.42london.com>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/07 15:47:43 by rocky             #+#    #+#             */
+/*   Updated: 2024/01/07 15:47:43 by rocky            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_num_len(unsigned	int num)
@@ -31,7 +43,6 @@ char	*ft_uitoa(unsigned int n)
 	}
 	return (num);
 }
-
 
 int	ft_print_unsigned_dec(unsigned int n)
 {

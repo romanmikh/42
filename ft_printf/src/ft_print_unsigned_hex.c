@@ -1,16 +1,28 @@
-# include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_unsigned_hex.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rocky <rmikhayl@student.42london.com>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/07 15:47:43 by rocky             #+#    #+#             */
+/*   Updated: 2024/01/07 15:47:43 by rocky            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_hex_len(unsigned int n)
+#include "ft_printf.h"
+
+int	ft_hex_len(unsigned int n)
 {
-    int len;
+	int	len;
 
-    len = 0;
-    while (n != 0)
-    {
-        n = n / 16;
-        len++;
-    }
-    return (len);
+	len = 0;
+	while (n != 0)
+	{
+		n = n / 16;
+		len++;
+	}
+	return (len);
 }
 
 void	ft_put_hex(unsigned int n, const char upper_lower)
@@ -37,10 +49,10 @@ void	ft_put_hex(unsigned int n, const char upper_lower)
 int	ft_print_unsigned_hex(unsigned int n, const char upper_lower)
 {
 	if (n == 0)
-    {
-        ft_putchar_fd('0', 1);
+	{
+		ft_putchar_fd('0', 1);
 		return (1);
-    }
+	}
 	else
 		ft_put_hex(n, upper_lower);
 	return (ft_hex_len(n));
