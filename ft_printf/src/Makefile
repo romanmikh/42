@@ -10,7 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = $(wildcard *.c)
+SRCS = ft_print_char.c	ft_print_dec.c ft_printf.c	ft_print_int.c	\
+		ft_print_percent.c	ft_print_ptr.c	ft_print_str.c	\
+		ft_print_unsigned_dec.c	ft_print_unsigned_hex.c	main.c
 NAME = libftprintf.a
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = libft
