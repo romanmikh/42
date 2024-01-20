@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_print_char.c	ft_print_dec.c ft_printf.c	ft_print_int.c	\
+SRCS = ft_print_char.c ft_printf.c	ft_print_int.c	\
 		ft_print_percent.c	ft_print_ptr.c	ft_print_str.c	\
-		ft_print_unsigned_dec.c	ft_print_unsigned_hex.c	main.c
+		ft_print_unsigned_dec.c	ft_print_unsigned_hex.c
 NAME = libftprintf.a
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = libft
@@ -20,9 +20,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I.
 RM = rm -f
-EXEC = main_exec
 
-all: $(LIBFT) $(NAME) $(EXEC)
+all: $(LIBFT) $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
@@ -32,13 +31,13 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 $(EXEC): main.o $(NAME)
-	$(CC) $(CFLAGS) main.o -L. -lftprintf -L$(LIBFT_DIR) -lft -o $(EXEC)
+	$(CC) $(CFLAGS) main.o -L. -lftprintf -L$(LIBFT_DIR) -lft -o
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) $(EXEC)
+	$(RM) $(OBJS)
 	make -C $(LIBFT_DIR) clean
 
 fclean: clean

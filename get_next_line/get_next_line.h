@@ -12,7 +12,7 @@
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 8
+// # define BUFFER_SIZE 8
 # define FD_SIZE 4096
 
 # include <stdlib.h>
