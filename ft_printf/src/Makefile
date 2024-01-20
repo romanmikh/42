@@ -30,9 +30,6 @@ $(NAME): $(OBJS)
 	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJS)
 
-$(EXEC): main.o $(NAME)
-	$(CC) $(CFLAGS) main.o -L. -lftprintf -L$(LIBFT_DIR) -lft -o
-
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
