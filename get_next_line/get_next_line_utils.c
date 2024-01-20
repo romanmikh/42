@@ -11,79 +11,74 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+# include <stdint.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		sizetotal;
-	char	*res;
-	int		i;
-	int		j;
+	size_t	len;
+	char	*pt;
+	char	*result;
 
-	i = 0;
-	sizetotal = ft_strlen(s1) + ft_strlen(s2);
-	res = malloc(sizeof(char) * (sizetotal + 1));
-	if (!res || !s1 || !s2)
+	if (!s1 || !s2)
 		return (NULL);
-	while (s1[i] != 0)
-	{
-		res[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j] != 0)
-	{
-		res[i] = s2[j];
-		i++;
-		j++;
-	}
-	res[sizetotal] = 0;
-	return (res);
+	len = ft_strlen(s1) + ft_strlen (s2) + 1;
+	if (len == 0)
+		return (NULL);
+	pt = (char *)malloc(sizeof(char) * len);
+	if (!pt)
+		return (NULL);
+	result = pt;
+	while (*s1)
+		*pt++ = *s1++;
+	while (*s2)
+		*pt++ = *s2++;
+	*pt = '\0';
+	return (result);
 }
 
-char	*ft_strchr(const char *string, int searchedChar )
+
+char	*ft_strchr(const char *s, int c)
 {
-	char	*str;
+	unsigned char	uc;
 
-	str = (char *)string;
-	while (*str != searchedChar && *str != 0)
-		str++;
-	if (*str == searchedChar)
-		return (str);
-	else
-		return (NULL);
+	uc = (unsigned char)c;
+	while (*s != '\0' && *s != uc)
+		s++;
+	if (*s == uc)
+		return ((char *)s);
+	return (NULL);
 }
+
 
 void	ft_bzero(void *s, size_t n)
 {
-	char	*str;
+	char	*p;
+
+	p = s;
+	while (n--)
+		*p++ = '\0';
+}
+
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+
+	if (size != 0 && count > SIZE_MAX / size)
+		return (NULL);
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_memset(ptr, 0, count * size);
+	return (ptr);
+}
+
+size_t	ft_strlen(const char *s)
+{
 	size_t	i;
 
-	str = (char *)s;
 	i = 0;
-	while (i < n)
-	{
-		str[i] = '\0';
-		i++;
-	}
-}
-
-void	*ft_calloc(size_t elementCount, size_t elementSize)
-{
-	char	*res;
-
-	res = malloc(elementSize * elementCount);
-	if (!res)
-		return (NULL);
-	ft_bzero(res, elementSize * elementCount);
-	return (res);
-}
-
-size_t	ft_strlen(const char *theString)
-{
-	int	i;
-
-	i = 0;
-	while (theString[i])
+	while (s[i])
 		i++;
 	return (i);
 }
