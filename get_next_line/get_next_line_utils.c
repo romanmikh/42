@@ -11,85 +11,59 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-# include <stdio.h>
 
-char	*ft_free(char *buffer, char *buf)
-{
-	char	*temp;
+/*******************************************************************************
+ft_strlen:
+Returns the length of a string s, excluding the terminating null byte.
 
-	temp = ft_strjoin(buffer, buf);
-	free(buffer);
-	return (temp);
-}
+ft_strchr:
+Searches for the 1st occurrence of the character c in the string s. If c is 
+\0, it returns a pointer to the null terminator of the string, helping to find 
+either a specific character or the end of a string. This is used for detecting
+'\n' in the buffer.
 
-void	*ft_memset(void *s, int c, size_t n)
-{
-	unsigned char	*ptr;
+ft_strjoin:
+Concatenates rem_text and buff into a new string, allocating enough memory for
+both strings plus a null terminator. It then frees rem_text to prevent memory 
+leaks. Used for appending new reads from the file descriptor to existing data.
 
-	ptr = s;
-	while (n-- > 0)
-		*ptr++ = (unsigned char)c;
-	return (s);
-}
+--------------------------------------------------------------------------------
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	len;
-	char	*pt;
-	char	*result;
+1) ft_read_to_rem_text:
+INPUT: file descriptor, empty rem_text
+RETURN: rem_text containing 1st line
+Reads from the file descriptor fd into a buffer until a newline character is 
+found or EOF is reached. It uses ft_strjoin to append each read segment to 
+rem_text, accumulating the content until a newline is encountered. Used for 
+handling input that spans multiple buffer sizes.
 
-	if (!s1 || !s2)
-		return (NULL);
-	len = ft_strlen(s1) + ft_strlen (s2) + 1;
-	if (len == 0)
-		return (NULL);
-	pt = (char *)malloc(sizeof(char) * len);
-	if (!pt)
-		return (NULL);
-	result = pt;
-	while (*s1)
-		*pt++ = *s1++;
-	while (*s2)
-		*pt++ = *s2++;
-	*pt = '\0';
-	return (result);
-}
 
-char	*ft_strchr(const char *s, int c)
-{
-	unsigned char	uc;
+2) ft_rem_text_to_top_line:
+INPUT: rem_text containing 1st line
+RETURN: str containing rem_text
+Allocates memory & stores rem_text in a new variable, stopping at a newline 
+character or the end of the string. This is returned by get_next_line.
 
-	uc = (unsigned char)c;
-	while (*s != '\0' && *s != uc)
-		s++;
-	if (*s == uc)
-		return ((char *)s);
-	return (NULL);
-}
+3) ft_new_remaining_text:
+INPUT: rem_text containing 1st line
+RETURN: str containing rem_text without 1st line
+Creates a new rem_text (this time con) from the old one, excluding the line that was just 
+extracted by ft_rem_text_to_top_line. It essentially prepares rem_text for the next call 
+to get_next_line, removing the part of the string that has already been 
+processed.
 
-void	ft_bzero(void *s, size_t n)
-{
-	char	*p;
+4) get_next_line:
+INPUT: fd
+RETURN: next line
+Ensures that the file descriptor and buffer size are valid, calls 
+ft_read_to_rem_text to read from the file descriptor and accumulate the 
+result in rem_text, extracts the current line using ft_rem_text_to_top_line, and then 
+prepares rem_text for the next call by using ft_new_remaining_text. The static 
+variable rem_text is used to persist unread content between calls to 
+get_next_line.
+*******************************************************************************/
 
-	p = s;
-	while (n--)
-		*p++ = '\0';
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*ptr;
-
-	if (size != 0 && count > SIZE_MAX / size)
-		return (NULL);
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, count * size);
-	return (ptr);
-}
-
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
@@ -99,70 +73,129 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*get_curr_line(int fd, char *res)
-{
-	char	*buffer;
-	int		byte_read;
 
-	if (!res)
-		res = ft_calloc(1, 1);
-		printf("ssss: %ld\n", sizeof(res));
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	printf("bbbb: %ld\n", sizeof(buffer));
-	byte_read = 1;
-	while (byte_read > 0)
-	{
-		byte_read = read(fd, buffer, BUFFER_SIZE);
-		buffer[byte_read] = 0;
-		res = ft_free(res, buffer);
-		if (ft_strchr(buffer, '\n'))
-			break;
-	}
-	free(buffer);
-	return (res);
-}
-
-char	*ft_line(char *buffer)
+char	*ft_strchr(char *s, int c)
 {
-	char	*line;
-	int		i;
+	int	i;
 
 	i = 0;
-	if (!buffer[i])
+	if (!s)
+		return (0);
+	if (c == '\0')
+		return ((char *)&s[ft_strlen(s)]);
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char) c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	return (0);
+}
+
+char	*ft_strjoin(char *left_str, char *buff)
+{
+	size_t	i;
+	size_t	j;
+	char	*str;
+
+	if (!left_str)
+	{
+		left_str = (char *)malloc(1 * sizeof(char));
+		left_str[0] = '\0';
+	}
+	if (!left_str || !buff)
 		return (NULL);
-	while (buffer[i] && buffer[i] != '\n')
-		i++;
-	line = ft_calloc(i + 2, sizeof(char));
-	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
-	{
-		line[i] = buffer[i];
-		i++;
-	}
-	if (buffer[i] && buffer[i] == '\n')
-		line[i++] = '\n';
-	return (line);
+	str = malloc(sizeof(char) * ((ft_strlen(left_str) + ft_strlen(buff)) + 1));
+	if (str == NULL)
+		return (NULL);
+	i = -1;
+	j = 0;
+	if (left_str)
+		while (left_str[++i] != '\0')
+			str[i] = left_str[i];
+	while (buff[j] != '\0')
+		str[i++] = buff[j++];
+	str[ft_strlen(left_str) + ft_strlen(buff)] = '\0';
+	free(left_str);
+	return (str);
 }
 
-char	*ft_next(char *buffer)
+
+char	*ft_read_to_rem_text(int fd, char *rem_text)
+{
+	char	*buff;
+	int		rd_bytes;
+
+	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buff)
+		return (NULL);
+	rd_bytes = 1;
+	while (!ft_strchr(rem_text, '\n') && rd_bytes != 0)
+	{
+		rd_bytes = read(fd, buff, BUFFER_SIZE);
+		if (rd_bytes == -1)
+		{
+			free(buff);
+			return (NULL);
+		}
+		buff[rd_bytes] = '\0';
+		rem_text = ft_strjoin(rem_text, buff);
+	}
+	free(buff);
+	return (rem_text);
+}
+
+
+char	*ft_rem_text_to_top_line(char *rem_text)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	if (!rem_text[i])
+		return (NULL);
+	while (rem_text[i] && rem_text[i] != '\n')
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 2));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (rem_text[i] && rem_text[i] != '\n')
+	{
+		str[i] = rem_text[i];
+		i++;
+	}
+	if (rem_text[i] == '\n')
+	{
+		str[i] = rem_text[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+char	*ft_new_remaining_text(char *rem_text)
 {
 	int		i;
 	int		j;
-	char	*line;
+	char	*str;
 
 	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
+	while (rem_text[i] && rem_text[i] != '\n')
 		i++;
-	if (!buffer[i])
+	if (!rem_text[i])
 	{
-		free(buffer);
+		free(rem_text);
 		return (NULL);
 	}
-	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(rem_text) - i + 1));
+	if (!str)
+		return (NULL);
 	i++;
 	j = 0;
-	while (buffer[i])
-		line[j++] = buffer[i++];
-	free(buffer);
-	return (line);
+	while (rem_text[i])
+		str[j++] = rem_text[i++];
+	str[j] = '\0';
+	free(rem_text);
+	return (str);
 }

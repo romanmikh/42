@@ -14,15 +14,15 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
-	char		*line;
+	char		*top_line;
+	static char	*rem_text;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	rem_text = ft_read_to_rem_text(fd, rem_text);
+	if (!rem_text)
 		return (NULL);
-	buffer = get_curr_line(fd, buffer);
-	if (!buffer)
-		return (NULL);
-	line = ft_line(buffer);
-	buffer = ft_next(buffer);
-	return (line);
+	top_line = ft_rem_text_to_top_line(rem_text);
+	rem_text = ft_new_remaining_text(rem_text);
+	return (top_line);
 }

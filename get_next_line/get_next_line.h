@@ -12,26 +12,21 @@
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 8
-# define FD_SIZE 4096
 
 # include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
 # include <unistd.h>
-# include <stdint.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+size_t	ft_strlen(char *s);
 
 char	*get_next_line(int fd);
-char	*ft_free(char *buffer, char *buf);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *string, int searchedChar );
-char	*get_curr_line(int fd, char *res);
-char	*ft_line(char *buffer);
-char	*ft_next(char *buffer);
-
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t elementCount, size_t elementSize);
-
-size_t	ft_strlen(const char *theString);
+char	*ft_strchr(char *s, int c);
+char	*ft_rem_text_to_top_line(char *rem_text);
+char	*ft_new_remaining_text(char *rem_text);
+char	*ft_strjoin(char *rem_text, char *buff);
+char	*ft_read_to_rem_text(int fd, char *rem_text);
 
 #endif
