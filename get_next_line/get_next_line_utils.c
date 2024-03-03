@@ -18,7 +18,7 @@ ft_strlen:
 
 ft_strchr:
  Searches for the 1st occurrence of the character c in the string s, returning a
- pointer to it. Used for detecting'\n' in the buffer.
+ pointer to it. Used for detecting '\n' in the buffer.
 
 ft_strjoin:
  Concatenates buf_text and buff into a new string, allocating enough memory for
@@ -30,10 +30,8 @@ ft_strjoin:
 1) ft_read_to_buf_text:
 INPUT: file descriptor, empty/partial buf_text
 RETURN: buf_text containing 1st line (+ overlap)
- Reads from the file descriptor fd into a buffer until a newline character is 
- found or EOF is reached. It uses ft_strjoin to append each read segment to 
- buf_text, accumulating the content until a newline is encountered. Used for 
- handling input that spans multiple buffer sizes.
+ Reads from fd into a buffer until a '\n' or '\0' is found, and uses ft_strjoin 
+ to append accumulate this into buf_text. Used for handling input > buffer size.
 
 
 2) ft_buf_text_to_top_line:

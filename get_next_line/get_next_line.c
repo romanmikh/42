@@ -13,12 +13,12 @@
 /* ************************************************************************** */
 /*  1. Static variables are not destroyed when a function is exited           */
 /*  2. If delcared in func, exist only in func. If outside, only exist in file*/
-/*  3. Static variables are initialized to 0 by default if uninitialized      */
+/*  3. Static variables are initialized to 0 by default					      */
 /*  4. Stored in the data segment of the memory (at compilation), not  stack  */
 /*  5. Used for maintaining state in a func without using global variables    */
 /*  6. Initialization happens only once, at the start of the program execution*/
 /*  7. Can be used to restrict the visibility of a variable to its containing */
-/*     file when used outside a function  									  */
+/*     file when used outside a function									  */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
