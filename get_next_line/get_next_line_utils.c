@@ -14,53 +14,49 @@
 
 /*******************************************************************************
 ft_strlen:
-Returns the length of a string s, excluding the terminating null byte.
+ Returns the length of a string s, excluding the terminating null byte.
 
 ft_strchr:
-Searches for the 1st occurrence of the character c in the string s. If c is 
-\0, it returns a pointer to the null terminator of the string, helping to find 
-either a specific character or the end of a string. This is used for detecting
-'\n' in the buffer.
+ Searches for the 1st occurrence of the character c in the string s, returning a
+ pointer to it. Used for detecting'\n' in the buffer.
 
 ft_strjoin:
-Concatenates rem_text and buff into a new string, allocating enough memory for
-both strings plus a null terminator. It then frees rem_text to prevent memory 
-leaks. Used for appending new reads from the file descriptor to existing data.
+ Concatenates buf_text and buff into a new string, allocating enough memory for
+ both strings plus a null terminator. It then frees buf_text to prevent memory 
+ leaks. Used for appending new reads from the file descriptor to existing data.
 
 --------------------------------------------------------------------------------
 
-1) ft_read_to_rem_text:
-INPUT: file descriptor, empty rem_text
-RETURN: rem_text containing 1st line
-Reads from the file descriptor fd into a buffer until a newline character is 
-found or EOF is reached. It uses ft_strjoin to append each read segment to 
-rem_text, accumulating the content until a newline is encountered. Used for 
-handling input that spans multiple buffer sizes.
+1) ft_read_to_buf_text:
+INPUT: file descriptor, empty/partial buf_text
+RETURN: buf_text containing 1st line (+ overlap)
+ Reads from the file descriptor fd into a buffer until a newline character is 
+ found or EOF is reached. It uses ft_strjoin to append each read segment to 
+ buf_text, accumulating the content until a newline is encountered. Used for 
+ handling input that spans multiple buffer sizes.
 
 
-2) ft_rem_text_to_top_line:
-INPUT: rem_text containing 1st line
-RETURN: str containing rem_text
-Allocates memory & stores rem_text in a new variable, stopping at a newline 
-character or the end of the string. This is returned by get_next_line.
+2) ft_buf_text_to_top_line:
+INPUT: buf_text containing 1st line
+RETURN: str containing buf_text
+ Allocates memory & stores buf_text in a new variable, stopping at a newline 
+ character or the end of the string. This is returned by get_next_line.
 
-3) ft_new_remaining_text:
-INPUT: rem_text containing 1st line
-RETURN: str containing rem_text without 1st line
-Creates a new rem_text (this time con) from the old one, excluding the line that was just 
-extracted by ft_rem_text_to_top_line. It essentially prepares rem_text for the next call 
-to get_next_line, removing the part of the string that has already been 
-processed.
+3) ft_new_buf_text:
+INPUT: buf_text containing 1st line (+ overlap)
+RETURN: str containing nothing or overlap only
+ Creates a new buf_text excluding the line that was just extracted by 
+ ft_buf_text_to_top_line, in preparation for the next function call.
 
 4) get_next_line:
 INPUT: fd
 RETURN: next line
-Ensures that the file descriptor and buffer size are valid, calls 
-ft_read_to_rem_text to read from the file descriptor and accumulate the 
-result in rem_text, extracts the current line using ft_rem_text_to_top_line, and then 
-prepares rem_text for the next call by using ft_new_remaining_text. The static 
-variable rem_text is used to persist unread content between calls to 
-get_next_line.
+ 1. Ensures that the fd and buffer size are valid
+ 2. Calls ft_read_to_buf_text to read from the fd and outputs buf_text
+ 3. Extracts the current line using ft_buf_text_to_top_line, and then 
+ 4. Prepares buf_text for the next call by using ft_new_buf_text
+ The static buf_text persists unread content between calls to get_next_line
+
 *******************************************************************************/
 
 size_t	ft_strlen(char *s)
@@ -72,7 +68,6 @@ size_t	ft_strlen(char *s)
 		i++;
 	return (i);
 }
-
 
 char	*ft_strchr(char *s, int c)
 {
@@ -120,82 +115,56 @@ char	*ft_strjoin(char *left_str, char *buff)
 	return (str);
 }
 
-
-char	*ft_read_to_rem_text(int fd, char *rem_text)
-{
-	char	*buff;
-	int		rd_bytes;
-
-	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buff)
-		return (NULL);
-	rd_bytes = 1;
-	while (!ft_strchr(rem_text, '\n') && rd_bytes != 0)
-	{
-		rd_bytes = read(fd, buff, BUFFER_SIZE);
-		if (rd_bytes == -1)
-		{
-			free(buff);
-			return (NULL);
-		}
-		buff[rd_bytes] = '\0';
-		rem_text = ft_strjoin(rem_text, buff);
-	}
-	free(buff);
-	return (rem_text);
-}
-
-
-char	*ft_rem_text_to_top_line(char *rem_text)
+char	*ft_buf_text_to_top_line(char *buf_text)
 {
 	int		i;
 	char	*str;
 
 	i = 0;
-	if (!rem_text[i])
+	if (!buf_text[i])
 		return (NULL);
-	while (rem_text[i] && rem_text[i] != '\n')
+	while (buf_text[i] && buf_text[i] != '\n')
 		i++;
 	str = (char *)malloc(sizeof(char) * (i + 2));
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (rem_text[i] && rem_text[i] != '\n')
+	while (buf_text[i] && buf_text[i] != '\n')
 	{
-		str[i] = rem_text[i];
+		str[i] = buf_text[i];
 		i++;
 	}
-	if (rem_text[i] == '\n')
+	if (buf_text[i] == '\n')
 	{
-		str[i] = rem_text[i];
+		str[i] = buf_text[i];
 		i++;
 	}
 	str[i] = '\0';
 	return (str);
 }
 
-char	*ft_new_remaining_text(char *rem_text)
+char	*ft_new_buf_text(char *buf_text)
 {
 	int		i;
 	int		j;
 	char	*str;
 
 	i = 0;
-	while (rem_text[i] && rem_text[i] != '\n')
+	while (buf_text[i] && buf_text[i] != '\n')
 		i++;
-	if (!rem_text[i])
+	if (!buf_text[i])
 	{
-		free(rem_text);
+		free(buf_text);
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen(rem_text) - i + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(buf_text) - i + 1));
 	if (!str)
 		return (NULL);
 	i++;
 	j = 0;
-	while (rem_text[i])
-		str[j++] = rem_text[i++];
+	while (buf_text[i])
+		str[j++] = buf_text[i++];
 	str[j] = '\0';
-	free(rem_text);
+	free(buf_text);
 	return (str);
 }

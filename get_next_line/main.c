@@ -9,7 +9,7 @@ int main() {
     char *line2;
     line = get_next_line(fd);
     printf("%s\n", line);
-    free(line); // Assuming get_next_line dynamically allocates memory for each line
+    free(line);
     
     line2 = get_next_line(fd);
     printf("%s\n", line2);
