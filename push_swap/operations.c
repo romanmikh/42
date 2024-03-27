@@ -47,19 +47,78 @@ int pb(int b[], int a[])
   return (0);
 }
 
-
 int ra(int a[], int size)
 {
-  int i;
   int temp;
+  int i;
 
-  while (i < size - 1)
+  i = 0;
+  temp = a[0];
+  while (i < size-1)
   {
-    temp = a[i];
-    a[i+1] = temp;
+    a[i] = a[i+1];
     i++;
   }
-  a[0] = temp;
+  a[i] = temp;
+  return (0);
+}
+
+int rb(int b[], int size)
+{
+  int temp;
+  int i;
+
+  i = 0;
+  temp = b[0];
+  while (i < size-1)
+  {
+    b[i] = b[i+1];
+    i++;
+  }
+  b[i] = temp;
+  return (0);
+}
+
+int rr(int a[], int b[], int size)
+{
+  ra(a, size);
+  rb(b, size);
+  return (0);
+}
+
+int rra(int a[], int size)
+{
+  int temp;
+
+  temp = a[size-1];
+  while (size > 1)
+  {
+    a[size-1] = a[size-2];
+    size--;
+  }
+  a[0] = temp; 
+  return (0);
+}
+
+
+int rrb(int b[], int size)
+{
+  int temp;
+
+  temp = b[size-1];
+  while (size > 1)
+  {
+    b[size-1] = b[size-2];
+    size--;
+  }
+  b[0] = temp; 
+  return (0);
+}
+
+int rrr(int a[], int b[], int size)
+{
+  rra(a, size);
+  rrb(b, size);
   return (0);
 }
 
@@ -68,7 +127,7 @@ int main(){
   int b[5] = {};
   
   int i;
-  ra(a, 5);
+  rrr(a,b,5);
   for (i=0; i < sizeof(a)/sizeof(a[0]); i++){
     printf("a: %d, b: %d\n", a[i], b[i]);
   }
