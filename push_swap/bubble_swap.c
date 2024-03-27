@@ -36,7 +36,7 @@ int bubble_sort(int a[], int size){
 
 
 int main(){
-  int a[] = {7,6,5,4,3};
+  int a[] = {5,4,3,2,1};
   int size = 5;
   int count;
   count = bubble_sort(a, size);
