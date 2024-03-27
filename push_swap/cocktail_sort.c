@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+
+/* ************************************************************************** */
+/*                            Enhanced Bubble Sort                            */
+/*  1. Sorts with adjacent swaps, utilizing a swap flag for early exit.       */
+/*  2. Counts outer loop iterations to gauge sorting efficiency.              */
+/*  3. Performance: Best case O(n) for pre-sorted, worst/average O(n^2).      */
+/*  4. Space O(1), stable sorting, adapts to dataset's initial order.         */
+/*  5. Iteration count returned as a measure of sort efficiency.              */
+/* ************************************************************************** */
+
 int cocktail_sort(int a[], int size){
  
   int temp;
