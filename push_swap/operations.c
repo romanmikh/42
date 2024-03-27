@@ -7,6 +7,7 @@ int sa(int a[])
   temp = a[0];
   a[0] = a[1];
   a[1] = temp;
+  printf("%s", "sa");
   return (0);
 }
 
@@ -17,6 +18,7 @@ int sb(int b[])
   temp = b[0];
   b[0] = b[1];
   b[1] = temp;
+  printf("%s", "sb");
   return (0);
 }
 
@@ -24,6 +26,7 @@ int ss(int a[], int b[])
 {
   sa(a);
   sb(b);
+  printf("%s", "ss");
   return (0);
 }
 
@@ -34,6 +37,7 @@ int pa(int a[], int b[])
   temp = a[0];
   a[0] = b[0];
   b[0] = temp;
+  printf("%s", "pa");
   return (0);
 }
 
@@ -44,6 +48,7 @@ int pb(int b[], int a[])
   temp = b[0];
   b[0] = a[0];
   a[0] = temp;
+  printf("%s", "pb");
   return (0);
 }
 
@@ -60,6 +65,7 @@ int ra(int a[], int size)
     i++;
   }
   a[i] = temp;
+  printf("%s", "ra");
   return (0);
 }
 
@@ -76,6 +82,7 @@ int rb(int b[], int size)
     i++;
   }
   b[i] = temp;
+  printf("%s", "rb");
   return (0);
 }
 
@@ -84,6 +91,7 @@ int rr(int a[], int b[], int size)
   ra(a, size);
   rb(b, size);
   return (0);
+  printf("%s", "rr");
 }
 
 int rra(int a[], int size)
@@ -97,6 +105,7 @@ int rra(int a[], int size)
     size--;
   }
   a[0] = temp; 
+  printf("%s", "rra");
   return (0);
 }
 
@@ -112,6 +121,7 @@ int rrb(int b[], int size)
     size--;
   }
   b[0] = temp; 
+  printf("%s", "rrb");
   return (0);
 }
 
@@ -119,6 +129,7 @@ int rrr(int a[], int b[], int size)
 {
   rra(a, size);
   rrb(b, size);
+  printf("%s", "rrr");
   return (0);
 }
 
