@@ -18,21 +18,32 @@ int max_sort(int a[], int b[], int size)
   int i = 0;
   int j = 0;
   int max = -9999;
+  int max_token = -1;
 
   while (i < size -1){
     j = 0;
-    while (j < size - 2){
-      if (a[j] > a[j+1]){
-        max = j;
-        j++;
+    max = -999;
+    max_token = -1;
+   printf("---------------\n");
+   while (j <= size - 1){
+      if (a[j] > max){
+        max = a[j];
+        printf("max_token: %d\n", max_token);
+        max_token = j;
+        printf("max_token: %d\n", max_token);
       }
+      j++;
     }
-    while (j > 0){
+    while (max_token > 0){
     printf("a: %d %d %d\n", a[0], a[1], a[2]);
     printf("b: %d %d %d\n", b[0], b[1], b[2]);
       ra(a, size);
-      j--;
-    }
+      max_token--;
+    } 
+
+    printf("a: %d %d %d\n", a[0], a[1], a[2]);
+    printf("b: %d %d %d\n", b[0], b[1], b[2]);
+    rb(b, size);
     printf("a: %d %d %d\n", a[0], a[1], a[2]);
     printf("b: %d %d %d\n", b[0], b[1], b[2]);
     pb(a, b);
