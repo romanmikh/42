@@ -7,7 +7,7 @@ int sa(int a[])
   temp = a[0];
   a[0] = a[1];
   a[1] = temp;
-  printf("%s", "sa");
+  printf("%s\n", "sa");
   return (0);
 }
 
@@ -18,7 +18,7 @@ int sb(int b[])
   temp = b[0];
   b[0] = b[1];
   b[1] = temp;
-  printf("%s", "sb");
+  printf("%s\n", "sb");
   return (0);
 }
 
@@ -26,7 +26,7 @@ int ss(int a[], int b[])
 {
   sa(a);
   sb(b);
-  printf("%s", "ss");
+  printf("%s\n", "ss\n");
   return (0);
 }
 
@@ -37,7 +37,7 @@ int pa(int a[], int b[])
   temp = a[0];
   a[0] = b[0];
   b[0] = temp;
-  printf("%s", "pa");
+  printf("%s\n", "pa");
   return (0);
 }
 
@@ -48,7 +48,7 @@ int pb(int b[], int a[])
   temp = b[0];
   b[0] = a[0];
   a[0] = temp;
-  printf("%s", "pb");
+  printf("%s\n", "pb");
   return (0);
 }
 
@@ -59,13 +59,13 @@ int ra(int a[], int size)
 
   i = 0;
   temp = a[0];
-  while (i < size-1)
+  while (i < size-2)
   {
     a[i] = a[i+1];
     i++;
   }
   a[i] = temp;
-  printf("%s", "ra");
+  printf("%s\n", "ra");
   return (0);
 }
 
@@ -76,13 +76,13 @@ int rb(int b[], int size)
 
   i = 0;
   temp = b[0];
-  while (i < size-1)
+  while (i < size-2)
   {
     b[i] = b[i+1];
     i++;
   }
   b[i] = temp;
-  printf("%s", "rb");
+  printf("%s\n", "rb");
   return (0);
 }
 
@@ -91,7 +91,7 @@ int rr(int a[], int b[], int size)
   ra(a, size);
   rb(b, size);
   return (0);
-  printf("%s", "rr");
+  printf("%s\n", "rr");
 }
 
 int rra(int a[], int size)
@@ -105,7 +105,7 @@ int rra(int a[], int size)
     size--;
   }
   a[0] = temp; 
-  printf("%s", "rra");
+  printf("%s\n", "rra");
   return (0);
 }
 
@@ -121,7 +121,7 @@ int rrb(int b[], int size)
     size--;
   }
   b[0] = temp; 
-  printf("%s", "rrb");
+  printf("%s\n", "rrb");
   return (0);
 }
 
@@ -129,18 +129,18 @@ int rrr(int a[], int b[], int size)
 {
   rra(a, size);
   rrb(b, size);
-  printf("%s", "rrr");
+  printf("%s\n", "rrr");
   return (0);
 }
 
-int main(){
-  int a[] = {1,2,3,5,4};
-  int b[5] = {};
-  
-  int i;
-  rrr(a,b,5);
-  for (i=0; i < sizeof(a)/sizeof(a[0]); i++){
-    printf("a: %d, b: %d\n", a[i], b[i]);
-  }
-  return (0);
-}
+//int main(){
+//  int a[] = {1,2,3,5,4};
+//  int b[5] = {};
+//  
+//  int i;
+//  rrr(a,b,5);
+//  for (i=0; i < sizeof(a)/sizeof(a[0]); i++){
+//    printf("a: %d, b: %d\n", a[i], b[i]);
+//  }
+//  return (0);
+//}

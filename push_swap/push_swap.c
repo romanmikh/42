@@ -1,70 +1,100 @@
+#include "push_swap.h"
 
-#include <stdio.h>
-#include <stdlib.h>
+int order_check(int a[], int size){
+  int i = 0;
 
-
-/* ************************************************************************** */
-/*                            Enhanced Bubble Sort                            */
-/*  1. Sorts with adjacent swaps, utilizing a swap flag for early exit.       */
-/*  2. Counts outer loop iterations to gauge sorting efficiency.              */
-/*  3. Performance: Best case O(n) for pre-sorted, worst/average O(n^2).      */
-/*  4. Space O(1), stable sorting, adapts to dataset's initial order.         */
-/*  5. Iteration count returned as a measure of sort efficiency.              */
-/* ************************************************************************** */
-
-int cocktail_sort(int a[], int size){
- 
-  int temp;
-  int swapped = 1;
-  int count = 0;
-
-  while (swapped == 1){
-    count++;
-    swapped = 0;
-    for (int i = 0; i < size-1; i++){
-      if (a[i] > a[i+1]){
-        temp = a[i];
-        a[i] = a[i+1];
-        a[i+1] = temp;
-        swapped = 1;
-      }
-    }
-
-    if (swapped == 0)
-      return (count);
-  
-    for (int i = size-2; i >= 0; i--){
-      if (a[i] > a[i+1]){
-        temp = a[i];
-        a[i] = a[i+1];
-        a[i+1] = temp;
-        swapped = 1;
-      }
-    }
+  while (i < size -2){ // double check if -1 is needed
+    if (a[i] > a[i+1])
+      return (0);
+    i++;
   }
-  return (count);
+  return (1);
 }
 
+int max_sort(int a[], int b[], int size)
+{
+  // loop through a, find max
+  // move to stack b
+  int i = 0;
+  int j = 0;
+  int max = -9999;
+
+  while (i < size -1){
+    j = 0;
+    while (j < size - 2){
+      if (a[j] > a[j+1]){
+        max = j;
+        j++;
+      }
+    }
+    while (j > 0){
+    printf("a: %d %d %d\n", a[0], a[1], a[2]);
+    printf("b: %d %d %d\n", b[0], b[1], b[2]);
+      ra(a, size);
+      j--;
+    }
+    printf("a: %d %d %d\n", a[0], a[1], a[2]);
+    printf("b: %d %d %d\n", b[0], b[1], b[2]);
+    pb(a, b);
+    i++;
+  }
+  return (0);
+}
+
+//int naive_mono_sort(int a[], int size)
+//{
+//  // if first number is greater than 2nd, swap + send 1st to back
+//  // if 1 and 2 are ok, send 1st back. repeat
+//  int i = 0;
+//  int count = 1;
+//  int ops = 0;
+//  while (order_check[a] == 0){
+//    if (a[0] > a[1]){
+//      printf("a: %d%d%d\n", a[0], a[1], a[2]);
+//      sa(a);
+//      printf("a: %d%d%d\n", a[0], a[1], a[2]);
+//      ra(a, size);
+//      ops += 2;
+//      printf("if loop\n");
+//    }
+//    else {
+//      printf("a: %d, %d, %d\n", a[0], a[1], a[2]);
+//      ra(a, size);
+//      ops++;
+//      count++;
+//      printf("else loop\n");
+//    }
+//    i++;
+//  }
+//  return (ops);
+//}
 
 int main(int argc, char *argv[])
 {
   int count;
   int i;
-  int arr[argc];
+  int a[argc];
+  int b[argc];
+  int ops = 0;
 
   i = 0;
   
-  while (i < argc)
+  while (i < argc - 1)
   {
-    arr[i] = atoi(argv[i]);
+    a[i] = atoi(argv[i+1]);
     i++;
   }
 
-  count = cocktail_sort(arr, argc);
-  printf("# operations: %d\n", count);
-  for (int i=0; i < 5; i++){
-    printf("Sorted array: %d\n", arr[i]);
+  for (int i=0; i < 3; i++){
+    printf("UNsorted array: %d\n", a[i]);
   }
 
-  return (count);
+
+  ops = max_sort(a, b, argc);
+  printf("# operations: %d\n", ops);
+  for (int i=0; i < 3; i++){
+    printf("Sorted array: %d\n", a[i]);
+  }
+
+  return (ops);
 }
