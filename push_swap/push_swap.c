@@ -52,69 +52,69 @@ int max_sort(int a[], int b[], int size)
     j = 0;
     max = -999;
     max_token = -1;
-   printf("---------------\n");
+   //printf("---------------\n");
    while (j <= size - 2){
       if (a[j] > max){
         max = a[j];
         max_token = j;
-        printf("max_token: %d, a[j]: %d\n", max_token, a[j]);
+        //printf("max_token: %d, a[j]: %d\n", max_token, a[j]);
       }
       j++;
     }
     while (max_token > 0){
    
-    printf("a:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", a[i]);
-    }
-    printf("\n");
-    printf("b:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", b[i]);
-    }
-    printf("\n");  
+    //printf("a:");
+    //for (int i=0; i < size-1; i++){
+    //  printf(" %d", a[i]);
+    //}
+    //printf("\n");
+    //printf("b:");
+    //for (int i=0; i < size-1; i++){
+    //  printf(" %d", b[i]);
+    //}
+    //printf("\n");  
 
     ra(a, size);
     ops++;
     max_token--;
     } 
     
-    printf("a:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", a[i]);
-    }
-    printf("\n");
-    printf("b:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", b[i]);
-    }
-    printf("\n");  
+    //printf("a:");
+    //for (int i=0; i < size-1; i++){
+    //  printf(" %d", a[i]);
+    //}
+//    printf("\n");
+//    printf("b:");
+//    for (int i=0; i < size-1; i++){
+//      printf(" %d", b[i]);
+//    }
+//    printf("\n");  
 
     rrb(b, size);
     
-    printf("a:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", a[i]);
-    }
-    printf("\n");
-    printf("b:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", b[i]);
-    }
-    printf("\n");  
+//    printf("a:");
+//    for (int i=0; i < size-1; i++){
+//      printf(" %d", a[i]);
+//    }
+//    printf("\n");
+//    printf("b:");
+//    for (int i=0; i < size-1; i++){
+//      printf(" %d", b[i]);
+//    }
+//    printf("\n");  
 
     pb(a, b);
 
-    printf("a:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", a[i]);
-    }
-    printf("\n");
-    printf("b:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", b[i]);
-    }
-    printf("\n");  
+//    printf("a:");
+//    for (int i=0; i < size-1; i++){
+//      printf(" %d", a[i]);
+//    }
+//    printf("\n");
+//    printf("b:");
+//    for (int i=0; i < size-1; i++){
+//      printf(" %d", b[i]);
+//    }
+//    printf("\n");  
     i++;
     ops += 2;
   }
@@ -152,37 +152,36 @@ int max_sort(int a[], int b[], int size)
 
 int main(int argc, char *argv[])
 {
-  int count;
-  int i;
+  int i = 0;
   int a[argc];
   int b[argc];
   int ops = 0;
-
-  i = 0;
 
   memset(b, 0, sizeof(int) * argc);
 
   while (i < argc - 1)
   {
-    if (isnum_from_str(argv[i+1]) == 0)
-      return (999);
+    if (isnum_from_str(argv[i+1]) == 0){
+      printf("Error\n");
+      return (1);
+    }
     a[i] = atoi(argv[i+1]);
-    printf("%s becomes %d\n", argv[i+1], a[i]);
+    //printf("%s becomes %d\n", argv[i+1], a[i]);
     i++;
   }
 
-  for (int i=0; i < argc-1; i++){
-    printf("UNsorted a array: %d\n", a[i]);
-  }
-  for (int i=0; i < argc-1; i++){
-    printf("UNsorted b array: %d\n", b[i]);
-  }
+  //for (int i=0; i < argc-1; i++){
+  //  printf("UNsorted a array: %d\n", a[i]);
+  //}
+  //for (int i=0; i < argc-1; i++){
+  //  printf("UNsorted b array: %d\n", b[i]);
+  //}
 
   ops = max_sort(a, b, argc);
-  printf("# operations: %d\n", ops);
-  for (int i=0; i < argc -1; i++){
-    printf("Sorted array: %d\n", b[i]);
-  }
+  //printf("# operations: %d\n", ops);
+  //for (int i=0; i < argc -1; i++){
+  //  printf("Sorted array: %d\n", b[i]);
+  //}
 
   return (ops);
 }
