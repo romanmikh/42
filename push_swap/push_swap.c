@@ -13,6 +13,31 @@ int order_check(int a[], int size){
   return (1);
 }
 
+int isnum_from_str(const char *str) {
+    // Check for null pointer or empty string
+    if (str == NULL || *str == '\0') {
+        return (0);
+    }
+
+    // Check for optional leading sign
+    if (*str == '-' || *str == '+') {
+        str++; // Skip the sign
+        if (*str == '\0') { // String is just "-" or "+"
+            return (0);
+        }
+    }
+
+    // Check each character to ensure it's a digit
+    while (*str != '\0') {
+        if (*str < '0' || *str > '9') {
+            return (0);;
+        }
+        str++;
+    }
+
+    return (1);
+}
+
 int max_sort(int a[], int b[], int size)
 {
   // loop through a, find max
@@ -139,7 +164,10 @@ int main(int argc, char *argv[])
 
   while (i < argc - 1)
   {
+    if (isnum_from_str(argv[i+1]) == 0)
+      return (999);
     a[i] = atoi(argv[i+1]);
+    printf("%s becomes %d\n", argv[i+1], a[i]);
     i++;
   }
 
