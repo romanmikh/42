@@ -1,4 +1,6 @@
 #include "push_swap.h"
+#include <string.h> // Include at the top of your file
+
 
 int order_check(int a[], int size){
   int i = 0;
@@ -19,37 +21,79 @@ int max_sort(int a[], int b[], int size)
   int j = 0;
   int max = -9999;
   int max_token = -1;
+  int ops = 0;
 
   while (i < size -1){
     j = 0;
     max = -999;
     max_token = -1;
    printf("---------------\n");
-   while (j <= size - 1){
+   while (j <= size - 2){
       if (a[j] > max){
         max = a[j];
-        printf("max_token: %d\n", max_token);
         max_token = j;
-        printf("max_token: %d\n", max_token);
+        printf("max_token: %d, a[j]: %d\n", max_token, a[j]);
       }
       j++;
     }
     while (max_token > 0){
-    printf("a: %d %d %d\n", a[0], a[1], a[2]);
-    printf("b: %d %d %d\n", b[0], b[1], b[2]);
-      ra(a, size);
-      max_token--;
-    } 
+   
+    printf("a:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", a[i]);
+    }
+    printf("\n");
+    printf("b:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", b[i]);
+    }
+    printf("\n");  
 
-    printf("a: %d %d %d\n", a[0], a[1], a[2]);
-    printf("b: %d %d %d\n", b[0], b[1], b[2]);
-    rb(b, size);
-    printf("a: %d %d %d\n", a[0], a[1], a[2]);
-    printf("b: %d %d %d\n", b[0], b[1], b[2]);
+    ra(a, size);
+    ops++;
+    max_token--;
+    } 
+    
+    printf("a:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", a[i]);
+    }
+    printf("\n");
+    printf("b:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", b[i]);
+    }
+    printf("\n");  
+
+    rrb(b, size);
+    
+    printf("a:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", a[i]);
+    }
+    printf("\n");
+    printf("b:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", b[i]);
+    }
+    printf("\n");  
+
     pb(a, b);
+
+    printf("a:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", a[i]);
+    }
+    printf("\n");
+    printf("b:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", b[i]);
+    }
+    printf("\n");  
     i++;
+    ops += 2;
   }
-  return (0);
+  return (ops);
 }
 
 //int naive_mono_sort(int a[], int size)
@@ -71,7 +115,8 @@ int max_sort(int a[], int b[], int size)
 //    else {
 //      printf("a: %d, %d, %d\n", a[0], a[1], a[2]);
 //      ra(a, size);
-//      ops++;
+//      ops++;rotate b): Shift up all elements of stack b by 1.
+//The first element becomes the last on
 //      count++;
 //      printf("else loop\n");
 //    }
@@ -89,22 +134,26 @@ int main(int argc, char *argv[])
   int ops = 0;
 
   i = 0;
-  
+
+  memset(b, 0, sizeof(int) * argc);
+
   while (i < argc - 1)
   {
     a[i] = atoi(argv[i+1]);
     i++;
   }
 
-  for (int i=0; i < 3; i++){
-    printf("UNsorted array: %d\n", a[i]);
+  for (int i=0; i < argc-1; i++){
+    printf("UNsorted a array: %d\n", a[i]);
   }
-
+  for (int i=0; i < argc-1; i++){
+    printf("UNsorted b array: %d\n", b[i]);
+  }
 
   ops = max_sort(a, b, argc);
   printf("# operations: %d\n", ops);
-  for (int i=0; i < 3; i++){
-    printf("Sorted array: %d\n", a[i]);
+  for (int i=0; i < argc -1; i++){
+    printf("Sorted array: %d\n", b[i]);
   }
 
   return (ops);
