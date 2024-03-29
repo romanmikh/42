@@ -4,6 +4,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "libft/libft.h"
 
 int sa(int a[]);
 int sb(int b[]);

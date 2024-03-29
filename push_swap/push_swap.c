@@ -156,18 +156,29 @@ int main(int argc, char *argv[])
   int a[argc];
   int b[argc];
   int ops = 0;
+  char** str_list;
 
+  printf("**************************");
   memset(b, 0, sizeof(int) * argc);
+  
+  if(argc<=1){
+    return(0);
+  }
+  else if(argc == 2){
+  str_list = ft_split(argv[1], ' ');
 
-  while (i < argc - 1)
-  {
-    if (isnum_from_str(argv[i+1]) == 0){
-      printf("Error\n");
-      return (1);
+  }
+  else {
+    while (i < argc - 0)
+    {
+     if (isnum_from_str(argv[i+1]) == 0){
+       printf("Error\n");
+       return (1);
+      }
+     a[i] = atoi(argv[i+1]);
+     //printf("%s becomes %d\n", argv[i+1], a[i]);
+     i++;
     }
-    a[i] = atoi(argv[i+1]);
-    //printf("%s becomes %d\n", argv[i+1], a[i]);
-    i++;
   }
 
   //for (int i=0; i < argc-1; i++){
