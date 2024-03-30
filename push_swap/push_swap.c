@@ -105,16 +105,16 @@ int max_sort(int a[], int b[], int size)
 
     pb(a, b);
 
-    printf("a:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", a[i]);
-    }
-    printf("\n");
-    printf("b:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", b[i]);
-    }
-    printf("\n");  
+//    printf("a:");
+//    for (int i=0; i < size-1; i++){
+//      printf(" %d", a[i]);
+//    }
+//    printf("\n");
+//    printf("b:");
+//    for (int i=0; i < size-1; i++){
+//      printf(" %d", b[i]);
+//    }
+//    printf("\n");  
     i++;
     ops += 2;
   }
@@ -159,8 +159,8 @@ int main(int argc, char *argv[])
   char** str_list;
   int split_count = 0;
 // add error max min check & the other one
-  printf("**************************\n");
-  memset(b, 0, sizeof(int) * 3);
+  //printf("**************************\n");
+
   if(argc<=1){
     return(0);
   }
@@ -169,7 +169,9 @@ int main(int argc, char *argv[])
   
   while (str_list[split_count] != NULL)
     split_count++;
-  printf("str_list: %d\n", split_count);
+  //printf("str_list: %d\n", split_count);
+  memset(b, 0, sizeof(int) * split_count);
+  memset(a, 0, sizeof(int) * split_count);
 
  for (int j=0; j < split_count; j++){
       printf(" %s\n", str_list[j]);
@@ -185,13 +187,15 @@ int main(int argc, char *argv[])
      i++;
     }
     
- for (int j=0; j < split_count; j++){
-      printf(" %d\n", a[j]);
-   }
+// for (int j=0; j < split_count; j++){
+  //    printf(" %d\n", a[j]);
+   //}
 
   }
   else {
     split_count = argc - 1;
+  memset(b, 0, sizeof(int) * split_count);
+  memset(a, 0, sizeof(int) * split_count);
     while (i < argc - 1)
     {
      if (isnum_from_str(argv[i+1]) == 0){
