@@ -13,6 +13,25 @@ int order_check(int a[], int size){
   return (1);
 }
 
+int list_len_str(char *a[]){
+  int i = 0;
+  while (a[i] != NULL)
+    i++;
+  return (i);
+}
+
+int list_repeat_check(int a[], int size)
+{
+  int i = 0;
+  while (i < size){
+    if (a[size] == a[i]){
+      return (1);
+    }
+    i++;
+  }
+  return (0);
+}
+
 int isnum_from_str(const char *str) {
     // Check for null pointer or empty string
     if (str == NULL || *str == '\0') {
@@ -105,16 +124,16 @@ int max_sort(int a[], int b[], int size)
 
     pb(a, b);
 
-//    printf("a:");
-//    for (int i=0; i < size-1; i++){
-//      printf(" %d", a[i]);
-//    }
-//    printf("\n");
-//    printf("b:");
-//    for (int i=0; i < size-1; i++){
-//      printf(" %d", b[i]);
-//    }
-//    printf("\n");  
+    printf("a:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", a[i]);
+    }
+    printf("\n");
+    printf("b:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", b[i]);
+    }
+    printf("\n");  
     i++;
     ops += 2;
   }
@@ -167,17 +186,19 @@ int main(int argc, char *argv[])
   else if(argc == 2){
   str_list = ft_split(argv[1], ' ');
   
-  while (str_list[split_count] != NULL)
-    split_count++;
+  split_count = list_len_str(str_list);
+ // while (str_list[split_count] != NULL)
+  //  split_count++;
   //printf("str_list: %d\n", split_count);
   memset(b, 0, sizeof(int) * split_count);
   memset(a, 0, sizeof(int) * split_count);
 
- for (int j=0; j < split_count; j++){
-      printf(" %s\n", str_list[j]);
-   }
+ //for (int j=0; j < split_count; j++){
+      //printf(" %s\n", str_list[j]);
+   //}
+    
     while (i < split_count){
-      if (isnum_from_str(str_list[i]) == 0){
+      if (isnum_from_str(str_list[i]) == 0 ){
        printf("Error\n");
        return (1);
       }
@@ -203,7 +224,7 @@ int main(int argc, char *argv[])
        return (1);
       }
      a[i] = atoi(argv[i+1]);
-     //printf("%s becomes %d\n", argv[i+1], a[i]);
+     printf("%s becomes %d\n", argv[i+1], a[i]);
      i++;
     }
   }
