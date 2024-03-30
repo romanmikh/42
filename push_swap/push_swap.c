@@ -92,6 +92,7 @@ int max_sort(int a[], int b[], int size)
     //  printf(" %d", b[i]);
     //}
     //printf("\n");  
+￼
 
     ra(a, size);
     ops++;
@@ -187,8 +188,6 @@ int main(int argc, char *argv[])
   str_list = ft_split(argv[1], ' ');
   
   split_count = list_len_str(str_list);
- // while (str_list[split_count] != NULL)
-  //  split_count++;
   //printf("str_list: %d\n", split_count);
   memset(b, 0, sizeof(int) * split_count);
   memset(a, 0, sizeof(int) * split_count);
