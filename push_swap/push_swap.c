@@ -105,16 +105,16 @@ int max_sort(int a[], int b[], int size)
 
     pb(a, b);
 
-//    printf("a:");
-//    for (int i=0; i < size-1; i++){
-//      printf(" %d", a[i]);
-//    }
-//    printf("\n");
-//    printf("b:");
-//    for (int i=0; i < size-1; i++){
-//      printf(" %d", b[i]);
-//    }
-//    printf("\n");  
+    printf("a:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", a[i]);
+    }
+    printf("\n");
+    printf("b:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", b[i]);
+    }
+    printf("\n");  
     i++;
     ops += 2;
   }
@@ -157,19 +157,43 @@ int main(int argc, char *argv[])
   int b[argc];
   int ops = 0;
   char** str_list;
-
-  printf("**************************");
-  memset(b, 0, sizeof(int) * argc);
-  
+  int split_count = 0;
+// add error max min check & the other one
+  printf("**************************\n");
+  memset(b, 0, sizeof(int) * 3);
+  memset(a, 0, sizeof(int) * 3);  
   if(argc<=1){
     return(0);
   }
   else if(argc == 2){
   str_list = ft_split(argv[1], ' ');
+  
+  while (str_list[split_count] != NULL)
+    split_count++;
+  printf("str_list: %d\n", split_count);
+
+ for (int j=0; j < split_count; j++){
+      printf(" %s\n", str_list[j]);
+   }
+    while (i < split_count){
+      if (isnum_from_str(str_list[i]) == 0){
+       printf("Error\n");
+       return (1);
+      }
+
+     a[i] = atoi(str_list[i]);
+     //printf("%s becomes %d\n", argv[i+1], a[i]);
+     i++;
+    }
+    
+ for (int j=0; j < split_count; j++){
+      printf(" %d\n", a[j]);
+   }
 
   }
   else {
-    while (i < argc - 0)
+    split_count = argc - 1;
+    while (i < argc - 1)
     {
      if (isnum_from_str(argv[i+1]) == 0){
        printf("Error\n");
@@ -188,7 +212,7 @@ int main(int argc, char *argv[])
   //  printf("UNsorted b array: %d\n", b[i]);
   //}
 
-  ops = max_sort(a, b, argc);
+  ops = max_sort(a, b, split_count+1);
   //printf("# operations: %d\n", ops);
   //for (int i=0; i < argc -1; i++){
   //  printf("Sorted array: %d\n", b[i]);
