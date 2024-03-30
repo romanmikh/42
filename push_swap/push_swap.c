@@ -161,7 +161,6 @@ int main(int argc, char *argv[])
 // add error max min check & the other one
   printf("**************************\n");
   memset(b, 0, sizeof(int) * 3);
-  memset(a, 0, sizeof(int) * 3);  
   if(argc<=1){
     return(0);
   }
