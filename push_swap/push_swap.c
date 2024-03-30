@@ -13,23 +13,33 @@ int order_check(int a[], int size){
   return (1);
 }
 
-int list_len_str(char *a[]){
-  int i = 0;
-  while (a[i] != NULL)
-    i++;
-  return (i);
+int list_repeat_check_int(int a[], int size) {
+    printf("a:");
+    for (int i=0; i < size-1; i++){
+      printf(" %d", a[i]);
+    }
+    printf("\n");
+
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = i + 1; j < size; j++) {
+          printf("i: %d, j: %d, elements: %d & %d\n", i, j, a[i], a[j]);
+            if (a[i] == a[j]) {    
+                return (1);
+            }
+        }
+    }
+    return(0);
 }
 
-int list_repeat_check(int a[], int size)
-{
-  int i = 0;
-  while (i < size){
-    if (a[size] == a[i]){
-      return (1);
+int list_repeat_check_str(char *a[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (ft_strncmp(a[i], a[j], size) == 0) {
+                return 1; // Found a repeating element
+            }
+        }
     }
-    i++;
-  }
-  return (0);
+    return 0; // No repeating elements found
 }
 
 int isnum_from_str(const char *str) {
@@ -92,8 +102,6 @@ int max_sort(int a[], int b[], int size)
     //  printf(" %d", b[i]);
     //}
     //printf("\n");  
-￼
-
     ra(a, size);
     ops++;
     max_token--;
@@ -195,7 +203,10 @@ int main(int argc, char *argv[])
  //for (int j=0; j < split_count; j++){
       //printf(" %s\n", str_list[j]);
    //}
-    
+  if (list_repeat_check_str(str_list, split_count - 1) == 1){
+    printf("Error\n");
+    return (1);
+  }
     while (i < split_count){
       if (isnum_from_str(str_list[i]) == 0 ){
        printf("Error\n");
@@ -214,8 +225,8 @@ int main(int argc, char *argv[])
   }
   else {
     split_count = argc - 1;
-  memset(b, 0, sizeof(int) * split_count);
-  memset(a, 0, sizeof(int) * split_count);
+    memset(b, 0, sizeof(int) * split_count);
+    memset(a, 0, sizeof(int) * split_count);
     while (i < argc - 1)
     {
      if (isnum_from_str(argv[i+1]) == 0){
@@ -223,6 +234,11 @@ int main(int argc, char *argv[])
        return (1);
       }
      a[i] = atoi(argv[i+1]);
+     
+    if (list_repeat_check_int(a, split_count) == 1){
+    printf("Error\n");
+    return (1);
+    }
      printf("%s becomes %d\n", argv[i+1], a[i]);
      i++;
     }

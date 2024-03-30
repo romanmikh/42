@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+# include "libft.h"
+
 int isnum_from_str(const char *str) {
     // Check for null pointer or empty string
     if (str == NULL || *str == '\0') {
