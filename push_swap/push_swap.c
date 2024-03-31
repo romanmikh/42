@@ -1,182 +1,85 @@
 #include "push_swap.h"
 #include <string.h> // Include at the top of your file
 
-
-int order_check(int a[], int size){
+int find_max_in_list(int a[], int size[]){
+  int max = -inf;
   int i = 0;
-
-  while (i < size -2){ // double check if -1 is needed
-    if (a[i] > a[i+1])
-      return (0);
+  
+  while (in a){
+    if (a[i] > max){
+      max = a[i];
+    }
     i++;
   }
-  return (1);
+  return (max);
 }
 
-int list_repeat_check_int(int a[], int size) {
-    printf("a:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", a[i]);
-    }
-    printf("\n");
-
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = i + 1; j < size; j++) {
-          printf("i: %d, j: %d, elements: %d & %d\n", i, j, a[i], a[j]);
-            if (a[i] == a[j]) {    
-                return (1);
-            }
-        }
-    }
-    return(0);
-}
-
-int list_repeat_check_str(char *a[], int size) {
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = i + 1; j < size; j++) {
-            if (ft_strncmp(a[i], a[j], size) == 0) {
-                return 1; // Found a repeating element
-            }
-        }
-    }
-    return 0; // No repeating elements found
-}
-
-int isnum_from_str(const char *str) {
-    // Check for null pointer or empty string
-    if (str == NULL || *str == '\0') {
-        return (0);
-    }
-
-    // Check for optional leading sign
-    if (*str == '-' || *str == '+') {
-        str++; // Skip the sign
-        if (*str == '\0') { // String is just "-" or "+"
-            return (0);
-        }
-    }
-
-    // Check each character to ensure it's a digit
-    while (*str != '\0') {
-        if (*str < '0' || *str > '9') {
-            return (0);;
-        }
-        str++;
-    }
-
-    return (1);
-}
-
-int max_sort(int a[], int b[], int size)
+int cost_func(int a[], int b[], int size)
 {
-  // loop through a, find max
-  // move to stack b
   int i = 0;
-  int j = 0;
-  int max = -9999;
-  int max_token = -1;
-  int ops = 0;
-
-  while (i < size -1){
-    j = 0;
-    max = -999;
-    max_token = -1;
-   //printf("---------------\n");
-   while (j <= size - 2){
-      if (a[j] > max){
-        max = a[j];
-        max_token = j;
-        //printf("max_token: %d, a[j]: %d\n", max_token, a[j]);
-      }
-      j++;
+  int cheapest = inf;
+  int cost = inf;
+  for (a[i]){
+    calculate cost
+    if (cost_new < cost){
+      cost = cost_new;
+      cheapest = price_new;
     }
-    while (max_token > 0){
-   
-    //printf("a:");
-    //for (int i=0; i < size-1; i++){
-    //  printf(" %d", a[i]);
-    //}
-    //printf("\n");
-    //printf("b:");
-    //for (int i=0; i < size-1; i++){
-    //  printf(" %d", b[i]);
-    //}
-    //printf("\n");  
-    ra(a, size);
-    ops++;
-    max_token--;
-    } 
-    
-    //printf("a:");
-    //for (int i=0; i < size-1; i++){
-    //  printf(" %d", a[i]);
-    //}
-//    printf("\n");
-//    printf("b:");
-//    for (int i=0; i < size-1; i++){
-//      printf(" %d", b[i]);
-//    }
-//    printf("\n");  
-
-    rrb(b, size);
-    
-//    printf("a:");
-//    for (int i=0; i < size-1; i++){
-//      printf(" %d", a[i]);
-//    }
-//    printf("\n");
-//    printf("b:");
-//    for (int i=0; i < size-1; i++){
-//      printf(" %d", b[i]);
-//    }
-//    printf("\n");  
-
-    pb(a, b);
-
-    printf("a:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", a[i]);
-    }
-    printf("\n");
-    printf("b:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", b[i]);
-    }
-    printf("\n");  
     i++;
-    ops += 2;
   }
-  return (ops);
+  return (cheapest a[] index)
 }
 
-//int naive_mono_sort(int a[], int size)
-//{
-//  // if first number is greater than 2nd, swap + send 1st to back
-//  // if 1 and 2 are ok, send 1st back. repeat
-//  int i = 0;
-//  int count = 1;
-//  int ops = 0;
-//  while (order_check[a] == 0){
-//    if (a[0] > a[1]){
-//      printf("a: %d%d%d\n", a[0], a[1], a[2]);
-//      sa(a);
-//      printf("a: %d%d%d\n", a[0], a[1], a[2]);
-//      ra(a, size);
-//      ops += 2;
-//      printf("if loop\n");
-//    }
-//    else {
-//      printf("a: %d, %d, %d\n", a[0], a[1], a[2]);
-//      ra(a, size);
-//      ops++;rotate b): Shift up all elements of stack b by 1.
-//The first element becomes the last on
-//      count++;
-//      printf("else loop\n");
-//    }
-//    i++;
-//  }
-//  return (ops);
-//}
+int min_diff(int a, int b[], int size){
+  int diff = inf;
+  int i = 0;
+  int index = -999;
+
+  while (in top b/2){
+    if (a - b[i] < diff){ // handle + - 
+      diff = abs(a - b[i];
+      index = i;
+    }
+    i++;
+  }
+  while (in bottom b/2){
+    if (b[size] - a < diff){
+      diff = b[i] - a;
+      index = size-1; // chck -1
+    }
+    i++;
+  }
+  return (diff);
+}
+
+int calc_cost(int a, int b[], int size){
+  // the real logic
+  int i = 0;
+  while (in b){
+    diff = i + min_diff(a, b, size); // i because of stack a rotations. MISSING DOUBLE ROTATIO
+  }
+  return (diff);
+}
+
+int action(){
+  // calc cost func but do it
+  return (0);
+}
+
+int turk_sort(int a[], int b[], int size)
+{
+  int i = 0;
+  
+  // shift the top 2 elements of a --> b
+  pb(a, b);
+  pb(a, b);
+  while (order_check(a, size) == 0)
+  {
+    // main loop, until a[] fully sorted
+    
+  }
+
+}
 
 int main(int argc, char *argv[])
 {
