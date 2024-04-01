@@ -26,7 +26,7 @@ int *find_neighbours_in_array(int e, int arr[], int arr_size)
       lower_diff = e - arr[i];
       i_lower = i;
     }
-    i++;
+    i++; 
   }
   result[0] = i_lower;
   result[1] = i_upper;
