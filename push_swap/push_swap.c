@@ -1,70 +1,64 @@
 #include "push_swap.h"
 #include <string.h> // Include at the top of your file
 
-int find_max_in_list(int a[], int size[]){
-  int max = -inf;
-  int i = 0;
-  
-  while (in a){
-    if (a[i] > max){
-      max = a[i];
-    }
-    i++;
-  }
-  return (max);
-}
-
-int cost_func(int a[], int b[], int size)
+int *find_neighbours_in_array(int e, int arr[], int arr_size)
 {
+  int upper_diff = INT_MAX;
+  int lower_diff = INT_MAX;
+  int i_upper = 0;
+  int i_lower = 0;
   int i = 0;
-  int cheapest = inf;
-  int cost = inf;
-  for (a[i]){
-    calculate cost
-    if (cost_new < cost){
-      cost = cost_new;
-      cheapest = price_new;
+  int *result;
+
+  result = malloc(2 * sizeof(int));
+  if (result = NULL)
+    return (NULL);
+
+  while (i <= arr_size)
+  {
+    if (arr[i] - e > 0 && arr[i] - e < upper_diff)
+    {
+      upper_diff = arr[i] - e;
+      i_upper = i;
+    }
+    if (e - arr[i] > 0 && e - arr[i] < lower_diff)
+    {
+      lower_diff = e - arr[i];
+      i_lower = i;
     }
     i++;
   }
-  return (cheapest a[] index)
+  result[0] = i_lower;
+  result[1] = i_upper;
+  return (result);
 }
 
-int min_diff(int a, int b[], int size){
-  int diff = inf;
-  int i = 0;
-  int index = -999;
+int *operations_required(int e, int a_pos,int i_lower, int i_upper, int size_a, int size_b)
+{
+  int ra_needed = 0;
+  int rra_needed = 0;
+  int rot_upper = INT_MAX;
+  int rot_lower = INT_MAX;
+  int a_to_add = 0;
 
-  while (in top b/2){
-    if (a - b[i] < diff){ // handle + - 
-      diff = abs(a - b[i];
-      index = i;
-    }
-    i++;
+  if (e <= size_a/2)
+    ra_needed = e;
+  else 
+    rra_needed = size_a - 2;
+
+  if (i_upper <= size_b/2){
+    rot_upper = i_above + 1;
+    if (rot_upper >= ra_needed)
+      a_to_add = 0;
+    else 
+      a_to_add = ra_needed - rot_upper;
+  else {
+    rot_upper = sie_b - 1 - i_upper
   }
-  while (in bottom b/2){
-    if (b[size] - a < diff){
-      diff = b[i] - a;
-      index = size-1; // chck -1
-    }
-    i++;
-  }
-  return (diff);
 }
 
-int calc_cost(int a, int b[], int size){
-  // the real logic
-  int i = 0;
-  while (in b){
-    diff = i + min_diff(a, b, size); // i because of stack a rotations. MISSING DOUBLE ROTATIO
-  }
-  return (diff);
-}
 
-int action(){
-  // calc cost func but do it
-  return (0);
-}
+
 
 int turk_sort(int a[], int b[], int size)
 {
@@ -80,6 +74,18 @@ int turk_sort(int a[], int b[], int size)
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 int main(int argc, char *argv[])
 {
