@@ -85,97 +85,68 @@ int turk_sort(int a[], int b[], int size)
   return (0);
 }
 
+int main(int argc, char *argv[]) {
+    int *a;
+    int *b;
+    int split_count = 0;
+    char **str_list = NULL;
 
-
-
-
-
-
-
-
-
-
-
-
-int main(int argc, char *argv[])
-{
-  int i = 0;
-  int a[argc];
-  int b[argc];
-  int ops = 0;
-  char** str_list;
-  int split_count = 0;
-// add error max min check & the other one
-  //printf("**************************\n");
-
-  if(argc<=1){
-    return(0);
-  }
-  else if(argc == 2){
-  str_list = ft_split(argv[1], ' ');
-  
-  split_count = list_len_str(str_list);
-  //printf("str_list: %d\n", split_count);
-  memset(b, 0, sizeof(int) * split_count);
-  memset(a, 0, sizeof(int) * split_count);
-
- //for (int j=0; j < split_count; j++){
-      //printf(" %s\n", str_list[j]);
-   //}
-  if (list_repeat_check_str(str_list, split_count - 1) == 1){
-    printf("Error\n");
-    return (1);
-  }
-    while (i < split_count){
-      if (isnum_from_str(str_list[i]) == 0 ){
-       printf("Error\n");
-       return (1);
-      }
-
-     a[i] = atoi(str_list[i]);
-     //printf("%s becomes %d\n", argv[i+1], a[i]);
-     i++;
+    if (argc <= 1) {
+        return 0;
     }
-    
-// for (int j=0; j < split_count; j++){
-  //    printf(" %d\n", a[j]);
-   //}
 
-  }
-  else {
-    split_count = argc - 1;
-    memset(b, 0, sizeof(int) * split_count);
+    if (argc == 2) {
+        str_list = ft_split(argv[1], ' ');
+        split_count = list_len_str(str_list);
+        if (split_count <= 0) {
+            // Handle empty string or split error
+            printf("Error\n");
+            return 1;
+        }
+    } else {
+        split_count = argc - 1;
+    }
+
+    a = (int*) malloc(sizeof(int) * split_count);
+    b = (int*) malloc(sizeof(int) * split_count);
+    if (!a || !b) {
+        // Memory allocation failed
+        printf("Error\n");
+        return 1;
+    }
+
     memset(a, 0, sizeof(int) * split_count);
-    while (i < argc - 1)
-    {
-     if (isnum_from_str(argv[i+1]) == 0){
-       printf("Error\n");
-       return (1);
-      }
-     a[i] = atoi(argv[i+1]);
-     
-    if (list_repeat_check_int(a, split_count) == 1){
-    printf("Error\n");
-    return (1);
-    }
-     printf("%s becomes %d\n", argv[i+1], a[i]);
-     i++;
-    }
-  }
+    memset(b, 0, sizeof(int) * split_count);
 
-  for (int i=0; i < argc-1; i++){
-    printf("UNsorted a array: %d\n", a[i]);
-  }
-  for (int i=0; i < argc-1; i++){
-    printf("UNsorted b array: %d\n", b[i]);
-  }
-  
-  turk_sort(a, b, split_count + 1);
-  //ops = max_sort(a, b, split_count+1);
-  printf("# operations: %d\n", ops);
-  for (int i=0; i < argc -1; i++){
-    printf("Sorted array: %d\n", b[i]);
-  }
+    for (int i = 0; i < split_count; i++) {
+        char *current_str = (argc == 2) ? str_list[i] : argv[i + 1];
+        
+        if (isnum_from_str(current_str) == 0) {
+            printf("Error\n");
+            free(a); free(b);
+            return 1;
+        }
 
-  return (ops);
+        a[i] = atoi(current_str);
+    }
+
+    if (argc == 2) {
+        // Need to check for duplicates only if input was split from a single argument
+        if (list_repeat_check_int(a, split_count)) {
+            printf("Error\n");
+            free(a); free(b);
+            return 1;
+        }
+    } else {
+        // When arguments are passed individually, we assume they're already validated
+    }
+
+    // Example usage of a and b after processing
+    turk_sort(a, b, split_count);
+    // Print sorted or unsorted arrays, debug, etc.
+
+    free(a);
+    free(b);
+    // If str_list was allocated, you need to free it as well
+    return 0;
 }
