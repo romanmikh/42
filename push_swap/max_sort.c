@@ -1,3 +1,4 @@
+#include "push_swap.h"
 
 int max_sort(int a[], int b[], int size)
 {

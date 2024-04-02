@@ -11,7 +11,7 @@ int *find_neighbours_in_array(int e, int arr[], int arr_size)
   int *result;
 
   result = malloc(2 * sizeof(int));
-  if (result = NULL)
+  if (result == NULL)
     return (NULL);
 
   while (i <= arr_size)
@@ -33,29 +33,29 @@ int *find_neighbours_in_array(int e, int arr[], int arr_size)
   return (result);
 }
 
-int *operations_required(int e, int a_pos,int i_lower, int i_upper, int size_a, int size_b)
-{
-  int ra_needed = 0;
-  int rra_needed = 0;
-  int rot_upper = INT_MAX;
-  int rot_lower = INT_MAX;
-  int a_to_add = 0;
-
-  if (e <= size_a/2)
-    ra_needed = e;
-  else 
-    rra_needed = size_a - 2;
-
-  if (i_upper <= size_b/2){
-    rot_upper = i_above + 1;
-    if (rot_upper >= ra_needed)
-      a_to_add = 0;
-    else 
-      a_to_add = ra_needed - rot_upper;
-  else {
-    rot_upper = sie_b - 1 - i_upper
-  }
-}
+//int *operations_required(int e, int a_pos,int i_lower, int i_upper, int size_a, int size_b)
+//{
+//  int ra_needed = 0;
+//  int rra_needed = 0;
+//  int rot_upper = INT_MAX;
+//  int rot_lower = INT_MAX;
+//  int a_to_add = 0;
+//
+//  if (e <= size_a/2)
+//    ra_needed = e;
+//  else 
+//    rra_needed = size_a - 2;
+//
+//  if (i_upper <= size_b/2){
+//    rot_upper = i_above + 1;
+//    if (rot_upper >= ra_needed)
+//      a_to_add = 0;
+//    else 
+//      a_to_add = ra_needed - rot_upper;
+//  else {
+//    rot_upper = sie_b - 1 - i_upper
+//  }
+//}
 
 
 
@@ -63,16 +63,26 @@ int *operations_required(int e, int a_pos,int i_lower, int i_upper, int size_a, 
 int turk_sort(int a[], int b[], int size)
 {
   int i = 0;
+  //int size_a = size;
   
   // shift the top 2 elements of a --> b
   pb(a, b);
   pb(a, b);
-  while (order_check(a, size) == 0)
-  {
-    // main loop, until a[] fully sorted
-    
-  }
+  int *result = find_neighbours_in_array(a[0], b, 2);
+  
+  if (result != NULL) {
+        for (int i = 0; i < 2; i++) {
+            printf("Element %d: %d\n", i + 1, result[i]);
+        }
+        free(result); // Remember to free the allocated memory
+    } else {
+        printf("Memory allocation failed.\n");
+    }
 
+  while (i < size)
+    i++;
+
+  return (0);
 }
 
 
@@ -153,18 +163,19 @@ int main(int argc, char *argv[])
     }
   }
 
-  //for (int i=0; i < argc-1; i++){
-  //  printf("UNsorted a array: %d\n", a[i]);
-  //}
-  //for (int i=0; i < argc-1; i++){
-  //  printf("UNsorted b array: %d\n", b[i]);
-  //}
-
-  ops = max_sort(a, b, split_count+1);
-  //printf("# operations: %d\n", ops);
-  //for (int i=0; i < argc -1; i++){
-  //  printf("Sorted array: %d\n", b[i]);
-  //}
+  for (int i=0; i < argc-1; i++){
+    printf("UNsorted a array: %d\n", a[i]);
+  }
+  for (int i=0; i < argc-1; i++){
+    printf("UNsorted b array: %d\n", b[i]);
+  }
+  
+  turk_sort(a, b, split_count + 1);
+  //ops = max_sort(a, b, split_count+1);
+  printf("# operations: %d\n", ops);
+  for (int i=0; i < argc -1; i++){
+    printf("Sorted array: %d\n", b[i]);
+  }
 
   return (ops);
 }

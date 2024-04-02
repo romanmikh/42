@@ -1,3 +1,4 @@
+#include "push_swap.h"
 
 int order_check(int a[], int size){
   int i = 0;
@@ -37,30 +38,5 @@ int list_repeat_check_str(char *a[], int size) {
         }
     }
     return 0; // No repeating elements found
-}
-
-int isnum_from_str(const char *str) {
-    // Check for null pointer or empty string
-    if (str == NULL || *str == '\0') {
-        return (0);
-    }
-
-    // Check for optional leading sign
-    if (*str == '-' || *str == '+') {
-        str++; // Skip the sign
-        if (*str == '\0') { // String is just "-" or "+"
-            return (0);
-        }
-    }
-
-    // Check each character to ensure it's a digit
-    while (*str != '\0') {
-        if (*str < '0' || *str > '9') {
-            return (0);;
-        }
-        str++;
-    }
-
-    return (1);
 }
 
