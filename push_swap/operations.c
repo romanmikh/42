@@ -1,146 +1,154 @@
-#include <stdio.h>
 
-int sa(int a[])
-{
-  int temp;
+# include "push_swap.h"
 
-  temp = a[0];
-  a[0] = a[1];
-  a[1] = temp;
-  printf("%s\n", "sa");
-  return (0);
-}
+void swap_top_two(Stack* stack) {
+    if (stack->size < 2)
+        return;
 
-int sb(int b[])
-{
-  int temp;
+    Node* first = stack->top;
+    Node* second = first->next;
 
-  temp = b[0];
-  b[0] = b[1];
-  b[1] = temp;
-  printf("%s\n", "sb");
-  return (0);
-}
+    // Adjusting pointers to swap the first two nodes
+    first->next = second->next;
+    second->prev = first->prev;
+    if (second->next != NULL) // If there's a third node, adjust its prev pointer
+        second->next->prev = first;
 
-int ss(int a[], int b[])
-{
-  sa(a);
-  sb(b);
-  printf("%s\n", "ss\n");
-  return (0);
-}
+    second->next = first;
+    first->prev = second;
 
-int pa(int a[], int b[])
-{
-  int temp;
+    // Adjust the top pointer of the stack
+    stack->top = second;
 
-  temp = a[0];
-  a[0] = b[0];
-  b[0] = temp;
-  printf("%s\n", "pa");
-  return (0);
-}
-
-int pb(int b[], int a[])
-{
-  int temp;
-
-  temp = b[0];
-  b[0] = a[0];
-  a[0] = temp;
-  printf("%s\n", "pb");
-  return (0);
-}
-
-int ra(int a[], int size)
-{
-  int temp;
-  int i;
-
-  i = 0;
-  temp = a[0];
-  while (i < size-2)
-  {
-    a[i] = a[i+1];
-    i++;
-  }
-  a[i] = temp;
-  printf("%s\n", "ra");
-  return (0);
-}
-
-int rb(int b[], int size)
-{
-  int temp;
-  int i;
-
-  i = 0;
-  temp = b[0];
-  while (i < size-2)
-  {
-    b[i] = b[i+1];
-    i++;
-  }
-  b[i] = temp;
-  printf("%s\n", "rb");
-  return (0);
-}
-
-int rr(int a[], int b[], int size)
-{
-  ra(a, size);
-  rb(b, size);
-  return (0);
-  printf("%s\n", "rr");
-}
-
-int rra(int a[], int size)
-{
-  int temp;
-
-  temp = a[size-1];
-  while (size > 1)
-  {
-    a[size-1] = a[size-2];
-    size--;
-  }
-  a[0] = temp; 
-  printf("%s\n", "rra");
-  return (0);
+    // If there are only two elements, adjust the bottom pointer as well
+    if (stack->size == 2) {
+        stack->bottom = first;
+    }
 }
 
 
-int rrb(int b[], int size)
-{
-  int temp;
+void rotate_forward(Stack* stack) {
+  // first element becomes last
+    if (stack->size < 2) {
+        // No need to rotate if the stack has less than two elements
+        return;
+    }
 
-  temp = b[size-1];
-  while (size > 1)
-  {
-    b[size-1] = b[size-2];
-    size--;
-  }
-  b[0] = temp; 
-  printf("%s\n", "rrb");
-  return (0);
+    Node* first = stack->top;
+    Node* last = stack->bottom;
+
+    // Adjust the stack's top to point to the second element
+    stack->top = first->next;
+    stack->top->prev = NULL;
+
+    // Move the original top element to the bottom
+    first->next = NULL;
+    first->prev = last;
+    last->next = first;
+    stack->bottom = first;
 }
 
-int rrr(int a[], int b[], int size)
-{
-  rra(a, size);
-  rrb(b, size);
-  printf("%s\n", "rrr");
-  return (0);
+
+void rotate_backward(Stack* stack) {
+    if (stack->size < 2) {
+        // No need to rotate if the stack has less than two elements
+        return;
+    }
+
+    Node* first = stack->top;
+    Node* last = stack->bottom;
+
+    // Adjust the stack's bottom to point to the second to last element
+    stack->bottom = last->prev;
+    stack->bottom->next = NULL;
+
+    // Move the original bottom element to the top
+    last->prev = NULL;
+    last->next = first;
+    first->prev = last;
+    stack->top = last;
 }
 
-//int main(){
-//  int a[] = {1,2,3,5,4};
-//  int b[5] = {};
-//  
-//  int i;
-//  rrr(a,b,5);
-//  for (i=0; i < sizeof(a)/sizeof(a[0]); i++){
-//    printf("a: %d, b: %d\n", a[i], b[i]);
-//  }
-//  return (0);
-//}
+
+void push_top_element(Stack* stackA, Stack* stackB) { 
+  if (stackA->size == 0) return; // Exit if stackA is empty
+
+    // Detach the top node from stackA
+    Node* movingNode = stackA->top;
+    stackA->top = movingNode->next; // Update top of stackA
+    
+    if (stackA->top) {
+        stackA->top->prev = NULL;
+    } else {
+        stackA->bottom = NULL; // If stackA is now empty
+    }
+    stackA->size--; // Decrement stackA's size
+
+    // Insert the moving node at the top of stackB
+    movingNode->next = stackB->top; // Link movingNode to the former top of stackB
+    movingNode->prev = NULL; // movingNode is the new top, so no previous node
+    if (stackB->top) {
+        stackB->top->prev = movingNode; // Link former top of stackB to movingNode
+    } else {
+        stackB->bottom = movingNode; // If stackB was empty, movingNode is also the new bottom
+    }
+    stackB->top = movingNode; // Update top of stackB
+    stackB->size++; // Increment stackB's size
+}
+
+void sx(Stack* stack, char x)
+{
+  swap_top_two(stack);
+  if (x == 'a')
+    printf("sa");
+  if (x == 'b')
+    printf("sb");
+}
+
+void ss(Stack* a, Stack* b)
+{
+  swap_top_two(a);
+  swap_top_two(b);
+  printf("ss");
+}
+
+void px(Stack* a, Stack* b, char x)
+{
+  push_top_element(a, b);
+  if (x == 'a')
+    printf("pa");
+  if (x == 'b')
+    printf("pb");
+}
+
+void rx(Stack* stack, char x)
+{
+  rotate_backward(stack);
+  if (x == 'a')
+    printf("ra");
+  if (x == 'b')
+    printf("rb");
+}
+
+void rr(Stack* a, Stack* b)
+{
+  rotate_backward(a);
+  rotate_backward(b);
+  printf("rr");
+}
+
+void rrx(Stack* stack, char x)
+{
+  rotate_forward(stack);
+  if (x == 'a')
+    printf("rra");
+  if (x == 'b')
+    printf("rrb");
+}
+
+void rrr(Stack* a, Stack* b)
+{
+  rotate_forward(a);
+  rotate_forward(b);
+  printf("rrr");
+}

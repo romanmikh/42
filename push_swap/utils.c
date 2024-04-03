@@ -1,42 +1,34 @@
 #include "push_swap.h"
 
-int order_check(int a[], int size){
-  int i = 0;
+void push(Stack* stack, int value) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    if (newNode == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(EXIT_FAILURE); // Exit if memory allocation fails
+    }
+    newNode->value = value;
+    newNode->next = stack->top; // The new node points to the current top
+    newNode->prev = NULL; // As the new top, it has no previous node
 
-  while (i < size -2){ // double check if -1 is needed
-    if (a[i] > a[i+1])
-      return (0);
-    i++;
-  }
-  return (1);
+    if (stack->top != NULL) { // If the stack is not empty
+        stack->top->prev = newNode; // Update the current top's previous pointer
+    }
+    stack->top = newNode; // Update the stack's top to the new node
+    if (stack->size == 0) { // If the stack was empty
+        stack->bottom = newNode; // This new node is also the bottom
+    }
+    stack->size++; // Increment the size of the stack
 }
 
-int list_repeat_check_int(int a[], int size) {
-    printf("a:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", a[i]);
-    }
-    printf("\n");
 
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = i + 1; j < size; j++) {
-          printf("i: %d, j: %d, elements: %d & %d\n", i, j, a[i], a[j]);
-            if (a[i] == a[j]) {    
-                return (1);
-            }
-        }
+void freeStack(Stack* stack) {
+    Node* current = stack->top;
+    while (current != NULL) {
+        Node* next = current->next;
+        free(current);
+        current = next;
     }
-    return(0);
+    stack->top = NULL; // Reset top
+    stack->bottom = NULL; // Reset bottom
+    stack->size = 0; // Reset size
 }
-
-int list_repeat_check_str(char *a[], int size) {
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = i + 1; j < size; j++) {
-            if (ft_strncmp(a[i], a[j], size) == 0) {
-                return 1; // Found a repeating element
-            }
-        }
-    }
-    return 0; // No repeating elements found
-}
-

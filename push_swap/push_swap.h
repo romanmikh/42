@@ -6,16 +6,27 @@
 # include <unistd.h>
 # include "libft/libft.h"
 
-int sa(int a[]);
-int sb(int b[]);
-int ss(int a[], int b[]);
-int pa(int a[], int b[]);
-int pb(int b[], int a[]);
-int ra(int a[], int size);
-int rb(int b[], int size);
-int rr(int a[], int b[], int size);
-int rra(int a[], int size);
-int rrb(int b[], int size);
-int rrr(int a[], int b[], int size);
+typedef struct Node {
+    int value;
+    struct Node* next;
+    struct Node* prev;
+} Node;
+
+typedef struct Stack {
+    Node* top;
+    Node* bottom;
+    int size;
+} Stack;
+
+void push(Stack* stack, int value);
+void freeStack(Stack* stack);
+
+void sx(Stack* stack, char x);
+void ss(Stack* a, Stack* b);
+void px(Stack* a, Stack* b, char x);
+void rx(Stack* stack, char x);
+void rr(Stack* a, Stack* b);
+void rrx(Stack* stack, char x);
+void rrr(Stack* a, Stack* b);
 
 #endif
