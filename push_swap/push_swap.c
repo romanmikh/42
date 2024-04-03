@@ -1,38 +1,29 @@
 #include "push_swap.h"
 #include <string.h> // Include at the top of your file
 
-int *find_neighbours_in_array(int e, int arr[], int arr_size)
-{
-  int upper_diff = INT_MAX;
-  int lower_diff = INT_MAX;
-  int i_upper = 0;
-  int i_lower = 0;
-  int i = 0;
-  int *result;
 
-  result = malloc(2 * sizeof(int));
-  if (result == NULL)
-    return (NULL);
+void find_neighbours_in_stack(int e, Stack* stack) {
+    int upper_diff = INT_MAX;
+    int lower_diff = INT_MAX;
+    int moves_to_upper = -1; // Initialize with -1 to indicate 'not found'
+    int moves_to_lower = -1; // Initialize with -1 to indicate 'not found'
+    int moves = 0;
+    Node* current = stack->top;
 
-  while (i <= arr_size)
-  {
-    if (arr[i] - e > 0 && arr[i] - e < upper_diff)
-    {
-      upper_diff = arr[i] - e;
-      i_upper = i;
+    while (current != NULL) {
+        int diff = current->value - e;
+        if (diff > 0 && diff < upper_diff) {
+            upper_diff = diff;
+            moves_to_upper = moves;
+        }
+        if (diff < 0 && -diff < lower_diff) {
+            lower_diff = -diff;
+            moves_to_lower = moves;
+        }
+        current = current->next;
+        moves++;
     }
-    if (e - arr[i] > 0 && e - arr[i] < lower_diff)
-    {
-      lower_diff = e - arr[i];
-      i_lower = i;
-    }
-    i++; 
-  }
-  result[0] = i_lower;
-  result[1] = i_upper;
-  return (result);
 }
-
 //int *operations_required(int e, int a_pos,int i_lower, int i_upper, int size_a, int size_b)
 //{
 //  int ra_needed = 0;
@@ -91,7 +82,7 @@ int main(int argc, char *argv[]) {
 
         push(&stackA, atoi(current_str));
     }
-
+    find_neighbours_in_stacK(stackA->top->value, stackB);
     // No need for duplicate check as push operation is adjusted for stack
 
     // Operations on stackA can now be performed using the previously defined functions

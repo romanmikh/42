@@ -145,3 +145,38 @@ int rrr(int a[], int b[], int size)
 //  }
 //  return (0);
 //}
+/*
+ */
+
+
+int *find_neighbours_in_array(int e, int arr[], int arr_size)
+{
+  int upper_diff = INT_MAX;
+  int lower_diff = INT_MAX;
+  int i_upper = 0;
+  int i_lower = 0;
+  int i = 0;
+  int *result;
+
+  result = malloc(2 * sizeof(int));
+  if (result == NULL)
+    return (NULL);
+
+  while (i <= arr_size)
+  {
+    if (arr[i] - e > 0 && arr[i] - e < upper_diff)
+    {
+      upper_diff = arr[i] - e;
+      i_upper = i;
+    }
+    if (e - arr[i] > 0 && e - arr[i] < lower_diff)
+    {
+      lower_diff = e - arr[i];
+      i_lower = i;
+    }
+    i++; 
+  }
+  result[0] = i_lower;
+  result[1] = i_upper;
+  return (result);
+}
