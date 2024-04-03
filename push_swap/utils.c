@@ -32,3 +32,13 @@ void freeStack(Stack* stack) {
     stack->bottom = NULL; // Reset bottom
     stack->size = 0; // Reset size
 }
+
+int calc_stack_size(Stack* stack) {
+    int size = 0;
+    Node* current = stack->top;
+    while (current != NULL) {
+        size++;
+        current = current->next;
+    }
+    return size;
+}

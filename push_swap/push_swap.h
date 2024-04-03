@@ -29,4 +29,6 @@ void rr(Stack* a, Stack* b);
 void rrx(Stack* stack, char x);
 void rrr(Stack* a, Stack* b);
 
+int calc_stack_size(Stack* stack);
+
 #endif

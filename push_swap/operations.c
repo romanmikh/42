@@ -100,55 +100,55 @@ void sx(Stack* stack, char x)
 {
   swap_top_two(stack);
   if (x == 'a')
-    printf("sa");
+    printf("sa\n");
   if (x == 'b')
-    printf("sb");
+    printf("sb\n");
 }
 
 void ss(Stack* a, Stack* b)
 {
   swap_top_two(a);
   swap_top_two(b);
-  printf("ss");
+  printf("ss\n");
 }
 
 void px(Stack* a, Stack* b, char x)
 {
   push_top_element(a, b);
   if (x == 'a')
-    printf("pa");
+    printf("pa\n");
   if (x == 'b')
-    printf("pb");
+    printf("pb\n");
 }
 
 void rx(Stack* stack, char x)
 {
   rotate_backward(stack);
   if (x == 'a')
-    printf("ra");
+    printf("ra\n");
   if (x == 'b')
-    printf("rb");
+    printf("rb\n");
 }
 
 void rr(Stack* a, Stack* b)
 {
   rotate_backward(a);
   rotate_backward(b);
-  printf("rr");
+  printf("rr\n");
 }
 
 void rrx(Stack* stack, char x)
 {
   rotate_forward(stack);
   if (x == 'a')
-    printf("rra");
+    printf("rra\n");
   if (x == 'b')
-    printf("rrb");
+    printf("rrb\n");
 }
 
 void rrr(Stack* a, Stack* b)
 {
   rotate_forward(a);
   rotate_forward(b);
-  printf("rrr");
+  printf("rrr\n");
 }
