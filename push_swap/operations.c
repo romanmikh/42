@@ -123,7 +123,7 @@ void px(Stack* a, Stack* b, char x)
 
 void rx(Stack* stack, char x)
 {
-  rotate_backward(stack);
+  rotate_forward(stack);
   if (x == 'a')
     printf("ra\n");
   if (x == 'b')
@@ -132,14 +132,14 @@ void rx(Stack* stack, char x)
 
 void rr(Stack* a, Stack* b)
 {
-  rotate_backward(a);
-  rotate_backward(b);
+  rotate_forward(a);
+  rotate_forward(b);
   printf("rr\n");
 }
 
 void rrx(Stack* stack, char x)
 {
-  rotate_forward(stack);
+  rotate_backward(stack);
   if (x == 'a')
     printf("rra\n");
   if (x == 'b')
@@ -148,7 +148,7 @@ void rrx(Stack* stack, char x)
 
 void rrr(Stack* a, Stack* b)
 {
-  rotate_forward(a);
-  rotate_forward(b);
+  rotate_backward(a);
+  rotate_backward(b);
   printf("rrr\n");
 }

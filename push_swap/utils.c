@@ -42,3 +42,33 @@ int calc_stack_size(Stack* stack) {
     }
     return size;
 }
+
+
+void sort_three(Stack* stackA) {
+    int top = stackA->top->value;
+    int middle = stackA->top->next->value;
+    int bottom = stackA->top->next->next->value;
+
+    // Case: 2 1 3, Swap the top two elements (sa)
+    if (top > middle && bottom > top) {
+        sx(stackA, 'a'); // sa
+    }
+    // Case: 1 3 2, Swap the top two elements then rotate downwards (sa, rra)
+    else if (top < middle && middle > bottom && bottom > top) {
+        sx(stackA, 'a'); // sa
+        rx(stackA, 'a'); // rra
+    }
+    // Case: 3 1 2, Rotate upwards (ra)
+    else if (top > middle && middle < bottom && bottom < top) {
+        rx(stackA, 'a'); // ra
+    }
+    // Case: 2 3 1, Rotate downwards (rra)
+    else if (top < middle && middle > bottom && bottom < top) {
+        rrx(stackA, 'a'); // rra
+    }
+    // Case: 3 2 1, Swap the top two elements then rotate upwards (sa, ra)
+    else if (top > middle && middle > bottom) {
+        sx(stackA, 'a'); // sa
+        rrx(stackA, 'a'); // ra
+    }
+}
