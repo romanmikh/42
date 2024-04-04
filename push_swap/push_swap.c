@@ -34,43 +34,36 @@ void print_stacks(Stack* stackA, Stack* stackB)
 void findNeighboursInB(Stack* b, int value, Neighbours* result) {
     int* small_val = NULL;
     int* large_val = NULL;
-    int smallestValue = INT_MAX;
-    int largestValue = INT_MIN;
+    Node* smallestNode = NULL;
+    Node* largestNode = NULL;
     Node* current = b->top;
 
     while (current != NULL) {
+        // Finding closest smaller value
         if (current->value < value) {
             if (!small_val || current->value > *small_val) {
                 small_val = &current->value;
             }
         }
+        // Finding closest larger value
         if (current->value > value) {
             if (!large_val || current->value < *large_val) {
                 large_val = &current->value;
             }
         }
-        if (current->value < smallestValue) {
-            smallestValue = current->value;
+        // Keeping track of smallest and largest node values in B
+        if (!smallestNode || current->value < (smallestNode->value)) {
+            smallestNode = current;
         }
-        if (current->value > largestValue) {
-            largestValue = current->value;
+        if (!largestNode || current->value > (largestNode->value)) {
+            largestNode = current;
         }
         current = current->next;
     }
 
-    if (!small_val) {
-        // If value is smaller than all in B, loop to the largest value in B
-        result->smallerNeighbour = &largestValue;
-    } else {
-        result->smallerNeighbour = small_val;
-    }
-
-    if (!large_val) {
-        // If value is lager than all in B, loop to the smallest value in B
-        result->largerNeighbour = &smallestValue;
-    } else {
-        result->largerNeighbour = large_val;
-    }
+    // Assigning edge cases
+    result->smallerNeighbour = small_val ? small_val : (largestNode ? &largestNode->value : NULL);
+    result->largerNeighbour = large_val ? large_val : (smallestNode ? &smallestNode->value : NULL);
 }
 
 Neighbours* find_neighbours_in_stack(Stack* a, Stack* b) {
@@ -104,7 +97,6 @@ void calculate_moves(Node* currentA, Stack* b, Neighbours* results, int sizeA, M
         int wrapDistanceSmaller = INT_MAX;
         int directDistanceLarger = INT_MAX;
         int wrapDistanceLarger = INT_MAX;
-
         while (current != NULL) {
             if (&current->value == results[i].smallerNeighbour) {
                 directDistanceSmaller = index; // Distance from top to smaller neighbour
@@ -133,23 +125,43 @@ void calculate_moves(Node* currentA, Stack* b, Neighbours* results, int sizeA, M
 }
 
 
-void execute_move(Stack* stackA, Stack* stackB, MoveInfo move) {
+void execute_a_to_b(Stack* stackA, Stack* stackB, MoveInfo move) {
+    int sizeA = calc_stack_size(stackA);
     int sizeB = calc_stack_size(stackB);
+    int positionInA = 0;
     
-    // If move.distance is closer to the top of stack B
-    if (move.distance <= sizeB / 2) {
-        // Rotate stack B to bring the target value to the top using rotate_backward
-        for (int i = 0; i < move.distance; i++) {
-            rrx(stackB, 'b');
+    // Find the position of aVal in stackA
+    Node* currentNode = stackA->top;
+    while (currentNode != NULL && &currentNode->value != move.aVal) {
+        positionInA++;
+        currentNode = currentNode->next;
+    }
+    
+    // Rotate stackA to bring aVal to the top
+    if (positionInA <= sizeA / 2) {
+        // If closer to the top, rotate upwards
+        for (int i = 0; i < positionInA; i++) {
+            rx(stackA, 'a'); // ra
         }
     } else {
-        // Rotate stack B to bring the target value to the top using rotate_forward
-        for (int i = 0; i < sizeB - move.distance; i++) {
-            rx(stackB, 'b');
+        // If closer to the bottom, rotate downwards
+        for (int i = 0; i < sizeA - positionInA; i++) {
+            rrx(stackA, 'a'); // rra
         }
     }
     
-    // Now push the top element of stack A to stack B
+    // Rotate stackB to prepare for the incoming element, if necessary
+    if (move.distance <= sizeB / 2) {
+        for (int i = 0; i < move.distance; i++) {
+            rrx(stackB, 'b'); // rb
+        }
+    } else {
+        for (int i = 0; i < sizeB - move.distance; i++) {
+            rx(stackB, 'b'); // rrb
+        }
+    }
+    
+    // Push the now-top element of stackA to stackB
     px(stackA, stackB, 'a');
 }
 
@@ -207,8 +219,12 @@ int main(int argc, char *argv[]) {
         sizeA = calc_stack_size(&stackA);
         moves = malloc(sizeA * sizeof(MoveInfo));
 
+        printf("xxxxxxxx %d \n yyyyyyyyy %d\n", *results[i].smallerNeighbour, *results[i].largerNeighbour);
+
             int smallerN = results[i].smallerNeighbour ? *(results[i].smallerNeighbour) : INT_MIN; // Use INT_MIN as placeholder if NULL
             int largerN = results[i].largerNeighbour ? *(results[i].largerNeighbour) : INT_MAX; // Use INT_MAX as placeholder if NULL
+            
+
             printf("Value %d in A - Smaller neighbour: %d, Larger neighbour: %d\n",
                    currentA->value, smallerN, largerN);
             calculate_moves(currentA, &stackB, results, sizeA, moves);
@@ -227,7 +243,7 @@ int main(int argc, char *argv[]) {
         printf("a to move: %d, b to rotate: %d, distance: %d\n", *cheapest_move.aVal, *cheapest_move.valuePtr, cheapest_move.distance);
 
         
-        execute_move(&stackA, &stackB, cheapest_move);
+        execute_a_to_b(&stackA, &stackB, cheapest_move);
         print_stacks(&stackA, &stackB);
 
         free(results); 
