@@ -293,6 +293,39 @@ void rotate_to_lowest_top(Stack* stackA) {
     }
 }
 
+int isWithinIntRange(const char* str) {
+    // Constants for the boundaries of int as strings
+    const char* maxIntStr = "2147483647";
+    const char* minIntStr = "-2147483648";
+    
+    int len = strlen(str);
+    int isNegative = (str[0] == '-');
+    
+    // Immediately return 0 if string length exceeds max possible length
+    if (len > 10 + isNegative) return 0;
+
+    // Compare against INT_MAX and INT_MIN based on sign
+    if (isNegative) {
+        if (len < 11) return 1; // Shorter than minIntStr, definitely within range
+        return strcmp(str, minIntStr) <= 0;
+    } else {
+        if (len < 10) return 1; // Shorter than maxIntStr, definitely within range
+        return strcmp(str, maxIntStr) <= 0;
+    }
+}
+
+int arr_of_str_has_repeats(char* strings[], int count) {
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = i + 1; j < count; j++) {
+            if (strcmp(strings[i], strings[j]) == 0) {
+                // Found a repeat
+                return 1;
+            }
+        }
+    }
+    // No repeats found
+    return 0;
+}
 
 int main(int argc, char *argv[]) {
     Stack stackA = {NULL, NULL, 0};
@@ -312,7 +345,7 @@ int main(int argc, char *argv[]) {
         str_list = ft_split(argv[1], ' ');
         split_count = list_len_str(str_list);
         if (split_count <= 0) {
-            printf("Error\n");
+//            printf("Error\n");
             return 1;
         }
     } else {
@@ -321,18 +354,19 @@ int main(int argc, char *argv[]) {
 
     for (int i = 0; i < split_count; i++) {
         char *current_str = (argc == 2) ? str_list[i] : argv[i + 1];
-        if (isnum_from_str(current_str) == 0) {
-            printf("Error\n");
+        if (isnum_from_str(current_str) == 0 || isWithinIntRange(current_str) == 0 || arr_of_str_has_repeats(str_list, split_count) == 1) {
+//            printf("Error\n");
             freeStack(&stackA);
             return 1;
         }
+//        printf("is within range %s: %d\n", current_str, isWithinIntRange(current_str));
         push(&stackA, atoi(current_str));
     }
 
-    print_stacks(&stackA, &stackB);
+//    print_stacks(&stackA, &stackB);
     px(&stackA, &stackB, 'a');
     px(&stackA, &stackB, 'a');
-    print_stacks(&stackA, &stackB);
+//    print_stacks(&stackA, &stackB);
 
     while (calc_stack_size(&stackA) > 3){
 
@@ -348,54 +382,54 @@ int main(int argc, char *argv[]) {
         sizeA = calc_stack_size(&stackA);
         moves = malloc(sizeA * sizeof(MoveInfo));
 
-        printf("xxxxxxxx %d \n yyyyyyyyy %d\n", *results[i].smallerNeighbour, *results[i].largerNeighbour);
+//        printf("xxxxxxxx %d \n yyyyyyyyy %d\n", *results[i].smallerNeighbour, *results[i].largerNeighbour);
 
-            int smallerN = results[i].smallerNeighbour ? *(results[i].smallerNeighbour) : INT_MIN; // Use INT_MIN as placeholder if NULL
-            int largerN = results[i].largerNeighbour ? *(results[i].largerNeighbour) : INT_MAX; // Use INT_MAX as placeholder if NULL
+//            int smallerN = results[i].smallerNeighbour ? *(results[i].smallerNeighbour) : INT_MIN; // Use INT_MIN as placeholder if NULL
+  //          int largerN = results[i].largerNeighbour ? *(results[i].largerNeighbour) : INT_MAX; // Use INT_MAX as placeholder if NULL
             
 
-            printf("Value %d in A - Smaller neighbour: %d, Larger neighbour: %d\n",
-                   currentA->value, smallerN, largerN);
+//            printf("Value %d in A - Smaller neighbour: %d, Larger neighbour: %d\n",
+//                   currentA->value, smallerN, largerN);
             calculate_moves(currentA, &stackB, results, sizeA, moves);
-            printf("A element: %d, cheapest B value:%d, dist: %d\n", 
-                *moves[i].aVal, *moves[i].valuePtr, moves[i].distance);
+//            printf("A element: %d, cheapest B value:%d, dist: %d\n", 
+//                *moves[i].aVal, *moves[i].valuePtr, moves[i].distance);
 
         }
         
         for (int j = 0; j < sizeA; j++){
-          //printf("cheaper value:%d, dist: %d\n", *moves[j].valuePtr, moves[j].distance);
+//          //printf("cheaper value:%d, dist: %d\n", *moves[j].valuePtr, moves[j].distance);
           if (moves[j].distance < cheapest_move.distance){
             cheapest_move = moves[j];
           }
         }
         
-        printf("a to move: %d, b to rotate: %d, distance: %d\n", *cheapest_move.aVal, *cheapest_move.valuePtr, cheapest_move.distance);
+//        printf("a to move: %d, b to rotate: %d, distance: %d\n", *cheapest_move.aVal, *cheapest_move.valuePtr, cheapest_move.distance);
 
         
         execute_a_to_b(&stackA, &stackB, cheapest_move);
-        print_stacks(&stackA, &stackB);
+//        print_stacks(&stackA, &stackB);
 
         free(results); 
     } else {
-        printf("Error: Could not find nearest neighbours.\n");
+//        printf("Error: Could not find nearest neighbours.\n");
     }
 
     } // end of loop that makes up one cycle of checking + moving an element from A to B
     sort_three(&stackA);
-    printf("stack A should now be sorted\n");
-    print_stacks(&stackA, &stackB);
+//    printf("stack A should now be sorted\n");
+//    print_stacks(&stackA, &stackB);
 
-    printf("rotating back into A!\n");
+//    printf("rotating back into A!\n");
     while(calc_stack_size(&stackB) > 0){
-      printf("stackA size: %d\n", calc_stack_size(&stackA));
+//      printf("stackA size: %d\n", calc_stack_size(&stackA));
       execute_b_to_a(&stackA, &stackB);
-      print_stacks(&stackA, &stackB);
+//      print_stacks(&stackA, &stackB);
     }
 
     rotate_to_lowest_top(&stackA);
 
-    printf("stack A should now be sorted\n");
-    print_stacks(&stackA, &stackB);
+//    printf("stack A should now be sorted\n");
+    //print_stacks(&stackA, &stackB);
 
     freeStack(&stackA);
     freeStack(&stackB);
