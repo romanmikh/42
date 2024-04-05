@@ -141,29 +141,158 @@ void execute_a_to_b(Stack* stackA, Stack* stackB, MoveInfo move) {
     if (positionInA <= sizeA / 2) {
         // If closer to the top, rotate upwards
         for (int i = 0; i < positionInA; i++) {
-            rx(stackA, 'a'); // ra
+            rrx(stackA, 'a'); // ra
         }
     } else {
         // If closer to the bottom, rotate downwards
         for (int i = 0; i < sizeA - positionInA; i++) {
-            rrx(stackA, 'a'); // rra
+            rx(stackA, 'a'); // rra
         }
     }
     
     // Rotate stackB to prepare for the incoming element, if necessary
     if (move.distance <= sizeB / 2) {
         for (int i = 0; i < move.distance; i++) {
-            rrx(stackB, 'b'); // rb
+            rx(stackB, 'b'); // rb
         }
     } else {
         for (int i = 0; i < sizeB - move.distance; i++) {
-            rx(stackB, 'b'); // rrb
+            rrx(stackB, 'b'); // rrb
         }
     }
     
     // Push the now-top element of stackA to stackB
     px(stackA, stackB, 'a');
 }
+
+
+
+
+
+
+
+
+void findNeighboursInA(Stack* a, int value, Neighbours* result) {
+    int* small_val = NULL;
+    int* large_val = NULL;
+    Node* smallestNode = NULL;
+    Node* largestNode = NULL;
+    Node* current = a->top;
+
+    while (current != NULL) {
+        // Finding closest smaller value
+        if (current->value < value) {
+            if (!small_val || current->value > *small_val) {
+                small_val = &current->value;
+            }
+        }
+        // Finding closest larger value
+        if (current->value > value) {
+            if (!large_val || current->value < *large_val) {
+                large_val = &current->value;
+            }
+        }
+        // Keeping track of smallest and largest node values in A
+        if (!smallestNode || current->value < smallestNode->value) {
+            smallestNode = current;
+        }
+        if (!largestNode || current->value > largestNode->value) {
+            largestNode = current;
+        }
+        current = current->next;
+    }
+
+    // Assigning edge cases
+    result->smallerNeighbour = small_val ? small_val : (largestNode ? &largestNode->value : NULL);
+    result->largerNeighbour = large_val ? large_val : (smallestNode ? &smallestNode->value : NULL);
+}
+
+// Calculate the position to insert the element from B into A
+int calculate_position_to_insert(Stack* a, Neighbours* neighbours) {
+    int position = 0;
+    Node* current = a->top;
+    
+    // If no smaller neighbour, insert at the top
+    if (neighbours->smallerNeighbour == NULL) return 0;
+    
+    while (current != NULL) {
+        if (&current->value == neighbours->smallerNeighbour) {
+            position++; // Insert right after the smaller neighbour
+            break;
+        }
+        current = current->next;
+        position++;
+    }
+    
+    return position;
+}
+
+// Adjust stackA to make the insertion point the top of the stack
+void adjust_stackA_for_insertion(Stack* stackA, int positionToInsert) {
+    int sizeA = calc_stack_size(stackA);
+    
+    if (positionToInsert <= sizeA / 2) {
+        // Closer to the top, rotate upwards
+        for (int i = 0; i < positionToInsert; i++) {
+            rx(stackA, 'a'); // ra
+        }
+    } else {
+        // Closer to the bottom, rotate downwards
+        for (int i = 0; i < sizeA - positionToInsert; i++) {
+            rrx(stackA, 'a'); // rra
+        }
+    }
+}
+
+// Function to execute moving top element of B to its correct position in A
+void execute_b_to_a(Stack* stackA, Stack* stackB) {
+    if (stackB->top == NULL) return; // Nothing to move if B is empty
+
+    int bTopValue = stackB->top->value;
+    Neighbours neighbours;
+    findNeighboursInA(stackA, bTopValue, &neighbours);
+
+    int positionToInsert = calculate_position_to_insert(stackA, &neighbours);
+    adjust_stackA_for_insertion(stackA, positionToInsert);
+
+    px(stackB, stackA, 'b'); // Perform pb (push from B to A)
+}
+
+
+
+void rotate_to_lowest_top(Stack* stackA) {
+    int sizeA = calc_stack_size(stackA);
+    if (sizeA <= 1) return; // No rotation needed for 0 or 1 element.
+
+    int positionOfLowest = 0;
+    int lowestValue = INT_MAX;
+    int currentIndex = 0;
+
+    // Find the lowest value and its position
+    Node* current = stackA->top;
+    while (current != NULL) {
+        if (current->value < lowestValue) {
+            lowestValue = current->value;
+            positionOfLowest = currentIndex;
+        }
+        current = current->next;
+        currentIndex++;
+    }
+
+    // Determine the shortest direction to rotate
+    if (positionOfLowest <= sizeA / 2) {
+        // If closer to the top, rotate upwards using ra
+        for (int i = 0; i < positionOfLowest; i++) {
+            rx(stackA, 'a'); // Use ra (rotate upwards)
+        }
+    } else {
+        // If closer to the bottom, rotate downwards using rra
+        for (int i = 0; i < sizeA - positionOfLowest; i++) {
+            rrx(stackA, 'a'); // Use rra (rotate downwards)
+        }
+    }
+}
+
 
 int main(int argc, char *argv[]) {
     Stack stackA = {NULL, NULL, 0};
@@ -256,7 +385,17 @@ int main(int argc, char *argv[]) {
     printf("stack A should now be sorted\n");
     print_stacks(&stackA, &stackB);
 
-    
+    printf("rotating back into A!\n");
+    while(calc_stack_size(&stackB) > 0){
+      printf("stackA size: %d\n", calc_stack_size(&stackA));
+      execute_b_to_a(&stackA, &stackB);
+      print_stacks(&stackA, &stackB);
+    }
+
+    rotate_to_lowest_top(&stackA);
+
+    printf("stack A should now be sorted\n");
+    print_stacks(&stackA, &stackB);
 
     freeStack(&stackA);
     freeStack(&stackB);
