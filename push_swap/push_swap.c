@@ -327,6 +327,23 @@ int arr_of_str_has_repeats(char* strings[], int count) {
     return 0;
 }
 
+
+void sort_two(Stack* stackA) {
+    if (stackA == NULL || stackA->top == NULL || stackA->top->next == NULL) {
+        // Stack does not have enough elements to sort.
+        return;
+    }
+
+    int top = stackA->top->value;
+    int next = stackA->top->next->value;
+
+    // If the top value is greater than the next, swap them.
+    if (top > next) {
+        sx(stackA, 'a'); // This assumes sx is your swap function for Stack A.
+    }
+}
+
+
 int main(int argc, char *argv[]) {
     Stack stackA = {NULL, NULL, 0};
     Stack stackB = {NULL, NULL, 0}; // Stack B remains initially empty
@@ -345,13 +362,22 @@ int main(int argc, char *argv[]) {
         str_list = ft_split(argv[1], ' ');
         split_count = list_len_str(str_list);
         if (split_count <= 0) {
-//            printf("Error\n");
+            printf("Error\n");
             return 1;
         }
     } else {
+// Allocate memory for str_list to hold argc-1 strings
+        str_list = malloc((argc - 1) * sizeof(char *));
+        if (!str_list) {
+            // Handle memory allocation failure
+            return 1;
+        }
+        for (int i = 1; i < argc; i++) {
+            str_list[i - 1] = argv[i]; // Directly assign pointers from argv to str_list
+        }
         split_count = argc - 1;
     }
-
+    //if (calc_stack_size(&stackA) > 3){
     for (int i = split_count-1; i >= 0; i--) {
         char *current_str = (argc == 2) ? str_list[i] : argv[i + 1];
         //printf("input: %s\n", current_str);
@@ -383,29 +409,14 @@ int main(int argc, char *argv[]) {
         sizeA = calc_stack_size(&stackA);
         moves = malloc(sizeA * sizeof(MoveInfo));
 
-//        printf("xxxxxxxx %d \n yyyyyyyyy %d\n", *results[i].smallerNeighbour, *results[i].largerNeighbour);
-
-//            int smallerN = results[i].smallerNeighbour ? *(results[i].smallerNeighbour) : INT_MIN; // Use INT_MIN as placeholder if NULL
-  //          int largerN = results[i].largerNeighbour ? *(results[i].largerNeighbour) : INT_MAX; // Use INT_MAX as placeholder if NULL
-            
-
-//            printf("Value %d in A - Smaller neighbour: %d, Larger neighbour: %d\n",
-//                   currentA->value, smallerN, largerN);
             calculate_moves(currentA, &stackB, results, sizeA, moves);
-//            printf("A element: %d, cheapest B value:%d, dist: %d\n", 
-//                *moves[i].aVal, *moves[i].valuePtr, moves[i].distance);
-
         }
         
         for (int j = 0; j < sizeA; j++){
-//          //printf("cheaper value:%d, dist: %d\n", *moves[j].valuePtr, moves[j].distance);
           if (moves[j].distance < cheapest_move.distance){
             cheapest_move = moves[j];
           }
         }
-        
-//        printf("a to move: %d, b to rotate: %d, distance: %d\n", *cheapest_move.aVal, *cheapest_move.valuePtr, cheapest_move.distance);
-
         
         execute_a_to_b(&stackA, &stackB, cheapest_move);
 //        print_stacks(&stackA, &stackB);
@@ -416,7 +427,13 @@ int main(int argc, char *argv[]) {
     }
 
     } // end of loop that makes up one cycle of checking + moving an element from A to B
-    sort_three(&stackA);
+      //
+    
+    if (calc_stack_size(&stackA) == 3)
+      sort_three(&stackA);
+    if (calc_stack_size(&stackA) == 2)
+      sort_two(&stackA);
+
 //    printf("stack A should now be sorted\n");
 //    print_stacks(&stackA, &stackB);
 
