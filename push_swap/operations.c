@@ -116,9 +116,9 @@ void px(Stack* a, Stack* b, char x)
 {
   push_top_element(a, b);
   if (x == 'a')
-    printf("pa\n");
-  if (x == 'b')
     printf("pb\n");
+  if (x == 'b')
+    printf("pa\n");
 }
 
 void rx(Stack* stack, char x)

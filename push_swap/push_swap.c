@@ -352,10 +352,11 @@ int main(int argc, char *argv[]) {
         split_count = argc - 1;
     }
 
-    for (int i = 0; i < split_count; i++) {
+    for (int i = split_count-1; i >= 0; i--) {
         char *current_str = (argc == 2) ? str_list[i] : argv[i + 1];
+        //printf("input: %s\n", current_str);
         if (isnum_from_str(current_str) == 0 || isWithinIntRange(current_str) == 0 || arr_of_str_has_repeats(str_list, split_count) == 1) {
-//            printf("Error\n");
+            printf("Error\n");
             freeStack(&stackA);
             return 1;
         }
@@ -363,7 +364,7 @@ int main(int argc, char *argv[]) {
         push(&stackA, atoi(current_str));
     }
 
-//    print_stacks(&stackA, &stackB);
+    //print_stacks(&stackA, &stackB);
     px(&stackA, &stackB, 'a');
     px(&stackA, &stackB, 'a');
 //    print_stacks(&stackA, &stackB);
