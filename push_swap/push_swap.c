@@ -390,12 +390,12 @@ int main(int argc, char *argv[]) {
         push(&stackA, atoi(current_str));
     }
 
-    //print_stacks(&stackA, &stackB);
+    
+    while (calc_stack_size(&stackA) > 3){
+//print_stacks(&stackA, &stackB);
     px(&stackA, &stackB, 'a');
     px(&stackA, &stackB, 'a');
 //    print_stacks(&stackA, &stackB);
-
-    while (calc_stack_size(&stackA) > 3){
 
     Neighbours* results = find_neighbours_in_stack(&stackA, &stackB);
     if (results != NULL) {
