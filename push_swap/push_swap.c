@@ -1,7 +1,4 @@
 #include "push_swap.h"
-#include <string.h> // Include at the top of your file
-
-
 
 void findNeighboursInB(Stack* b, int value, Neighbours* result) {
     int* small_val = NULL;
@@ -11,13 +8,13 @@ void findNeighboursInB(Stack* b, int value, Neighbours* result) {
     Node* current = b->top;
 
     while (current != NULL) {
-        // Finding closest smaller value
+        // Finding smaller value
         if (current->value < value) {
             if (!small_val || current->value > *small_val) {
                 small_val = &current->value;
             }
         }
-        // Finding closest larger value
+        // Finding larger value
         if (current->value > value) {
             if (!large_val || current->value < *large_val) {
                 large_val = &current->value;
@@ -36,6 +33,8 @@ void findNeighboursInB(Stack* b, int value, Neighbours* result) {
     // Assigning edge cases
     result->smallerNeighbour = small_val ? small_val : (largestNode ? &largestNode->value : NULL);
     result->largerNeighbour = large_val ? large_val : (smallestNode ? &smallestNode->value : NULL);
+    //printf("A value: %d, B small nei: %d, B large nei: %d\n", value, *result->smallerNeighbour, *result->largerNeighbour);
+
 }
 
 Neighbours* find_neighbours_in_stack(Stack* a, Stack* b) {
@@ -135,142 +134,18 @@ void execute_a_to_b(Stack* stackA, Stack* stackB, MoveInfo move) {
 }
 
 
-void findNeighboursInA(Stack* a, int value, Neighbours* result) {
-    int* small_val = NULL;
-    int* large_val = NULL;
-    Node* smallestNode = NULL;
-    Node* largestNode = NULL;
-    Node* current = a->top;
-
-    while (current != NULL) {
-        // Finding closest smaller value
-        if (current->value < value) {
-            if (!small_val || current->value > *small_val) {
-                small_val = &current->value;
-            }
-        }
-        // Finding closest larger value
-        if (current->value > value) {
-            if (!large_val || current->value < *large_val) {
-                large_val = &current->value;
-            }
-        }
-        // Keeping track of smallest and largest node values in A
-        if (!smallestNode || current->value < smallestNode->value) {
-            smallestNode = current;
-        }
-        if (!largestNode || current->value > largestNode->value) {
-            largestNode = current;
-        }
-        current = current->next;
-    }
-
-    // Assigning edge cases
-    result->smallerNeighbour = small_val ? small_val : (largestNode ? &largestNode->value : NULL);
-    result->largerNeighbour = large_val ? large_val : (smallestNode ? &smallestNode->value : NULL);
-}
-
-// Calculate the position to insert the element from B into A
-int calculate_position_to_insert(Stack* a, Neighbours* neighbours) {
-    int position = 0;
-    Node* current = a->top;
-    
-    // If no smaller neighbour, insert at the top
-    if (neighbours->smallerNeighbour == NULL) return 0;
-    
-    while (current != NULL) {
-        if (&current->value == neighbours->smallerNeighbour) {
-            position++; // Insert right after the smaller neighbour
-            break;
-        }
-        current = current->next;
-        position++;
-    }
-    
-    return position;
-}
-
-// Adjust stackA to make the insertion point the top of the stack
-void adjust_stackA_for_insertion(Stack* stackA, int positionToInsert) {
-    int sizeA = calc_stack_size(stackA);
-    
-    if (positionToInsert <= sizeA / 2) {
-        // Closer to the top, rotate upwards
-        for (int i = 0; i < positionToInsert; i++) {
-            rx(stackA, 'a'); // ra
-        }
-    } else {
-        // Closer to the bottom, rotate downwards
-        for (int i = 0; i < sizeA - positionToInsert; i++) {
-            rrx(stackA, 'a'); // rra
-        }
-    }
-}
-
-// Function to execute moving top element of B to its correct position in A
-void execute_b_to_a(Stack* stackA, Stack* stackB) {
-    if (stackB->top == NULL) return; // Nothing to move if B is empty
-
-    int bTopValue = stackB->top->value;
-    Neighbours neighbours;
-    findNeighboursInA(stackA, bTopValue, &neighbours);
-
-    int positionToInsert = calculate_position_to_insert(stackA, &neighbours);
-    adjust_stackA_for_insertion(stackA, positionToInsert);
-
-    px(stackB, stackA, 'b'); // Perform pb (push from B to A)
-}
-
-
-
-void rotate_to_lowest_top(Stack* stackA) {
-    int sizeA = calc_stack_size(stackA);
-    if (sizeA <= 1) return; // No rotation needed for 0 or 1 element.
-
-    int positionOfLowest = 0;
-    int lowestValue = INT_MAX;
-    int currentIndex = 0;
-
-    // Find the lowest value and its position
-    Node* current = stackA->top;
-    while (current != NULL) {
-        if (current->value < lowestValue) {
-            lowestValue = current->value;
-            positionOfLowest = currentIndex;
-        }
-        current = current->next;
-        currentIndex++;
-    }
-
-    // Determine the shortest direction to rotate
-    if (positionOfLowest <= sizeA / 2) {
-        // If closer to the top, rotate upwards using ra
-        for (int i = 0; i < positionOfLowest; i++) {
-            rx(stackA, 'a'); // Use ra (rotate upwards)
-        }
-    } else {
-        // If closer to the bottom, rotate downwards using rra
-        for (int i = 0; i < sizeA - positionOfLowest; i++) {
-            rrx(stackA, 'a'); // Use rra (rotate downwards)
-        }
-    }
-}
-
-
-
 
 
 
 int main(int argc, char *argv[]) {
     Stack stackA = {NULL, NULL, 0};
-    Stack stackB = {NULL, NULL, 0}; // Stack B remains initially empty
+    Stack stackB = {NULL, NULL, 0}; 
     char **str_list = NULL;
     int split_count = 0;
     MoveInfo cheapest_move;
     cheapest_move.aVal = NULL;
     cheapest_move.valuePtr = NULL;
     cheapest_move.distance = INT_MAX;
-    
 
     if (argc <= 1)
         return 0;
@@ -283,18 +158,15 @@ int main(int argc, char *argv[]) {
             return 1;
         }
     } else {
-// Allocate memory for str_list to hold argc-1 strings
         str_list = malloc((argc - 1) * sizeof(char *));
         if (!str_list) {
-            // Handle memory allocation failure
             return 1;
         }
         for (int i = 1; i < argc; i++) {
-            str_list[i - 1] = argv[i]; // Directly assign pointers from argv to str_list
+            str_list[i - 1] = argv[i];
         }
         split_count = argc - 1;
     }
-    //if (calc_stack_size(&stackA) > 3){
     for (int i = split_count-1; i >= 0; i--) {
         char *current_str = (argc == 2) ? str_list[i] : argv[i + 1];
         //printf("input: %s\n", current_str);
@@ -306,26 +178,32 @@ int main(int argc, char *argv[]) {
 //        printf("is within range %s: %d\n", current_str, isWithinIntRange(current_str));
         push(&stackA, atoi(current_str));
     }
-
-    
-    while (calc_stack_size(&stackA) > 3){
 //print_stacks(&stackA, &stackB);
     px(&stackA, &stackB, 'a');
     px(&stackA, &stackB, 'a');
+      printf("StackA size: %d", calc_stack_size(&stackA));
 //    print_stacks(&stackA, &stackB);
+    while (calc_stack_size(&stackA) > 3){
+      printf("yeeeehaw");
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Neighbours* results = find_neighbours_in_stack(&stackA, &stackB);
+    print_stacks(&stackA, &stackB);
     if (results != NULL) {
         Node* currentA = stackA.top;
         int sizeA;
         MoveInfo* moves = NULL;        
         if (!moves) {
-            // Handle allocation failure
         }
         for (int i = 0; currentA != NULL; currentA = currentA->next, i++) {
         sizeA = calc_stack_size(&stackA);
         moves = malloc(sizeA * sizeof(MoveInfo));
-
             calculate_moves(currentA, &stackB, results, sizeA, moves);
         }
         
@@ -364,12 +242,11 @@ int main(int argc, char *argv[]) {
     rotate_to_lowest_top(&stackA);
 
 //    printf("stack A should now be sorted\n");
-    //print_stacks(&stackA, &stackB);
+    print_stacks(&stackA, &stackB);
 
     freeStack(&stackA);
     freeStack(&stackB);
 
-    // If str_list was allocated, remember to free it as well
     return 0;
 }
 
