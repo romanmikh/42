@@ -1,6 +1,75 @@
 
 # include "push_swap.h"
 
+int isWithinIntRange(const char* str) {
+    // Constants for the boundaries of int as strings
+    const char* maxIntStr = "2147483647";
+    const char* minIntStr = "-2147483648";
+    
+    int len = strlen(str);
+    int isNegative = (str[0] == '-');
+    
+    // Immediately return 0 if string length exceeds max possible length
+    if (len > 10 + isNegative) return 0;
+
+    // Compare against INT_MAX and INT_MIN based on sign
+    if (isNegative) {
+        if (len < 11) return 1; // Shorter than minIntStr, definitely within range
+        return strcmp(str, minIntStr) <= 0;
+    } else {
+        if (len < 10) return 1; // Shorter than maxIntStr, definitely within range
+        return strcmp(str, maxIntStr) <= 0;
+    }
+}
+
+int arr_of_str_has_repeats(char* strings[], int count) {
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = i + 1; j < count; j++) {
+            if (strcmp(strings[i], strings[j]) == 0) {
+                // Found a repeat
+                return 1;
+            }
+        }
+    }
+    // No repeats found
+    return 0;
+}
+void sort_two(Stack* stackA) {
+    if (stackA == NULL || stackA->top == NULL || stackA->top->next == NULL) {
+        // Stack does not have enough elements to sort.
+        return;
+    }
+
+    int top = stackA->top->value;
+    int next = stackA->top->next->value;
+
+    // If the top value is greater than the next, swap them.
+    if (top > next) {
+        sx(stackA, 'a'); // This assumes sx is your swap function for Stack A.
+    }
+}
+
+// Utility function to find the minimum of two integers
+int min(int a, int b) {
+    return (a < b) ? a : b;
+}
+
+void print_stacks(Stack* stackA, Stack* stackB)
+{
+    Node* current;
+    printf("A: ");
+    for (current = stackA->top; current != NULL; current = current->next) {
+        printf("%d ", current->value);
+    }
+    printf("\n");
+
+    Node* currentB;
+    printf("B: ");
+    for (currentB = stackB->top; currentB != NULL; currentB = currentB->next) {
+        printf("%d ", currentB->value);
+    }
+    printf("\n");
+}
 void swap_top_two(Stack* stack) {
     if (stack->size < 2)
         return;

@@ -5,6 +5,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "libft/libft.h"
+#include <string.h> // Include at the top of your file
 
 typedef struct Node {
     int value;
@@ -17,6 +18,17 @@ typedef struct Stack {
     Node* bottom;
     int size;
 } Stack;
+
+typedef struct Neighbours {
+    int* smallerNeighbour; // Pointer to the closest smaller number in B
+    int* largerNeighbour;  // Pointer to the closest larger number in B
+} Neighbours;
+
+typedef struct MoveInfo {
+    int* aVal;
+    int* valuePtr; // Pointer to the value in stack B
+    int distance;  // Distance to move it (from the top for smaller, from the bottom for larger)
+}MoveInfo;
 
 void push(Stack* stack, int value);
 void freeStack(Stack* stack);
@@ -32,5 +44,13 @@ void rrr(Stack* a, Stack* b);
 void sort_three(Stack* stack);
 
 int calc_stack_size(Stack* stack);
+
+int isWithinIntRange(const char* str);
+void print_stacks(Stack* stackA, Stack* stackB);
+int min(int a, int b);
+
+int arr_of_str_has_repeats(char* strings[], int count);
+void sort_two(Stack* stackA);
+
 
 #endif
