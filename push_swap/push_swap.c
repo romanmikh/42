@@ -58,41 +58,25 @@ void calculate_moves(Node* currentA, Stack* b, Neighbours* neighbours, MoveInfo*
 
         Node* current = b->top;
 
-        // Initialize distances to maximum possible
         int directDistanceSmaller = INT_MAX;
         int wrapDistanceSmaller = INT_MAX;
-        //int directDistanceLarger = INT_MAX;
-        //int wrapDistanceLarger = INT_MAX;
         int i = 0;
         while (current != NULL) {
             if (&current->value == neighbours->smallerNeighbour) {
                 directDistanceSmaller = i; // Distance from top to smaller neighbour
                 wrapDistanceSmaller = sizeB - i; // Wrap-around distance for smaller neighbour
             }
-            //if (&current->value == neighbours->largerNeighbour) {
-          //      directDistanceLarger = i; // Distance from bottom to larger neighbour
-              //  wrapDistanceLarger = sizeB - i; // Wrap-around distance for larger neighbour
-            //}
             current = current->next;
             i++;
         }
-// //       printf("for A: %d\n", currentA->value);
-//   //     printf("smaldirecl N: %d, large N: %d\n", *neighbours->smallerNeighbour, *neighbours->largerNeighbour);
 //     //   printf("direct to smaller: %d\nwrap to smaller: %d\n", directDistanceSmaller, wrapDistanceSmaller);
 //        //printf("direct to larger: %d\nwrap to larger: %d\n", directDistanceLarger, wrapDistanceLarger);
 
-        // Determine which neighbour and direction offers the shortest distance
         int totalDistanceSmaller = min(directDistanceSmaller, wrapDistanceSmaller) + position_in_A;
 
-        //int totalDistanceLarger = min(directDistanceLarger, wrapDistanceLarger);
-        //if (totalDistanceSmaller <= totalDistanceLarger) {assert(
         moves->bPos = directDistanceSmaller;
         moves->valuePtr = neighbours->smallerNeighbour;
         moves->distance = totalDistanceSmaller;
-        //} //else {
-           // moves->valuePtr = neighbours->largerNeighbour;
-            //moves->distance = totalDistanceLarger;
-        //}
         moves->aVal = &currentA->value;
 //        printf("aVal: %d\n", *moves->aVal);
 //        printf("min dist to nearest: %d\nand the nearest B value is: %d\n--------\n", moves->distance, *moves->valuePtr);    
@@ -144,7 +128,22 @@ void execute_a_to_b(Stack* stackA, Stack* stackB, MoveInfo move) {
 }
 
 
+int is_ordered(char *strings[], int length) {
+    if (length < 2) {
+        return 1;
+    }
+    int prev = atoi(strings[0]);
 
+    for (int i = 1; i < length; i++) {
+        int current = atoi(strings[i]);
+
+        if (current < prev) {
+            return 0;
+        }
+        prev = current;
+    }
+    return 1;
+}
 
 
 int main(int argc, char *argv[]) {
@@ -162,7 +161,7 @@ int main(int argc, char *argv[]) {
         str_list = ft_split(argv[1], ' ');
         split_count = list_len_str(str_list);
         if (split_count <= 0) {
-//            printf("Error\n");
+            printf("Error\n");
             return 1;
         }
     } else {
@@ -178,12 +177,27 @@ int main(int argc, char *argv[]) {
     for (int i = split_count-1; i >= 0; i--) {
         char *current_str = (argc == 2) ? str_list[i] : argv[i + 1];
         if (isnum_from_str(current_str) == 0 || isWithinIntRange(current_str) == 0 || arr_of_str_has_repeats(str_list, split_count) == 1) {
-//            printf("Error\n");
+            printf("Error\n");
             freeStack(&stackA);
             return 1;
         }
         push(&stackA, atoi(current_str));
     }
+    if (is_ordered(str_list, split_count) == 1)
+      return 0;
+    if (split_count == 3){
+      sort_three(&stackA);
+      return 0;
+    }
+    if (split_count == 2) {
+      sort_two(&stackA);
+      return 0;
+    }
+    if (split_count == 1) {
+      return 0;
+    }
+
+
 ////print_stacks(&stackA, &stackB);
     px(&stackA, &stackB, 'a');
     px(&stackA, &stackB, 'a');
@@ -192,9 +206,6 @@ int main(int argc, char *argv[]) {
     while (calc_stack_size(&stackA) > 3){
 
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
