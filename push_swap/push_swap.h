@@ -28,6 +28,7 @@ typedef struct MoveInfo {
     int* aVal;
     int* valuePtr; // Pointer to the value in stack B
     int distance;  // Distance to move it (from the top for smaller, from the bottom for larger)
+    int bPos;
 }MoveInfo;
 
 void push(Stack* stack, int value);

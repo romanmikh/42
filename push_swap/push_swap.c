@@ -33,7 +33,7 @@ void findNeighboursInB(Stack* b, int value, Neighbours* neighbours) {
     // Assigning edge cases
     neighbours->smallerNeighbour = small_val ? small_val : (largestNode ? &largestNode->value : NULL);
     neighbours->largerNeighbour = large_val ? large_val : (smallestNode ? &smallestNode->value : NULL);
-    //printf("A value: %d, B small nei: %d, B large nei: %d\n", value, *neighbours->smallerNeighbour, *neighbours->largerNeighbour);
+//    //printf("A value: %d, B small nei: %d, B large nei: %d\n", value, *neighbours->smallerNeighbour, *neighbours->largerNeighbour);
 
 }
 
@@ -53,7 +53,7 @@ Neighbours* find_neighbours_in_stack(Stack* a, Stack* b) {
 }
 
 
-void calculate_moves(Node* currentA, Stack* b, Neighbours* neighbours, MoveInfo* moves) {
+void calculate_moves(Node* currentA, Stack* b, Neighbours* neighbours, MoveInfo* moves, int position_in_A) {
     int sizeB = calc_stack_size(b);
 
         Node* current = b->top;
@@ -61,38 +61,41 @@ void calculate_moves(Node* currentA, Stack* b, Neighbours* neighbours, MoveInfo*
         // Initialize distances to maximum possible
         int directDistanceSmaller = INT_MAX;
         int wrapDistanceSmaller = INT_MAX;
-        int directDistanceLarger = INT_MAX;
-        int wrapDistanceLarger = INT_MAX;
+        //int directDistanceLarger = INT_MAX;
+        //int wrapDistanceLarger = INT_MAX;
         int i = 0;
         while (current != NULL) {
             if (&current->value == neighbours->smallerNeighbour) {
                 directDistanceSmaller = i; // Distance from top to smaller neighbour
                 wrapDistanceSmaller = sizeB - i; // Wrap-around distance for smaller neighbour
             }
-            if (&current->value == neighbours->largerNeighbour) {
-                directDistanceLarger = i; // Distance from bottom to larger neighbour
-                wrapDistanceLarger = sizeB - i; // Wrap-around distance for larger neighbour
-            }
+            //if (&current->value == neighbours->largerNeighbour) {
+          //      directDistanceLarger = i; // Distance from bottom to larger neighbour
+              //  wrapDistanceLarger = sizeB - i; // Wrap-around distance for larger neighbour
+            //}
             current = current->next;
             i++;
         }
-        printf("for A: %d\n", currentA->value);
-        printf("small N: %d, large N: %d\n", *neighbours->smallerNeighbour, *neighbours->largerNeighbour);
-        printf("direct to smaller: %d\nwrap to smaller: %d\n", directDistanceSmaller, wrapDistanceSmaller);
-        printf("direct to larger: %d\nwrap to larger: %d\n", directDistanceLarger, wrapDistanceLarger);
+// //       printf("for A: %d\n", currentA->value);
+//   //     printf("smaldirecl N: %d, large N: %d\n", *neighbours->smallerNeighbour, *neighbours->largerNeighbour);
+//     //   printf("direct to smaller: %d\nwrap to smaller: %d\n", directDistanceSmaller, wrapDistanceSmaller);
+//        //printf("direct to larger: %d\nwrap to larger: %d\n", directDistanceLarger, wrapDistanceLarger);
 
         // Determine which neighbour and direction offers the shortest distance
-        int totalDistanceSmaller = min(directDistanceSmaller, wrapDistanceSmaller);
-        int totalDistanceLarger = min(directDistanceLarger, wrapDistanceLarger);
-        if (totalDistanceSmaller <= totalDistanceLarger) {
-            moves->valuePtr = neighbours->smallerNeighbour;
-            moves->distance = totalDistanceSmaller;
-        } else {
-            moves->valuePtr = neighbours->largerNeighbour;
-            moves->distance = totalDistanceLarger;
-        }
+        int totalDistanceSmaller = min(directDistanceSmaller, wrapDistanceSmaller) + position_in_A;
+
+        //int totalDistanceLarger = min(directDistanceLarger, wrapDistanceLarger);
+        //if (totalDistanceSmaller <= totalDistanceLarger) {assert(
+        moves->bPos = directDistanceSmaller;
+        moves->valuePtr = neighbours->smallerNeighbour;
+        moves->distance = totalDistanceSmaller;
+        //} //else {
+           // moves->valuePtr = neighbours->largerNeighbour;
+            //moves->distance = totalDistanceLarger;
+        //}
         moves->aVal = &currentA->value;
-        printf("min dist to nearest: %d\nand the nearest B value is: %d\n--------\n", moves->distance, *moves->valuePtr);    
+//        printf("aVal: %d\n", *moves->aVal);
+//        printf("min dist to nearest: %d\nand the nearest B value is: %d\n--------\n", moves->distance, *moves->valuePtr);    
 }
 
 
@@ -112,22 +115,26 @@ void execute_a_to_b(Stack* stackA, Stack* stackB, MoveInfo move) {
     if (positionInA <= sizeA / 2) {
         // If closer to the top, rotate upwards
         for (int i = 0; i < positionInA; i++) {
-            rrx(stackA, 'a'); // ra
+            rx(stackA, 'a'); // ra
         }
     } else {
         // If closer to the bottom, rotate downwards
         for (int i = 0; i < sizeA - positionInA; i++) {
-            rx(stackA, 'a'); // rra
+            rrx(stackA, 'a'); // rra
         }
     }
     
     // Rotate stackB to prepare for the incoming element, if necessary
-    if (move.distance <= sizeB / 2) {
-        for (int i = 0; i < move.distance; i++) {
+    if (*move.aVal == 3)
+    {
+//      printf("distance to move %d by isssssssssss: %d", *move.aVal, move.bPos);
+    }
+    if (move.bPos <= sizeB / 2) {
+        for (int i = 0; i < move.bPos; i++) {
             rx(stackB, 'b'); // rb
         }
     } else {
-        for (int i = 0; i < sizeB - move.distance; i++) {
+        for (int i = 0; i < sizeB - move.bPos; i++) {
             rrx(stackB, 'b'); // rrb
         }
     }
@@ -145,10 +152,8 @@ int main(int argc, char *argv[]) {
     Stack stackB = {NULL, NULL, 0}; 
     char **str_list = NULL;
     int split_count = 0;
-    MoveInfo cheapest_move;
-    cheapest_move.aVal = NULL;
-    cheapest_move.valuePtr = NULL;
-    cheapest_move.distance = INT_MAX;
+    int position_in_A;
+
 
     if (argc <= 1)
         return 0;
@@ -157,7 +162,7 @@ int main(int argc, char *argv[]) {
         str_list = ft_split(argv[1], ' ');
         split_count = list_len_str(str_list);
         if (split_count <= 0) {
-            printf("Error\n");
+//            printf("Error\n");
             return 1;
         }
     } else {
@@ -173,17 +178,17 @@ int main(int argc, char *argv[]) {
     for (int i = split_count-1; i >= 0; i--) {
         char *current_str = (argc == 2) ? str_list[i] : argv[i + 1];
         if (isnum_from_str(current_str) == 0 || isWithinIntRange(current_str) == 0 || arr_of_str_has_repeats(str_list, split_count) == 1) {
-            printf("Error\n");
+//            printf("Error\n");
             freeStack(&stackA);
             return 1;
         }
         push(&stackA, atoi(current_str));
     }
-//print_stacks(&stackA, &stackB);
+////print_stacks(&stackA, &stackB);
     px(&stackA, &stackB, 'a');
     px(&stackA, &stackB, 'a');
-      //printf("StackA size: %d", calc_stack_size(&stackA));
-//    print_stacks(&stackA, &stackB);
+//      //printf("StackA size: %d", calc_stack_size(&stackA));
+////    print_stacks(&stackA, &stackB);
     while (calc_stack_size(&stackA) > 3){
 
 
@@ -194,44 +199,63 @@ int main(int argc, char *argv[]) {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Neighbours* neighbours = find_neighbours_in_stack(&stackA, &stackB);
-    print_stacks(&stackA, &stackB); 
+//    print_stacks(&stackA, &stackB); 
     if (neighbours != NULL) {
         Node* currentA = stackA.top;
         int sizeA;
         MoveInfo* moves = NULL;        
         if (!moves) {
-        }                         
+        }            
+        sizeA = calc_stack_size(&stackA);
+        moves = malloc(sizeA * sizeof(MoveInfo));
+
         for (int i = 0; currentA != NULL; currentA = currentA->next, i++) {
-            sizeA = calc_stack_size(&stackA);
-            moves = malloc(sizeA * sizeof(MoveInfo));
-            calculate_moves(currentA, &stackB, &neighbours[i], &moves[i]);
+          if (i <= sizeA/2){
+            position_in_A = i;
+          }
+          else {
+            position_in_A = sizeA - i;
+          }
+          calculate_moves(currentA, &stackB, &neighbours[i], &moves[i], position_in_A);
         }
         // TODO GOOD TO HERE
+           MoveInfo cheapest_move; 
+           cheapest_move.aVal = NULL;
+           cheapest_move.valuePtr = NULL;
+           cheapest_move.distance = INT_MAX;
         for (int j = 0; j < sizeA; j++){
           if (moves[j].distance < cheapest_move.distance){
+//            //printf("moves[j].distance: %d\n", moves[j].distance);
+//            //printf("moves[j].aVal: %d\n", *moves[j].aVal);
+//            //printf("moves[j].bVal: %d\n", *moves[j].valuePtr);
             cheapest_move = moves[j];
-          }
+//            printf("chapest move exists!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+//            printf("cheapest distance: %d\n", cheapest_move.distance);
+//            printf("cheapest B: %d\n", *cheapest_move.valuePtr); 
+//            printf("cheapest A: %d\n", *cheapest_move.aVal);
+            } 
         }
-        printf("cheapest A: %d\nCheapest B: %d\ndistance: %d\n", *cheapest_move.aVal, *cheapest_move.valuePtr, cheapest_move.distance);
-        print_stacks(&stackA, &stackB);         
+//        //printf("are we getting to the end?\n");
+// //       printf("cheapest A: \nCheapest B: \ndistance: \n", *cheapest_move.aVal);
+//        print_stacks(&stackA, &stackB);         
         execute_a_to_b(&stackA, &stackB, cheapest_move);
-//        print_stacks(&stackA, &stackB);
+////        print_stacks(&stackA, &stackB);
 
         free(neighbours); 
       }
     } // end of loop that makes up one cycle of checking + moving an element from A to B
-    
+//    print_stacks(&stackA, &stackB);
     if (calc_stack_size(&stackA) == 3)
       sort_three(&stackA);
     if (calc_stack_size(&stackA) == 2)
       sort_two(&stackA);
-//    printf("stack A should now be sorted\n");
-//    print_stacks(&stackA, &stackB);
+////    printf("stack A should now be sorted\n");
+////    print_stacks(&stackA, &stackB);
     while(calc_stack_size(&stackB) > 0){
       execute_b_to_a(&stackA, &stackB);
     }
     rotate_to_lowest_top(&stackA);
-    //print_stacks(&stackA, &stackB);
+//    print_stacks(&stackA, &stackB);
     freeStack(&stackA);
     freeStack(&stackB);
     return 0;
