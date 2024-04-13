@@ -21,7 +21,7 @@ void push(Stack* stack, int value) {
 }
 
 
-void freeStack(Stack* stack) {
+void free_stack(Stack* stack) {
     Node* current = stack->top;
     while (current != NULL) {
         Node* next = current->next;
