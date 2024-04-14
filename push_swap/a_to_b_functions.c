@@ -1,99 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   a_to_b_functions.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yourname <yourname@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/01 12:00:00 by yourname          #+#    #+#             */
+/*   Updated: 2024/01/01 12:00:00 by yourname         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "push_swap.h"
 
-# include "push_swap.h"
-
-void find_neighbours_in_b(Stack* b, int value, Neighbours* neighbours) {
-    int* small_val = NULL;
-    int* large_val = NULL;
-    Node* smallest_node = NULL;
-    Node* largest_node = NULL;
-    Node* current = b->top;
-    while (current != NULL) {
-        if (current->value < value) {
-            if (!small_val || current->value > *small_val) {
-                small_val = &current->value;
-            }
-        }
-        if (current->value > value) {
-            if (!large_val || current->value < *large_val) {
-                large_val = &current->value;
-            }
-        }
-        if (!smallest_node || current->value < (smallest_node->value)) {
-            smallest_node = current;
-        }
-        if (!largest_node || current->value > (largest_node->value)) {
-            largest_node = current;
-        }
-        current = current->next;
-    }
-    neighbours->smallerNeighbour = small_val ? small_val : (largest_node ? &largest_node->value : NULL);
-    neighbours->largerNeighbour = large_val ? large_val : (smallest_node ? &smallest_node->value : NULL);
+int	*resolve_neighbour(int *neighbour, Node *node)
+{
+	if (neighbour)
+		return (neighbour);
+	if (node)
+		return (&node->value);
+	return (NULL);
 }
 
-Neighbours* find_neighbours_in_stack(Stack* a, Stack* b) {
-    int size_a = calc_stack_size(a);
-    Neighbours* neighbours = malloc(size_a * sizeof(Neighbours));
-    if (neighbours == NULL) {
-        return NULL; 
-    }
-    Node* current_a = a->top;
-    for (int i = 0; i < size_a; i++) {
-        find_neighbours_in_b(b, current_a->value, &neighbours[i]);
-        current_a = current_a->next;
-    }
-    return neighbours;
+void	update_neighbour_values(Node *current, int value, int **small_val \
+, int **large_val)
+{
+	if (current->value < value && (!*small_val || current->value > **small_val))
+		*small_val = &current->value;
+	if (current->value > value && (!*large_val || current->value < **large_val))
+		*large_val = &current->value;
 }
 
-void calculate_moves(Node* current_a, Stack* b, Neighbours* neighbours, MoveInfo* moves, int position_in_a) {
-    int size_b = calc_stack_size(b);
-    Node* current = b->top;
-    int direct_distance_smaller = INT_MAX;
-    int wrap_distance_smaller = INT_MAX;
-    int i = 0;
-    while (current != NULL) {
-        if (&current->value == neighbours->smallerNeighbour) {
-            direct_distance_smaller = i;
-            wrap_distance_smaller = size_b - i;
-        }
-        current = current->next;
-        i++;
-    }
-    int total_distance_smaller = min(direct_distance_smaller, wrap_distance_smaller) + position_in_a;
-    moves->bPos = direct_distance_smaller;
-    moves->valuePtr = neighbours->smallerNeighbour;
-    moves->distance = total_distance_smaller;
-    moves->aVal = &current_a->value;
+void	update_node_references(Node *current, Node **smallest_node \
+, Node **largest_node)
+{
+	if (!*smallest_node || current->value < (*smallest_node)->value)
+		*smallest_node = current;
+	if (!*largest_node || current->value > (*largest_node)->value)
+		*largest_node = current;
 }
 
-void execute_a_to_b(Stack* stack_a, Stack* stack_b, MoveInfo move) {
-    int size_a = calc_stack_size(stack_a);
-    int size_b = calc_stack_size(stack_b);
-    int position_in_a = 0;
-    Node* current_node = stack_a->top;
-    while (current_node != NULL && &current_node->value != move.aVal) {
-        position_in_a++;
-        current_node = current_node->next;
-    }
-    if (position_in_a <= size_a / 2) {
-        for (int i = 0; i < position_in_a; i++) {
-            rx(stack_a, 'a');
-        }
-    } else {
-        for (int i = 0; i < size_a - position_in_a; i++) {
-            rrx(stack_a, 'a');
-        }
-    }
-    if (*move.aVal == 3) {
-    }
-    if (move.bPos <= size_b / 2) {
-        for (int i = 0; i < move.bPos; i++) {
-            rx(stack_b, 'b');
-        }
-    } else {
-        for (int i = 0; i < size_b - move.bPos; i++) {
-            rrx(stack_b, 'b');
-        }
-    }
-    px(stack_a, stack_b, 'a');
+void	find_neighbours_in_b(Stack *b, int value, Neighbours *neighbours)
+{
+	int		*small_val;
+	int		*large_val;
+	Node	*smallest_node;
+	Node	*largest_node;
+	Node	*current;
+
+	small_val = NULL;
+	large_val = NULL;
+	smallest_node = NULL;
+	largest_node = NULL;
+	current = b->top;
+	while (current)
+	{
+		update_neighbour_values(current, value, &small_val, &large_val);
+		update_node_references(current, &smallest_node, &largest_node);
+		current = current->next;
+	}
+	neighbours->smallerNeighbour = resolve_neighbour(small_val, largest_node);
+	neighbours->largerNeighbour = resolve_neighbour(large_val, smallest_node);
 }
 
+Neighbours	*find_neighbours_in_stack(Stack *a, Stack *b)
+{
+	int			size_a;
+	Neighbours	*neighbours;
+	Node		*current_a;
+	int			i;
+
+	size_a = calc_stack_size(a);
+	neighbours = malloc(size_a * sizeof(Neighbours));
+	if (!neighbours)
+		return (NULL);
+	current_a = a->top;
+	i = 0;
+	while (i < size_a)
+	{
+		find_neighbours_in_b(b, current_a->value, &neighbours[i]);
+		current_a = current_a->next;
+		i++;
+	}
+	return (neighbours);
+}
