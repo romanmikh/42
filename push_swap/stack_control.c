@@ -1,61 +1,88 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_control.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: <your_username>@42.fr                       +#+  +:+       +#+       */
+/*                                                                            */
+/*   Created: <creation_date> by <your_username>       #+#    #+#             */
+/*   Updated: <update_date> by <your_username>        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void push(Stack* stack, int value) {
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    if (newNode == NULL) {
-        fprintf(stderr, "Memory allocation failed\n");
-        exit(EXIT_FAILURE); // Exit if memory allocation fails
-    }
-    newNode->value = value;
-    newNode->next = stack->top; // The new node points to the current top
-    newNode->prev = NULL; // As the new top, it has no previous node
+void	push(Stack *stack, int value)
+{
+	Node	*new_node;
 
-    if (stack->top != NULL) { // If the stack is not empty
-        stack->top->prev = newNode; // Update the current top's previous pointer
-    }
-    stack->top = newNode; // Update the stack's top to the new node
-    if (stack->size == 0) { // If the stack was empty
-        stack->bottom = newNode; // This new node is also the bottom
-    }
-    stack->size++; // Increment the size of the stack
+	new_node = (Node *)malloc(sizeof(Node));
+	if (new_node == NULL)
+	{
+		fprintf(stderr, "Memory allocation failed\n");
+		exit(EXIT_FAILURE);
+	}
+	new_node->value = value;
+	new_node->next = stack->top;
+	new_node->prev = NULL;
+	if (stack->top != NULL)
+		stack->top->prev = new_node;
+	stack->top = new_node;
+	if (stack->size == 0)
+		stack->bottom = new_node;
+	stack->size++;
 }
 
+void	free_stack(Stack *stack)
+{
+	Node	*current;
+	Node	*next;
 
-void free_stack(Stack* stack) {
-    Node* current = stack->top;
-    while (current != NULL) {
-        Node* next = current->next;
-        free(current);
-        current = next;
-    }
-    stack->top = NULL; // Reset top
-    stack->bottom = NULL; // Reset bottom
-    stack->size = 0; // Reset size
+	current = stack->top;
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	stack->top = NULL;
+	stack->bottom = NULL;
+	stack->size = 0;
 }
 
-int calc_stack_size(Stack* stack) {
-    int size = 0;
-    Node* current = stack->top;
-    while (current != NULL) {
-        size++;
-        current = current->next;
-    }
-    return size;
+int	calc_stack_size(Stack *stack)
+{
+	int		size;
+	Node	*current;
+
+	size = 0;
+	current = stack->top;
+	while (current != NULL)
+	{
+		size++;
+		current = current->next;
+	}
+	return (size);
 }
 
+void	print_stacks(Stack *stack_a, Stack *stack_b)
+{
+	Node	*current_a;
+	Node	*current_b;
 
-void print_stacks(Stack* stack_a, Stack* stack_b) {
-    Node* current;
-    printf("A: ");
-    for (current = stack_a->top; current != NULL; current = current->next) {
-        printf("%d ", current->value);
-    }
-    printf("\n");
-    Node* current_b;
-    printf("B: ");
-    for (current_b = stack_b->top; current_b != NULL; current_b = current_b->next) {
-        printf("%d ", current_b->value);
-    }
-    printf("\n");
+	printf("A: ");
+	current_a = stack_a->top;
+	while (current_a != NULL)
+	{
+		printf("%d ", current_a->value);
+		current_a = current_a->next;
+	}
+	printf("\nB: ");
+	current_b = stack_b->top;
+	while (current_b != NULL)
+	{
+		printf("%d ", current_b->value);
+		current_b = current_b->next;
+	}
+	printf("\n");
 }
-
