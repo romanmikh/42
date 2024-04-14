@@ -1,0 +1,66 @@
+rocky@rocky:~/github/42/push_swap$ ls
+a_to_b_functions.c  error_checks.c  push_swap.c
+a_to_b_functions.o  libft           push_swap.h
+auxiliary.c         libftprintf.a   push_swap.o
+auxiliary.o         Makefile        push_swap_visualizer
+b_to_a_functions.c  operations.c    stack_control.c
+b_to_a_functions.o  operations.o    unused_code
+checker_linux       push_swap       utils.o
+rocky@rocky:~/github/42/push_swap$ make
+cc -Wall -Wextra -Werror -I. -c a_to_b_functions.c -o a_to_b_functions.
+o
+a_to_b_functions.c: In function ‘find_neighbours_in_b’:
+a_to_b_functions.c:10:5: error: this ‘while’ clause does not guar
+-Werror=misleading-indentation]
+   10 |     while (current != NULL)
+      |     ^~~~~
+a_to_b_functions.c:14:9: note: ...this statement, but the la
+leadingly indented as if it were guarded by the ‘while’
+   14 |         if (!largest_node || current->value > (large
+lue)) {
+      |         ^~
+rocky@rocky:~/github/42/push_swap$ make
+cc -
+s.o
+a_to
+_in_
+    
+    
+In f
+push
+’ wi
+   5
+ighb
+    
+a_to
+a_to
+rs_i
+rsio
+   3
+[i])
+    
+    
+    
+a_to
+s of
+    
+    
+a_to
+neig
+   3
+[i])
+    
+a_to
+    
+    
+cc1:
+make
+rock
+y@ro
+cky:
+~/gi
+thub
+/42/
+push
+_swa
+rocky@rocky:~/github/42/push_swap$ 

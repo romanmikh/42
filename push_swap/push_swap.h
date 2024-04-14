@@ -1,10 +1,11 @@
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
+#ifndef PUSH_SWAP_H
+#define PUSH_SWAP_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "libft/libft.h"
 #include <string.h> // Include at the top of your file
 
 typedef struct Node {
@@ -20,8 +21,8 @@ typedef struct Stack {
 } Stack;
 
 typedef struct Neighbours {
-    int* smallerNeighbour; // Pointer to the closest smaller number in B
-    int* largerNeighbour;  // Pointer to the closest larger number in B
+    int* smallerNeighbour;
+    int* largerNeighbour;
 } Neighbours;
 
 typedef struct MoveInfo {
@@ -29,9 +30,9 @@ typedef struct MoveInfo {
     int* valuePtr; // Pointer to the value in stack B
     int distance;  // Distance to move it (from the top for smaller, from the bottom for larger)
     int bPos;
-}MoveInfo;
+} MoveInfo;
 
-
+// Existing prototypes
 void push(Stack* stack, int value);
 void free_stack(Stack* stack);
 void sx(Stack* stack, char x);
@@ -50,9 +51,14 @@ int arr_of_str_has_repeats(char* strings[], int count);
 void sort_two(Stack* stackA);
 void rotate_to_lowest_top(Stack* stackA);
 
-void adjust_stackA_for_insertion(Stack* stackA, int position_to_insert);
-void execute_b_to_a(Stack* stackA, Stack* stackB);
-int calculate_position_to_insert(Stack* a, Neighbours* neighbours);
-void findNeighboursInA(Stack* a, int value, Neighbours* result);
+// Additional prototypes to add
+void find_neighbours_in_b(Stack* b, int value, Neighbours* neighbours);
+Neighbours* find_neighbours_in_stack(Stack* a, Stack* b);
+void calculate_moves(Node* current_a, Stack* b, Neighbours* neighbours, MoveInfo* moves, int position_in_a);
+void execute_a_to_b(Stack* stack_a, Stack* stack_b, MoveInfo move);
+int is_ordered(char *strings[], int length);
+void find_neighbours_in_a(Stack* a, int value, Neighbours* result);
+void adjust_stack_a_for_insertion(Stack* stack_a, int position_to_insert);
+void execute_b_to_a(Stack* stack_a, Stack* stack_b);
 
-#endif
+#endif // PUSH_SWAP_H

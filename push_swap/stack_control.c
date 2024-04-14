@@ -44,31 +44,18 @@ int calc_stack_size(Stack* stack) {
 }
 
 
-void sort_three(Stack* stackA) {
-    int top = stackA->top->value;
-    int middle = stackA->top->next->value;
-    int bottom = stackA->top->next->next->value;
-
-    // Case: 2 1 3, Swap the top two elements (sa)
-    if (top > middle && bottom > top) {
-        sx(stackA, 'a'); // sa
+void print_stacks(Stack* stack_a, Stack* stack_b) {
+    Node* current;
+    printf("A: ");
+    for (current = stack_a->top; current != NULL; current = current->next) {
+        printf("%d ", current->value);
     }
-    // Case: 1 3 2, Swap the top two elements then rotate downwards (sa, rra)
-    else if (top < middle && middle > bottom && bottom > top) {
-        sx(stackA, 'a'); // sa
-        rx(stackA, 'a'); // rra
+    printf("\n");
+    Node* current_b;
+    printf("B: ");
+    for (current_b = stack_b->top; current_b != NULL; current_b = current_b->next) {
+        printf("%d ", current_b->value);
     }
-    // Case: 3 1 2, Rotate upwards (ra)
-    else if (top > middle && middle < bottom && bottom < top) {
-        rx(stackA, 'a'); // ra
-    }
-    // Case: 2 3 1, Rotate downwards (rra)
-    else if (top < middle && middle > bottom && bottom < top) {
-        rrx(stackA, 'a'); // rra
-    }
-    // Case: 3 2 1, Swap the top two elements then rotate upwards (sa, ra)
-    else if (top > middle && middle > bottom) {
-        sx(stackA, 'a'); // sa
-        rrx(stackA, 'a'); // ra
-    }
+    printf("\n");
 }
+
