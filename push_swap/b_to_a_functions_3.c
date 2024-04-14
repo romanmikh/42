@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   b_to_a_functions.c                                 :+:      :+:    :+:   */
+/*   b_to_a_functions_3.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rocky@42.fr>                              +#+  +:+       +#+        */
 /*                                                                            */
@@ -56,4 +56,19 @@ void	update_smallest_and_largest_nodes(Node *current \
 		*smallest_node = current;
 	if (!*largest_node || current->value > (*largest_node)->value)
 		*largest_node = current;
+}
+
+void	rotate_half_stack(Stack *stack, int steps, int direction)
+{
+	int	i;
+
+	i = 0;
+	while (i < steps)
+	{
+		if (direction > 0)
+			rx(stack, 'a');
+		else
+			rrx(stack, 'a');
+		i++;
+	}
 }
