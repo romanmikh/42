@@ -31,7 +31,13 @@ typedef struct MoveInfo {
     int distance;  // Distance to move it (from the top for smaller, from the bottom for larger)
     int bPos;
 } MoveInfo;
-
+typedef struct s_vars {
+    int     *small_val;
+    int     *large_val;
+    Node    *smallest_node;
+    Node    *largest_node;
+    Node    *current;
+} t_vars;
 // Existing prototypes
 void push(Stack* stack, int value);
 void free_stack(Stack* stack);
