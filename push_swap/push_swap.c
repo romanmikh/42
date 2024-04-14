@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
     while(calc_stack_size(&stack_b) > 0){
       execute_b_to_a(&stack_a, &stack_b);
     }
-    rotate_to_lowest_top(&stack_a);
+    //rotate_to_lowest_top(&stack_a);
     free_stack(&stack_a);
     free_stack(&stack_b);
     return 0;

@@ -47,7 +47,29 @@ void rotate_forward(Stack* stack);
 void rotate_backward(Stack* stack);
 void push_top_element(Stack* stack_a, Stack* stack_b);
 
+void find_neighbours_in_a(Stack* a, int value, Neighbours* result);
+void update_small_and_large_values(Node* current, int value, int** small_val, int** large_val);
+void update_smallest_and_largest_nodes(Node* current, Node** smallest_node, Node** largest_node);
 
+// Function for calculating position to insert in stack 'a'
+int calculate_position_to_insert(Stack* a, Neighbours* neighbours);
+
+// Function to adjust stack 'a' for insertion
+void adjust_stack_a_for_insertion(Stack* stack_a, int position_to_insert);
+
+// Functions related to executing operations from stack 'b' to 'a'
+void execute_b_to_a(Stack* stack_a, Stack* stack_b);
+
+// Functions related to rotating to the lowest value on top
+void rotate_to_lowest_top(Stack* stack_a);
+int find_position_of_lowest(Stack* stack_a);
+void adjust_rotation_based_on_position(Stack* stack_a, int position_of_lowest);
+
+// Helper function for rotating part of the stack
+void rotate_half_stack(Stack* stack, int steps, int direction);
+
+void update_small_and_large_values(Node* current, int value, int** small_val, int** large_val);
+void update_smallest_and_largest_nodes(Node* current, Node** smallest_node, Node** largest_node);
 void sort_three(Stack* stack);
 int calc_stack_size(Stack* stack);
 int is_within_int_range(const char* str);
