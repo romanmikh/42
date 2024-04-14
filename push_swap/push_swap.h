@@ -42,6 +42,12 @@ void rx(Stack* stack, char x);
 void rr(Stack* a, Stack* b);
 void rrx(Stack* stack, char x);
 void rrr(Stack* a, Stack* b);
+void swap_top_two(Stack* stack);
+void rotate_forward(Stack* stack);
+void rotate_backward(Stack* stack);
+void push_top_element(Stack* stack_a, Stack* stack_b);
+
+
 void sort_three(Stack* stack);
 int calc_stack_size(Stack* stack);
 int is_within_int_range(const char* str);
