@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations_3.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yourname <yourname@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/01 10:29:39 by yourname          #+#    #+#             */
+/*   Updated: 2022/01/01 10:29:39 by yourname         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	px(Stack *a, Stack *b, char x)
@@ -16,44 +28,44 @@ void	rrr(Stack *a, Stack *b)
 	printf("rrr\n");
 }
 
-void	sort_two(Stack *stack_a)
+void	sort_two(Stack *a)
 {
 	int	top;
 	int	next;
 
-	if (!stack_a || !stack_a->top || !stack_a->top->next)
+	if (!a || !a->top || !a->top->next)
 		return ;
-	top = stack_a->top->value;
-	next = stack_a->top->next->value;
+	top = a->top->value;
+	next = a->top->next->value;
 	if (top > next)
-		sx(stack_a, 'a');
+		sx(a, 'a');
 }
 
-void	sort_three(Stack *stack_a)
+void	sort_three(Stack *a)
 {
 	int	top;
 	int	middle;
 	int	bottom;
 
-	if (!stack_a || !stack_a->top || !stack_a->top->next || !stack_a->top->next->next)
+	if (!a || !a->top || !a->top->next || !a->top->next->next)
 		return ;
-	top = stack_a->top->value;
-	middle = stack_a->top->next->value;
-	bottom = stack_a->top->next->next->value;
+	top = a->top->value;
+	middle = a->top->next->value;
+	bottom = a->top->next->next->value;
 	if (top > middle && bottom > top)
-		sx(stack_a, 'a');
+		sx(a, 'a');
 	else if (top < middle && middle > bottom && bottom > top)
 	{
-		sx(stack_a, 'a');
-		rx(stack_a, 'a');
+		sx(a, 'a');
+		rx(a, 'a');
 	}
 	else if (top > middle && middle < bottom && bottom < top)
-		rx(stack_a, 'a');
+		rx(a, 'a');
 	else if (top < middle && middle > bottom && bottom < top)
-		rrx(stack_a, 'a');
+		rrx(a, 'a');
 	else if (top > middle && middle > bottom)
 	{
-		sx(stack_a, 'a');
-		rrx(stack_a, 'a');
+		sx(a, 'a');
+		rrx(a, 'a');
 	}
 }
