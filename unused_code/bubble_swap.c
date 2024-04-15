@@ -41,7 +41,7 @@ int main(){
   int count;
   count = bubble_sort(a, size);
   for (int i=0; i < 5; i++){
-    printf("a: %d\n", a[i]);
+    ft_printf("a: %d\n", a[i]);
   }
-  printf("count: %d", count);
+  ft_printf("count: %d", count);
 }

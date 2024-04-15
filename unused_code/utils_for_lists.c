@@ -1,4 +1,5 @@
 
+
 #include <stdio.h>
 
 int sa(int a[])
@@ -8,7 +9,7 @@ int sa(int a[])
   temp = a[0];
   a[0] = a[1];
   a[1] = temp;
-  printf("%s\n", "sa");
+  ft_printf("%s\n", "sa");
   return (0);
 }
 
@@ -19,7 +20,7 @@ int sb(int b[])
   temp = b[0];
   b[0] = b[1];
   b[1] = temp;
-  printf("%s\n", "sb");
+  ft_printf("%s\n", "sb");
   return (0);
 }
 
@@ -27,7 +28,7 @@ int ss(int a[], int b[])
 {
   sa(a);
   sb(b);
-  printf("%s\n", "ss\n");
+  ft_printf("%s\n", "ss\n");
   return (0);
 }
 
@@ -38,7 +39,7 @@ int pa(int a[], int b[])
   temp = a[0];
   a[0] = b[0];
   b[0] = temp;
-  printf("%s\n", "pa");
+  ft_printf("%s\n", "pa");
   return (0);
 }
 
@@ -49,7 +50,7 @@ int pb(int b[], int a[])
   temp = b[0];
   b[0] = a[0];
   a[0] = temp;
-  printf("%s\n", "pb");
+  ft_printf("%s\n", "pb");
   return (0);
 }
 
@@ -66,7 +67,7 @@ int ra(int a[], int size)
     i++;
   }
   a[i] = temp;
-  printf("%s\n", "ra");
+  ft_printf("%s\n", "ra");
   return (0);
 }
 
@@ -83,7 +84,7 @@ int rb(int b[], int size)
     i++;
   }
   b[i] = temp;
-  printf("%s\n", "rb");
+  ft_printf("%s\n", "rb");
   return (0);
 }
 
@@ -92,7 +93,7 @@ int rr(int a[], int b[], int size)
   ra(a, size);
   rb(b, size);
   return (0);
-  printf("%s\n", "rr");
+  ft_printf("%s\n", "rr");
 }
 
 int rra(int a[], int size)
@@ -106,7 +107,7 @@ int rra(int a[], int size)
     size--;
   }
   a[0] = temp; 
-  printf("%s\n", "rra");
+  ft_printf("%s\n", "rra");
   return (0);
 }
 
@@ -122,7 +123,7 @@ int rrb(int b[], int size)
     size--;
   }
   b[0] = temp; 
-  printf("%s\n", "rrb");
+  ft_printf("%s\n", "rrb");
   return (0);
 }
 
@@ -130,7 +131,7 @@ int rrr(int a[], int b[], int size)
 {
   rra(a, size);
   rrb(b, size);
-  printf("%s\n", "rrr");
+  ft_printf("%s\n", "rrr");
   return (0);
 }
 
@@ -141,7 +142,7 @@ int rrr(int a[], int b[], int size)
 //  int i;
 //  rrr(a,b,5);
 //  for (i=0; i < sizeof(a)/sizeof(a[0]); i++){
-//    printf("a: %d, b: %d\n", a[i], b[i]);
+//    ft_printf("a: %d, b: %d\n", a[i], b[i]);
 //  }
 //  return (0);
 //}

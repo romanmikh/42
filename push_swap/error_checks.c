@@ -23,7 +23,7 @@ int	is_within_int_range(const char *str)
 
 	max_int_str = "2147483647";
 	min_int_str = "-2147483648";
-	len = strlen(str);
+	len = ft_strlen(str);
 	is_negative = (str[0] == '-');
 	if (len > 10 + is_negative)
 		return (0);
@@ -31,13 +31,13 @@ int	is_within_int_range(const char *str)
 	{
 		if (len < 11)
 			return (1);
-		return (strcmp(str, min_int_str) <= 0);
+		return (ft_strcmp(str, min_int_str) <= 0);
 	}
 	else
 	{
 		if (len < 10)
 			return (1);
-		return (strcmp(str, max_int_str) <= 0);
+		return (ft_strcmp(str, max_int_str) <= 0);
 	}
 }
 
@@ -52,7 +52,7 @@ int	arr_of_str_has_repeats(char *strings[], int count)
 		j = i + 1;
 		while (j < count)
 		{
-			if (strcmp(strings[i], strings[j]) == 0)
+			if (ft_strcmp(strings[i], strings[j]) == 0)
 			{
 				return (1);
 			}

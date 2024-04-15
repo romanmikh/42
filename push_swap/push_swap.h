@@ -2,11 +2,7 @@
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "libft/libft.h"
-#include <string.h> // Include at the top of your file
 
 typedef struct Node {
     int value;

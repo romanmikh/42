@@ -33,7 +33,7 @@ void	initialize_stacks(char **argv, int argc, Stack *stack_a, Stack *stack_b)
 	count = parse_arguments(argv, argc, &str_list);
 	if (count < 0 || !validate_and_fill_stack(str_list, count, stack_a))
 	{
-		printf("Error\n");
+		ft_printf("Error\n");
 		free_resources(stack_a, stack_b, str_list, count);
 		exit(1);
 	}

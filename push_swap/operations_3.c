@@ -16,16 +16,16 @@ void	px(Stack *a, Stack *b, char x)
 {
 	push_top_element(a, b);
 	if (x == 'a')
-		printf("pb\n");
+		ft_printf("pb\n");
 	else if (x == 'b')
-		printf("pa\n");
+		ft_printf("pa\n");
 }
 
 void	rrr(Stack *a, Stack *b)
 {
 	rotate_backward(a);
 	rotate_backward(b);
-	printf("rrr\n");
+	ft_printf("rrr\n");
 }
 
 void	sort_two(Stack *a)

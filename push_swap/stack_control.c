@@ -19,7 +19,6 @@ void	push(Stack *stack, int value)
 	new_node = (Node *)malloc(sizeof(Node));
 	if (new_node == NULL)
 	{
-		fprintf(stderr, "Memory allocation failed\n");
 		exit(EXIT_FAILURE);
 	}
 	new_node->value = value;
@@ -70,19 +69,19 @@ void	print_stacks(Stack *stack_a, Stack *stack_b)
 	Node	*current_a;
 	Node	*current_b;
 
-	printf("A: ");
+	ft_printf("A: ");
 	current_a = stack_a->top;
 	while (current_a != NULL)
 	{
-		printf("%d ", current_a->value);
+		ft_printf("%d ", current_a->value);
 		current_a = current_a->next;
 	}
-	printf("\nB: ");
+	ft_printf("\nB: ");
 	current_b = stack_b->top;
 	while (current_b != NULL)
 	{
-		printf("%d ", current_b->value);
+		ft_printf("%d ", current_b->value);
 		current_b = current_b->next;
 	}
-	printf("\n");
+	ft_printf("\n");
 }

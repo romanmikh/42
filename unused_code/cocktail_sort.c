@@ -20,7 +20,7 @@ int cocktail_sort(int a[], int size){
     count++;
     swapped = 0;
     for (int i = 0; i < size-1; i++){
-      printf("ai: %d, ai+1: %d\n",a[i], a[i+1]);
+      ft_printf("ai: %d, ai+1: %d\n",a[i], a[i+1]);
       if (a[i] > a[i+1]){
         temp = a[i];
         a[i] = a[i+1];
@@ -50,7 +50,7 @@ int main(){
   int count;
   count = cocktail_sort(a, size);
   for (int i=0; i < 5; i++){
-    printf("a: %d\n", a[i]);
+    ft_printf("a: %d\n", a[i]);
   }
-  printf("count: %d", count);
+  ft_printf("count: %d", count);
 }
