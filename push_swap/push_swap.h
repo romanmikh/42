@@ -30,6 +30,7 @@ typedef struct MoveInfo {
     int* valuePtr; // Pointer to the value in stack B
     int distance;  // Distance to move it (from the top for smaller, from the bottom for larger)
     int bPos;
+    int aPos;
 } MoveInfo;
 typedef struct s_vars {
     int     *small_val;
@@ -62,7 +63,7 @@ void	determine_sorting_strategy(char **str_list, Stack *stack_a, Stack *stack_b,
 int	parse_arguments(char **argv, int argc, char ***str_list);
 int validate_and_fill_stack(char **str_list, int count, Stack *stack_a);
 void find_neighbours_in_a(Stack* a, int value, Neighbours* result);
-void calculate_and_execute_moves(Stack *stack_a, Stack *stack_b, Neighbours *neighbours, MoveInfo *moves, int size_a);
+void calculate_and_execute_moves(Stack *stack_a, Stack *stack_b, Neighbours *neighbours, MoveInfo *moves);
 void update_small_and_large_values(Node* current, int value, int** small_val, int** large_val);
 void update_smallest_and_largest_nodes(Node* current, Node** smallest_node, Node** largest_node);
 
@@ -97,7 +98,7 @@ void rotate_to_lowest_top(Stack* stackA);
 // Additional prototypes to add
 void find_neighbours_in_b(Stack* b, int value, Neighbours* neighbours);
 Neighbours* find_neighbours_in_stack(Stack* a, Stack* b);
-void calculate_moves(Node* current_a, Stack* b, Neighbours* neighbours, MoveInfo* moves, int position_in_a);
+void calculate_moves(Node* current_a, Stack* b, Neighbours* neighbours, MoveInfo* moves);
 void execute_a_to_b(Stack* stack_a, Stack* stack_b, MoveInfo move);
 int is_ordered(char *strings[], int length);
 void find_neighbours_in_a(Stack* a, int value, Neighbours* result);

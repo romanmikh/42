@@ -22,7 +22,7 @@ void	perform_complex_sorting(Stack *stack_a, Stack *stack_b, Neighbours *neighbo
 	moves = malloc(size_a * sizeof(MoveInfo));
 	if (!moves)
 		return;
-	calculate_and_execute_moves(stack_a, stack_b, neighbours, moves, size_a);
+	calculate_and_execute_moves(stack_a, stack_b, neighbours, moves);
 	free(moves);
 }
 

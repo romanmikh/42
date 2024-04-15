@@ -25,33 +25,37 @@ void calculate_position(int *position_in_a, int i, int size_a)
 		*position_in_a = size_a - i;
 }
 
-void calculate_all_moves(Stack *stack_a, Stack *stack_b, Neighbours *neighbours, MoveInfo *moves, int size_a)
+void calculate_all_moves(Stack *stack_a, Stack *stack_b, Neighbours *neighbours, MoveInfo *moves)
 {
 	Node	*current_a;
 	int	i;
 	int	position_in_a;
+  int size_a;
 
+  size_a = calc_stack_size(stack_a);
 	current_a = stack_a->top;
 	i = 0;
 	while (current_a != NULL)
 	{
 		calculate_position(&position_in_a, i, size_a);
-		calculate_moves(current_a, stack_b, &neighbours[i], &moves[i], position_in_a);
+		calculate_moves(current_a, stack_b, &neighbours[i], &moves[i]);
 		current_a = current_a->next;
 		i++;
 	}
 }
 
-void execute_optimal_move(Stack *stack_a, Stack *stack_b, MoveInfo *moves, int size_a)
+void execute_optimal_move(Stack *stack_a, Stack *stack_b, MoveInfo *moves)
 {
+  int size_a;
 	MoveInfo cheapest_move;
 
+  size_a = calc_stack_size(stack_a);
 	cheapest_move = find_cheapest_move(moves, size_a);
 	execute_a_to_b(stack_a, stack_b, cheapest_move);
 }
 
-void calculate_and_execute_moves(Stack *stack_a, Stack *stack_b, Neighbours *neighbours, MoveInfo *moves, int size_a)
+void calculate_and_execute_moves(Stack *stack_a, Stack *stack_b, Neighbours *neighbours, MoveInfo *moves)
 {
-	calculate_all_moves(stack_a, stack_b, neighbours, moves, size_a);
-	execute_optimal_move(stack_a, stack_b, moves, size_a);
+	calculate_all_moves(stack_a, stack_b, neighbours, moves);
+	execute_optimal_move(stack_a, stack_b, moves);
 }

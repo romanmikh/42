@@ -60,12 +60,11 @@ void	prepare_params(MoveCalculationParams *params, Node *current_a \
 	params->position_in_a = position_in_a;
 }
 
-void	calculate_moves(Node *current_a, Stack *b, Neighbours *neighbours \
-, MoveInfo *moves, int position_in_a)
+void	calculate_moves(Node *current_a, Stack *b, Neighbours *neighbours, MoveInfo *moves)
 {
 	MoveCalculationParams	params;
 
-	prepare_params(&params, current_a, position_in_a);
+	prepare_params(&params, current_a, moves->aPos);
 	calculate_distance(b, neighbours, moves, &params);
 }
 
