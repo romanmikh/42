@@ -57,8 +57,12 @@ void swap_top_two(Stack* stack);
 void rotate_forward(Stack* stack);
 void rotate_backward(Stack* stack);
 void push_top_element(Stack* stack_a, Stack* stack_b);
-
+void initialize_stacks(char **argv, int argc, Stack *stack_a, Stack *stack_b);
+void	determine_sorting_strategy(char **str_list, Stack *stack_a, Stack *stack_b, int count);
+int	parse_arguments(char **argv, int argc, char ***str_list);
+int validate_and_fill_stack(char **str_list, int count, Stack *stack_a);
 void find_neighbours_in_a(Stack* a, int value, Neighbours* result);
+void calculate_and_execute_moves(Stack *stack_a, Stack *stack_b, Neighbours *neighbours, MoveInfo *moves, int size_a);
 void update_small_and_large_values(Node* current, int value, int** small_val, int** large_val);
 void update_smallest_and_largest_nodes(Node* current, Node** smallest_node, Node** largest_node);
 
