@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_3.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/15 18:44:59 by rocky             #+#    #+#             */
+/*   Updated: 2024/04/15 20:12:01 by rocky            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-MoveInfo	find_cheapest_move(MoveInfo *moves, int size_a)
+t_MoveInfo	find_cheapest_move(t_MoveInfo *moves, int size_a)
 {
-	MoveInfo	cheapest_move;
-	int		i;
+	t_MoveInfo	cheapest_move;
+	int			i;
 
 	cheapest_move = moves[0];
 	i = 1;
@@ -17,7 +28,7 @@ MoveInfo	find_cheapest_move(MoveInfo *moves, int size_a)
 	return (cheapest_move);
 }
 
-void calculate_position(int *position_in_a, int i, int size_a)
+void	calculate_position(int *position_in_a, int i, int size_a)
 {
 	if (i <= size_a / 2)
 		*position_in_a = i;
@@ -25,14 +36,15 @@ void calculate_position(int *position_in_a, int i, int size_a)
 		*position_in_a = size_a - i;
 }
 
-void calculate_all_moves(Stack *stack_a, Stack *stack_b, Neighbours *neighbours, MoveInfo *moves)
+void	calculate_all_moves(Stack *stack_a, Stack *stack_b \
+		, Neighbours *neighbours, t_MoveInfo *moves)
 {
-	Node	*current_a;
-	int	i;
-	int	position_in_a;
-  int size_a;
+	t_Node	*current_a;
+	int		i;
+	int		position_in_a;
+	int		size_a;
 
-  size_a = calc_stack_size(stack_a);
+	size_a = calc_stack_size(stack_a);
 	current_a = stack_a->top;
 	i = 0;
 	while (current_a != NULL)
@@ -44,17 +56,18 @@ void calculate_all_moves(Stack *stack_a, Stack *stack_b, Neighbours *neighbours,
 	}
 }
 
-void execute_optimal_move(Stack *stack_a, Stack *stack_b, MoveInfo *moves)
+void	execute_optimal_move(Stack *stack_a, Stack *stack_b, t_MoveInfo *moves)
 {
-  int size_a;
-	MoveInfo cheapest_move;
+	t_MoveInfo	cheapest_move;
+	int			size_a;
 
-  size_a = calc_stack_size(stack_a);
+	size_a = calc_stack_size(stack_a);
 	cheapest_move = find_cheapest_move(moves, size_a);
 	execute_a_to_b(stack_a, stack_b, cheapest_move);
 }
 
-void calculate_and_execute_moves(Stack *stack_a, Stack *stack_b, Neighbours *neighbours, MoveInfo *moves)
+void	calculate_and_execute_moves(Stack *stack_a, Stack *stack_b \
+		, Neighbours *neighbours, t_MoveInfo *moves)
 {
 	calculate_all_moves(stack_a, stack_b, neighbours, moves);
 	execute_optimal_move(stack_a, stack_b, moves);

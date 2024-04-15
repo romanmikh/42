@@ -1,27 +1,27 @@
-
-#include "push_swap.h"
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   a_to_b_functions.c                                 :+:      :+:    :+:   */
+/*   push_swap_4.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yourname <yourname@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/01 12:00:00 by yourname          #+#    #+#             */
-/*   Updated: 2024/01/01 12:00:00 by yourname         ###   ########.fr       */
+/*   Created: 2024/04/15 18:50:52 by rocky             #+#    #+#             */
+/*   Updated: 2024/04/15 19:52:18 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	perform_complex_sorting(Stack *stack_a, Stack *stack_b, Neighbours *neighbours)
+#include "push_swap.h"
+
+void	perform_complex_sorting(Stack *stack_a, Stack *stack_b \
+		, Neighbours *neighbours)
 {
-	int		size_a;
-	MoveInfo	*moves;
+	int			size_a;
+	t_MoveInfo	*moves;
 
 	size_a = calc_stack_size(stack_a);
-	moves = malloc(size_a * sizeof(MoveInfo));
+	moves = malloc(size_a * sizeof(t_MoveInfo));
 	if (!moves)
-		return;
+		return ;
 	calculate_and_execute_moves(stack_a, stack_b, neighbours, moves);
 	free(moves);
 }
@@ -55,17 +55,18 @@ void	complex_sort(Stack *stack_a, Stack *stack_b)
 	{
 		neighbours = find_neighbours_in_stack(stack_a, stack_b);
 		if (!neighbours)
-			continue;
+			continue ;
 		perform_complex_sorting(stack_a, stack_b, neighbours);
 		free(neighbours);
 	}
 	sort_small_stacks(stack_a, stack_b);
 }
 
-void	determine_sorting_strategy(char **str_list, Stack *stack_a, Stack *stack_b, int count)
+void	determine_sorting_strategy(char **str_list, Stack *stack_a \
+		, Stack *stack_b, int count)
 {
 	if (is_ordered(str_list, count))
-		return;
+		return ;
 	if (count > 3)
 		complex_sort(stack_a, stack_b);
 	else if (count == 3)

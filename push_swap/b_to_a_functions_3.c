@@ -6,7 +6,7 @@
 /*   By: rocky@42.fr>                              +#+  +:+       +#+        */
 /*                                                                            */
 /*   Created: 2022/01/01 12:00:00 by rocky             #+#    #+#             */
-/*   Updated: 2022/01/01 12:00:00 by rocky            ###   ########.fr       */
+/*   Updated: 2024/04/15 20:11:04 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	calculate_position_to_insert(Stack *a, Neighbours *neighbours)
 {
 	int		position;
-	Node	*current;
+	t_Node	*current;
 
 	position = 0;
 	current = a->top;
@@ -34,7 +34,7 @@ int	calculate_position_to_insert(Stack *a, Neighbours *neighbours)
 	return (position);
 }
 
-void	update_small_and_large_values(Node *current \
+void	update_small_and_large_values(t_Node *current \
 , int value, int **small_val, int **large_val)
 {
 	if (current->value < value)
@@ -49,8 +49,8 @@ void	update_small_and_large_values(Node *current \
 	}
 }
 
-void	update_smallest_and_largest_nodes(Node *current \
-, Node **smallest_node, Node **largest_node)
+void	update_smallest_and_largest_nodes(t_Node *current \
+, t_Node **smallest_node, t_Node **largest_node)
 {
 	if (!*smallest_node || current->value < (*smallest_node)->value)
 		*smallest_node = current;

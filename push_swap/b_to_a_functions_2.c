@@ -6,7 +6,7 @@
 /*   By: rocky@42.fr>                              +#+  +:+       +#+        */
 /*                                                                            */
 /*   Created: 2022/01/01 12:00:00 by rocky             #+#    #+#             */
-/*   Updated: 2022/01/01 12:00:00 by rocky            ###   ########.fr       */
+/*   Updated: 2024/04/15 20:10:45 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	rotate_to_lowest_top(Stack *stack_a)
 
 int	find_position_of_lowest(Stack *stack_a)
 {
-	Node	*current;
+	t_Node	*current;
 	int		lowest_value;
 	int		position_of_lowest;
 	int		current_index;

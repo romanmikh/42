@@ -6,7 +6,7 @@
 /*   By: yourname <yourname@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 10:29:39 by yourname          #+#    #+#             */
-/*   Updated: 2022/01/01 10:29:39 by yourname         ###   ########.fr       */
+/*   Updated: 2024/04/15 20:11:35 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	swap_top_two(Stack *stack)
 {
-	Node	*first;
-	Node	*second;
+	t_Node	*first;
+	t_Node	*second;
 
 	if (!stack || stack->size < 2)
 		return ;
@@ -34,8 +34,8 @@ void	swap_top_two(Stack *stack)
 
 void	rotate_forward(Stack *stack)
 {
-	Node	*first;
-	Node	*last;
+	t_Node	*first;
+	t_Node	*last;
 
 	if (!stack || stack->size < 2)
 		return ;
@@ -51,8 +51,8 @@ void	rotate_forward(Stack *stack)
 
 void	rotate_backward(Stack *stack)
 {
-	Node	*first;
-	Node	*last;
+	t_Node	*first;
+	t_Node	*last;
 
 	if (!stack || stack->size < 2)
 		return ;
@@ -68,7 +68,7 @@ void	rotate_backward(Stack *stack)
 
 void	push_top_element(Stack *stack_a, Stack *stack_b)
 {
-	Node	*moving_node;
+	t_Node	*moving_node;
 
 	if (!stack_a || stack_a->size == 0)
 		return ;

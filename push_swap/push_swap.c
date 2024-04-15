@@ -1,13 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/15 18:53:55 by rocky             #+#    #+#             */
+/*   Updated: 2024/04/15 19:07:35 by rocky            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char *argv[]) {
-    Stack stack_a = {NULL, NULL, 0};
-    Stack stack_b = {NULL, NULL, 0};
+void	initialize_stack(Stack *stack)
+{
+	stack->top = NULL;
+	stack->bottom = NULL;
+	stack->size = 0;
+}
 
-    if (argc <= 1) return 0;
+int	main(int argc, char *argv[])
+{
+	Stack	stack_a;
+	Stack	stack_b;
 
-    initialize_stacks(argv, argc, &stack_a, &stack_b);
-
-    return 0;
+	initialize_stack(&stack_a);
+	initialize_stack(&stack_b);
+	if (argc <= 1)
+		return (0);
+	initialize_stacks(argv, argc, &stack_a, &stack_b);
+	return (0);
 }

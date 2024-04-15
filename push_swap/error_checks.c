@@ -1,14 +1,12 @@
-#include "push_swap.h"
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   error_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rocky <rocky@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/01 10:29:39 by rocky             #+#    #+#             */
-/*   Updated: 2022/01/01 10:29:39 by rocky            ###   ########.fr       */
+/*   Created: 2024/04/15 18:42:33 by rocky             #+#    #+#             */
+/*   Updated: 2024/04/15 18:43:06 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +16,8 @@ int	is_within_int_range(const char *str)
 {
 	const char	*max_int_str;
 	const char	*min_int_str;
-	int		len;
-	int		is_negative;
+	int			len;
+	int			is_negative;
 
 	max_int_str = "2147483647";
 	min_int_str = "-2147483648";

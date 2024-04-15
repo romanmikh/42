@@ -6,12 +6,12 @@
 /*   By: yourname <yourname@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 12:00:00 by yourname          #+#    #+#             */
-/*   Updated: 2024/01/01 12:00:00 by yourname         ###   ########.fr       */
+/*   Updated: 2024/04/15 20:10:17 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	*resolve_neighbour(int *neighbour, Node *node)
+int	*resolve_neighbour(int *neighbour, t_Node *node)
 {
 	if (neighbour)
 		return (neighbour);
@@ -20,7 +20,7 @@ int	*resolve_neighbour(int *neighbour, Node *node)
 	return (NULL);
 }
 
-void	update_neighbour_values(Node *current, int value, int **small_val \
+void	update_neighbour_values(t_Node *current, int value, int **small_val \
 , int **large_val)
 {
 	if (current->value < value && (!*small_val || current->value > **small_val))
@@ -29,8 +29,8 @@ void	update_neighbour_values(Node *current, int value, int **small_val \
 		*large_val = &current->value;
 }
 
-void	update_node_references(Node *current, Node **smallest_node \
-, Node **largest_node)
+void	update_node_references(t_Node *current, t_Node **smallest_node \
+, t_Node **largest_node)
 {
 	if (!*smallest_node || current->value < (*smallest_node)->value)
 		*smallest_node = current;
@@ -42,9 +42,9 @@ void	find_neighbours_in_b(Stack *b, int value, Neighbours *neighbours)
 {
 	int		*small_val;
 	int		*large_val;
-	Node	*smallest_node;
-	Node	*largest_node;
-	Node	*current;
+	t_Node	*smallest_node;
+	t_Node	*largest_node;
+	t_Node	*current;
 
 	small_val = NULL;
 	large_val = NULL;
@@ -65,7 +65,7 @@ Neighbours	*find_neighbours_in_stack(Stack *a, Stack *b)
 {
 	int			size_a;
 	Neighbours	*neighbours;
-	Node		*current_a;
+	t_Node		*current_a;
 	int			i;
 
 	size_a = calc_stack_size(a);

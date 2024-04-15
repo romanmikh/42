@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_control.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: <your_username>@42.fr                       +#+  +:+       +#+       */
-/*                                                                            */
-/*   Created: <creation_date> by <your_username>       #+#    #+#             */
-/*   Updated: <update_date> by <your_username>        ###   ########.fr       */
+/*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/15 18:57:45 by rocky             #+#    #+#             */
+/*   Updated: 2024/04/15 20:12:16 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	push(Stack *stack, int value)
 {
-	Node	*new_node;
+	t_Node	*new_node;
 
-	new_node = (Node *)malloc(sizeof(Node));
+	new_node = (t_Node *)malloc(sizeof(t_Node));
 	if (new_node == NULL)
 	{
 		exit(EXIT_FAILURE);
@@ -34,8 +34,8 @@ void	push(Stack *stack, int value)
 
 void	free_stack(Stack *stack)
 {
-	Node	*current;
-	Node	*next;
+	t_Node	*current;
+	t_Node	*next;
 
 	current = stack->top;
 	while (current != NULL)
@@ -52,7 +52,7 @@ void	free_stack(Stack *stack)
 int	calc_stack_size(Stack *stack)
 {
 	int		size;
-	Node	*current;
+	t_Node	*current;
 
 	size = 0;
 	current = stack->top;
@@ -66,8 +66,8 @@ int	calc_stack_size(Stack *stack)
 
 void	print_stacks(Stack *stack_a, Stack *stack_b)
 {
-	Node	*current_a;
-	Node	*current_b;
+	t_Node	*current_a;
+	t_Node	*current_b;
 
 	ft_printf("A: ");
 	current_a = stack_a->top;

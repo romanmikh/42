@@ -6,12 +6,12 @@
 /*   By: yourname <yourname@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 12:00:00 by yourname          #+#    #+#             */
-/*   Updated: 2024/01/01 12:00:00 by yourname         ###   ########.fr       */
+/*   Updated: 2024/04/15 20:09:21 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	execute_b_rotation(Stack *stack_b, int size_b, MoveInfo move)
+void	execute_b_rotation(Stack *stack_b, int size_b, t_MoveInfo move)
 {
 	int	i;
 
@@ -47,12 +47,12 @@ void	execute_a_rotation(Stack *stack_a, int pos_in_a, int size_a)
 	}
 }
 
-void	execute_a_to_b(Stack *stack_a, Stack *stack_b, MoveInfo move)
+void	execute_a_to_b(Stack *stack_a, Stack *stack_b, t_MoveInfo move)
 {
 	int		size_a;
 	int		size_b;
 	int		pos_in_a;
-	Node	*current_node;
+	t_Node	*current_node;
 
 	size_a = calc_stack_size(stack_a);
 	size_b = calc_stack_size(stack_b);

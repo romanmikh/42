@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   a_to_b_functions.c                                 :+:      :+:    :+:   */
+/*   a_to_b_functions_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yourname <yourname@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 12:00:00 by yourname          #+#    #+#             */
-/*   Updated: 2024/01/01 12:00:00 by yourname         ###   ########.fr       */
+/*   Updated: 2024/04/15 20:07:19 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -20,7 +20,7 @@ void	set_distances(int *direct, int *wrap, int current_index, int size_b)
 void	update_distances(Stack *b, Neighbours *neighbours \
 , int *direct, int *wrap)
 {
-	Node	*current;
+	t_Node	*current;
 	int		i;
 
 	current = b->top;
@@ -34,8 +34,8 @@ void	update_distances(Stack *b, Neighbours *neighbours \
 	}
 }
 
-void	calculate_distance(Stack *b, Neighbours *neighbours, MoveInfo *moves \
-, MoveCalculationParams *params)
+void	calculate_distance(Stack *b, Neighbours *neighbours, t_MoveInfo *moves \
+, t_MoveCalculationParams *params)
 {
 	int	direct_distance_smaller;
 	int	wrap_distance_smaller;
@@ -53,19 +53,18 @@ void	calculate_distance(Stack *b, Neighbours *neighbours, MoveInfo *moves \
 	moves->aVal = &params->current_a->value;
 }
 
-void	prepare_params(MoveCalculationParams *params, Node *current_a \
+void	prepare_params(t_MoveCalculationParams *params, t_Node *current_a \
 , int position_in_a)
 {
 	params->current_a = current_a;
 	params->position_in_a = position_in_a;
 }
 
-void	calculate_moves(Node *current_a, Stack *b, Neighbours *neighbours, MoveInfo *moves)
+void	calculate_moves(t_Node *current_a, Stack *b, Neighbours *neighbours \
+, t_MoveInfo *moves)
 {
-	MoveCalculationParams	params;
+	t_MoveCalculationParams	params;
 
 	prepare_params(&params, current_a, moves->aPos);
 	calculate_distance(b, neighbours, moves, &params);
 }
-
-
