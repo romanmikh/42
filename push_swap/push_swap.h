@@ -38,6 +38,11 @@ typedef struct s_vars {
     Node    *largest_node;
     Node    *current;
 } t_vars;
+
+typedef struct s_MoveCalculationParams {
+    Node *current_a;
+    int position_in_a;
+} MoveCalculationParams;
 // Existing prototypes
 void push(Stack* stack, int value);
 void free_stack(Stack* stack);
