@@ -11,12 +11,12 @@
 # **************************************************************************** #
 
 SRCS = $(wildcard *.c)
-NAME = libftprintf.a
+NAME = lib_push_swap.a
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-EXEC = push_swap # Name of the executable
-MAIN_SRC = push_swap.c # Assuming push_swap.c is your main file
+EXEC = push_swap
+MAIN_SRC = push_swap.c
 MAIN_OBJ = $(MAIN_SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I.
@@ -32,7 +32,7 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 $(EXEC): $(LIBFT) $(NAME) $(MAIN_OBJ)
-	$(CC) $(CFLAGS) $(MAIN_OBJ) -L. -lftprintf -L$(LIBFT_DIR) -lft -o $(EXEC)
+	$(CC) $(CFLAGS) $(MAIN_OBJ) -L. -l_push_swap -L$(LIBFT_DIR) -lft -o $(EXEC)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

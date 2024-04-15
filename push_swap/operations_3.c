@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	px(Stack *a, Stack *b, char x)
+void	px(t_Stack *a, t_Stack *b, char x)
 {
 	push_top_element(a, b);
 	if (x == 'a')
@@ -21,14 +21,14 @@ void	px(Stack *a, Stack *b, char x)
 		ft_printf("pa\n");
 }
 
-void	rrr(Stack *a, Stack *b)
+void	rrr(t_Stack *a, t_Stack *b)
 {
 	rotate_backward(a);
 	rotate_backward(b);
 	ft_printf("rrr\n");
 }
 
-void	sort_two(Stack *a)
+void	sort_two(t_Stack *a)
 {
 	int	top;
 	int	next;
@@ -41,7 +41,7 @@ void	sort_two(Stack *a)
 		sx(a, 'a');
 }
 
-void	sort_three(Stack *a)
+void	sort_three(t_Stack *a)
 {
 	int	top;
 	int	middle;

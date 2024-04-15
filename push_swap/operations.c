@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	sx(Stack *stack, char x)
+void	sx(t_Stack *stack, char x)
 {
 	swap_top_two(stack);
 	if (x == 'a')
@@ -21,14 +21,14 @@ void	sx(Stack *stack, char x)
 		ft_printf("sb\n");
 }
 
-void	ss(Stack *a, Stack *b)
+void	ss(t_Stack *a, t_Stack *b)
 {
 	swap_top_two(a);
 	swap_top_two(b);
 	ft_printf("ss\n");
 }
 
-void	rx(Stack *stack, char x)
+void	rx(t_Stack *stack, char x)
 {
 	rotate_forward(stack);
 	if (x == 'a')
@@ -37,14 +37,14 @@ void	rx(Stack *stack, char x)
 		ft_printf("rb\n");
 }
 
-void	rr(Stack *a, Stack *b)
+void	rr(t_Stack *a, t_Stack *b)
 {
 	rotate_forward(a);
 	rotate_forward(b);
 	ft_printf("rr\n");
 }
 
-void	rrx(Stack *stack, char x)
+void	rrx(t_Stack *stack, char x)
 {
 	rotate_backward(stack);
 	if (x == 'a')

@@ -6,7 +6,7 @@
 /*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:44:59 by rocky             #+#    #+#             */
-/*   Updated: 2024/04/15 20:12:01 by rocky            ###   ########.fr       */
+/*   Updated: 2024/04/15 20:33:51 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	calculate_position(int *position_in_a, int i, int size_a)
 		*position_in_a = size_a - i;
 }
 
-void	calculate_all_moves(Stack *stack_a, Stack *stack_b \
-		, Neighbours *neighbours, t_MoveInfo *moves)
+void	calculate_all_moves(t_Stack *stack_a, t_Stack *stack_b \
+		, t_Neighbours *neighbours, t_MoveInfo *moves)
 {
 	t_Node	*current_a;
 	int		i;
@@ -56,7 +56,8 @@ void	calculate_all_moves(Stack *stack_a, Stack *stack_b \
 	}
 }
 
-void	execute_optimal_move(Stack *stack_a, Stack *stack_b, t_MoveInfo *moves)
+void	execute_optimal_move(t_Stack *stack_a, t_Stack *stack_b \
+		, t_MoveInfo *moves)
 {
 	t_MoveInfo	cheapest_move;
 	int			size_a;
@@ -66,8 +67,8 @@ void	execute_optimal_move(Stack *stack_a, Stack *stack_b, t_MoveInfo *moves)
 	execute_a_to_b(stack_a, stack_b, cheapest_move);
 }
 
-void	calculate_and_execute_moves(Stack *stack_a, Stack *stack_b \
-		, Neighbours *neighbours, t_MoveInfo *moves)
+void	calculate_and_execute_moves(t_Stack *stack_a, t_Stack *stack_b \
+		, t_Neighbours *neighbours, t_MoveInfo *moves)
 {
 	calculate_all_moves(stack_a, stack_b, neighbours, moves);
 	execute_optimal_move(stack_a, stack_b, moves);

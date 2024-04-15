@@ -11,25 +11,25 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	execute_b_rotation(Stack *stack_b, int size_b, t_MoveInfo move)
+void	execute_b_rotation(t_Stack *stack_b, int size_b, t_MoveInfo move)
 {
 	int	i;
 
-	if (move.bPos <= size_b / 2)
+	if (move.b_pos <= size_b / 2)
 	{
 		i = 0;
-		while (i++ < move.bPos)
+		while (i++ < move.b_pos)
 			rx(stack_b, 'b');
 	}
 	else
 	{
 		i = 0;
-		while (i++ < size_b - move.bPos)
+		while (i++ < size_b - move.b_pos)
 			rrx(stack_b, 'b');
 	}
 }
 
-void	execute_a_rotation(Stack *stack_a, int pos_in_a, int size_a)
+void	execute_a_rotation(t_Stack *stack_a, int pos_in_a, int size_a)
 {
 	int	i;
 
@@ -47,7 +47,7 @@ void	execute_a_rotation(Stack *stack_a, int pos_in_a, int size_a)
 	}
 }
 
-void	execute_a_to_b(Stack *stack_a, Stack *stack_b, t_MoveInfo move)
+void	execute_a_to_b(t_Stack *stack_a, t_Stack *stack_b, t_MoveInfo move)
 {
 	int		size_a;
 	int		size_b;
@@ -58,7 +58,7 @@ void	execute_a_to_b(Stack *stack_a, Stack *stack_b, t_MoveInfo move)
 	size_b = calc_stack_size(stack_b);
 	pos_in_a = 0;
 	current_node = stack_a->top;
-	while (current_node && &current_node->value != move.aVal)
+	while (current_node && &current_node->value != move.a_val)
 	{
 		pos_in_a++;
 		current_node = current_node->next;

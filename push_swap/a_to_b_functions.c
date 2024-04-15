@@ -6,7 +6,7 @@
 /*   By: yourname <yourname@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 12:00:00 by yourname          #+#    #+#             */
-/*   Updated: 2024/04/15 20:10:17 by rocky            ###   ########.fr       */
+/*   Updated: 2024/04/15 20:33:22 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -38,7 +38,7 @@ void	update_node_references(t_Node *current, t_Node **smallest_node \
 		*largest_node = current;
 }
 
-void	find_neighbours_in_b(Stack *b, int value, Neighbours *neighbours)
+void	find_neighbours_in_b(t_Stack *b, int value, t_Neighbours *neighbours)
 {
 	int		*small_val;
 	int		*large_val;
@@ -57,19 +57,19 @@ void	find_neighbours_in_b(Stack *b, int value, Neighbours *neighbours)
 		update_node_references(current, &smallest_node, &largest_node);
 		current = current->next;
 	}
-	neighbours->smallerNeighbour = resolve_neighbour(small_val, largest_node);
-	neighbours->largerNeighbour = resolve_neighbour(large_val, smallest_node);
+	neighbours->small_neighbour = resolve_neighbour(small_val, largest_node);
+	neighbours->large_neighbour = resolve_neighbour(large_val, smallest_node);
 }
 
-Neighbours	*find_neighbours_in_stack(Stack *a, Stack *b)
+t_Neighbours	*find_neighbours_in_stack(t_Stack *a, t_Stack *b)
 {
-	int			size_a;
-	Neighbours	*neighbours;
-	t_Node		*current_a;
-	int			i;
+	int				size_a;
+	t_Neighbours	*neighbours;
+	t_Node			*current_a;
+	int				i;
 
 	size_a = calc_stack_size(a);
-	neighbours = malloc(size_a * sizeof(Neighbours));
+	neighbours = malloc(size_a * sizeof(t_Neighbours));
 	if (!neighbours)
 		return (NULL);
 	current_a = a->top;

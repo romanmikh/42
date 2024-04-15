@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	push(Stack *stack, int value)
+void	push(t_Stack *stack, int value)
 {
 	t_Node	*new_node;
 
@@ -32,7 +32,7 @@ void	push(Stack *stack, int value)
 	stack->size++;
 }
 
-void	free_stack(Stack *stack)
+void	free_stack(t_Stack *stack)
 {
 	t_Node	*current;
 	t_Node	*next;
@@ -49,7 +49,7 @@ void	free_stack(Stack *stack)
 	stack->size = 0;
 }
 
-int	calc_stack_size(Stack *stack)
+int	calc_stack_size(t_Stack *stack)
 {
 	int		size;
 	t_Node	*current;
@@ -64,7 +64,7 @@ int	calc_stack_size(Stack *stack)
 	return (size);
 }
 
-void	print_stacks(Stack *stack_a, Stack *stack_b)
+void	print_stacks(t_Stack *stack_a, t_Stack *stack_b)
 {
 	t_Node	*current_a;
 	t_Node	*current_b;

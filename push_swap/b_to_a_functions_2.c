@@ -6,13 +6,13 @@
 /*   By: rocky@42.fr>                              +#+  +:+       +#+        */
 /*                                                                            */
 /*   Created: 2022/01/01 12:00:00 by rocky             #+#    #+#             */
-/*   Updated: 2024/04/15 20:10:45 by rocky            ###   ########.fr       */
+/*   Updated: 2024/04/15 20:31:42 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	adjust_stack_a_for_insertion(Stack *stack_a, int position_to_insert)
+void	adjust_stack_a_for_insertion(t_Stack *stack_a, int position_to_insert)
 {
 	int	size_a;
 
@@ -23,11 +23,11 @@ void	adjust_stack_a_for_insertion(Stack *stack_a, int position_to_insert)
 		rotate_half_stack(stack_a, size_a - position_to_insert, -1);
 }
 
-void	execute_b_to_a(Stack *stack_a, Stack *stack_b)
+void	execute_b_to_a(t_Stack *stack_a, t_Stack *stack_b)
 {
-	Neighbours	neighbours;
-	int			b_top_value;
-	int			position_to_insert;
+	t_Neighbours	neighbours;
+	int				b_top_value;
+	int				position_to_insert;
 
 	if (!stack_b->top)
 		return ;
@@ -38,7 +38,7 @@ void	execute_b_to_a(Stack *stack_a, Stack *stack_b)
 	px(stack_b, stack_a, 'b');
 }
 
-void	rotate_to_lowest_top(Stack *stack_a)
+void	rotate_to_lowest_top(t_Stack *stack_a)
 {
 	int	size_a;
 	int	position_of_lowest;
@@ -50,7 +50,7 @@ void	rotate_to_lowest_top(Stack *stack_a)
 	adjust_rotation_based_on_position(stack_a, position_of_lowest);
 }
 
-int	find_position_of_lowest(Stack *stack_a)
+int	find_position_of_lowest(t_Stack *stack_a)
 {
 	t_Node	*current;
 	int		lowest_value;
@@ -74,7 +74,7 @@ int	find_position_of_lowest(Stack *stack_a)
 	return (position_of_lowest);
 }
 
-void	adjust_rotation_based_on_position(Stack *stack_a \
+void	adjust_rotation_based_on_position(t_Stack *stack_a \
 , int position_of_lowest)
 {
 	int	size_a;

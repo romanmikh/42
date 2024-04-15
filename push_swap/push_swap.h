@@ -6,7 +6,7 @@
 /*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:59:15 by rocky             #+#    #+#             */
-/*   Updated: 2024/04/15 20:13:46 by rocky            ###   ########.fr       */
+/*   Updated: 2024/04/15 20:30:48 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,26 @@ typedef struct t_Node
 	int				value;
 }	t_Node;
 
-typedef struct Stack
+typedef struct t_Stack
 {
 	t_Node	*top;
 	t_Node	*bottom;
 	int		size;
-}	Stack;
+}	t_Stack;
 
-typedef struct Neighbours
+typedef struct t_Neighbours
 {
-	int	*smallerNeighbour;
-	int	*largerNeighbour;
-}	Neighbours;
+	int	*small_neighbour;
+	int	*large_neighbour;
+}	t_Neighbours;
 
 typedef struct MoveInfo
 {
-	int	*aVal;
-	int	*valuePtr;  
+	int	*a_val;
+	int	*b_val;
 	int	distance;
-	int	bPos;
-	int	aPos;
+	int	b_pos;
+	int	a_pos;
 }	t_MoveInfo;
 
 typedef struct s_vars
@@ -59,68 +59,72 @@ typedef struct s_MoveCalculationParams
 	int		position_in_a;
 }	t_MoveCalculationParams;
 
-Neighbours	*find_neighbours_in_stack(Stack	*a, Stack	*b);
+t_Neighbours		*find_neighbours_in_stack(t_Stack	*a, t_Stack	*b);
 
-void		push(Stack	*stack, int value);
-void		free_stack(Stack	*stack);
-void		sx(Stack	*stack, char x);
-void		ss(Stack	*a, Stack	*b);
-void		px(Stack	*a, Stack	*b, char x);
-void		rx(Stack	*stack, char x);
-void		rr(Stack	*a, Stack	*b);
-void		rrx(Stack	*stack, char x);
-void		rrr(Stack	*a, Stack	*b);
-void		sort_two(Stack	*stackA);
-void		sort_three(Stack	*stack);
-void		rotate_half_stack(Stack	*stack, int steps, int direction);
-void		push_top_element(Stack	*stack_a, Stack	*stack_b);
-void		rotate_forward(Stack	*stack);
-void		rotate_backward(Stack	*stack);
-void		swap_top_two(Stack	*stack);
-void		rotate_to_lowest_top(Stack	*stack_a);
-void		rotate_to_lowest_top(Stack	*stackA);
-void		execute_b_to_a(Stack	*stack_a, Stack	*stack_b);
-void		execute_b_to_a(Stack	*stack_a, Stack	*stack_b);
-void		adjust_rotation_based_on_position(Stack	*stack_a \
-		, int position_of_lowest);
-void		execute_a_to_b(Stack	*stack_a, Stack	*stack_b \
-		, t_MoveInfo move);
-void		adjust_stack_a_for_insertion(Stack	*stack_a \
-		, int position_to_insert);
-void		adjust_stack_a_for_insertion(Stack	*stack_a \
-		, int position_to_insert);
-void		print_stacks(Stack	*stackA, Stack	*stackB);
-void		find_neighbours_in_b(Stack	*b, int value \
-		, Neighbours	*neighbours);
-void		find_neighbours_in_a(Stack	*a, int value \
-		, Neighbours	*result);
-void		find_neighbours_in_a(Stack	*a, int value \
-		, Neighbours	*result);
-void		initialize_stacks(char **argv, int argc \
-		, Stack *stack_a, Stack *stack_b);
-void		update_small_and_large_values(t_Node	*current \
-		, int value, int	**small_val, int	**large_val);
-void		update_small_and_large_values(t_Node	*current \
-		, int value, int	**small_val, int	**large_val);
-void		update_smallest_and_largest_nodes(t_Node	*current \
-		, t_Node	**smallest_node, t_Node	**largest_node);
-void		update_smallest_and_largest_nodes(t_Node	*current \
-		, t_Node	**smallest_node, t_Node	**largest_node);
-void		calculate_moves(t_Node	*current_a, Stack	*b \
-		, Neighbours	*neighbours, t_MoveInfo	*moves);
-void		calculate_and_execute_moves(Stack *stack_a \
-		, Stack *stack_b, Neighbours *neighbours, t_MoveInfo *moves);
-void		determine_sorting_strategy(char **str_list \
-		, Stack *stack_a, Stack *stack_b, int count);
+void				push(t_Stack	*stack, int value);
+void				free_stack(t_Stack	*stack);
+void				sx(t_Stack	*stack, char x);
+void				ss(t_Stack	*a, t_Stack	*b);
+void				px(t_Stack	*a, t_Stack	*b, char x);
+void				rx(t_Stack	*stack, char x);
+void				rr(t_Stack	*a, t_Stack	*b);
+void				rrx(t_Stack	*stack, char x);
+void				rrr(t_Stack	*a, t_Stack	*b);
+void				sort_two(t_Stack	*stackA);
+void				sort_three(t_Stack	*stack);
+void				rotate_half_stack(t_Stack	*stack, int steps \
+				, int direction);
+void				push_top_element(t_Stack	*stack_a, t_Stack	*stack_b);
+void				rotate_forward(t_Stack	*stack);
+void				rotate_backward(t_Stack	*stack);
+void				swap_top_two(t_Stack	*stack);
+void				rotate_to_lowest_top(t_Stack	*stack_a);
+void				rotate_to_lowest_top(t_Stack	*stackA);
+void				execute_b_to_a(t_Stack	*stack_a, t_Stack	*stack_b);
+void				execute_b_to_a(t_Stack	*stack_a, t_Stack	*stack_b);
+void				adjust_rotation_based_on_position(t_Stack	*stack_a \
+				, int position_of_lowest);
+void				execute_a_to_b(t_Stack	*stack_a, t_Stack	*stack_b \
+				, t_MoveInfo move);
+void				adjust_stack_a_for_insertion(t_Stack	*stack_a \
+				, int position_to_insert);
+void				adjust_stack_a_for_insertion(t_Stack	*stack_a \
+				, int position_to_insert);
+void				print_stacks(t_Stack	*stackA, t_Stack	*stackB);
+void				find_neighbours_in_b(t_Stack	*b, int value \
+				, t_Neighbours	*neighbours);
+void				find_neighbours_in_a(t_Stack	*a, int value \
+				, t_Neighbours	*result);
+void				find_neighbours_in_a(t_Stack	*a, int value \
+				, t_Neighbours	*result);
+void				initialize_stacks(char **argv, int argc \
+				, t_Stack *stack_a, t_Stack *stack_b);
+void				update_small_and_large_values(t_Node	*current \
+				, int value, int	**small_val, int	**large_val);
+void				update_small_and_large_values(t_Node	*current \
+				, int value, int	**small_val, int	**large_val);
+void				update_smallest_and_largest_nodes(t_Node	*current \
+				, t_Node	**smallest_node, t_Node	**largest_node);
+void				update_smallest_and_largest_nodes(t_Node	*current \
+				, t_Node	**smallest_node, t_Node	**largest_node);
+void				calculate_moves(t_Node	*current_a, t_Stack	*b \
+				, t_Neighbours	*neighbours, t_MoveInfo	*moves);
+void				calculate_and_execute_moves(t_Stack *stack_a \
+				, t_Stack *stack_b, t_Neighbours *neighbours \
+				, t_MoveInfo *moves);
+void				determine_sorting_strategy(char **str_list \
+				, t_Stack *stack_a, t_Stack *stack_b, int count);
 
-int			min(int a, int b);
-int			calc_stack_size(Stack *stack);
-int			is_within_int_range(const char *str);
-int			is_ordered(char *strings[], int length);
-int			arr_of_str_has_repeats(char *strings[], int count);
-int			parse_arguments(char **argv, int argc, char ***str_list);
-int			validate_and_fill_stack(char **str_list, int count, Stack *stack_a);
-int			calculate_position_to_insert(Stack	*a, Neighbours	*neighbours);
-int			find_position_of_lowest(Stack	*stack_a);
+int					min(int a, int b);
+int					calc_stack_size(t_Stack *stack);
+int					is_within_int_range(const char *str);
+int					is_ordered(char *strings[], int length);
+int					arr_of_str_has_repeats(char *strings[], int count);
+int					parse_arguments(char **argv, int argc, char ***str_list);
+int					validate_and_fill_stack(char **str_list, int count \
+					, t_Stack *stack_a);
+int					calculate_position_to_insert(t_Stack	*a \
+					, t_Neighbours	*neighbours);
+int					find_position_of_lowest(t_Stack	*stack_a);
 
 #endif // PUSH_SWAP_H

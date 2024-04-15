@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	initialize_stack(Stack *stack)
+void	initialize_stack(t_Stack *stack)
 {
 	stack->top = NULL;
 	stack->bottom = NULL;
@@ -21,8 +21,8 @@ void	initialize_stack(Stack *stack)
 
 int	main(int argc, char *argv[])
 {
-	Stack	stack_a;
-	Stack	stack_b;
+	t_Stack	stack_a;
+	t_Stack	stack_b;
 
 	initialize_stack(&stack_a);
 	initialize_stack(&stack_b);
