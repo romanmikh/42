@@ -6,7 +6,7 @@
 /*   By: rocky@42.fr>                              +#+  +:+       +#+        */
 /*                                                                            */
 /*   Created: 2022/01/01 12:00:00 by rocky             #+#    #+#             */
-/*   Updated: 2022/01/01 12:00:00 by rocky            ###   ########.fr       */
+/*   Updated: 2024/04/15 20:31:42 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	adjust_stack_a_for_insertion(t_Stack *stack_a, int position_to_insert)
 void	execute_b_to_a(t_Stack *stack_a, t_Stack *stack_b)
 {
 	t_Neighbours	neighbours;
-	int			b_top_value;
-	int			position_to_insert;
+	int				b_top_value;
+	int				position_to_insert;
 
 	if (!stack_b->top)
 		return ;

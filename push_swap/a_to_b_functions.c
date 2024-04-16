@@ -6,7 +6,7 @@
 /*   By: yourname <yourname@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 12:00:00 by yourname          #+#    #+#             */
-/*   Updated: 2024/04/16 11:25:30 by rocky            ###   ########.fr       */
+/*   Updated: 2024/04/15 20:33:22 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -63,10 +63,10 @@ void	find_neighbours_in_b(t_Stack *b, int value, t_Neighbours *neighbours)
 
 t_Neighbours	*find_neighbours_in_stack(t_Stack *a, t_Stack *b)
 {
-	int			size_a;
+	int				size_a;
 	t_Neighbours	*neighbours;
-	t_Node		*current_a;
-	int			i;
+	t_Node			*current_a;
+	int				i;
 
 	size_a = calc_stack_size(a);
 	neighbours = malloc(size_a * sizeof(t_Neighbours));

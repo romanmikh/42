@@ -1,14 +1,12 @@
-#include "push_swap.h"
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   error_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rocky <rocky@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/01 10:29:39 by rocky             #+#    #+#             */
-/*   Updated: 2022/01/01 10:29:39 by rocky            ###   ########.fr       */
+/*   Created: 2024/04/15 18:42:33 by rocky             #+#    #+#             */
+/*   Updated: 2024/04/15 18:43:06 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +16,12 @@ int	is_within_int_range(const char *str)
 {
 	const char	*max_int_str;
 	const char	*min_int_str;
-	int		len;
-	int		is_negative;
+	int			len;
+	int			is_negative;
 
 	max_int_str = "2147483647";
 	min_int_str = "-2147483648";
-	len = strlen(str);
+	len = ft_strlen(str);
 	is_negative = (str[0] == '-');
 	if (len > 10 + is_negative)
 		return (0);
@@ -31,13 +29,13 @@ int	is_within_int_range(const char *str)
 	{
 		if (len < 11)
 			return (1);
-		return (strcmp(str, min_int_str) <= 0);
+		return (ft_strcmp(str, min_int_str) <= 0);
 	}
 	else
 	{
 		if (len < 10)
 			return (1);
-		return (strcmp(str, max_int_str) <= 0);
+		return (ft_strcmp(str, max_int_str) <= 0);
 	}
 }
 
@@ -52,7 +50,7 @@ int	arr_of_str_has_repeats(char *strings[], int count)
 		j = i + 1;
 		while (j < count)
 		{
-			if (strcmp(strings[i], strings[j]) == 0)
+			if (ft_strcmp(strings[i], strings[j]) == 0)
 			{
 				return (1);
 			}

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/15 18:43:23 by rocky             #+#    #+#             */
+/*   Updated: 2024/04/15 18:44:45 by rocky            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	handle_two_args(char **argv, char ***str_list)
@@ -16,7 +28,7 @@ int	handle_multiple_args(int argc, char **argv, char ***str_list)
 	i = 0;
 	while (i < argc - 1)
 	{
-		(*str_list)[i] = strdup(argv[i + 1]);
+		(*str_list)[i] = ft_strdup(argv[i + 1]);
 		if (!(*str_list)[i])
 		{
 			while (i-- > 0)
@@ -44,11 +56,10 @@ int	validate_and_fill_stack(char **str_list, int count, t_Stack *stack_a)
 	i = count - 1;
 	while (i >= 0)
 	{
-		if (isnum_from_str(str_list[i]) == 0 || 
-		    is_within_int_range(str_list[i]) == 0 || 
-		    arr_of_str_has_repeats(str_list, count) == 1)
+		if (isnum_from_str(str_list[i]) == 0 || \
+			is_within_int_range(str_list[i]) == 0 || \
+			arr_of_str_has_repeats(str_list, count) == 1)
 		{
-			printf("Error\n");
 			return (0);
 		}
 		push(stack_a, atoi(str_list[i]));
