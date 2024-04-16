@@ -1,22 +1,33 @@
-# include "libft.h"
-# include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_repeat_check_int.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/15 16:36:13 by rocky             #+#    #+#             */
+/*   Updated: 2024/04/15 16:41:53 by rocky            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int list_repeat_check_int(int a[], int size) {
-    printf("a:");
-    for (int i=0; i < size-1; i++){
-      printf(" %d", a[i]);
-    }
-    printf("\n");
+#include "libft.h"
 
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = i + 1; j < size; j++) {
-          printf("i: %d, j: %d, elements: %d & %d\n", i, j, a[i], a[j]);
-            if (a[i] == a[j]) {    
-                return (1);
-            }
-        }
-    }
-    return(0);
+int	list_repeat_check_int(int a[], int size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (a[i] == a[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
-
-

@@ -13,26 +13,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	perform_complex_sorting(Stack *stack_a, Stack *stack_b, Neighbours *neighbours)
+void	perform_complex_sorting(t_Stack *stack_a, t_Stack *stack_b, t_Neighbours *neighbours)
 {
 	int		size_a;
-	MoveInfo	*moves;
+	t_MoveInfo	*moves;
 
 	size_a = calc_stack_size(stack_a);
-	moves = malloc(size_a * sizeof(MoveInfo));
+	moves = malloc(size_a * sizeof(t_MoveInfo));
 	if (!moves)
 		return;
 	calculate_and_execute_moves(stack_a, stack_b, neighbours, moves, size_a);
 	free(moves);
 }
 
-void	execute_rest(Stack *stack_a, Stack *stack_b)
+void	execute_rest(t_Stack *stack_a, t_Stack *stack_b)
 {
 	while (calc_stack_size(stack_b) > 0)
 		execute_b_to_a(stack_a, stack_b);
 }
 
-void	sort_small_stacks(Stack *stack_a, Stack *stack_b)
+void	sort_small_stacks(t_Stack *stack_a, t_Stack *stack_b)
 {
 	int	stack_a_size;
 
@@ -45,9 +45,9 @@ void	sort_small_stacks(Stack *stack_a, Stack *stack_b)
 	rotate_to_lowest_top(stack_a);
 }
 
-void	complex_sort(Stack *stack_a, Stack *stack_b)
+void	complex_sort(t_Stack *stack_a, t_Stack *stack_b)
 {
-	Neighbours	*neighbours;
+	t_Neighbours	*neighbours;
 
 	px(stack_a, stack_b, 'a');
 	px(stack_a, stack_b, 'a');
@@ -62,7 +62,7 @@ void	complex_sort(Stack *stack_a, Stack *stack_b)
 	sort_small_stacks(stack_a, stack_b);
 }
 
-void	determine_sorting_strategy(char **str_list, Stack *stack_a, Stack *stack_b, int count)
+void	determine_sorting_strategy(char **str_list, t_Stack *stack_a, t_Stack *stack_b, int count)
 {
 	if (is_ordered(str_list, count))
 		return;

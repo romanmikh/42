@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	initialize_pointers(t_vars *vars, Stack *a)
+void	initialize_pointers(t_vars *vars, t_Stack *a)
 {
 	vars->small_val = NULL;
 	vars->large_val = NULL;
@@ -30,23 +30,23 @@ void	update_pointers(t_vars *vars, int value)
 	vars->current = vars->current->next;
 }
 
-void	set_neighbours(Neighbours *result, t_vars *vars)
+void	set_neighbours(t_Neighbours *result, t_vars *vars)
 {
 	if (vars->small_val)
-		result->smallerNeighbour = vars->small_val;
+		result->small_neighbour = vars->small_val;
 	else if (vars->largest_node)
-		result->smallerNeighbour = &vars->largest_node->value;
+		result->small_neighbour = &vars->largest_node->value;
 	else
-		result->smallerNeighbour = NULL;
+		result->small_neighbour = NULL;
 	if (vars->large_val)
-		result->largerNeighbour = vars->large_val;
+		result->large_neighbour = vars->large_val;
 	else if (vars->smallest_node)
-		result->largerNeighbour = &vars->smallest_node->value;
+		result->large_neighbour = &vars->smallest_node->value;
 	else
-		result->largerNeighbour = NULL;
+		result->large_neighbour = NULL;
 }
 
-void	find_neighbours_in_a(Stack *a, int value, Neighbours *result)
+void	find_neighbours_in_a(t_Stack *a, int value, t_Neighbours *result)
 {
 	t_vars	vars;
 

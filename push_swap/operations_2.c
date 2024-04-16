@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-void	swap_top_two(Stack *stack)
+void	swap_top_two(t_Stack *stack)
 {
-	Node	*first;
-	Node	*second;
+	t_Node	*first;
+	t_Node	*second;
 
 	if (!stack || stack->size < 2)
 		return ;
@@ -32,10 +32,10 @@ void	swap_top_two(Stack *stack)
 		stack->bottom = first;
 }
 
-void	rotate_forward(Stack *stack)
+void	rotate_forward(t_Stack *stack)
 {
-	Node	*first;
-	Node	*last;
+	t_Node	*first;
+	t_Node	*last;
 
 	if (!stack || stack->size < 2)
 		return ;
@@ -49,10 +49,10 @@ void	rotate_forward(Stack *stack)
 	stack->bottom = first;
 }
 
-void	rotate_backward(Stack *stack)
+void	rotate_backward(t_Stack *stack)
 {
-	Node	*first;
-	Node	*last;
+	t_Node	*first;
+	t_Node	*last;
 
 	if (!stack || stack->size < 2)
 		return ;
@@ -66,9 +66,9 @@ void	rotate_backward(Stack *stack)
 	stack->top = last;
 }
 
-void	push_top_element(Stack *stack_a, Stack *stack_b)
+void	push_top_element(t_Stack *stack_a, t_Stack *stack_b)
 {
-	Node	*moving_node;
+	t_Node	*moving_node;
 
 	if (!stack_a || stack_a->size == 0)
 		return ;

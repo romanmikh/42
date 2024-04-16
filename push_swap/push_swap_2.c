@@ -37,7 +37,7 @@ int	parse_arguments(char **argv, int argc, char ***str_list)
 		return (handle_multiple_args(argc, argv, str_list));
 }
 
-int	validate_and_fill_stack(char **str_list, int count, Stack *stack_a)
+int	validate_and_fill_stack(char **str_list, int count, t_Stack *stack_a)
 {
 	int	i;
 

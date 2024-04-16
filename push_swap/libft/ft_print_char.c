@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_max_in_list.c                                 :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rocky <rmikhayl@student.42london.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 16:44:19 by rocky             #+#    #+#             */
-/*   Updated: 2024/04/15 16:45:00 by rocky            ###   ########.fr       */
+/*   Created: 2024/01/07 15:47:43 by rocky             #+#    #+#             */
+/*   Updated: 2024/01/07 15:47:43 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	find_max_in_list(int a[], int size)
+int	ft_print_char(int c)
 {
-	int	max;
-	int	i;
-
-	max = INT_MIN;
-	i = 0;
-	while (i < size)
-	{
-		if (a[i] > max)
-			max = a[i];
-		i++;
-	}
-	return (max);
+	ft_putchar_fd(c, 1);
+	return (1);
 }

@@ -12,18 +12,18 @@
 
 #include "push_swap.h"
 
-int	calculate_position_to_insert(Stack *a, Neighbours *neighbours)
+int	calculate_position_to_insert(t_Stack *a, t_Neighbours *neighbours)
 {
 	int		position;
-	Node	*current;
+	t_Node	*current;
 
 	position = 0;
 	current = a->top;
-	if (!neighbours->smallerNeighbour)
+	if (!neighbours->small_neighbour)
 		return (0);
 	while (current)
 	{
-		if (&current->value == neighbours->smallerNeighbour)
+		if (&current->value == neighbours->small_neighbour)
 		{
 			position++;
 			break ;
@@ -34,7 +34,7 @@ int	calculate_position_to_insert(Stack *a, Neighbours *neighbours)
 	return (position);
 }
 
-void	update_small_and_large_values(Node *current \
+void	update_small_and_large_values(t_Node *current \
 , int value, int **small_val, int **large_val)
 {
 	if (current->value < value)
@@ -49,8 +49,8 @@ void	update_small_and_large_values(Node *current \
 	}
 }
 
-void	update_smallest_and_largest_nodes(Node *current \
-, Node **smallest_node, Node **largest_node)
+void	update_smallest_and_largest_nodes(t_Node *current \
+, t_Node **smallest_node, t_Node **largest_node)
 {
 	if (!*smallest_node || current->value < (*smallest_node)->value)
 		*smallest_node = current;
@@ -58,7 +58,7 @@ void	update_smallest_and_largest_nodes(Node *current \
 		*largest_node = current;
 }
 
-void	rotate_half_stack(Stack *stack, int steps, int direction)
+void	rotate_half_stack(t_Stack *stack, int steps, int direction)
 {
 	int	i;
 

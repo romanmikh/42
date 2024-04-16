@@ -17,7 +17,7 @@ void	free_str_array(char **str_list, int count)
 	}
 }
 
-void	free_resources(Stack *stack_a, Stack *stack_b, char **str_list, int count)
+void	free_resources(t_Stack *stack_a, t_Stack *stack_b, char **str_list, int count)
 {
 	free_stack(stack_a);
 	free_stack(stack_b);
@@ -25,7 +25,7 @@ void	free_resources(Stack *stack_a, Stack *stack_b, char **str_list, int count)
 		free_str_array(str_list, count);
 }
 
-void	initialize_stacks(char **argv, int argc, Stack *stack_a, Stack *stack_b)
+void	initialize_stacks(char **argv, int argc, t_Stack *stack_a, t_Stack *stack_b)
 {
 	char	**str_list;
 	int		count;

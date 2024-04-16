@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-void	push(Stack *stack, int value)
+void	push(t_Stack *stack, int value)
 {
-	Node	*new_node;
+	t_Node	*new_node;
 
-	new_node = (Node *)malloc(sizeof(Node));
+	new_node = (t_Node *)malloc(sizeof(t_Node));
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Memory allocation failed\n");
@@ -33,10 +33,10 @@ void	push(Stack *stack, int value)
 	stack->size++;
 }
 
-void	free_stack(Stack *stack)
+void	free_stack(t_Stack *stack)
 {
-	Node	*current;
-	Node	*next;
+	t_Node	*current;
+	t_Node	*next;
 
 	current = stack->top;
 	while (current != NULL)
@@ -50,10 +50,10 @@ void	free_stack(Stack *stack)
 	stack->size = 0;
 }
 
-int	calc_stack_size(Stack *stack)
+int	calc_stack_size(t_Stack *stack)
 {
 	int		size;
-	Node	*current;
+	t_Node	*current;
 
 	size = 0;
 	current = stack->top;
@@ -65,10 +65,10 @@ int	calc_stack_size(Stack *stack)
 	return (size);
 }
 
-void	print_stacks(Stack *stack_a, Stack *stack_b)
+void	print_stacks(t_Stack *stack_a, t_Stack *stack_b)
 {
-	Node	*current_a;
-	Node	*current_b;
+	t_Node	*current_a;
+	t_Node	*current_b;
 
 	printf("A: ");
 	current_a = stack_a->top;
