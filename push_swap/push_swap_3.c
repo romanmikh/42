@@ -28,12 +28,12 @@ t_MoveInfo	find_cheapest_move(t_MoveInfo *moves, int size_a)
 	return (cheapest_move);
 }
 
-void	calculate_position(int *position_in_a, int i, int size_a)
+void	calculate_position(t_MoveInfo *moves, int i, int size_a)
 {
 	if (i <= size_a / 2)
-		*position_in_a = i;
+		moves->a_pos = i;
 	else
-		*position_in_a = size_a - i;
+		moves->a_pos = size_a - i;
 }
 
 void	calculate_all_moves(t_Stack *stack_a, t_Stack *stack_b \
@@ -41,7 +41,6 @@ void	calculate_all_moves(t_Stack *stack_a, t_Stack *stack_b \
 {
 	t_Node	*current_a;
 	int		i;
-	int		position_in_a;
 	int		size_a;
 
 	size_a = calc_stack_size(stack_a);
@@ -49,7 +48,7 @@ void	calculate_all_moves(t_Stack *stack_a, t_Stack *stack_b \
 	i = 0;
 	while (current_a != NULL)
 	{
-		calculate_position(&position_in_a, i, size_a);
+		calculate_position(&moves[i], i, size_a);
 		calculate_moves(current_a, stack_b, &neighbours[i], &moves[i]);
 		current_a = current_a->next;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: yourname <yourname@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 12:00:00 by yourname          #+#    #+#             */
-/*   Updated: 2024/04/15 20:34:21 by rocky            ###   ########.fr       */
+/*   Updated: 2024/04/16 13:25:42 by rocky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -53,11 +53,11 @@ void	calculate_distance(t_Stack *b, t_Neighbours *neighbours \
 	moves->a_val = &params->current_a->value;
 }
 
-void	prepare_params(t_MoveCalculationParams *params, t_Node *current_a \
-, int position_in_a)
+void	prepare_params(t_MoveCalculationParams *params \
+	, t_Node *current_a, t_MoveInfo *moves)
 {
 	params->current_a = current_a;
-	params->position_in_a = position_in_a;
+	params->position_in_a = moves->a_pos;
 }
 
 void	calculate_moves(t_Node *current_a, t_Stack *b, t_Neighbours *neighbours \
@@ -65,6 +65,6 @@ void	calculate_moves(t_Node *current_a, t_Stack *b, t_Neighbours *neighbours \
 {
 	t_MoveCalculationParams	params;
 
-	prepare_params(&params, current_a, moves->a_pos);
+	prepare_params(&params, current_a, moves);
 	calculate_distance(b, neighbours, moves, &params);
 }
