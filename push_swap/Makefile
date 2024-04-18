@@ -6,11 +6,15 @@
 #    By: rocky <rmikhayl@student.42london.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:47:43 by rocky             #+#    #+#              #
-#    Updated: 2024/01/07 15:47:43 by rocky            ###   ########.fr        #
+#    Updated: 2024/04/18 17:32:32 by rmikhayl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = $(wildcard *.c)
+SRCS = a_to_b_functions.c	a_to_b_functions_2.c	a_to_b_functions_3.c	\
+       b_to_a_functions.c	b_to_a_functions_2.c	b_to_a_functions_3.c	\
+       operations.c	operations_2.c	operations_3.c		push_swap.c	\
+       push_swap_2.c	push_swap_3.c	push_swap_4.c	push_swap_5.c	\
+       auxiliary.c	error_checks.c	stack_control.c
 NAME = lib_push_swap.a
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = libft
