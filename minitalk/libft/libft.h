@@ -6,7 +6,7 @@
 /*   By: rmikhayl <rmikhayl@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:25:48 by rmikhayl          #+#    #+#             */
-/*   Updated: 2024/04/15 16:56:06 by rocky            ###   ########.fr       */
+/*   Updated: 2024/04/19 16:59:09 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		list_repeat_check_str(char *a[], int size);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+int		ft_count_bits(unsigned char current_char);
 int		find_max_in_list(int a[], int size);
 
 char	*ft_itoa(int n);

@@ -6,24 +6,25 @@
 /*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:17:52 by rmikhayl          #+#    #+#             */
-/*   Updated: 2024/04/19 14:18:09 by rmikhayl         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:11:32 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft/libft.h"
 
 void	handle_signal(int signal)
 {
 	static unsigned char	current_char;
-	static int				bit_index;
+  unsigned char temp_char;
 
+  temp_char = current_char;
 	current_char |= (signal == SIGUSR1);
-	bit_index++;
-	if (bit_index == 8)
+	if (ft_count_bits(temp_char) == 7)
 	{
 		if (current_char == '\0')
 			ft_printf("\n");
 		else
 			ft_printf("%c", current_char);
-		bit_index = 0;
 		current_char = 0;
 	}
 	else

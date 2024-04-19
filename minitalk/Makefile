@@ -6,19 +6,19 @@
 #    By: rocky <rmikhayl@student.42london.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:47:43 by rocky             #+#    #+#              #
-#    Updated: 2024/04/16 19:44:45 by rocky            ###   ########.fr        #
+#    Updated: 2024/04/19 14:23:54 by rmikhayl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+CFLAGS = -Wall -Wextra -Werror -I.
 CLIENT_SRCS = client.c
-SERVER_SRCS =server.c
+SERVER_SRCS = server.c
 CLIENT_NAME = client
 SERVER_NAME = server
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -I.
 RM = rm -f
+CC = cc
 
 all: $(LIBFT) $(CLIENT_NAME) $(SERVER_NAME)
 

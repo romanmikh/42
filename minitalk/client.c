@@ -6,7 +6,7 @@
 /*   By: rocky <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:42:10 by rocky             #+#    #+#             */
-/*   Updated: 2024/04/19 14:06:51 by rmikhayl         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:30:00 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	send_signal(int process_id, unsigned char character)
 			kill(process_id, SIGUSR2);
 		else
 			kill(process_id, SIGUSR1);
-		usleep(300);
+		usleep(1000);
 	}
 }
 
