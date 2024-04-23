@@ -27,7 +27,7 @@ void	send_signal(int process_id, unsigned char character)
 			kill(process_id, SIGUSR1);
 		else
 			kill(process_id, SIGUSR2);
-		usleep(500);
+		usleep(1000);
 	}
 }
 
