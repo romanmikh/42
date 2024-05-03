@@ -1,57 +1,146 @@
-GREEN = \033[0;32m
-RED = \033[0;31m
-RESET = \033[0m
 
-CC = cc
-CFLAGS = -Wall -Werror -Wextra
-LIBFT_PATH = /libft
-MLX_PATH = /minilibx
+NAME =	fractol
+CC = 	clang
+AR =	ar rcs
+RM = 	rm -rf
 
-SRC_DIR = src
-OBJ_DIR = obj
+CFLAGS =	-Wall -Werror -Wextra
+CFLAGS +=	-O2
+#CFLAGS +=	-g
+#CFLAGS +=	-fsanitize=address
 
-SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
-OBJ_FILES = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
+UNAME = $(shell uname)
 
-LIBFT = $(LIBFT_PATH)/libft.a
-MLX = $(MLX_PATH)/libmlx.a
+# GRAPHICAL LFGLAGS (for linux):
+#ifeq ($(shell uname), Linux)
+LDFLAGS		+=	-lXext -lX11
+#else
+	#LDFLAGS		+=	-lmlx -framework OpenGL -framework AppKit
+# -lmlx
 
-NAME = fractol
+# LDFLAGS (math.h)
+LDFLAGS		+=	-lm
 
-all: $(NAME)
+# **************************************************************************** #
+#	MAKEFILE	#
 
-$(NAME): $(OBJ_FILES) $(LIBFT) $(MLX)
-	@$(CC) $(CFLAGS) -o $@ $^ -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
-	@echo "$(NAME): $(GREEN)object files were created$(RESET)"
-	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+MAKEFLAGS += --silent
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -I$(LIBFT_PATH) -I$(MLX_PATH) -c -o $@ $<
-	@echo "$(NAME): $(GREEN)$(OBJ_DIR) was created$(RESET)"
+SHELL := bash
 
-$(LIBFT):
-	@$(MAKE) -C $(LIBFT_PATH)
-	@echo "$(NAME): $(GREEN)$(LIBFT) was created$(RESET)"
+B =		$(shell tput bold)
+BLA =	$(shell tput setaf 0)
+RED =	$(shell tput setaf 1)
+GRE =	$(shell tput setaf 2)
+YEL =	$(shell tput setaf 3)
+BLU =	$(shell tput setaf 4)
+MAG =	$(shell tput setaf 5)
+CYA =	$(shell tput setaf 6)
+WHI =	$(shell tput setaf 7)
+D =		$(shell tput sgr0)
+BEL =	$(shell tput bel)
+CLR =	$(shell tput el 1)
 
-$(MLX):
-	@$(MAKE) -C $(MLX_PATH)
-	@echo "$(NAME): $(GREEN)$(MLX) was created$(RESET)"
+# **************************************************************************** #
+#	 LIB	#
+
+LIBPATH =	./libft/
+LIBNAME =	$(LIBPATH)libft.a
+LIBINC =	-I$(LIBPATH)
+
+#ifeq ($(shell uname), Linux)
+MLXPATH =	./mlx/
+#else
+#	MLXPATH	=	./mlx_macos/
+#endif
+
+MLXNAME =	$(MLXPATH)libmlx.a
+MLXINC =	-I$(MLXPATH)
+
+# **************************************************************************** #
+#	SRCS	#
+
+SRCSPATH =	./srcs/
+OBJSPATH =	./objs/
+INC =		./includes/
+
+#SRCSNAME =	main.c \
+			ft_arg.c \
+			ft_render.c color.c \
+			ft_display.c \
+			fractal_set/julia.c fractal_set/julia_s.c \
+			fractal_set/mandelbrot.c fractal_set/ma_set.c \
+			fractal_set/mandelbar.c fractal_set/burning_ship.c \
+			free.c zoom.c keypress.c \
+			utils/ft_is_double.c utils/ft_is_num.c \
+			utils/help.c utils/ft_init.c
+
+#SRCS = $(addprefix $(SRCSPATH), $(SRCSNAME))
+
+SRCS =		$(wildcard $(SRCSPATH)*.c) $(wildcard $(SRCSPATH)**/*.c)
+SRCSNAME =	$(subst $(SRCSPATH), , $(SRCS))
+
+OBJSNAME =	$(SRCSNAME:.c=.o)
+OBJS =		$(addprefix $(OBJSPATH), $(OBJSNAME))
+
+#%.o: %.c
+#	$(CC) $(FLAGS) -Imlx $(BUFFER) -I$(INC) -c $< -o $(OBJSPATH)$(notdir $@)
+
+# *************************************************************************** #
+
+define	progress_bar
+	i=0
+	while [[ $$i -le $(words $(SRCS)) ]] ; do \
+		printf " " ; \
+		((i = i + 1)) ; \
+	done
+	printf "$(B)]\r[$(GRE)"
+endef
+
+# *************************************************************************** #
+#	RULES	#
+
+ifeq ($(UNAME), Linux)
+all:		launch $(NAME)
+	@printf "\n$(B)$(MAG)$(NAME) compiled$(D)\n"
+else
+all:
+	@echo "$(B)$(RED)Error: Only Linux supported.$(D)"
+endif
+
+launch:
+	$(call progress_bar)
+
+$(NAME):	$(OBJS) $(LIBNAME) $(MLXNAME)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBNAME) $(MLXNAME) -o $(NAME)
+
+$(OBJSPATH)%.o: $(SRCSPATH)%.c
+	@mkdir -p $(dir $@) # 2> /dev/null || true
+	$(CC) $(CFLAGS) -Imlx -I$(INC) -c $< -o $@
+	@printf "█"
+
+$(LIBNAME):
+	@printf "$(D)$(B)$(BLU)\n$(NAME) objects compiled\n\n$(D)"
+	@$(MAKE) -C $(LIBPATH)
+
+$(MLXNAME):
+	@$(MAKE) -C $(MLXPATH) > /dev/null 2>&1 || true
+	@printf "$(B)$(CYA)$(MLXNAME) compiled\n$(D)"
 
 clean:
-	@$(MAKE) -C $(LIBFT_PATH) clean
-	@$(MAKE) -C $(MLX_PATH) clean
-	@rm -r $(OBJ_DIR)
-	@echo "$(NAME): $(RED)$(OBJ_DIR) was deleted$(RESET)"
-	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
+	@$(RM) $(OBJSNAME)
+	@$(MAKE) clean -C $(LIBPATH)
+	@$(MAKE) clean -C $(MLXPATH) > /dev/null 2>&1 || true
+	@echo "$(B)Cleared$(D)"
 
 
-fclean: clean
-	@$(MAKE) -C $(LIBFT_PATH) fclean
-	@echo "$(NAME): $(RED)$(LIBFT) was deleted$(RESET)"
-	@rm $(NAME)
-	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
+fclean:		clean
+	@$(RM) $(OBJSPATH)
+	@$(RM) $(NAME)
+	@$(MAKE) fclean -C $(LIBPATH)
 
-re: fclean all
+re:			fclean all
 
 .PHONY: all clean fclean re
+
+# **************************************************************************** #

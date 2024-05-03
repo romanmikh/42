@@ -1,16 +1,52 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/15 14:46:30 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/22 16:19:31 by adelille         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "fractol.h"
+
+int	ft_is_double(const char *n)
+{
+	unsigned long	i;
+	int				p;
+
+	i = 0;
+	while (n[i] && (n[i] == '\t' || n[i] == '\n' || n[i] == '\v'
+			|| n[i] == '\f' || n[i] == '\r' || n[i] == ' '))
+		i++;
+	if (n[i] && (n[i] == '+' || n[i] == '-'))
+		i++;
+	if (!n[i])
+		return (FALSE);
+	p = FALSE;
+	while (n[i])
+	{
+		if (!ft_isdigit(n[i]) && n[i] != '.' && n[i] != ',')
+			return (FALSE);
+		if ((n[i] == '.' || n[i] == ',') && p == TRUE)
+			return (FALSE);
+		if (n[i] == '.' || n[i] == ',')
+			p = TRUE;
+		i++;
+	}
+	return (TRUE);
+}
+
+int	ft_is_num(const char *n)
+{
+	unsigned long	i;
+
+	i = 0;
+	while (n[i] && (n[i] == '\t' || n[i] == '\n' || n[i] == '\v'
+			|| n[i] == '\f' || n[i] == '\r' || n[i] == ' '))
+		i++;
+	if (n[i] && (n[i] == '+' || n[i] == '-'))
+		i++;
+	if (!n[i])
+		return (FALSE);
+	while (n[i])
+	{
+		if (!ft_isdigit(n[i]))
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
 
 int	ft_no_param(void)
 {
