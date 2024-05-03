@@ -6,13 +6,12 @@
 /*   By: rmikhayl <rmikhayl@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:25:48 by rmikhayl          #+#    #+#             */
-/*   Updated: 2024/04/19 16:59:09 by rmikhayl         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:59:40 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <math.h>
 # include <stddef.h>
 # include <stdlib.h>
 # include <stdint.h>
@@ -20,7 +19,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <signal.h>
-# include <pthread.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -29,6 +27,8 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+int		ft_abs(int n);
+double		ft_atof(const char *str);  
 int		ft_atoi(const char *str);
 int		list_len_char(char a[]);
 int		list_len_str(char *a[]);
