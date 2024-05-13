@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   colours.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 13:41:27 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/20 20:16:04 by adelille         ###   ########.fr       */
+/*   Created: 2024/05/13 16:40:20 by rmikhayl          #+#    #+#             */
+/*   Updated: 2024/05/13 16:41:31 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,31 @@
 
 int	ft_ints_to_int(int r, int g, int b)
 {
-	int	color;
+	int	col;
 
-	color = r | g << 8 | b << 16;
-	return (color);
+	col = r | g << 8 | b << 16;
+	return (col);
 }
 
-int	ft_red_to_black(int color)
+int	ft_red_to_black(int col)
 {
 	int	r;
 	int	g;
 	int	b;
 
-	r = color & 0xFF;
-	g = color >> 8 & 0xFF;
-	b = color >> 16 & 0xFF;
+	r = col & 0xFF;
+	g = col >> 8 & 0xFF;
+	b = col >> 16 & 0xFF;
 	if (r == 255 && g == 0 && b == 0)
 		return (0);
-	return (color);
+	return (col);
 }
 
-int	ft_color_to_int(t_color color)
+int	ft_color_to_int(t_color col)
 {
 	int	cint;
 
 	cint = 0;
-	cint = (int)color.r | (int)color.g << 8 | (int)color.b << 16;
+	cint = (int)col.r | (int)col.g << 8 | (int)col.b << 16;
 	return (cint);
 }
