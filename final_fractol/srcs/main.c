@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../headers/fractol.h"
 
 void	ft_default(t_env *env)
 {

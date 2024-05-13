@@ -73,7 +73,7 @@ MLXINC =	-I$(MLXPATH)
 
 SRCSPATH =	./srcs/
 OBJSPATH =	./objs/
-INC =		./
+INC =		./headers/
 
 #SRCSNAME =	main.c \
 			ft_arg.c \
@@ -105,7 +105,7 @@ define	progress_bar
 		printf " " ; \
 		((i = i + 1)) ; \
 	done
-	printf "$(B)]\r[$(GRE)"
+	printf "$(B)}\r{$(YEL)"
 endef
 
 # *************************************************************************** #
@@ -113,7 +113,7 @@ endef
 
 ifeq ($(UNAME), Linux)
 all:		launch $(NAME)
-	@printf "\n$(B)$(MAG)$(NAME) compiled$(D)\n"
+	@printf "\n$(B)$(CYA)$(NAME) compiled ☑️$(D)\n"
 else
 all:
 	@echo "$(B)$(RED)Error: Only Linux supported.$(D)"
@@ -131,12 +131,12 @@ $(OBJSPATH)%.o: $(SRCSPATH)%.c
 	@printf "█"
 
 $(LIBNAME):
-	@printf "$(D)$(B)$(BLU)\n$(NAME) objects compiled\n\n$(D)"
+	@printf "$(D)$(B)$(GRE)\n\n$(NAME) objects compiled ☑️\n\n$(D)"
 	@$(MAKE) -C $(LIBPATH)
 
 $(MLXNAME):
 	@$(MAKE) -C $(MLXPATH) > /dev/null 2>&1 || true
-	@printf "$(B)$(CYA)$(MLXNAME) compiled\n$(D)"
+	@printf "$(B)$(BLU)$(MLXNAME) compiled ☑️\n$(D)"
 
 clean:
 	@$(RM) $(OBJSNAME)
