@@ -6,7 +6,7 @@
 /*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 11:45:19 by rmikhayl          #+#    #+#             */
-/*   Updated: 2024/05/03 11:45:21 by rmikhayl         ###   ########.fr       */
+/*   Updated: 2024/05/09 18:32:25 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # if defined(__linux__) || defined(__unix__)
 # else
-#  error "Only Linux & Unix OS supported."
+#  error "Only Unix OS supported."
 # endif
 
 # define SIZE_X 1000

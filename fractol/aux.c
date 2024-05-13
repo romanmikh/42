@@ -105,3 +105,14 @@ int	ft_has_help(int ac, char **av)
 	}
 	return (FALSE);
 }
+
+int	ft_free_exit(t_env *env)
+{
+	mlx_destroy_image(env->mlx, env->img->addr);
+	mlx_destroy_window(env->mlx, env->win);
+	mlx_destroy_display(env->mlx);
+	free(env->img);
+	free(env->mlx);
+	exit (0);
+	return (1);
+}

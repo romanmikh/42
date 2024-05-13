@@ -25,7 +25,7 @@ int ft_process(t_env *env)
   mlx_string_put(env->mlx, env->win, 100, 100, 0xCCCCCC, "Loading");
   i = 0;
   y = 0;
-  while (y < env->sixe_y)
+  while (y < env->size_y)
   {
     env->c.i = env->max.i - y * env->factor.i;
     x = 0;
