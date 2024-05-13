@@ -56,7 +56,7 @@ static void	ft_move(int key, t_env *env)
 int	ft_keypress(int keycode, t_env *env)
 {
 	if (keycode == K_ESC)
-		ft_free_exit(env);
+		free_memory(env);
 	else if (keycode == K_UP || keycode == K_DOWN
 		|| keycode == K_LEFT || keycode == K_RIGHT
 		|| keycode == K_W || keycode == K_Z || keycode == K_S

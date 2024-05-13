@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-int	ft_free_exit(t_env *env)
+int	free_memory(t_env *env)
 {
 	mlx_destroy_image(env->mlx, env->img->addr);
 	mlx_destroy_window(env->mlx, env->win);
@@ -45,7 +45,7 @@ void	ft_init_env(t_env *env)
 	mlx_hook(env->win, 2, 1L << 0, ft_keypress, env);
 	mlx_hook(env->win, 4, 1L << 2, ft_zoom, env);
 	mlx_hook(env->win, 15, 1L << 16, ft_minimize, env);
-	mlx_hook(env->win, 33, 1L << 5, ft_free_exit, env);
+	mlx_hook(env->win, 33, 1L << 5, free_memory, env);
 }
 
 void	ft_default(t_env *env)
