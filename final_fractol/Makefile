@@ -101,7 +101,7 @@ OBJS =		$(addprefix $(OBJSPATH), $(OBJSNAME))
 
 define	progress_bar
 	i=0
-	while [[ $$i -le $(words $(SRCS)) ]] ; do \
+	while [[ $$i -le $$(($(words $(SRCS)))) ]] ; do \
 		printf " " ; \
 		((i = i + 1)) ; \
 	done
@@ -113,7 +113,7 @@ endef
 
 ifeq ($(UNAME), Linux)
 all:		launch $(NAME)
-	@printf "\n$(B)$(CYA)$(NAME) compiled ☑️$(D)\n"
+	@printf "☑️  $(B)$(CYA)$(NAME) compiled$(D)\n"
 else
 all:
 	@echo "$(B)$(RED)Error: Only Linux supported.$(D)"
@@ -131,12 +131,12 @@ $(OBJSPATH)%.o: $(SRCSPATH)%.c
 	@printf "█"
 
 $(LIBNAME):
-	@printf "$(D)$(B)$(GRE)\n\n$(NAME) objects compiled ☑️\n\n$(D)"
+	@printf "\n$(D)$(B)$(GRE)\n☑️  $(NAME) objects compiled\n$(D)"
 	@$(MAKE) -C $(LIBPATH)
 
 $(MLXNAME):
 	@$(MAKE) -C $(MLXPATH) > /dev/null 2>&1 || true
-	@printf "$(B)$(BLU)$(MLXNAME) compiled ☑️\n$(D)"
+	@printf "☑️  $(B)$(BLU)$(MLXNAME) compiled\n$(D)"
 
 clean:
 	@$(RM) $(OBJSNAME)

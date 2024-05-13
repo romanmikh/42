@@ -6,19 +6,12 @@
 /*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:49:05 by rmikhayl          #+#    #+#             */
-/*   Updated: 2024/05/13 16:49:09 by rmikhayl         ###   ########.fr       */
+/*   Updated: 2024/05/13 17:11:22 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_pixel(t_img *img, int color, int index)
-{
-	img->buffer[index] = color & 0xFF;
-	img->buffer[index + 1] = color >> 8 & 0xFF;
-	img->buffer[index + 2] = color >> 16 & 0xFF;
-	img->buffer[index + 3] = 0;
-}
 
 void	ft_pixel_fix(t_img *img, int color, int index)
 {
@@ -65,9 +58,9 @@ int	ft_process(t_env *env)
 			x++;
 		}
 		y++;
-		printf("\rRender: [%d%%]", (y * 100) / env->size_y);
+		printf("\rLoading: [%d%%]", (y * 100) / env->size_y);
 	}
-	printf("\t\033[1;32mDone\033[0m\n");
+	printf("\t\033[1;32mOK\033[0m\n");
 	return (TRUE);
 }
 
