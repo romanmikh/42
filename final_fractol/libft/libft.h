@@ -20,6 +20,7 @@
 # include <stdarg.h>
 # include <signal.h>
 # include <stdbool.h>
+# include <math.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

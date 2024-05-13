@@ -58,9 +58,9 @@ int	ft_process(t_env *env)
 			x++;
 		}
 		y++;
-		printf("\rLoading: [%d%%]", (y * 100) / env->size_y);
+		ft_printf("\rLoading: [%d%%]", (y * 100) / env->size_y);
 	}
-	printf("\t\033[1;32mOK\033[0m\n");
+	ft_printf("\t\033[1;32mOK\033[0m\n");
 	return (TRUE);
 }
 

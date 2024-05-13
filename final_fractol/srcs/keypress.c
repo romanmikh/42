@@ -65,6 +65,6 @@ int	ft_keypress(int keycode, t_env *env)
 	else if (keycode == K_M || keycode == K_N)
 		ft_zoom_mn(keycode, env);
 	else
-		printf("Unkown input, keycode = %d\n", keycode);
+		ft_printf("Unkown input, keycode = %d\n", keycode);
 	return (0);
 }

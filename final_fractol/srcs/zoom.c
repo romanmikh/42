@@ -54,6 +54,6 @@ int	ft_zoom(int button, int x, int y, t_env *env)
 		ft_render(env);
 	}
 	else
-		printf("Unkown mouse input, keycode = %d\n", button);
+		ft_printf("Unkown mouse input, keycode = %d\n", button);
 	return (0);
 }

@@ -10,9 +10,6 @@
 #  error "Only Unix OS supported."
 # endif
 
-# include <math.h>
-# include <stdio.h>
-
 # define T_JULIA	1
 # define T_MANDEL	2
 # define T_MA_SET	3
