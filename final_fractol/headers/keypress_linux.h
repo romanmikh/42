@@ -25,9 +25,6 @@
 # define K_S			115
 # define K_D			100
 
-# define K_Z			122
-# define K_Q			113
-
 # define M_SCROLL_UP	5
 # define M_SCROLL_DOWN	4
 

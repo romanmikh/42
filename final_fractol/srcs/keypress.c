@@ -35,12 +35,12 @@ static void	ft_move(int key, t_god *env)
 		env->min.r -= delta.r * 0.05;
 		env->max.r -= delta.r * 0.05;
 	}
-	if (key == K_LEFT || key == K_A || key == K_Q)
+	if (key == K_LEFT || key == K_A)
 	{
 		env->min.r += delta.r * 0.05;
 		env->max.r += delta.r * 0.05;
 	}
-	if (key == K_UP || key == K_W || key == K_Z)
+	if (key == K_UP || key == K_W)
 	{
 		env->min.i -= delta.i * 0.05;
 		env->max.i -= delta.i * 0.05;
@@ -59,8 +59,8 @@ int	ft_keypress(int keycode, t_god *env)
 		free_memory(env);
 	else if (keycode == K_UP || keycode == K_DOWN
 		|| keycode == K_LEFT || keycode == K_RIGHT
-		|| keycode == K_W || keycode == K_Z || keycode == K_S
-		|| keycode == K_A || keycode == K_Q || keycode == K_D)
+		|| keycode == K_W ||  keycode == K_S
+		|| keycode == K_A ||  keycode == K_D)
 		ft_move(keycode, env);
 	else if (keycode == K_M || keycode == K_N)
 		zoom_keys(keycode, env);
