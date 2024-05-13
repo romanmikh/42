@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-int	ft_ints_to_int(int r, int g, int b)
+int	colour_bitwise_encode(int r, int g, int b)
 {
 	int	col;
 

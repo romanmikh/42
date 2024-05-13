@@ -17,7 +17,7 @@ static double	ft_interpolate(double min, double max, double inter)
 	return (min + ((max - min) * inter));
 }
 
-void	ft_zoom_mn(int keypress, t_env *env)
+void	zoom_keys(int keypress, t_god *env)
 {
 	double	zoom;
 
@@ -25,14 +25,14 @@ void	ft_zoom_mn(int keypress, t_env *env)
 		zoom = 0.70;
 	else
 		zoom = 1.30;
-	env->min = ft_init_complex(env->min.r * zoom, env->min.i * zoom);
-	env->max = ft_init_complex(env->max.r * zoom, env->max.i * zoom);
+	env->min = init_cplx(env->min.r * zoom, env->min.i * zoom);
+	env->max = init_cplx(env->max.r * zoom, env->max.i * zoom);
 	ft_render(env);
 }
 
-int	ft_zoom(int button, int x, int y, t_env *env)
+int	zoom_mouse(int button, int x, int y, t_god *env)
 {
-	t_complex	mouse;
+	t_cplx	mouse;
 	double		zoom;
 	double		inter;
 

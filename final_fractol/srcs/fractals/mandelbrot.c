@@ -12,9 +12,9 @@
 
 #include "fractol.h"
 
-int	ft_mandelbrot(t_env *env)
+int	ft_mandelbrot(t_god *env)
 {
-	t_complex	c;
+	t_cplx	c;
 	double		tmp;
 	int			i;
 
@@ -28,7 +28,7 @@ int	ft_mandelbrot(t_env *env)
 		c.r = tmp;
 		i++;
 	}
-	return (ft_red_to_black(ft_ints_to_int(
+	return (ft_red_to_black(colour_bitwise_encode(
 				255 - 255 * ((env->ite - i) * (env->ite - i))
 				% (env->ite * env->ite), 0, 0)));
 }

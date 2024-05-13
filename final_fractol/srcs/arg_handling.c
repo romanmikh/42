@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arg.c                                           :+:      :+:    :+:   */
+/*   handle_args.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-int	ft_complex_arg(t_env *env, int ac, char **av)
+int	ft_cplx_arg(t_god *env, int ac, char **av)
 {
 	env->k.r = REAL;
 	env->k.i = IMAGINARY;
@@ -35,7 +35,7 @@ int	ft_complex_arg(t_env *env, int ac, char **av)
 	return (TRUE);
 }
 
-static int	ft_arg_fractal(t_env *env, char **av)
+static int	handle_args_fractal(t_god *env, char **av)
 {
 	env->type = 0;
 	if (ft_strcmp(av[1], "J") == 0 || ft_strcmp(av[1], "Julia") == 0)
@@ -52,12 +52,12 @@ static int	ft_arg_fractal(t_env *env, char **av)
 	return (TRUE);
 }
 
-int	ft_arg(t_env *env, int ac, char **av)
+int	handle_args(t_god *env, int ac, char **av)
 {
-	if (ft_arg_fractal(env, av) == FALSE)
+	if (handle_args_fractal(env, av) == FALSE)
 		return (0);
 	ft_default(env);
-	if (ft_complex_arg(env, ac, av) == FALSE)
+	if (ft_cplx_arg(env, ac, av) == FALSE)
 		return (FALSE);
 	return (TRUE);
 }

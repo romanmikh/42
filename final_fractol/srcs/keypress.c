@@ -12,23 +12,23 @@
 
 #include "fractol.h"
 
-int	ft_put_img_back(t_env *env)
+int	ft_put_img_back(t_god *env)
 {
 	mlx_put_image_to_window(env->mlx, env->win, env->img->addr, 0, 0);
 	return (0);
 }
 
-int	ft_minimize(t_env *env)
+int	ft_minimize(t_god *env)
 {
 	mlx_hook(env->win, 15, 1L << 16, ft_put_img_back, env);
 	return (0);
 }
 
-static void	ft_move(int key, t_env *env)
+static void	ft_move(int key, t_god *env)
 {
-	t_complex	delta;
+	t_cplx	delta;
 
-	delta = ft_init_complex(ft_abs(env->max.r - env->min.r),
+	delta = init_cplx(ft_abs(env->max.r - env->min.r),
 			ft_abs(env->max.i - env->min.i));
 	if (key == K_RIGHT || key == K_D)
 	{
@@ -53,7 +53,7 @@ static void	ft_move(int key, t_env *env)
 	ft_render(env);
 }
 
-int	ft_keypress(int keycode, t_env *env)
+int	ft_keypress(int keycode, t_god *env)
 {
 	if (keycode == K_ESC)
 		free_memory(env);
@@ -63,7 +63,7 @@ int	ft_keypress(int keycode, t_env *env)
 		|| keycode == K_A || keycode == K_Q || keycode == K_D)
 		ft_move(keycode, env);
 	else if (keycode == K_M || keycode == K_N)
-		ft_zoom_mn(keycode, env);
+		zoom_keys(keycode, env);
 	else
 		ft_printf("Unkown input, keycode = %d\n", keycode);
 	return (0);

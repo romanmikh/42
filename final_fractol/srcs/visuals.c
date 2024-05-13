@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-int	ft_display(t_env *env)
+int	ft_display(t_god *env)
 {
 	mlx_put_image_to_window(env->mlx, env->win, env->img->addr, 0, 0);
 	return (TRUE);
@@ -26,7 +26,7 @@ void	ft_pixel_fix(t_img *img, int color, int index)
 	img->buffer[index + 3] = 0;
 }
 
-static void	ft_launch(t_env *env, int index)
+static void	ft_launch(t_god *env, int index)
 {	
 	if (env->type == T_JULIA)
 		ft_pixel_fix(env->img, ft_julia(env), index);
@@ -38,7 +38,7 @@ static void	ft_launch(t_env *env, int index)
 		ft_pixel_fix(env->img, ft_burning_ship(env), index);
 }
 
-int	ft_process(t_env *env)
+int	ft_process(t_god *env)
 {
 	int	x;
 	int	y;
@@ -65,9 +65,9 @@ int	ft_process(t_env *env)
 	return (TRUE);
 }
 
-int	ft_render(t_env *env)
+int	ft_render(t_god *env)
 {
-	env->factor = ft_init_complex(
+	env->factor = init_cplx(
 			(env->max.r - env->min.r) / (env->size_x - 1),
 			(env->max.i - env->min.i) / (env->size_y - 1));
 	ft_process(env);

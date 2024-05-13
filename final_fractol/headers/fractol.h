@@ -37,11 +37,11 @@
 # define MAX_R			2.0
 # define MAX_I			2.0
 
-typedef struct s_complex
+typedef struct s_cplx
 {
 	double		r;
 	double		i;
-}				t_complex;
+}				t_cplx;
 
 typedef struct s_img
 {
@@ -52,7 +52,7 @@ typedef struct s_img
 	int			endian;
 }				t_img;
 
-typedef struct s_env
+typedef struct s_god
 {
 	void		*mlx;
 	void		*win;
@@ -60,50 +60,46 @@ typedef struct s_env
 	int			size_y;
 	int			type;
 	long		ite;
-	t_complex	min;
-	t_complex	max;
-	t_complex	factor;
-	t_complex	c;
-	t_complex	k;
+	t_cplx	min;
+	t_cplx	max;
+	t_cplx	factor;
+	t_cplx	c;
+	t_cplx	k;
 	t_img		*img;
-}				t_env;
+}				t_god;
 
 typedef struct s_color
 {
 	double		r;
 	double		g;
 	double		b;
-	int			shadow;
 }				t_color;
 
-int			ft_arg(t_env *env, int ac, char **av);
-void		ft_default(t_env *env);
-int			ft_has_help(int ac, char **av);
-int			ft_no_param(void);
-int			ft_option(void);
+int			handle_args(t_god *env, int ac, char **av);
+void		ft_default(t_god *env);
 
-int			ft_render(t_env *env);
-int			ft_display(t_env *env);
+int			ft_render(t_god *env);
+int			ft_display(t_god *env);
 
-int			ft_put_img_back(t_env *env);
-int			ft_minimize(t_env *env);
-int			ft_keypress(int keycode, t_env *env);
-int			ft_zoom(int keypress, int x, int y, t_env *env);
-void		ft_zoom_mn(int keypress, t_env *env);
+int			ft_put_img_back(t_god *env);
+int			ft_minimize(t_god *env);
+int			ft_keypress(int keycode, t_god *env);
+int			zoom_mouse(int keypress, int x, int y, t_god *env);
+void		zoom_keys(int keypress, t_god *env);
 
-int			ft_julia(t_env *env);
-int			ft_mandelbrot(t_env *env);
-int			ft_mandelbar(t_env *env);
-int			ft_burning_ship(t_env *env);
+int			ft_julia(t_god *env);
+int			ft_mandelbrot(t_god *env);
+int			ft_mandelbar(t_god *env);
+int			ft_burning_ship(t_god *env);
 
-int			ft_ints_to_int(int r, int g, int b);
+int			colour_bitwise_encode(int r, int g, int b);
 int			ft_adjust_int(int color);
 int			ft_red_to_black(int color);
 
-int			free_memory(t_env *env);
+int			free_memory(t_god *env);
 int			ft_is_double(const char *n);
 int			ft_is_num(const char *n);
-t_complex	ft_init_complex(double real, double imaginary);
-void		ft_init_env(t_env *env);
+t_cplx	init_cplx(double real, double imaginary);
+void		init_god(t_god *env);
 
 #endif
