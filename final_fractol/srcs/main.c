@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 18:48:21 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/26 21:46:31 by adelille         ###   ########.fr       */
+/*   Created: 2024/05/13 16:49:32 by rmikhayl          #+#    #+#             */
+/*   Updated: 2024/05/13 16:49:40 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/fractol.h"
+#include "fractol.h"
 
 void	ft_default(t_env *env)
 {

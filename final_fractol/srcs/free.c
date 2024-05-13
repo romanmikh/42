@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 12:58:20 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/20 20:16:27 by adelille         ###   ########.fr       */
+/*   Created: 2024/05/13 16:42:52 by rmikhayl          #+#    #+#             */
+/*   Updated: 2024/05/13 16:47:51 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+# include "fractol.h"
 
 int	ft_free_exit(t_env *env)
 {
