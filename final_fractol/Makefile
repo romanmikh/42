@@ -6,10 +6,10 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/03/20 16:43:09 by adelille         ###   ########.fr        #
+#    Updated: 2024/05/13 15:10:31 by rmikhayl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-  ...
+
 NAME =	fractol
 CC = 	clang
 AR =	ar rcs
@@ -73,7 +73,7 @@ MLXINC =	-I$(MLXPATH)
 
 SRCSPATH =	./srcs/
 OBJSPATH =	./objs/
-INC =		./includes/
+INC =		./
 
 #SRCSNAME =	main.c \
 			ft_arg.c \
