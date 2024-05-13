@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/13 19:08:38 by rmikhayl          #+#    #+#             */
+/*   Updated: 2024/05/13 19:08:42 by rmikhayl         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
@@ -20,9 +32,9 @@
 # define SIZE_X			1000
 # define SIZE_Y			1000
 
-# define MAX_ITERATION	100
-# define REAL			-99.7
-# define IMAGINARY	847580.27015
+# define MAX_ITERATION	250
+# define REAL			-0.7
+# define IMAGINARY		0.27015
 # define MIN_R			-2.0
 # define MIN_I			-2.0
 # define MAX_R			2.0

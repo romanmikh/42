@@ -12,6 +12,11 @@
 
 #include "fractol.h"
 
+int	ft_display(t_env *env)
+{
+	mlx_put_image_to_window(env->mlx, env->win, env->img->addr, 0, 0);
+	return (TRUE);
+}
 
 void	ft_pixel_fix(t_img *img, int color, int index)
 {
