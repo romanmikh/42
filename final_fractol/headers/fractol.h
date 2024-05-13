@@ -1,27 +1,13 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 18:49:16 by adelille          #+#    #+#             */
-/*   Updated: 2024/05/13 14:20:22 by rmikhayl         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 
-# if __linux__
-#  include "keypress_linux.h"
-# elif __unix__
+# if defined(__linux__) || defined(__unix__)
 #  include "keypress_linux.h"
 # else
-#  error "OS not supported"
+#  error "Only Unix OS supported."
 # endif
 
 # include <math.h>
