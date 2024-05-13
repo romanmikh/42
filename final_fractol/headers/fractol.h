@@ -24,10 +24,8 @@
 
 # define T_JULIA	1
 # define T_MANDEL	2
-# define T_MA_SET	3
-# define T_MB		4
-# define T_BS		5
-# define T_JS		6
+# define T_MB		3
+# define T_BS		4
 
 # define SIZE_X			1000
 # define SIZE_Y			1000

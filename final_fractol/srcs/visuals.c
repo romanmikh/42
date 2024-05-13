@@ -32,14 +32,10 @@ static void	ft_launch(t_env *env, int index)
 		ft_pixel_fix(env->img, ft_julia(env), index);
 	else if (env->type == T_MANDEL)
 		ft_pixel_fix(env->img, ft_mandelbrot(env), index);
-	else if (env->type == T_MA_SET)
-		ft_pixel_fix(env->img, ft_ma_set(env), index);
 	else if (env->type == T_MB)
 		ft_pixel_fix(env->img, ft_mandelbar(env), index);
 	else if (env->type == T_BS)
 		ft_pixel_fix(env->img, ft_burning_ship(env), index);
-	else if (env->type == T_JS)
-		ft_pixel_fix(env->img, ft_julia_s(env), index);
 }
 
 int	ft_process(t_env *env)

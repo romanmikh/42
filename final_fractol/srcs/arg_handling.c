@@ -42,15 +42,11 @@ static int	ft_arg_fractal(t_env *env, char **av)
 		env->type = T_JULIA;
 	else if (ft_strcmp(av[1], "M") == 0 || ft_strcmp(av[1], "Mandelbrot") == 0)
 		env->type = T_MANDEL;
-	else if (ft_strcmp(av[1], "MA") == 0 || ft_strcmp(av[1], "MA_set") == 0)
-		env->type = T_MA_SET;
 	else if (ft_strcmp(av[1], "MB") == 0 || ft_strcmp(av[1], "Mandelbar") == 0)
 		env->type = T_MB;
 	else if (ft_strcmp(av[1], "BS") == 0
 		|| ft_strcmp(av[1], "Burning_Ship") == 0)
 		env->type = T_BS;
-	else if (ft_strcmp(av[1], "JS") == 0 || ft_strcmp(av[1], "Julia_S") == 0)
-		env->type = T_JS;
 	else
 		return (FALSE);
 	return (TRUE);
