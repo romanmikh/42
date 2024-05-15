@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void	ft_pixel_fix(t_img *img, int color, int i)
+void	set_pixel(t_img *img, int color, int i)
 {
 	img->buffer[i] = color >> 16 & 0xFF;
 	img->buffer[i + 1] = color >> 8 & 0xFF;
@@ -20,51 +20,51 @@ void	ft_pixel_fix(t_img *img, int color, int i)
 	img->buffer[i + 3] = 0;
 }
 
-static void	ft_launch(t_god *env, int i)
+static void	choose_fractal(t_god *god, int i)
 {	
-	if (env->type == T_JULIA)
-		ft_pixel_fix(env->img, ft_julia(env), i);
-	else if (env->type == T_MANDEL)
-		ft_pixel_fix(env->img, ft_mandelbrot(env), i);
-	else if (env->type == T_MB)
-		ft_pixel_fix(env->img, ft_mandelbar(env), i);
-	else if (env->type == T_BS)
-		ft_pixel_fix(env->img, ft_burning_ship(env), i);
+	if (god->type == T_JULIA)
+		set_pixel(god->img, ft_julia(god), i);
+	else if (god->type == T_MANDEL)
+		set_pixel(god->img, ft_mandelbrot(god), i);
+	else if (god->type == T_MB)
+		set_pixel(god->img, ft_mandelbar(god), i);
+	else if (god->type == T_BS)
+		set_pixel(god->img, ft_burning_ship(god), i);
 }
 
-int	ft_process(t_god *env)
+int	calculate(t_god *god)
 {
 	int	x;
 	int	y;
 	int	i;
 
-	mlx_string_put(env->mlx, env->win, 100, 100, 0xCCCCCC, "Processing");
+	mlx_string_put(god->mlx, god->win, 100, 100, 0xCCCCCC, "Processing");
 	i = 0;
 	y = 0;
-	while (y < env->size_y)
+	while (y < god->size_y)
 	{
-		env->c.i = env->max.i - y * env->factor.i;
+		god->c.i = god->max.i - y * god->factor.i;
 		x = 0;
-		while (x < env->size_x)
+		while (x < god->size_x)
 		{
-			env->c.r = env->min.r + x * env->factor.r;
-			ft_launch(env, i);
+			god->c.r = god->min.r + x * god->factor.r;
+			choose_fractal(god, i);
 			i += 4;
 			x++;
 		}
 		y++;
-		ft_printf("\rLoading: [%d%%]", (y * 100) / env->size_y);
+		ft_printf("\rLoading: [%d%%]", (y * 100) / god->size_y);
 	}
 	ft_printf("\t\033[1;32mOK\033[0m\n");
 	return (TRUE);
 }
 
-int	display(t_god *env)
+int	display(t_god *god)
 {
-	env->factor = init_cplx(
-			(env->max.r - env->min.r) / (env->size_x - 1),
-			(env->max.i - env->min.i) / (env->size_y - 1));
-	ft_process(env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img->addr, 0, 0);
+	god->factor = init_cplx(
+			(god->max.r - god->min.r) / (god->size_x - 1),
+			(god->max.i - god->min.i) / (god->size_y - 1));
+	calculate(god);
+	mlx_put_image_to_window(god->mlx, god->win, god->img->addr, 0, 0);
 	return (TRUE);
 }

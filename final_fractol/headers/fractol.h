@@ -75,30 +75,30 @@ typedef struct s_color
 	double		b;
 }				t_color;
 
-int			handle_args(t_god *env, int ac, char **av);
-void		ft_default(t_god *env);
+int			handle_args(t_god *god, int ac, char **av);
+void		ft_default(t_god *god);
 
-int			display(t_god *env);
+int			display(t_god *god);
 
-int			ft_put_img_back(t_god *env);
-int			ft_minimize(t_god *env);
-int			ft_keypress(int keycode, t_god *env);
-int			zoom_mouse(int keypress, int x, int y, t_god *env);
-void		zoom_keys(int keypress, t_god *env);
+int			ft_put_img_back(t_god *god);
+int			ft_minimize(t_god *god);
+int			ft_keypress(int keycode, t_god *god);
+int			zoom_mouse(int keypress, int x, int y, t_god *god);
+void		zoom_keys(int keypress, t_god *god);
 
-int			ft_julia(t_god *env);
-int			ft_mandelbrot(t_god *env);
-int			ft_mandelbar(t_god *env);
-int			ft_burning_ship(t_god *env);
+int			ft_julia(t_god *god);
+int			ft_mandelbrot(t_god *god);
+int			ft_mandelbar(t_god *god);
+int			ft_burning_ship(t_god *god);
 
 int			colour_bitwise_encode(int r, int g, int b);
 int			ft_adjust_int(int color);
 int			ft_red_to_black(int color);
 
-int			free_memory(t_god *env);
+int			free_memory(t_god *god);
 int			ft_is_double(const char *n);
 int			ft_is_num(const char *n);
 t_cplx	init_cplx(double real, double imaginary);
-void		init_god(t_god *env);
+void		init_god(t_god *god);
 
 #endif

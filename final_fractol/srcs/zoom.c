@@ -17,7 +17,7 @@ static double	ft_interpolate(double min, double max, double inter)
 	return (min + ((max - min) * inter));
 }
 
-void	zoom_keys(int keypress, t_god *env)
+void	zoom_keys(int keypress, t_god *god)
 {
 	double	zoom;
 
@@ -25,12 +25,12 @@ void	zoom_keys(int keypress, t_god *env)
 		zoom = 0.70;
 	else
 		zoom = 1.30;
-	env->min = init_cplx(env->min.r * zoom, env->min.i * zoom);
-	env->max = init_cplx(env->max.r * zoom, env->max.i * zoom);
-	display(env);
+	god->min = init_cplx(god->min.r * zoom, god->min.i * zoom);
+	god->max = init_cplx(god->max.r * zoom, god->max.i * zoom);
+	display(god);
 }
 
-int	zoom_mouse(int button, int x, int y, t_god *env)
+int	zoom_mouse(int button, int x, int y, t_god *god)
 {
 	t_cplx	mouse;
 	double		zoom;
@@ -38,20 +38,20 @@ int	zoom_mouse(int button, int x, int y, t_god *env)
 
 	if (button == M_SCROLL_UP || button == M_SCROLL_DOWN)
 	{
-		mouse.r = (double)x / (env->size_x / (env->max.r - env->min.r))
-			+ env->min.r;
-		mouse.i = (double)y / (env->size_y / (env->max.i - env->min.i))
-			* -1 + env->max.i;
+		mouse.r = (double)x / (god->size_x / (god->max.r - god->min.r))
+			+ god->min.r;
+		mouse.i = (double)y / (god->size_y / (god->max.i - god->min.i))
+			* -1 + god->max.i;
 		if (button == M_SCROLL_UP)
 			zoom = 0.70;
 		else
 			zoom = 1.30;
 		inter = 1.0 / zoom;
-		env->min.r = ft_interpolate(mouse.r, env->min.r, inter);
-		env->min.i = ft_interpolate(mouse.i, env->min.i, inter);
-		env->max.r = ft_interpolate(mouse.r, env->max.r, inter);
-		env->max.i = ft_interpolate(mouse.i, env->max.i, inter);
-		display(env);
+		god->min.r = ft_interpolate(mouse.r, god->min.r, inter);
+		god->min.i = ft_interpolate(mouse.i, god->min.i, inter);
+		god->max.r = ft_interpolate(mouse.r, god->max.r, inter);
+		god->max.i = ft_interpolate(mouse.i, god->max.i, inter);
+		display(god);
 	}
 	else
 		ft_printf("Unkown mouse input, keycode = %d\n", button);

@@ -12,23 +12,23 @@
 
 #include "fractol.h"
 
-int	ft_mandelbar(t_god *env)
+int	ft_mandelbar(t_god *god)
 {
 	t_cplx	c;
 	double		tmp;
 	int			i;
 
-	c.r = env->c.r;
-	c.i = env->c.i;
+	c.r = god->c.r;
+	c.i = god->c.i;
 	i = 0;
-	while (c.r * c.r + c.i * c.i < 4 && i < env->ite)
+	while (c.r * c.r + c.i * c.i < 4 && i < god->ite)
 	{
-		tmp = c.r * c.r - c.i * c.i + env->c.r;
-		c.i = -2.0 * c.r * c.i + env->c.i;
+		tmp = c.r * c.r - c.i * c.i + god->c.r;
+		c.i = -2.0 * c.r * c.i + god->c.i;
 		c.r = tmp;
 		i++;
 	}
 	return (ft_red_to_black(colour_bitwise_encode(
-				255 - 255 * ((env->ite - i) * (env->ite - i))
-				% (env->ite * env->ite), 0, 0)));
+				255 - 255 * ((god->ite - i) * (god->ite - i))
+				% (god->ite * god->ite), 0, 0)));
 }

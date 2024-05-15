@@ -12,58 +12,58 @@
 
 #include "fractol.h"
 
-int	ft_put_img_back(t_god *env)
+int	ft_put_img_back(t_god *god)
 {
-	mlx_put_image_to_window(env->mlx, env->win, env->img->addr, 0, 0);
+	mlx_put_image_to_window(god->mlx, god->win, god->img->addr, 0, 0);
 	return (0);
 }
 
-int	ft_minimize(t_god *env)
+int	ft_minimize(t_god *god)
 {
-	mlx_hook(env->win, 15, 1L << 16, ft_put_img_back, env);
+	mlx_hook(god->win, 15, 1L << 16, ft_put_img_back, god);
 	return (0);
 }
 
-static void	ft_move(int key, t_god *env)
+static void	ft_move(int key, t_god *god)
 {
 	t_cplx	delta;
 
-	delta = init_cplx(ft_abs(env->max.r - env->min.r),
-			ft_abs(env->max.i - env->min.i));
+	delta = init_cplx(ft_abs(god->max.r - god->min.r),
+			ft_abs(god->max.i - god->min.i));
 	if (key == K_RIGHT || key == K_D)
 	{
-		env->min.r -= delta.r * 0.05;
-		env->max.r -= delta.r * 0.05;
+		god->min.r -= delta.r * 0.05;
+		god->max.r -= delta.r * 0.05;
 	}
 	if (key == K_LEFT || key == K_A)
 	{
-		env->min.r += delta.r * 0.05;
-		env->max.r += delta.r * 0.05;
+		god->min.r += delta.r * 0.05;
+		god->max.r += delta.r * 0.05;
 	}
 	if (key == K_UP || key == K_W)
 	{
-		env->min.i -= delta.i * 0.05;
-		env->max.i -= delta.i * 0.05;
+		god->min.i -= delta.i * 0.05;
+		god->max.i -= delta.i * 0.05;
 	}
 	if (key == K_DOWN || key == K_S)
 	{
-		env->min.i += delta.i * 0.05;
-		env->max.i += delta.i * 0.05;
+		god->min.i += delta.i * 0.05;
+		god->max.i += delta.i * 0.05;
 	}
-	display(env);
+	display(god);
 }
 
-int	ft_keypress(int keycode, t_god *env)
+int	ft_keypress(int keycode, t_god *god)
 {
 	if (keycode == K_ESC)
-		free_memory(env);
+		free_memory(god);
 	else if (keycode == K_UP || keycode == K_DOWN
 		|| keycode == K_LEFT || keycode == K_RIGHT
 		|| keycode == K_W ||  keycode == K_S
 		|| keycode == K_A ||  keycode == K_D)
-		ft_move(keycode, env);
+		ft_move(keycode, god);
 	else if (keycode == K_M || keycode == K_N)
-		zoom_keys(keycode, env);
+		zoom_keys(keycode, god);
 	else
 		ft_printf("Unkown input, keycode = %d\n", keycode);
 	return (0);
