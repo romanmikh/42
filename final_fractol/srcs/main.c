@@ -44,7 +44,6 @@ void	init_god(t_god *god)
 	god->win = mlx_new_window(god->mlx, god->size_x, god->size_y, "fract-ol");
 	mlx_hook(god->win, 2, 1L << 0, ft_keypress, god);
 	mlx_hook(god->win, 4, 1L << 2, zoom_mouse, god);
-	mlx_hook(god->win, 15, 1L << 16, ft_minimize, god);
 	mlx_hook(god->win, 33, 1L << 5, free_memory, god);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 15:45:19 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/22 16:02:28 by adelille         ###   ########.fr       */
+/*   Created: 2024/05/15 13:57:32 by rmikhayl          #+#    #+#             */
+/*   Updated: 2024/05/15 13:57:40 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	ft_burning_ship(t_god *god)
 		i++;
 	}
 	return (discont_to_black(colour_bitwise_encode(
-				255 - 255 * ((god->ite - i) * (god->ite - i))
-				% (god->ite * god->ite), 0, 0)));
+		255 - 255 * ((god->ite - i) * (god->ite - i) * (god->ite - i))
+		% (god->ite * god->ite * god->ite), 0, 0)));
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keypress.c                                         :+:      :+:    :+:   */
+/*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,16 +12,50 @@
 
 #include "fractol.h"
 
-int	ft_put_img_back(t_god *god)
+static double	interp_extrap(double min, double max, double inter)
 {
-	mlx_put_image_to_window(god->mlx, god->win, god->img->addr, 0, 0);
+	return (min + ((max - min) * inter));
+}
+
+int	zoom_mouse(int button, int x, int y, t_god *god)
+{
+	t_cplx	mouse;
+	double		zoom;
+	double		inter;
+
+	if (button == M_SCROLL_UP || button == M_SCROLL_DOWN)
+	{
+		mouse.r = (double)x / (god->size_x / (god->max.r - god->min.r))
+			+ god->min.r;
+		mouse.i = (double)y / (god->size_y / (god->max.i - god->min.i))
+			* -1 + god->max.i;
+		if (button == M_SCROLL_UP)
+			zoom = 0.75;
+		else
+			zoom = 1.25;
+		inter = 1.0 / zoom;
+		god->min.r = interp_extrap(mouse.r, god->min.r, inter);
+		god->min.i = interp_extrap(mouse.i, god->min.i, inter);
+		god->max.r = interp_extrap(mouse.r, god->max.r, inter);
+		god->max.i = interp_extrap(mouse.i, god->max.i, inter);
+		display(god);
+	}
+	else
+		ft_printf("Erroneous mouse input: %d\n", button);
 	return (0);
 }
 
-int	ft_minimize(t_god *god)
+void	zoom_keys(int keypress, t_god *god)
 {
-	mlx_hook(god->win, 15, 1L << 16, ft_put_img_back, god);
-	return (0);
+	double	zoom;
+
+	if (keypress == K_M)
+		zoom = 0.75;
+	else
+		zoom = 1.25;
+	god->min = init_cplx(god->min.r * zoom, god->min.i * zoom);
+	god->max = init_cplx(god->max.r * zoom, god->max.i * zoom);
+	display(god);
 }
 
 static void	ft_move(int key, t_god *god)
@@ -65,6 +99,6 @@ int	ft_keypress(int keycode, t_god *god)
 	else if (keycode == K_M || keycode == K_N)
 		zoom_keys(keycode, god);
 	else
-		ft_printf("Unkown input, keycode = %d\n", keycode);
+		ft_printf("Erroneous keyboard input: %d\n", keycode);
 	return (0);
 }

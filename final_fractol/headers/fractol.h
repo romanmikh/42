@@ -96,8 +96,6 @@ int			ft_adjust_int(int color);
 int			discont_to_black(int color);
 
 int			free_memory(t_god *god);
-int			ft_is_double(const char *n);
-int			ft_is_num(const char *n);
 t_cplx	init_cplx(double real, double imaginary);
 void		init_god(t_god *god);
 
