@@ -29,7 +29,7 @@
 
 # define SIZE_X			1000
 # define SIZE_Y			1000
-# define MAX_ITERATION		250
+# define MAX_ITERATION		255
 # define REAL			-0.7
 # define IMAGINARY		0.27015
 # define MIN_R			-2.0
@@ -90,7 +90,6 @@ int		ft_burning_ship(t_god *god);
 int		discont_to_black(int color);
 int		key_press(int keycode, t_god *god);
 int		handle_args(t_god *god, char **av);
-int		colour_bitwise_encode(int r, int g, int b);
 int		zoom_mouse(int keypress, int x, int y, t_god *god);
 
 #endif

@@ -62,8 +62,8 @@ int	calculate(t_god *god)
 int	display(t_god *god)
 {
 	god->factor = init_cplx(
-			(god->max.r - god->min.r) / (god->size_x - 1),
-			(god->max.i - god->min.i) / (god->size_y - 1));
+			(god->max.r - god->min.r) / (god->size_x),
+			(god->max.i - god->min.i) / (god->size_y));
 	calculate(god);
 	mlx_put_image_to_window(god->mlx, god->win, god->img->addr, 0, 0);
 	return (TRUE);

@@ -12,14 +12,6 @@
 
 #include "fractol.h"
 
-int	colour_bitwise_encode(int r, int g, int b)
-{
-	int	col;
-
-	col = r | g << 8 | b << 16;
-	return (col);
-}
-
 int	discont_to_black(int col)
 {
 	int	r;
