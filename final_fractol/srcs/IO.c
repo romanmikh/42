@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard.c                                         :+:      :+:    :+:   */
+/*   IO.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -58,7 +58,7 @@ void	zoom_keys(int keypress, t_god *god)
 	display(god);
 }
 
-static void	ft_move(int key, t_god *god)
+static void	key_move(int key, t_god *god)
 {
 	t_cplx	delta;
 
@@ -87,7 +87,7 @@ static void	ft_move(int key, t_god *god)
 	display(god);
 }
 
-int	ft_keypress(int keycode, t_god *god)
+int	key_press(int keycode, t_god *god)
 {
 	if (keycode == K_ESC)
 		free_memory(god);
@@ -95,7 +95,7 @@ int	ft_keypress(int keycode, t_god *god)
 		|| keycode == K_LEFT || keycode == K_RIGHT
 		|| keycode == K_W ||  keycode == K_S
 		|| keycode == K_A ||  keycode == K_D)
-		ft_move(keycode, god);
+		key_move(keycode, god);
 	else if (keycode == K_M || keycode == K_N)
 		zoom_keys(keycode, god);
 	else

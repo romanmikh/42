@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
+#    By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2024/05/13 15:10:31 by rmikhayl         ###   ########.fr        #
+#    Created: 2024/05/15 14:50:41 by rmikhayl          #+#    #+#              #
+#    Updated: 2024/05/15 14:53:09 by rmikhayl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,23 +17,12 @@ RM = 	rm -rf
 
 CFLAGS =	-Wall -Werror -Wextra
 CFLAGS +=	-O2
-#CFLAGS +=	-g
-#CFLAGS +=	-fsanitize=address
 
 UNAME = $(shell uname)
 
 # GRAPHICAL LFGLAGS (for linux):
-#ifeq ($(shell uname), Linux)
 LDFLAGS		+=	-lXext -lX11
-#else
-	#LDFLAGS		+=	-lmlx -framework OpenGL -framework AppKit
-# -lmlx
-
-# LDFLAGS (math.h)
 LDFLAGS		+=	-lm
-
-# **************************************************************************** #
-#	MAKEFILE	#
 
 MAKEFLAGS += --silent
 
@@ -59,11 +48,7 @@ LIBPATH =	./libft/
 LIBNAME =	$(LIBPATH)libft.a
 LIBINC =	-I$(LIBPATH)
 
-#ifeq ($(shell uname), Linux)
 MLXPATH =	./mlx/
-#else
-#	MLXPATH	=	./mlx_macos/
-#endif
 
 MLXNAME =	$(MLXPATH)libmlx.a
 MLXINC =	-I$(MLXPATH)

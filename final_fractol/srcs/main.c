@@ -42,12 +42,12 @@ void	init_god(t_god *god)
 	god->img->buffer = mlx_get_data_addr(god->img->addr, &god->img->bpp,
 			&god->img->line_size, &god->img->endian);
 	god->win = mlx_new_window(god->mlx, god->size_x, god->size_y, "fract-ol");
-	mlx_hook(god->win, 2, 1L << 0, ft_keypress, god);
+	mlx_hook(god->win, 2, 1L << 0, key_press, god);
 	mlx_hook(god->win, 4, 1L << 2, zoom_mouse, god);
 	mlx_hook(god->win, 33, 1L << 5, free_memory, god);
 }
 
-void	ft_default(t_god *god)
+void	init_defaults(t_god *god)
 {
 	god->size_x = SIZE_X;
 	god->size_y = SIZE_Y;

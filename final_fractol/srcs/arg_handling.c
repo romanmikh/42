@@ -56,7 +56,7 @@ int	handle_args(t_god *god, int ac, char **av)
 {
 	if (handle_args_fractal(god, av) == FALSE)
 		return (0);
-	ft_default(god);
+	init_defaults(god);
 	if (ft_cplx_arg(god, ac, av) == FALSE)
 		return (FALSE);
 	return (TRUE);
