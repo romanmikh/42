@@ -6,7 +6,7 @@
 /*   By: rmikhayl <rmikhayl@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:25:48 by rmikhayl          #+#    #+#             */
-/*   Updated: 2024/04/19 16:59:09 by rmikhayl         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:54:28 by rmikhayl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
-int	ft_is_num(const char *n);
-int	ft_is_double(const char *n);
+int		ft_is_num(const char *n);
+int		ft_is_double(const char *n);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
@@ -82,7 +82,7 @@ int		ft_ptr_len(uintptr_t num);
 void	ft_put_ptr(uintptr_t num);
 double	ft_atof(const char *str);
 long	ft_atol(const char *nptr);
-int	ft_abs(int n);
+int		ft_abs(int n);
 
 # define TRUE 1
 # define FALSE 0
