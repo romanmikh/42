@@ -50,7 +50,7 @@ static void	ft_move(int key, t_god *env)
 		env->min.i += delta.i * 0.05;
 		env->max.i += delta.i * 0.05;
 	}
-	ft_render(env);
+	display(env);
 }
 
 int	ft_keypress(int keycode, t_god *env)

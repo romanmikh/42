@@ -68,7 +68,7 @@ int	main(int ac, char **av)
 	if (handle_args(&env, ac, av) == FALSE)
 		return (2);
 	init_god(&env);
-	ft_render(&env);
+	display(&env);
 	mlx_loop(env.mlx);
 	return (0);
 }

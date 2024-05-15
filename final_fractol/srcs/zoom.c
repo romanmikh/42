@@ -27,7 +27,7 @@ void	zoom_keys(int keypress, t_god *env)
 		zoom = 1.30;
 	env->min = init_cplx(env->min.r * zoom, env->min.i * zoom);
 	env->max = init_cplx(env->max.r * zoom, env->max.i * zoom);
-	ft_render(env);
+	display(env);
 }
 
 int	zoom_mouse(int button, int x, int y, t_god *env)
@@ -51,7 +51,7 @@ int	zoom_mouse(int button, int x, int y, t_god *env)
 		env->min.i = ft_interpolate(mouse.i, env->min.i, inter);
 		env->max.r = ft_interpolate(mouse.r, env->max.r, inter);
 		env->max.i = ft_interpolate(mouse.i, env->max.i, inter);
-		ft_render(env);
+		display(env);
 	}
 	else
 		ft_printf("Unkown mouse input, keycode = %d\n", button);

@@ -77,7 +77,7 @@ INC =		./headers/
 
 #SRCSNAME =	main.c \
 			handle_args.c \
-			ft_render.c color.c \
+			display.c color.c \
 			ft_display.c \
 			fractal_set/julia.c fractal_set/julia_s.c \
 			fractal_set/mandelbrot.c fractal_set/ma_set.c \

@@ -78,8 +78,7 @@ typedef struct s_color
 int			handle_args(t_god *env, int ac, char **av);
 void		ft_default(t_god *env);
 
-int			ft_render(t_god *env);
-int			ft_display(t_god *env);
+int			display(t_god *env);
 
 int			ft_put_img_back(t_god *env);
 int			ft_minimize(t_god *env);
