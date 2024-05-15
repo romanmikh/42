@@ -97,12 +97,12 @@ $(NAME):	$(OBJS) $(LIBNAME) $(MLXNAME)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBNAME) $(MLXNAME) -o $(NAME)
 
 $(OBJSPATH)%.o: $(SRCSPATH)%.c
-	@mkdir -p $(dir $@) # 2> /dev/null || true
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -Imlx -I$(INC) -c $< -o $@
 	@printf "█"
 
 $(LIBNAME):
-	@printf "\n$(D)$(B)$(GRE)\n☑️  $(NAME) objects compiled\n$(D)"
+	@printf "\n$(D)$(B)$(GRE)\n☑️  $(NAME) binaries compiled\n$(D)"
 	@$(MAKE) -C $(LIBPATH)
 
 $(MLXNAME):

@@ -16,7 +16,7 @@
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 
-# if defined(__linux__) || defined(__unix__)
+# if defined(__linux__)
 #  include "key_map.h"
 # else
 #  error "Only Unix OS supported."
@@ -60,11 +60,11 @@ typedef struct s_god
 	int			size_y;
 	int			type;
 	long		ite;
-	t_cplx	min;
-	t_cplx	max;
-	t_cplx	factor;
-	t_cplx	c;
-	t_cplx	julia_c;
+	t_cplx		min;
+	t_cplx		max;
+	t_cplx		factor;
+	t_cplx		c;
+	t_cplx		julia_c;
 	t_img		*img;
 }				t_god;
 
@@ -77,21 +77,20 @@ typedef struct s_color
 
 t_cplx	init_cplx(double real, double imaginary);
 
-void		zoom_keys(int keypress, t_god *god);
-void		init_defaults(t_god *god);
-void		init_god(t_god *god);
+void	zoom_keys(int keypress, t_god *god);
+void	init_defaults(t_god *god);
+void	init_god(t_god *god);
 
-int			display(t_god *god);
-int			ft_julia(t_god *god);
-int			free_memory(t_god *god);
-int			ft_mandelbar(t_god *god);
-int			ft_mandelbrot(t_god *god);
-int			ft_burning_ship(t_god *god);
-int			discont_to_black(int color);
-int			key_press(int keycode, t_god *god);
-int			handle_args(t_god *god, char **av);
-int			colour_bitwise_encode(int r, int g, int b);
-int			zoom_mouse(int keypress, int x, int y, t_god *god);
-
+int		display(t_god *god);
+int		ft_julia(t_god *god);
+int		free_memory(t_god *god);
+int		ft_mandelbar(t_god *god);
+int		ft_mandelbrot(t_god *god);
+int		ft_burning_ship(t_god *god);
+int		discont_to_black(int color);
+int		key_press(int keycode, t_god *god);
+int		handle_args(t_god *god, char **av);
+int		colour_bitwise_encode(int r, int g, int b);
+int		zoom_mouse(int keypress, int x, int y, t_god *god);
 
 #endif
