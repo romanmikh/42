@@ -14,7 +14,7 @@
 
 int	ft_burning_ship(t_god *god)
 {
-	t_cplx	c;
+	t_cplx		c;
 	double		tmp;
 	int			i;
 
@@ -29,6 +29,6 @@ int	ft_burning_ship(t_god *god)
 		i++;
 	}
 	return (discont_to_black(colour_bitwise_encode(
-		255 - 255 * ((god->ite - i) * (god->ite - i) * (god->ite - i))
-		% (god->ite * god->ite * god->ite), 0, 0)));
+				255 - 255 * ((god->ite - i) * (god->ite - i) * (god->ite - i))
+				% (god->ite * god->ite * god->ite), 0, 0)));
 }

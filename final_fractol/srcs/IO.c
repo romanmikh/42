@@ -19,7 +19,7 @@ static double	interp_extrap(double min, double max, double inter)
 
 int	zoom_mouse(int button, int x, int y, t_god *god)
 {
-	t_cplx	mouse;
+	t_cplx		mouse;
 	double		zoom;
 	double		inter;
 
@@ -93,8 +93,8 @@ int	key_press(int keycode, t_god *god)
 		free_memory(god);
 	else if (keycode == K_UP || keycode == K_DOWN
 		|| keycode == K_LEFT || keycode == K_RIGHT
-		|| keycode == K_W ||  keycode == K_S
-		|| keycode == K_A ||  keycode == K_D)
+		|| keycode == K_W || keycode == K_S
+		|| keycode == K_A || keycode == K_D)
 		key_move(keycode, god);
 	else if (keycode == K_M || keycode == K_N)
 		zoom_keys(keycode, god);

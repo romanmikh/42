@@ -71,8 +71,7 @@ J = Julia\n\
 MB = Mandelbar\n\
 BS = Burning Ship\n");
 		return (0);
-		}
-		
+	}
 	if (handle_args(&god, av) == FALSE)
 		return (2);
 	init_god(&god);

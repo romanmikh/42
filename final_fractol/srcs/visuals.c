@@ -21,7 +21,7 @@ void	set_pixel(t_img *img, int color, int i)
 }
 
 static void	choose_fractal(t_god *god, int i)
-{	
+{
 	if (god->type == T_JULIA)
 		set_pixel(god->img, ft_julia(god), i);
 	else if (god->type == T_MANDEL)

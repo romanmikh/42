@@ -81,16 +81,17 @@ void		zoom_keys(int keypress, t_god *god);
 void		init_defaults(t_god *god);
 void		init_god(t_god *god);
 
-int			handle_args(t_god *god, char **av);
 int			display(t_god *god);
-int			key_press(int keycode, t_god *god);
-int			zoom_mouse(int keypress, int x, int y, t_god *god);
 int			ft_julia(t_god *god);
-int			ft_mandelbrot(t_god *god);
-int			ft_mandelbar(t_god *god);
-int			ft_burning_ship(t_god *god);
-int			colour_bitwise_encode(int r, int g, int b);
-int			discont_to_black(int color);
 int			free_memory(t_god *god);
+int			ft_mandelbar(t_god *god);
+int			ft_mandelbrot(t_god *god);
+int			ft_burning_ship(t_god *god);
+int			discont_to_black(int color);
+int			key_press(int keycode, t_god *god);
+int			handle_args(t_god *god, char **av);
+int			colour_bitwise_encode(int r, int g, int b);
+int			zoom_mouse(int keypress, int x, int y, t_god *god);
+
 
 #endif
