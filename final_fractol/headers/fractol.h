@@ -81,7 +81,7 @@ void		zoom_keys(int keypress, t_god *god);
 void		init_defaults(t_god *god);
 void		init_god(t_god *god);
 
-int			handle_args(t_god *god, int ac, char **av);
+int			handle_args(t_god *god, char **av);
 int			display(t_god *god);
 int			key_press(int keycode, t_god *god);
 int			zoom_mouse(int keypress, int x, int y, t_god *god);

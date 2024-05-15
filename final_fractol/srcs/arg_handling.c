@@ -12,30 +12,7 @@
 
 #include "fractol.h"
 
-int	ft_cplx_arg(t_god *god, int ac, char **av)
-{
-	god->k.r = REAL;
-	god->k.i = IMAGINARY;
-	if (ac > 2 && ft_is_num(av[2]) == FALSE)
-		return (0);
-	if (ac > 2)
-	{
-		god->ite = ft_atol(av[2]);
-		if (god->ite <= 0)
-			god->ite = 1;
-	}
-	if (ac >= 5
-		&& (ft_is_double(av[3]) == FALSE || ft_is_double(av[4]) == FALSE))
-		return (0);
-	if (ac >= 5)
-	{
-		god->k.r = ft_atof(av[3]);
-		god->k.i = ft_atof(av[4]);
-	}
-	return (TRUE);
-}
-
-static int	handle_args_fractal(t_god *god, char **av)
+static int	set_fractal_type(t_god *god, char **av)
 {
 	god->type = 0;
 	if (ft_strcmp(av[1], "J") == 0 || ft_strcmp(av[1], "Julia") == 0)
@@ -52,12 +29,13 @@ static int	handle_args_fractal(t_god *god, char **av)
 	return (TRUE);
 }
 
-int	handle_args(t_god *god, int ac, char **av)
+int	handle_args(t_god *god, char **av)
 {
-	if (handle_args_fractal(god, av) == FALSE)
+	if (set_fractal_type(god, av) == FALSE)
+	{
+		ft_printf("Incorrect fractal type provided.\n");
 		return (0);
+	}
 	init_defaults(god);
-	if (ft_cplx_arg(god, ac, av) == FALSE)
-		return (FALSE);
 	return (TRUE);
 }
