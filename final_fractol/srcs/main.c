@@ -51,7 +51,6 @@ void	init_defaults(t_god *god)
 {
 	god->size_x = SIZE_X;
 	god->size_y = SIZE_Y;
-	god->ite = MAX_ITERATION;
 	god->min = init_cplx(MIN_R, MIN_I);
 	god->max = init_cplx(MAX_R,
 			MIN_I + (MAX_R - MIN_R) * god->size_x / god->size_y);
@@ -63,12 +62,14 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 	{
-		ft_printf("\033[1;31mPlease execute as follows:\033[0m \
-./exec M/J/MB/BS\n\n\
+		ft_printf("\033[1m\033[1;31mPlease execute as follows:\033[0m \
+\033[1m./exec M/J/MB/BS d x y\n\n\
 M = Mandelbrot\n\
 J = Julia\n\
 MB = Mandelbar\n\
-BS = Burning Ship\n");
+BS = Burning Ship\n\n\
+Where d is the max depth, and x & y are the starting coordinates \
+(for Julia only).\n");
 		return (0);
 	}
 	if (handle_args(&god, ac, av) == FALSE)

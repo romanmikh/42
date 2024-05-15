@@ -20,15 +20,24 @@ int	julia_args(t_god *god, int ac, char **av)
 		ft_printf("Some non-numeric Julia arguments passed\n");
 		return (0);
 	}
-	if (ac == 5)
+	if (ac == 3)
 	{
-		god->ite = ft_atol(av[2]);
+		god->ite = ft_atoi(av[2]);
+		if (god->ite <= 0)
+			god->ite = 1;
+	}
+	else if (ac == 5)
+	{
+		god->ite = ft_atoi(av[2]);
 		if (god->ite <= 0)
 			god->ite = 1;
 		god->julia_c = init_cplx(ft_atof(av[3]), ft_atof(av[4]));
 	}
 	else
+	{
 		god->julia_c = init_cplx(-0.7, 0.27);
+		god->ite = 250;
+	}
 	return (TRUE);
 }
 
