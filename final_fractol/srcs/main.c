@@ -63,7 +63,12 @@ int	main(int ac, char **av)
 	t_god		god;
 
 	if (ac == 1)
+	{
+		ft_printf("\033[1;31mPlease execute as follows:\033[0m \
+		./exec M/J/MB/BS\n");
 		return (0);
+		}
+		
 	if (handle_args(&god, ac, av) == FALSE)
 		return (2);
 	init_god(&god);
