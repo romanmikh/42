@@ -64,7 +64,7 @@ typedef struct s_god
 	t_cplx	max;
 	t_cplx	factor;
 	t_cplx	c;
-	t_cplx	k;
+	t_cplx	julia_c;
 	t_img		*img;
 }				t_god;
 

@@ -22,8 +22,8 @@ int	ft_julia(t_god *god)
 	i = 0;
 	while (z.r * z.r + z.i * z.i < 4 && i < god->ite)
 	{
-		z = init_cplx(z.r * z.r - z.i * z.i + god->k.r,
-				2 * z.r * z.i + god->k.i);
+		z = init_cplx(z.r * z.r - z.i * z.i + god->julia_c.r,
+				2 * z.r * z.i + god->julia_c.i);
 		i++;
 	}
 	return (discont_to_black(colour_bitwise_encode(

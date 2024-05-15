@@ -55,7 +55,7 @@ void	init_defaults(t_god *god)
 	god->min = init_cplx(MIN_R, MIN_I);
 	god->max = init_cplx(MAX_R,
 			MIN_I + (MAX_R - MIN_R) * god->size_x / god->size_y);
-	god->k = init_cplx(-0.4, 0.6);
+	god->julia_c = init_cplx(-0.7, 0.27015);
 }
 
 int	main(int ac, char **av)
