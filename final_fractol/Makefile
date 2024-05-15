@@ -6,7 +6,7 @@
 #    By: rmikhayl <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 14:50:41 by rmikhayl          #+#    #+#              #
-#    Updated: 2024/05/15 14:53:09 by rmikhayl         ###   ########.fr        #
+#    Updated: 2024/05/15 17:37:42 by rmikhayl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,16 +19,12 @@ CFLAGS =	-Wall -Werror -Wextra
 CFLAGS +=	-O2
 
 UNAME = $(shell uname)
-
-# GRAPHICAL LFGLAGS (for linux):
 LDFLAGS		+=	-lXext -lX11
 LDFLAGS		+=	-lm
-
 MAKEFLAGS += --silent
-
 SHELL := bash
 
-B =		$(shell tput bold)
+B =	$(shell tput bold)
 BLA =	$(shell tput setaf 0)
 RED =	$(shell tput setaf 1)
 GRE =	$(shell tput setaf 2)
@@ -37,7 +33,7 @@ BLU =	$(shell tput setaf 4)
 MAG =	$(shell tput setaf 5)
 CYA =	$(shell tput setaf 6)
 WHI =	$(shell tput setaf 7)
-D =		$(shell tput sgr0)
+D   =	$(shell tput sgr0)
 BEL =	$(shell tput bel)
 CLR =	$(shell tput el 1)
 
@@ -49,7 +45,6 @@ LIBNAME =	$(LIBPATH)libft.a
 LIBINC =	-I$(LIBPATH)
 
 MLXPATH =	./mlx/
-
 MLXNAME =	$(MLXPATH)libmlx.a
 MLXINC =	-I$(MLXPATH)
 
@@ -60,27 +55,18 @@ SRCSPATH =	./srcs/
 OBJSPATH =	./objs/
 INC =		./headers/
 
-#SRCSNAME =	main.c \
-			handle_args.c \
-			display.c color.c \
-			ft_display.c \
-			fractal_set/julia.c fractal_set/julia_s.c \
-			fractal_set/mandelbrot.c fractal_set/ma_set.c \
-			fractal_set/mandelbar.c fractal_set/burning_ship.c \
-			free.c zoom.c keypress.c \
-			utils/ft_is_double.c utils/ft_is_num.c \
-			utils/help.c utils/ft_init.c
+SRCSNAME =	main.c IO.c colours.c arg_handling.c visuals.c \
+			fractals/mandelbrot.c fractals/burning_ship.c \
+			fractals/mandelbar.c fractals/julia.c
 
-#SRCS = $(addprefix $(SRCSPATH), $(SRCSNAME))
+SRCS = $(addprefix $(SRCSPATH), $(SRCSNAME))
 
-SRCS =		$(wildcard $(SRCSPATH)*.c) $(wildcard $(SRCSPATH)**/*.c)
-SRCSNAME =	$(subst $(SRCSPATH), , $(SRCS))
+#SRCS =		$(wildcard $(SRCSPATH)*.c) $(wildcard $(SRCSPATH)**/*.c)
+#SRCSNAME =	$(subst $(SRCSPATH), , $(SRCS))
 
 OBJSNAME =	$(SRCSNAME:.c=.o)
 OBJS =		$(addprefix $(OBJSPATH), $(OBJSNAME))
 
-#%.o: %.c
-#	$(CC) $(FLAGS) -Imlx $(BUFFER) -I$(INC) -c $< -o $(OBJSPATH)$(notdir $@)
 
 # *************************************************************************** #
 
