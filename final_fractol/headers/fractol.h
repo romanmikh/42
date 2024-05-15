@@ -17,7 +17,7 @@
 # include "../mlx/mlx.h"
 
 # if defined(__linux__) || defined(__unix__)
-#  include "keypress_linux.h"
+#  include "key_map.h"
 # else
 #  error "Only Unix OS supported."
 # endif
