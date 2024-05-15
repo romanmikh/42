@@ -55,7 +55,6 @@ void	init_defaults(t_god *god)
 	god->min = init_cplx(MIN_R, MIN_I);
 	god->max = init_cplx(MAX_R,
 			MIN_I + (MAX_R - MIN_R) * god->size_x / god->size_y);
-	god->julia_c = init_cplx(-0.7, 0.27015);
 }
 
 int	main(int ac, char **av)
@@ -72,7 +71,7 @@ MB = Mandelbar\n\
 BS = Burning Ship\n");
 		return (0);
 	}
-	if (handle_args(&god, av) == FALSE)
+	if (handle_args(&god, ac, av) == FALSE)
 		return (2);
 	init_god(&god);
 	display(&god);

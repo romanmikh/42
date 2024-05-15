@@ -12,6 +12,26 @@
 
 #include "fractol.h"
 
+int	julia_args(t_god *god, int ac, char **av)
+{
+	if (ac == 5 && (ft_is_num(av[2]) == FALSE || ft_is_double(av[3]) == \
+		FALSE || ft_is_double(av[4]) == FALSE))
+	{
+		ft_printf("Some non-numeric Julia arguments passed\n");
+		return (0);
+	}
+	if (ac == 5)
+	{
+		god->ite = ft_atol(av[2]);
+		if (god->ite <= 0)
+			god->ite = 1;
+		god->julia_c = init_cplx(ft_atof(av[3]), ft_atof(av[4]));
+	}
+	else
+		god->julia_c = init_cplx(-0.7, 0.27);
+	return (TRUE);
+}
+
 static int	set_fractal_type(t_god *god, char **av)
 {
 	god->type = 0;
@@ -29,8 +49,10 @@ static int	set_fractal_type(t_god *god, char **av)
 	return (TRUE);
 }
 
-int	handle_args(t_god *god, char **av)
+int	handle_args(t_god *god, int ac, char **av)
 {
+	if (julia_args(god, ac, av) == FALSE)
+		return (FALSE);
 	if (set_fractal_type(god, av) == FALSE)
 	{
 		ft_printf("Incorrect fractal type provided.\n");

@@ -89,7 +89,8 @@ int		ft_mandelbrot(t_god *god);
 int		ft_burning_ship(t_god *god);
 int		discont_to_black(int color);
 int		key_press(int keycode, t_god *god);
-int		handle_args(t_god *god, char **av);
+int		handle_args(t_god *god, int ac, char **av);
+int		julia_args(t_god *god, int ac, char **av);
 int		zoom_mouse(int keypress, int x, int y, t_god *god);
 
 #endif
