@@ -20,7 +20,7 @@ int	colour_bitwise_encode(int r, int g, int b)
 	return (col);
 }
 
-int	ft_red_to_black(int col)
+int	discont_to_black(int col)
 {
 	int	r;
 	int	g;
@@ -32,13 +32,4 @@ int	ft_red_to_black(int col)
 	if (r == 255 && g == 0 && b == 0)
 		return (0);
 	return (col);
-}
-
-int	ft_color_to_int(t_color col)
-{
-	int	cint;
-
-	cint = 0;
-	cint = (int)col.r | (int)col.g << 8 | (int)col.b << 16;
-	return (cint);
 }

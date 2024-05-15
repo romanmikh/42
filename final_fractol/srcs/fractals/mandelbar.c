@@ -28,7 +28,7 @@ int	ft_mandelbar(t_god *god)
 		c.r = tmp;
 		i++;
 	}
-	return (ft_red_to_black(colour_bitwise_encode(
+	return (discont_to_black(colour_bitwise_encode(
 				255 - 255 * ((god->ite - i) * (god->ite - i))
 				% (god->ite * god->ite), 0, 0)));
 }

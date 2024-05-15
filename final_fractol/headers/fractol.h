@@ -93,7 +93,7 @@ int			ft_burning_ship(t_god *god);
 
 int			colour_bitwise_encode(int r, int g, int b);
 int			ft_adjust_int(int color);
-int			ft_red_to_black(int color);
+int			discont_to_black(int color);
 
 int			free_memory(t_god *god);
 int			ft_is_double(const char *n);
